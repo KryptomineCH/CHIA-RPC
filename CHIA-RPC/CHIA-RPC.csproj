@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CHIA_RPC</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chia-Metadata\Chia-Metadata\Chia-Metadata.csproj" />
+    <ProjectReference Include="..\..\NFT.Storage.Net\NFT.Storage.Net\NFT.Storage.Net.csproj" />
+  </ItemGroup>
+
+</Project>

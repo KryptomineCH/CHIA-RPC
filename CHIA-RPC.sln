@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CHIA-RPC", "CHIA-RPC\CHIA-RPC.csproj", "{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFT.Storage.Net", "..\NFT.Storage.Net\NFT.Storage.Net\NFT.Storage.Net.csproj", "{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chia-Metadata", "..\Chia-Metadata\Chia-Metadata\Chia-Metadata.csproj", "{4906DF2A-A136-497D-B566-4CBA04463495}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E3E6329-864C-457D-A7AD-FAD6641F3CC0}.Release|x64.Build.0 = Release|Any CPU
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Debug|x64.ActiveCfg = Debug|x64
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Debug|x64.Build.0 = Debug|x64
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Release|x64.ActiveCfg = Release|x64
+		{8F6F3EAA-CDF1-41C7-9A9F-DF4A8BBD2CBB}.Release|x64.Build.0 = Release|x64
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Debug|x64.Build.0 = Debug|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Release|x64.ActiveCfg = Release|Any CPU
+		{4906DF2A-A136-497D-B566-4CBA04463495}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79696452-ADA8-4D1F-B0FA-6CC2477059D6}
+	EndGlobalSection
+EndGlobal
