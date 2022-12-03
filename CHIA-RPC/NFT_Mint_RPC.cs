@@ -139,7 +139,8 @@ namespace CHIA_RPC
             options.WriteIndented = true;
             options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
             string testText = JsonSerializer.Serialize(this, options: options);
-            File.WriteAllText(path, testText, Encoding.UTF8);
+            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
+            File.WriteAllText(path, testText, utf8WithoutBom);
         }
 
         public static NFT_Mint_RPC Load(string path)
