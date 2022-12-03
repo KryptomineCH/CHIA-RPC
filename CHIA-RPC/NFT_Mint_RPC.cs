@@ -22,6 +22,9 @@ namespace CHIA_RPC
             int mintingFee_Mojos = 5000
             )
         {
+            uris = new List<string>();
+            meta_uris = new List<string>();
+            license_uris = new List<string>();
             // payment data
             wallet_id = walletID;
             royalty_address = royaltyAddress;
@@ -29,7 +32,9 @@ namespace CHIA_RPC
             target_address = targetAddress;
             fee = mintingFee_Mojos;
             // other information
-            Metadata meta = IO.LoadFromByteArray(DownloadClient.DownloadAsync(metadataLinks[0]).Result);
+            Task<byte[]> metadata = Task.Run(() => DownloadClient.DownloadAsync(metadataLinks[0]));
+            metadata.Wait();
+            Metadata meta = IO.LoadFromByteArray(metadata.Result);
             edition_number = meta.series_number;
             edition_total = meta.series_total;
             // weblinks
@@ -44,6 +49,9 @@ namespace CHIA_RPC
         public NFT_Mint_RPC()
         {
             // required for json deserializer
+            uris = new List<string>();
+            meta_uris = new List<string>();
+            license_uris = new List<string>();
         }
         /// <summary>
         ///  the NFT wallet which should be used for minting
@@ -55,7 +63,7 @@ namespace CHIA_RPC
         /// <remarks>
         /// Multiple backup links have to be provided but all data needs to be equal
         /// </remarks>
-        public List<string> uris = new List<string>();
+        public List<string> uris { get; set; }
         /// <summary>
         /// sha256 hashsum for the image, document or whatever file is beeing uploaded
         /// </summary>
@@ -66,7 +74,7 @@ namespace CHIA_RPC
         /// <remarks>
         /// Multiple backup links have to be provided but all data needs to be equal
         /// </remarks>
-        public List<string> meta_uris = new List<string>();
+        public List<string> meta_uris { get; set; }
         /// <summary>
         /// sha256 hashsum for the metadata file
         /// </summary>
@@ -77,7 +85,7 @@ namespace CHIA_RPC
         /// <remarks>
         /// Multiple backup links have to be provided but all data needs to be equal
         /// </remarks>
-        public List<string> license_uris = new List<string>();
+        public List<string> license_uris { get; set; }
         /// <summary>
         /// sha256 hashsum for the license file
         /// </summary>
