@@ -129,6 +129,10 @@ namespace CHIA_RPC
         /// a fee under 1000 mojos won't even be included into hpool's mempool.
         /// </remarks>
         public int fee { get; set; }
+        /// <summary>
+        /// saves the rpc as rpc-file (json) to the specified path
+        /// </summary>
+        /// <param name="path"></param>
         public void Save(string path)
         {
             if (!path.EndsWith(".rpc"))
@@ -142,7 +146,11 @@ namespace CHIA_RPC
             Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
             File.WriteAllText(path, testText, utf8WithoutBom);
         }
-
+        /// <summary>
+        /// loads an rpc file from the specified path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static NFT_Mint_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
