@@ -3,7 +3,7 @@ using NFT.Storage.Net.API;
 using System.Text;
 using System.Text.Json;
 
-namespace CHIA_RPC
+namespace CHIA_RPC.NFT
 {
     public class NFT_Mint_RPC
     {
@@ -67,7 +67,7 @@ namespace CHIA_RPC
         /// <summary>
         /// sha256 hashsum for the image, document or whatever file is beeing uploaded
         /// </summary>
-        public string hash { get; private set;}
+        public string hash { get; private set; }
         /// <summary>
         /// urls for the metadata information json file
         /// </summary>
@@ -157,6 +157,14 @@ namespace CHIA_RPC
             string text = File.ReadAllText(testFile.FullName);
             NFT_Mint_RPC rpc = JsonSerializer.Deserialize<NFT_Mint_RPC>(text);
             return rpc;
+        }
+        public override string ToString()
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions();
+            options.WriteIndented = false;
+            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+            string jsonString = JsonSerializer.Serialize(this, options: options);
+            return jsonString;
         }
     }
 }
