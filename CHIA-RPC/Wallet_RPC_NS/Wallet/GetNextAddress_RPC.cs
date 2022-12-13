@@ -1,42 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Text.Json;
 using System.Text;
-using System.Text.Json;
 
-namespace CHIA_RPC.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet
 {
-    /// <summary>
-    /// used to send chia to a specific target address
-    /// </summary>
-    public class Wallet_Send_XCH_RPC
+    public class GetNextAddress_Response
     {
-        /// <summary>
-        /// the wallet ID from which you want to send the transaction
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
+        public string address { get; set; }
+        public bool success { get; set; }
+        public ulong wallet_id { get; set; }
+        public string error { get; set; }
+    }
+    public class GetNextAddress_RPC
+    {
         public ulong wallet_id { get; set; }
         /// <summary>
-        /// the receiving address to send the mojos to
+        /// specifies if a new address should be generated or the last one used
         /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public string address { get; set; }
-        /// <summary>
-        /// the amount of mojos to send
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong amount { get; set; }
-        /// <summary>
-        /// the amount of mojos to set as fee
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong fee { get; set; }
-        /// <summary>
-        /// memos for self and recipient (publicly readable)
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public string[] memos { get; set; }
+        public bool new_address { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -59,11 +39,11 @@ namespace CHIA_RPC.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static Wallet_Send_XCH_RPC Load(string path)
+        public static SendXCH_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            Wallet_Send_XCH_RPC rpc = JsonSerializer.Deserialize<Wallet_Send_XCH_RPC>(text);
+            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
             return rpc;
         }
         /// <summary>

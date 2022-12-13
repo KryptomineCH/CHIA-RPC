@@ -1,33 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
-namespace CHIA_RPC.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet
 {
-    public class Wallet_Select_Coins_RPC
+    public class DeleteNotifications_RPC
     {
         /// <summary>
-        /// The ID of the wallet from which to select coins
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong wallet_id { get; set; }
-        /// <summary>
-        /// The number of mojos to select
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong amount { get; set; }
-        /// <summary>
-        /// The smallest coin to be selected in this query [Default: No minimum]
+        /// Set to delete notifications only from the specified IDs. [Default: delete from all IDs]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
-        /// <summary>
-        /// The largest coin to be selected in this query [Default: No maximum]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public string[] ids { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -50,11 +32,11 @@ namespace CHIA_RPC.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static Wallet_Select_Coins_RPC Load(string path)
+        public static SendXCH_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            Wallet_Select_Coins_RPC rpc = JsonSerializer.Deserialize<Wallet_Select_Coins_RPC>(text);
+            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
             return rpc;
         }
         /// <summary>

@@ -1,9 +1,10 @@
 ﻿using Chia_Metadata;
+using NFT.Storage.Net;
 using NFT.Storage.Net.API;
 using System.Text;
 using System.Text.Json;
 
-namespace CHIA_RPC.NFT
+namespace CHIA_RPC.Wallet_RPC_NS.NFT
 {
     public class NFT_Mint_RPC
     {
@@ -42,9 +43,9 @@ namespace CHIA_RPC.NFT
             meta_uris = metadataLinks.ToList();
             license_uris = licenseLinks.ToList();
             // generate sha256sums for validation
-            hash = NFT.Storage.Net.Sha256.ValidateChecksums(nftLinks);
-            meta_hash = NFT.Storage.Net.Sha256.ValidateChecksums(metadataLinks);
-            license_hash = NFT.Storage.Net.Sha256.ValidateChecksums(licenseLinks);
+            hash = Sha256.ValidateChecksums(nftLinks);
+            meta_hash =Sha256.ValidateChecksums(metadataLinks);
+            license_hash = Sha256.ValidateChecksums(licenseLinks);
         }
         public NFT_Mint_RPC()
         {

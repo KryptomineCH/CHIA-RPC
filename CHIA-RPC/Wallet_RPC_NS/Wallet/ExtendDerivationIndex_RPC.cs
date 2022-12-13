@@ -2,41 +2,26 @@
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace CHIA_RPC.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet
 {
-    internal class Wallet_Get_Spendable_Coins_RPC
+    public class ExtendDerivationIndex_Response
     {
         /// <summary>
-        /// The ID of the wallet from which to display coins
+        /// The derivation index is the minimum number of addresses the wallet will examine. It's not possible to decrease this number.
         /// </summary>
-        /// <remarks>mandatory</remarks>
+        public ulong index { get; set; }
+        public bool success { get; set; }
+        public string error { get; set; }
+    }
+    public class ExtendDerivationIndex_RPC
+    {
+        /// <summary>
+        /// The new derivation index. Must be larger than the previous index
+        /// </summary>
+        /// <remarks>The derivation index is the minimum number of addresses the wallet will examine. It's not possible to decrease this number.
+        /// <br/>mandatory</remarks>
         [Required]
-        public ulong wallet_id { get; set; }
-        /// <summary>
-        /// The smallest coin to be selected in this query[Default: No minimum]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
-        /// <summary>
-        /// The largest coin to be selected in this query[Default: No maximum]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
-        /// <summary>
-        /// A list of coin amounts to exclude
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong[] excluded_coin_amounts { get; set; }
-        /// <summary>
-        /// A list of coins to exclude
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public string[] excluded_coins { get; set; }
-        /// <summary>
-        /// A list of coin IDs to exclude
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public string[] excluded_coin_ids { get; set; }
+        public ulong index { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -59,11 +44,11 @@ namespace CHIA_RPC.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static Wallet_Select_Coins_RPC Load(string path)
+        public static SendXCH_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            Wallet_Select_Coins_RPC rpc = JsonSerializer.Deserialize<Wallet_Select_Coins_RPC>(text);
+            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
             return rpc;
         }
         /// <summary>
