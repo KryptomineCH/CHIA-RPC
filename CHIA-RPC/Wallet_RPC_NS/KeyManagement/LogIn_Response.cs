@@ -2,6 +2,9 @@
 {
     public class LogIn_Response
     {
+        /// <summary>
+        /// The wallet's fingerprint, obtainable by running chia wallet show
+        /// </summary>
         public ulong fingerprint { get; set; }
         public bool success { get; set; }
         public string error { get; set; }

@@ -1,15 +1,16 @@
-﻿using CHIA_RPC.Wallet_RPC_NS.Wallet;
+﻿
+using CHIA_RPC.Wallet_RPC_NS.Wallet;
 using System.Text.Json;
 using System.Text;
 
-namespace CHIA_RPC.General
+namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
 {
-    public class FingerPrint_RPC
+    public class AddKey_RPC
     {
         /// <summary>
-        /// The wallet's fingerprint, obtainable by running chia wallet show
+        /// 24 word passphrase
         /// </summary>
-        public ulong fingerprint { get; set; }
+        public string[] mnemonic { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
