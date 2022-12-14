@@ -49,11 +49,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendXCH_RPC Load(string path)
+        public static GetNotifications_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
+            GetNotifications_RPC rpc = JsonSerializer.Deserialize<GetNotifications_RPC>(text);
             return rpc;
         }
         /// <summary>

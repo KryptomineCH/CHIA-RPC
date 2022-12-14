@@ -1,44 +1,32 @@
-﻿using CHIA_RPC.Wallet_RPC_NS.Wallet;
-using System.ComponentModel.DataAnnotations;
+﻿using CHIA_RPC.Objects;
+using CHIA_RPC.Wallet_RPC_NS.Wallet;
 using System.Text.Json;
 using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
+namespace CHIA_RPC.Wallet_RPC_NS.WalletNode_NS
 {
-    public class CheckDeleteKey_Response
+    public class PushTx_Response
     {
         /// <summary>
-        /// The wallet's fingerprint, obtainable by running chia wallet show
+        /// <list type="bullet">
+        /// <item>
+        /// SUCCESS: if the transaction was successfully added to the mempool
+        /// </item>
+        /// <item>
+        /// PENDING: if the transaction cannot be included yes due to timelocks or conflicts
+        /// </item>
+        /// <item>
+        /// FAILED: transaction was not added to the mempool, and was dropped
+        /// </item>
+        /// </list>
         /// </summary>
-        public ulong fingerprint { get; set; }
-        /// <summary>
-        /// farm rewards go to this wallet
-        /// </summary>
-        public bool used_for_farmer_rewards { get; set; }
-        /// <summary>
-        /// pool rewards go to this wallet
-        /// </summary>
-        public bool used_for_pool_rewards { get; set; }
-        /// <summary>
-        /// wallet still contains a balance
-        /// </summary>
-        public bool wallet_balance { get; set; }
+        public string status { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
     }
-    public class CheckDeleteKey_RPC
+    public class PushTx_RPC
     {
-        /// <summary>
-        /// The wallet's fingerprint, obtainable by running chia wallet show
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong fingerprint { get; set; }
-        /// <summary>
-        /// The maximum number of puzzle hashes to search [Default: 100]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong max_ph_to_search { get; set; }
+        public SpendBundle spend_bundle { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -61,11 +49,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendXCH_RPC Load(string path)
+        public static PushTx_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
+            PushTx_RPC rpc = JsonSerializer.Deserialize<PushTx_RPC>(text);
             return rpc;
         }
         /// <summary>

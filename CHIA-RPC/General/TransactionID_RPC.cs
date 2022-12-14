@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text;
 using CHIA_RPC.Wallet_RPC_NS.Wallet;
+using System.Runtime.CompilerServices;
 
 namespace CHIA_RPC.General
 {
@@ -32,11 +33,11 @@ namespace CHIA_RPC.General
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendXCH_RPC Load(string path)
+        public static TransactionID_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
+            TransactionID_RPC rpc = JsonSerializer.Deserialize<TransactionID_RPC>(text);
             return rpc;
         }
         /// <summary>

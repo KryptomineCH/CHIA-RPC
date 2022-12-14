@@ -32,11 +32,11 @@ namespace CHIA_RPC.General
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendXCH_RPC Load(string path)
+        public static FingerPrint_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
+            FingerPrint_RPC rpc = JsonSerializer.Deserialize<FingerPrint_RPC>(text);
             return rpc;
         }
         /// <summary>

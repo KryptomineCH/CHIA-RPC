@@ -69,11 +69,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SelectCoins_RPC Load(string path)
+        public static GetSpendableCoins_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
+            GetSpendableCoins_RPC rpc = JsonSerializer.Deserialize<GetSpendableCoins_RPC>(text);
             return rpc;
         }
         /// <summary>

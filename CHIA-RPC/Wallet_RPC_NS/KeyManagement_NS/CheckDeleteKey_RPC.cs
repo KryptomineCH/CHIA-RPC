@@ -1,16 +1,44 @@
-﻿
-using CHIA_RPC.Wallet_RPC_NS.Wallet;
+﻿using CHIA_RPC.Wallet_RPC_NS.Wallet;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using System.Text;
 
 namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
 {
-    public class AddKey_RPC
+    public class CheckDeleteKey_Response
     {
         /// <summary>
-        /// 24 word passphrase
+        /// The wallet's fingerprint, obtainable by running chia wallet show
         /// </summary>
-        public string[] mnemonic { get; set; }
+        public ulong fingerprint { get; set; }
+        /// <summary>
+        /// farm rewards go to this wallet
+        /// </summary>
+        public bool used_for_farmer_rewards { get; set; }
+        /// <summary>
+        /// pool rewards go to this wallet
+        /// </summary>
+        public bool used_for_pool_rewards { get; set; }
+        /// <summary>
+        /// wallet still contains a balance
+        /// </summary>
+        public bool wallet_balance { get; set; }
+        public bool success { get; set; }
+        public string error { get; set; }
+    }
+    public class CheckDeleteKey_RPC
+    {
+        /// <summary>
+        /// The wallet's fingerprint, obtainable by running chia wallet show
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public ulong fingerprint { get; set; }
+        /// <summary>
+        /// The maximum number of puzzle hashes to search [Default: 100]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong max_ph_to_search { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -33,11 +61,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendXCH_RPC Load(string path)
+        public static CheckDeleteKey_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
+            CheckDeleteKey_RPC rpc = JsonSerializer.Deserialize<CheckDeleteKey_RPC>(text);
             return rpc;
         }
         /// <summary>

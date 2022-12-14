@@ -1,12 +1,13 @@
-﻿using System.Text.Json;
-using System.Text;
+﻿using CHIA_RPC.Objects;
 using CHIA_RPC.Wallet_RPC_NS.Wallet;
+using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.General
+namespace CHIA_RPC.Wallet_RPC_NS.WalletNode_NS
 {
-    public class WalletID_RPC
+    public class PushTransactions_RPC
     {
-        public ulong wallet_id { get; set; }
+        public SpendBundle[] transactions { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -29,11 +30,11 @@ namespace CHIA_RPC.General
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static WalletID_RPC Load(string path)
+        public static PushTransactions_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            WalletID_RPC rpc = JsonSerializer.Deserialize<WalletID_RPC>(text);
+            PushTransactions_RPC rpc = JsonSerializer.Deserialize<PushTransactions_RPC>(text);
             return rpc;
         }
         /// <summary>
