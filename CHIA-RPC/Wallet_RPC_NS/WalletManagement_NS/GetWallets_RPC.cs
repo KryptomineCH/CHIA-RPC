@@ -1,40 +1,31 @@
-﻿using CHIA_RPC.Objects_NS;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿
+using CHIA_RPC.Objects_NS;
+using CHIA_RPC.Wallet_RPC_NS.Wallet;
 using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
-    public class SelectCoins_Response
+    public class GetWallets_Response
     {
-        public Coin[] coins { get; set; }
+        public ulong fingerprint { get; set; }
         public bool success { get; set; }
+        public Wallets_info[] wallets { get; set; }
         public string error { get; set; }
     }
-    public class SelectCoins_RPC
+    public class Wallets_info
+    {
+        public string data { get; set; }
+        public ulong id { get; set; }
+        public string name { get; set; }
+        public WalletType type { get; set; }
+    }
+    public class GetWallets_RPC
     {
         /// <summary>
-        /// The ID of the wallet from which to select coins
+        /// Set to true to include all coin info for this wallet [Default: true]
         /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong wallet_id { get; set; }
-        /// <summary>
-        /// The number of mojos to select
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong amount { get; set; }
-        /// <summary>
-        /// The smallest coin to be selected in this query [Default: No minimum]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
-        /// <summary>
-        /// The largest coin to be selected in this query [Default: No maximum]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public bool include_data { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -57,11 +48,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SelectCoins_RPC Load(string path)
+        public static GetWallets_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
+            GetWallets_RPC rpc = JsonSerializer.Deserialize<GetWallets_RPC>(text);
             return rpc;
         }
         /// <summary>

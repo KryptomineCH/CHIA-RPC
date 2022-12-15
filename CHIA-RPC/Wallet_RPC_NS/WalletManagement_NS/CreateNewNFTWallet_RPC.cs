@@ -1,40 +1,37 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
-    public class SelectCoins_Response
+    public class CreateNewNFTWallet_RPC
     {
-        public Coin[] coins { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-    }
-    public class SelectCoins_RPC
-    {
+        public CreateNewNFTWallet_RPC()
+        {
+            wallet_type = "nft_wallet";
+        }
         /// <summary>
-        /// The ID of the wallet from which to select coins
+        /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong wallet_id { get; set; }
+        public string wallet_type { get; set; }
         /// <summary>
-        /// The number of mojos to select
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong amount { get; set; }
-        /// <summary>
-        /// The smallest coin to be selected in this query [Default: No minimum]
+        /// The name of the wallet to create or modify [Default: CAT followed by the beginning of the CAT ID]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
+        public string name { get; set; }
         /// <summary>
-        /// The largest coin to be selected in this query [Default: No maximum]
+        /// *Required if mode is new. Specify the value, in mojos, of this wallet
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public string did_id { get; set; }
+        /// <summary>
+        /// An optional blockchain fee, in mojos
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -57,11 +54,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SelectCoins_RPC Load(string path)
+        public static CreateNewNFTWallet_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
+            CreateNewNFTWallet_RPC rpc = JsonSerializer.Deserialize<CreateNewNFTWallet_RPC>(text);
             return rpc;
         }
         /// <summary>

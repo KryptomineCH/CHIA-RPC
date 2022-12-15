@@ -1,4 +1,4 @@
-﻿using CHIA_RPC.Objects;
+﻿using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
 {

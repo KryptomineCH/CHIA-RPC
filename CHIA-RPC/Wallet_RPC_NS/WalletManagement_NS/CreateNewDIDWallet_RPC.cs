@@ -1,40 +1,56 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
-    public class SelectCoins_Response
+    /// <summary>
+    /// a did wallet is a digital identity
+    /// </summary>
+    public class CreateNewDIDWallet_RPC
     {
-        public Coin[] coins { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-    }
-    public class SelectCoins_RPC
-    {
+        public CreateNewDIDWallet_RPC()
+        {
+            wallet_type = "did_wallet";
+            did_type = "new";
+        }
         /// <summary>
-        /// The ID of the wallet from which to select coins
+        /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong wallet_id { get; set; }
+        public string wallet_type { get; set; }
         /// <summary>
-        /// The number of mojos to select
+        /// Must be either new or recovery. If recovery, then each of the following parameters will be ignored
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public string did_type { get; set; }
+        /// <summary>
+        /// TThe name of the DID wallet [Default: None]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public string wallet_name { get; set; }
+        /// <summary>
+        /// *Required if mode is new. Specify the value, in mojos, of this wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
         public ulong amount { get; set; }
         /// <summary>
-        /// The smallest coin to be selected in this query [Default: No minimum]
+        /// *Required if did_type is new. An array of backup DID IDs to be used for recovery. Must match actual DIDs
         /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
+        public string[] backup_dids { get; set; }
         /// <summary>
-        /// The largest coin to be selected in this query [Default: No maximum]
+        /// *Required if did_type is new. The number of backup DIDs required for recovery. Minimum value is 1, maximum value is the number of DIDs in backup_dids
+        /// </summary>
+        public ulong num_of_backup_ids_needed { get; set; }
+        /// <summary>
+        /// An optional blockchain fee, in mojos
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -57,11 +73,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SelectCoins_RPC Load(string path)
+        public static CreateNewDIDWallet_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
+            CreateNewDIDWallet_RPC rpc = JsonSerializer.Deserialize<CreateNewDIDWallet_RPC>(text);
             return rpc;
         }
         /// <summary>

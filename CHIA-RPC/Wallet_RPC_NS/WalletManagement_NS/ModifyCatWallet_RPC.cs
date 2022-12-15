@@ -1,40 +1,44 @@
-﻿using CHIA_RPC.Objects_NS;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
-    public class SelectCoins_Response
+    public class ModifyCatWallet_RPC
     {
-        public Coin[] coins { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-    }
-    public class SelectCoins_RPC
-    {
+        public ModifyCatWallet_RPC()
+        {
+            wallet_type = "cat_wallet";
+            mode = "existing";
+        }
         /// <summary>
-        /// The ID of the wallet from which to select coins
+        /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong wallet_id { get; set; }
+        public string wallet_type { get; set; }
         /// <summary>
-        /// The number of mojos to select
+        /// Must be either new of existing
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong amount { get; set; }
+        public string mode { get; set; }
         /// <summary>
-        /// The smallest coin to be selected in this query [Default: No minimum]
+        /// The name of the wallet to create or modify [Default: CAT followed by the beginning of the CAT ID]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
+        public string name { get; set; }
         /// <summary>
-        /// The largest coin to be selected in this query [Default: No maximum]
+        /// *Required if mode is new. Specify the value, in mojos, of this wallet
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public string asset_id { get; set; }
+        /// <summary>
+        /// An optional blockchain fee, in mojos
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -57,11 +61,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SelectCoins_RPC Load(string path)
+        public static ModifyCatWallet_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
+            ModifyCatWallet_RPC rpc = JsonSerializer.Deserialize<ModifyCatWallet_RPC>(text);
             return rpc;
         }
         /// <summary>

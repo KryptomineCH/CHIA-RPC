@@ -1,4 +1,4 @@
-﻿namespace CHIA_RPC.Objects
+﻿namespace CHIA_RPC.Objects_NS
 {
     public class Coin
     {

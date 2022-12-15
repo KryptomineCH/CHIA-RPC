@@ -1,40 +1,56 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
-    public class SelectCoins_Response
+    public class CreateNewPoolWallet_RPC
     {
-        public Coin[] coins { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-    }
-    public class SelectCoins_RPC
-    {
+        public CreateNewPoolWallet_RPC()
+        {
+            wallet_type = "pool_wallet";
+            mode = "new";
+        }
         /// <summary>
-        /// The ID of the wallet from which to select coins
+        /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong wallet_id { get; set; }
+        public string wallet_type { get; set; }
         /// <summary>
-        /// The number of mojos to select
+        /// Must be either new of recovery. However, recovery has not been implemented, so currently (version 1.6) it will automatically fail
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong amount { get; set; }
+        public string mode { get; set; }
         /// <summary>
-        /// The smallest coin to be selected in this query [Default: No minimum]
+        /// This info should be sent from the daemon. 
+        /// <list type="bullet">
+        /// <item>PoolState is a type that is serialized to the blockchain to track the state of the user's pool singleton.</item>
+        /// <item>target_puzzle_hash is either the pool address, or the self-pooling address that pool rewards will be paid to.</item>
+        /// <item>target_puzzle_hash is NOT the p2_singleton puzzle that block rewards are sent to.</item>
+        /// <item>The p2_singleton address is the initial address, and the target_puzzle_hash is the final destination.</item>
+        /// <item>relative_lock_height is zero when in SELF_POOLING state</item>
+        /// </list>
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public string initial_target_state { get; set; }
+        /// <summary>
+        /// *Required if mode is new. This is the puzzle hash to which payouts will go
+        /// </summary>
+        public string p2_singleton_delayed_ph { get; set; }
+        /// <summary>
+        /// The time (in seconds) to delay payments [Default: None ]
+        /// </summary>
+        public string p2_singleton_delay_time { get; set; }
+
+        /// <summary>
+        /// An optional blockchain fee, in mojos
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
-        /// <summary>
-        /// The largest coin to be selected in this query [Default: No maximum]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -57,11 +73,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SelectCoins_RPC Load(string path)
+        public static CreateNewPoolWallet_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
+            CreateNewPoolWallet_RPC rpc = JsonSerializer.Deserialize<CreateNewPoolWallet_RPC>(text);
             return rpc;
         }
         /// <summary>

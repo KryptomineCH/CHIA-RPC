@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.Objects;
+using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.Wallet
 {

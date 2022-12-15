@@ -1,4 +1,4 @@
-﻿using CHIA_RPC.Objects;
+﻿using CHIA_RPC.Objects_NS;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json;
