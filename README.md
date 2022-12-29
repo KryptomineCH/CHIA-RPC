@@ -4,11 +4,12 @@ This package is a wrapper for RPC-JSON files used to communicate with the Chia c
 
 To install the package, simply run the following command in the Nuget Package Manager console:
 
-Copy code
+```
 Install-Package CHIA-RPC
+```
 Here is a usage example of the package:
 
-Copy code
+```
 SendXCH_RPC rpc = new SendXCH_RPC
 {
     address = CommonTestFunctions.TestAdress,
@@ -18,6 +19,7 @@ SendXCH_RPC rpc = new SendXCH_RPC
     wallet_id = 1
 };
 GetTransaction_Response response = WalletApi.SendTransaction(rpc).Result;
+```
 Thank you for using CHIA-RPC!
 
 ## Dependencies
