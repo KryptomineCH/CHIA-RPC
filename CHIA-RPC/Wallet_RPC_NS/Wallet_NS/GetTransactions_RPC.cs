@@ -1,10 +1,10 @@
 ﻿using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
     public class GetTransaction_Response
     {
-        public Transaction transactions { get; set; }
+        public Transaction transaction { get; set; }
         public string transaction_id { get; set; }
         public bool success { get; set; }
         public string error { get; set; }

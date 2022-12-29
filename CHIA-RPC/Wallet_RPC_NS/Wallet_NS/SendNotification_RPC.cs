@@ -1,39 +1,41 @@
-﻿using System.Text.Json;
-using System.Text;
+﻿using CHIA_RPC.Objects_NS;
 using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.Objects_NS;
+using System.Text;
+using System.Text.Json;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class GetCoinRecordsByNames_Response
+    public class SendNotification_Response
     {
-        public CoinRecord[] coin_records { get; set; }
+        public Transaction tx { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
     }
-    public class GetCoinRecordsByNames_RPC
+    public class SendNotification_RPC
     {
         /// <summary>
-        /// A list of coin names from which to retrieve records
+        /// The puzzle hash you would like to send a message to
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string[] names { get; set; }
+        public string target { get; set; }
         /// <summary>
-        /// The block height at which to start the query
+        /// The hex-encoded message you would like to send
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public string message { get; set; }
+        /// <summary>
+        /// The number of mojos to include with this message
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public ulong amount { get; set; }
+        /// <summary>
+        /// An optional blockchain fee, in mojos
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong start_height { get; set; }
-        /// <summary>
-        /// The block height at which to end the query
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong end_height { get; set; }
-        /// <summary>
-        /// Include spent coins in the result[Default: false]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public bool include_spent_coins { get; set; }
+        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -56,11 +58,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetCoinRecordsByNames_RPC Load(string path)
+        public static SendNotification_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordsByNames_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByNames_RPC>(text);
+            SendNotification_RPC rpc = JsonSerializer.Deserialize<SendNotification_RPC>(text);
             return rpc;
         }
         /// <summary>
@@ -76,4 +78,5 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
             return jsonString;
         }
     }
+
 }

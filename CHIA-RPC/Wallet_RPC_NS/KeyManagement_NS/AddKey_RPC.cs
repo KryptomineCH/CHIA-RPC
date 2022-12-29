@@ -1,6 +1,4 @@
-﻿
-using CHIA_RPC.Wallet_RPC_NS.Wallet;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text;
 
 namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement

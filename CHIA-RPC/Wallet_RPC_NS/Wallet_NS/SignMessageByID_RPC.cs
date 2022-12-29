@@ -1,42 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.Text.Json;
+using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    /// <summary>
-    /// used to send chia to a specific target address
-    /// </summary>
-    public class SendXCH_RPC
-    {
-        /// <summary>
-        /// the wallet ID from which you want to send the transaction
+    public class SignMessageByID_RPC
+    {   /// <summary>
+        /// The address to use for signing.Must possess the key for this address
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong wallet_id { get; set; }
+        public string id { get; set; }
         /// <summary>
-        /// the receiving address to send the mojos to
+        /// The message to include with the signature
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string address { get; set; }
-        /// <summary>
-        /// the amount of mojos to send
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong amount { get; set; }
-        /// <summary>
-        /// the amount of mojos to set as fee
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong fee { get; set; }
-        /// <summary>
-        /// memos for self and recipient (publicly readable)
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public string[] memos { get; set; }
+        public string message { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -59,11 +39,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendXCH_RPC Load(string path)
+        public static SignMessageByID_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendXCH_RPC rpc = JsonSerializer.Deserialize<SendXCH_RPC>(text);
+            SignMessageByID_RPC rpc = JsonSerializer.Deserialize<SignMessageByID_RPC>(text);
             return rpc;
         }
         /// <summary>

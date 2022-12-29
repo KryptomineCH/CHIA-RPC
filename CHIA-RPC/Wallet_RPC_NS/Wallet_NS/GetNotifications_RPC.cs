@@ -1,52 +1,32 @@
 ﻿using System.Text.Json;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
 using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class GetSpendableCoins_Response
+    public class GetNotifications_Response
     {
-
-        public CoinRecord[] confirmed_records { get; set; }
+        public Notification[] notifications { get; set; }
         public bool success { get; set; }
-        public string[] unconfirmed_additions { get; set; }
-        public string[] unconfirmed_removals { get; set; }
         public string error { get; set; }
     }
-    public class GetSpendableCoins_RPC
+    public class GetNotifications_RPC
     {
         /// <summary>
-        /// The ID of the wallet from which to display coins
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong wallet_id { get; set; }
-        /// <summary>
-        /// The smallest coin to be selected in this query[Default: No minimum]
+        /// Set to receive notifications only from the specified IDs. [Default: receive from all IDs]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong min_coin_amount { get; set; }
+        public string ids { get; set; }
         /// <summary>
-        /// The largest coin to be selected in this query[Default: No maximum]
+        /// The number corresponding to the first notification to list. [Default: the first notification]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong max_coin_amount { get; set; }
+        public ulong start { get; set; }
         /// <summary>
-        /// A list of coin amounts to exclude
+        /// The number corresponding to the last notification to list. [Default: the last notification]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong[] excluded_coin_amounts { get; set; }
-        /// <summary>
-        /// A list of coins to exclude
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public string[] excluded_coins { get; set; }
-        /// <summary>
-        /// A list of coin IDs to exclude
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public string[] excluded_coin_ids { get; set; }
+        public ulong end { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -69,11 +49,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetSpendableCoins_RPC Load(string path)
+        public static GetNotifications_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetSpendableCoins_RPC rpc = JsonSerializer.Deserialize<GetSpendableCoins_RPC>(text);
+            GetNotifications_RPC rpc = JsonSerializer.Deserialize<GetNotifications_RPC>(text);
             return rpc;
         }
         /// <summary>

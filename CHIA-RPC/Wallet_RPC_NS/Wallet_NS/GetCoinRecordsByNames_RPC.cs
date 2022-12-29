@@ -1,22 +1,39 @@
 ﻿using System.Text.Json;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class GetNextAddress_Response
+    public class GetCoinRecordsByNames_Response
     {
-        public string address { get; set; }
+        public CoinRecord[] coin_records { get; set; }
         public bool success { get; set; }
-        public ulong wallet_id { get; set; }
         public string error { get; set; }
     }
-    public class GetNextAddress_RPC
+    public class GetCoinRecordsByNames_RPC
     {
-        public ulong wallet_id { get; set; }
         /// <summary>
-        /// specifies if a new address should be generated or the last one used
+        /// A list of coin names from which to retrieve records
         /// </summary>
-        public bool new_address { get; set; }
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public string[] names { get; set; }
+        /// <summary>
+        /// The block height at which to start the query
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong start_height { get; set; }
+        /// <summary>
+        /// The block height at which to end the query
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong end_height { get; set; }
+        /// <summary>
+        /// Include spent coins in the result[Default: false]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public bool include_spent_coins { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -39,11 +56,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetNextAddress_RPC Load(string path)
+        public static GetCoinRecordsByNames_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetNextAddress_RPC rpc = JsonSerializer.Deserialize<GetNextAddress_RPC>(text);
+            GetCoinRecordsByNames_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByNames_RPC>(text);
             return rpc;
         }
         /// <summary>

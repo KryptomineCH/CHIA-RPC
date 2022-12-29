@@ -1,32 +1,22 @@
 ﻿using System.Text.Json;
 using System.Text;
-using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class GetNotifications_Response
+    public class GetNextAddress_Response
     {
-        public Notification[] notifications { get; set; }
+        public string address { get; set; }
         public bool success { get; set; }
+        public ulong wallet_id { get; set; }
         public string error { get; set; }
     }
-    public class GetNotifications_RPC
+    public class GetNextAddress_RPC
     {
+        public ulong wallet_id { get; set; }
         /// <summary>
-        /// Set to receive notifications only from the specified IDs. [Default: receive from all IDs]
+        /// specifies if a new address should be generated or the last one used
         /// </summary>
-        /// <remarks>optional</remarks>
-        public string ids { get; set; }
-        /// <summary>
-        /// The number corresponding to the first notification to list. [Default: the first notification]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong start { get; set; }
-        /// <summary>
-        /// The number corresponding to the last notification to list. [Default: the last notification]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong end { get; set; }
+        public bool new_address { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -49,11 +39,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetNotifications_RPC Load(string path)
+        public static GetNextAddress_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetNotifications_RPC rpc = JsonSerializer.Deserialize<GetNotifications_RPC>(text);
+            GetNextAddress_RPC rpc = JsonSerializer.Deserialize<GetNextAddress_RPC>(text);
             return rpc;
         }
         /// <summary>

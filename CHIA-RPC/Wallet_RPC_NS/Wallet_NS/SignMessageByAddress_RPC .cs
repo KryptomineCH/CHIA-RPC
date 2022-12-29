@@ -1,41 +1,30 @@
-﻿using CHIA_RPC.Objects_NS;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class SendNotification_Response
+    public class SignMessage_Response
     {
-        public Transaction tx { get; set; }
+        public string pubkey { get; set; }
+        public string signature { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
     }
-    public class SendNotification_RPC
+    public class SignMessageByAddress_RPC
     {
         /// <summary>
-        /// The puzzle hash you would like to send a message to
+        /// The address to use for signing.Must possess the key for this address
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string target { get; set; }
+        public string address { get; set; }
         /// <summary>
-        /// The hex-encoded message you would like to send
+        /// The message to include with the signature
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
         public string message { get; set; }
-        /// <summary>
-        /// The number of mojos to include with this message
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public ulong amount { get; set; }
-        /// <summary>
-        /// An optional blockchain fee, in mojos
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -58,11 +47,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SendNotification_RPC Load(string path)
+        public static SignMessageByAddress_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SendNotification_RPC rpc = JsonSerializer.Deserialize<SendNotification_RPC>(text);
+            SignMessageByAddress_RPC rpc = JsonSerializer.Deserialize<SignMessageByAddress_RPC>(text);
             return rpc;
         }
         /// <summary>
@@ -78,5 +67,4 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
             return jsonString;
         }
     }
-
 }

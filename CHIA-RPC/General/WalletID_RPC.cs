@@ -1,11 +1,15 @@
 ﻿using System.Text.Json;
 using System.Text;
-using CHIA_RPC.Wallet_RPC_NS.Wallet;
 
 namespace CHIA_RPC.General
 {
     public class WalletID_RPC
     {
+        /// <summary>
+        /// The Wallet ID of the wallet from which to obtain the balance
+        /// </summary>
+        /// <remarks>MUST BE > 0 <br/>
+        /// eg. 5</remarks>
         public ulong wallet_id { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path

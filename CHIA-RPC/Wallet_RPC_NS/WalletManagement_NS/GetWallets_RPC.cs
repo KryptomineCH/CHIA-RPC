@@ -1,6 +1,4 @@
-﻿
-using CHIA_RPC.Objects_NS;
-using CHIA_RPC.Wallet_RPC_NS.Wallet;
+﻿using CHIA_RPC.Objects_NS;
 using System.Text.Json;
 using System.Text;
 

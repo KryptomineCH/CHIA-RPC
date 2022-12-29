@@ -1,27 +1,52 @@
 ﻿using System.Text.Json;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class ExtendDerivationIndex_Response
+    public class GetSpendableCoins_Response
     {
-        /// <summary>
-        /// The derivation index is the minimum number of addresses the wallet will examine. It's not possible to decrease this number.
-        /// </summary>
-        public ulong index { get; set; }
+
+        public CoinRecord[] confirmed_records { get; set; }
         public bool success { get; set; }
+        public string[] unconfirmed_additions { get; set; }
+        public string[] unconfirmed_removals { get; set; }
         public string error { get; set; }
     }
-    public class ExtendDerivationIndex_RPC
+    public class GetSpendableCoins_RPC
     {
         /// <summary>
-        /// The new derivation index. Must be larger than the previous index
+        /// The ID of the wallet from which to display coins
         /// </summary>
-        /// <remarks>The derivation index is the minimum number of addresses the wallet will examine. It's not possible to decrease this number.
-        /// <br/>mandatory</remarks>
+        /// <remarks>mandatory</remarks>
         [Required]
-        public ulong index { get; set; }
+        public ulong wallet_id { get; set; }
+        /// <summary>
+        /// The smallest coin to be selected in this query[Default: No minimum]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong? min_coin_amount { get; set; }
+        /// <summary>
+        /// The largest coin to be selected in this query[Default: No maximum]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong? max_coin_amount { get; set; }
+        /// <summary>
+        /// A list of coin amounts to exclude
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong[] excluded_coin_amounts { get; set; }
+        /// <summary>
+        /// A list of coins to exclude
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public string[] excluded_coins { get; set; }
+        /// <summary>
+        /// A list of coin IDs to exclude
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public string[] excluded_coin_ids { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -44,11 +69,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static ExtendDerivationIndex_RPC Load(string path)
+        public static GetSpendableCoins_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            ExtendDerivationIndex_RPC rpc = JsonSerializer.Deserialize<ExtendDerivationIndex_RPC>(text);
+            GetSpendableCoins_RPC rpc = JsonSerializer.Deserialize<GetSpendableCoins_RPC>(text);
             return rpc;
         }
         /// <summary>

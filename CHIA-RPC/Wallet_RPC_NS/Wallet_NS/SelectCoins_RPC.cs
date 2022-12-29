@@ -1,22 +1,40 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
+﻿using CHIA_RPC.Objects_NS;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.Json;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet
+namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class SignMessageByID_RPC
-    {   /// <summary>
-        /// The address to use for signing.Must possess the key for this address
-        /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public string id { get; set; }
+    public class SelectCoins_Response
+    {
+        public Coin[] coins { get; set; }
+        public bool success { get; set; }
+        public string error { get; set; }
+    }
+    public class SelectCoins_RPC
+    {
         /// <summary>
-        /// The message to include with the signature
+        /// The ID of the wallet from which to select coins
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string message { get; set; }
+        public ulong wallet_id { get; set; }
+        /// <summary>
+        /// The number of mojos to select
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public ulong amount { get; set; }
+        /// <summary>
+        /// The smallest coin to be selected in this query [Default: No minimum]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong min_coin_amount { get; set; }
+        /// <summary>
+        /// The largest coin to be selected in this query [Default: No maximum]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong max_coin_amount { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -39,11 +57,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SignMessageByID_RPC Load(string path)
+        public static SelectCoins_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            SignMessageByID_RPC rpc = JsonSerializer.Deserialize<SignMessageByID_RPC>(text);
+            SelectCoins_RPC rpc = JsonSerializer.Deserialize<SelectCoins_RPC>(text);
             return rpc;
         }
         /// <summary>

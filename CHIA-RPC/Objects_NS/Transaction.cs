@@ -9,7 +9,13 @@ namespace CHIA_RPC.Objects_NS
         public ulong confirmed_at_height { get; set; }
         public ulong created_at_time { get; set; }
         public ulong fee_amount { get; set; }
-        public string[] memos { get; set; }
+        /// <summary>
+        /// note: could not be validated yet
+        /// </summary>
+        public Memos memos { get; set; }
+        /// <summary>
+        /// This is the transaction ID!!!
+        /// </summary>
         public string name { get; set; }
         public Coin[] removals { get; set; }
         public ulong sent { get; set; }

@@ -1,5 +1,4 @@
-﻿using CHIA_RPC.Wallet_RPC_NS.Wallet;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using System.Text;
 
