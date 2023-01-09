@@ -1,4 +1,5 @@
 ﻿using Chia_Metadata;
+using CHIA_RPC.Objects_NS;
 using NFT.Storage.Net;
 using NFT.Storage.Net.API;
 using System.Text;
@@ -6,7 +7,14 @@ using System.Text.Json;
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT
 {
-    public class NFT_Mint_RPC
+    public class NftMintNFT_Response
+    {
+        public SpendBundle spend_bundle { get; set; }
+        public ulong wallet_id { get; set; }
+        public bool success { get; set; }
+        public string error { get; set; }
+    }
+    public class NftMintNFT_RPC
     {
         /// <summary>
         /// 
@@ -16,7 +24,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <param name="royaltyAddress">the address where future royaltyfees should be payed to</param>
         /// <param name="targetAddress">the address where the nft should be minted to</param>
         /// <param name="mintingFee_Mojos">the fee in mojos to be used for the minting transaction</param>
-        public NFT_Mint_RPC(
+        public NftMintNFT_RPC(
             int walletID,
             string[] nftLinks, string[] metadataLinks, string[] licenseLinks = null,
             int royaltyFee = 190, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string targetAddress = null,
@@ -47,7 +55,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
             meta_hash =Sha256.ValidateChecksums(metadataLinks);
             license_hash = Sha256.ValidateChecksums(licenseLinks);
         }
-        public NFT_Mint_RPC()
+        public NftMintNFT_RPC()
         {
             // required for json deserializer
             uris = new List<string>();
@@ -152,11 +160,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static NFT_Mint_RPC Load(string path)
+        public static NftMintNFT_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            NFT_Mint_RPC rpc = JsonSerializer.Deserialize<NFT_Mint_RPC>(text);
+            NftMintNFT_RPC rpc = JsonSerializer.Deserialize<NftMintNFT_RPC>(text);
             return rpc;
         }
         public override string ToString()
