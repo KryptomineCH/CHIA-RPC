@@ -43,9 +43,9 @@ supported functions for each rpc are:
 - `Load(string path)`: loads an rpc file from the specified path.
 - `ToString()`: returns a json-formatted string representation of the rpc.
 
-Each RPC has its counter part such as `SendXCH_Rerponse` which is used to deserialize the client response
+Each RPC has its counter part such as `SendXCH_Response` which is used to deserialize the client response
 
-To use the rpcs, you would create a new instance of it, set its properties, and use its methods to save or load the transaction, and to get a string representation of the object.
+To use the rpcs, you would create a new instance of it, set its properties, and use its methods to save or load the rpc, and to get a string representation of the object.
 
 It's important to note that this example doesn't actually send a transaction, it's just creating a serialized object which contains information needed to be sent to the network. You need to send it to your own wallet or any other software which can communicate with the network, and finally, the transaction will be broadcasted to the network.
 
