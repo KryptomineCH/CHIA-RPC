@@ -1,6 +1,7 @@
 ﻿using CHIA_RPC.Objects_NS;
 using System.Text.Json;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
@@ -13,9 +14,19 @@ namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
     }
     public class Wallets_info
     {
-        public string data { get; set; }
+        public dynamic data { get; set; }
         public ulong id { get; set; }
-        public string name { get; set; }
+        public string name {
+            get { return _name; }
+            set {
+                if (value.Contains(' '))
+                {
+                    _name = value.Split(' ')[1];
+                }
+                else { _name = value; }
+            } 
+        }
+        private string _name { get; set; }
         public WalletType type { get; set; }
     }
     public class GetWallets_RPC
