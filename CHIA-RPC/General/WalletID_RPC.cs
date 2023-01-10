@@ -3,6 +3,12 @@ using System.Text;
 
 namespace CHIA_RPC.General
 {
+    public class WalletID_Response
+    {
+        public ulong wallet_id { get; set; }
+        public bool success { get; set; }
+        public string error { get; set; }
+    }
     public class WalletID_RPC
     {
         /// <summary>

@@ -1,28 +1,27 @@
 ﻿using System.Text.Json;
 using System.Text;
 
-namespace CHIA_RPC.Wallet_RPC_NS.NFT
+namespace CHIA_RPC.General
 {
-    public class NftSetNftStatus_RPC
+    public class DidID_Response
     {
         /// <summary>
-        /// The ID of an NFT wallet
+        /// eg:<br/>
+        /// did:chia:1kzxqrt8f2h8psr8zuzen9dxgmxx5v35s0rj3jy637qjannu3zlesds0el5
         /// </summary>
-        public ulong wallet_id { get; set; }
-
+        public string did_id { get; set; }
+        public bool success { get; set; }
+        public string error { get; set; }
+    }
+    public class DidID_RPC
+    {
         /// <summary>
-        /// The coin_id of the NFT on which to set the status
+        /// The Wallet ID of the wallet from which to obtain the balance
         /// </summary>
-        /// <remarks>
-        /// eg: 
+        /// <remarks>eg:<br/>
+        /// did:chia:1kzxqrt8f2h8psr8zuzen9dxgmxx5v35s0rj3jy637qjannu3zlesds0el5
         /// </remarks>
-        public string coin_id { get; set; }
-
-        /// <summary>
-        /// A boolean to set the transaction status for the NFT
-        /// </summary>
-        public bool in_transaction { get; set; }
-
+        public string did_id { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -45,13 +44,17 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static NftSetNftStatus_RPC Load(string path)
+        public static DidID_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            NftSetNftStatus_RPC rpc = JsonSerializer.Deserialize<NftSetNftStatus_RPC>(text);
+            DidID_RPC rpc = JsonSerializer.Deserialize<DidID_RPC>(text);
             return rpc;
         }
+        /// <summary>
+        /// serializes this object into a json string
+        /// </summary>
+        /// <returns>json formatted string</returns>
         public override string ToString()
         {
             JsonSerializerOptions options = new JsonSerializerOptions();

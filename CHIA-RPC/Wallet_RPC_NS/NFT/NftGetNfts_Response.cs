@@ -8,7 +8,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         /// the wallet which this nft belongs to
         /// </summary>
-        public int wallet_id { get; set; }
+        public ulong wallet_id { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
     }
