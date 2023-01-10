@@ -25,10 +25,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <param name="targetAddress">the address where the nft should be minted to</param>
         /// <param name="mintingFee_Mojos">the fee in mojos to be used for the minting transaction</param>
         public NftMintNFT_RPC(
-            int walletID,
+            ulong walletID,
             string[] nftLinks, string[] metadataLinks, string[] licenseLinks = null,
-            int royaltyFee = 190, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string targetAddress = null,
-            int mintingFee_Mojos = 5000
+            ulong royaltyFee = 190, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string targetAddress = null,
+            ulong mintingFee_Mojos = 5000
             )
         {
             uris = new List<string>();
@@ -43,7 +43,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
             // other information
             Task<byte[]> metadata = Task.Run(() => DownloadClient.DownloadAsync(metadataLinks[0]));
             metadata.Wait();
-            Metadata meta = IO.LoadFromByteArray(metadata.Result);
+            Chia_Metadata.Metadata meta = IO.LoadFromByteArray(metadata.Result);
             edition_number = meta.series_number;
             edition_total = meta.series_total;
             // weblinks
@@ -65,7 +65,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         ///  the NFT wallet which should be used for minting
         /// </summary>
-        public int wallet_id { get; set; }
+        public ulong wallet_id { get; set; }
         /// <summary>
         /// set of urls for the image, document or whatever file is beeing uploaded
         /// </summary>
@@ -111,7 +111,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// 150 = 1.5% <br/>
         /// 1250 = 12.5%
         /// </remarks>
-        public int royalty_percentage { get; private set; }
+        public ulong royalty_percentage { get; private set; }
         /// <summary>
         /// The target address which will be the first owner of the nft
         /// </summary>
@@ -123,21 +123,21 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <remarks>
         /// please set this correctly in the json metadata! it will be pulled from there
         /// </remarks>
-        public int edition_number { get; private set; }
+        public ulong edition_number { get; private set; }
         /// <summary>
         /// the edition total specifies ho many images there are within one collection
         /// </summary>
         /// <remarks>
         /// please set this correctly in the json metadata! it will be pulled from there
         /// </remarks>
-        public int edition_total { get; private set; }
+        public ulong edition_total { get; private set; }
         /// <summary>
         /// the fee (in mojos) which should be spent for minting.
         /// </summary>
         /// <remarks>
         /// a fee under 1000 mojos won't even be included into hpool's mempool.
         /// </remarks>
-        public int fee { get; set; }
+        public ulong fee { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>

@@ -9,7 +9,7 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Title>CHIA-RPC library</Title>
-    <Authors>KryptoMine.ch</Authors>
+    <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Copyright>MIT License</Copyright>
     <PackageProjectUrl>https://github.com/KryptomineCH/CHIA-RPC</PackageProjectUrl>
@@ -21,7 +21,7 @@
     <FileVersion>1.6.1</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.6.1.1</Version>
+    <Version>1.6.1.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
