@@ -13,7 +13,7 @@
     <Company>KryptoMine.ch</Company>
     <Copyright>MIT License</Copyright>
     <PackageProjectUrl>https://github.com/KryptomineCH/CHIA-RPC</PackageProjectUrl>
-    <PackageIcon>Icon.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>rpc;chia;blockchain;chia-blockchain;cli</PackageTags>
     <PackageReleaseNotes>implement nft endpoints</PackageReleaseNotes>
@@ -30,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
