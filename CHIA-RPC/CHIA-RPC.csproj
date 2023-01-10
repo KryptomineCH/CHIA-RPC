@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>CHIA_RPC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -37,8 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chia-Metadata" Version="1.6.1" />
-    <PackageReference Include="NFT.Storage.Net" Version="1.0.0" />
+    <PackageReference Include="Chia-Metadata" Version="1.6.1.2" />
+    <PackageReference Include="NFT.Storage.Net" Version="1.0.0.1" />
   </ItemGroup>
 
   <ItemGroup>
