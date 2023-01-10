@@ -43,7 +43,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
             // other information
             Task<byte[]> metadata = Task.Run(() => DownloadClient.DownloadAsync(metadataLinks[0]));
             metadata.Wait();
-            Metadata meta = IO.LoadFromByteArray(metadata.Result);
+            Chia_Metadata.Metadata meta = IO.LoadFromByteArray(metadata.Result);
             edition_number = meta.series_number;
             edition_total = meta.series_total;
             // weblinks
