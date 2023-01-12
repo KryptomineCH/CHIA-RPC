@@ -41,6 +41,10 @@
         /// </summary>
         public string nft_coin_id { get; set; }
         /// <summary>
+        /// the digital identity of the minter
+        /// </summary>
+        public string minter_did { get; set; }
+        /// <summary>
         /// the digital identity of the owner
         /// </summary>
         public string owner_did { get; set; }
