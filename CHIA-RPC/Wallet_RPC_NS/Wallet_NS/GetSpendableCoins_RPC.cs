@@ -9,9 +9,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
     {
 
         public CoinRecord[] confirmed_records { get; set; }
+        
+        public Coin[] unconfirmed_additions { get; set; }
+        public CoinRecord[] unconfirmed_removals { get; set; }
         public bool success { get; set; }
-        public string[] unconfirmed_additions { get; set; }
-        public string[] unconfirmed_removals { get; set; }
         public string error { get; set; }
     }
     public class GetSpendableCoins_RPC
