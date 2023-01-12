@@ -19,7 +19,7 @@ namespace CHIA_RPC.Objects_NS
         public string name { get; set; }
         public Coin[] removals { get; set; }
         public ulong sent { get; set; }
-        public string[] sent_to { get; set; }
+        public dynamic[] sent_to { get; set; }
         public SpendBundle spend_bundle { get; set; }
         public string to_address { get; set; }
         public string to_puzzle_hash { get; set; }
