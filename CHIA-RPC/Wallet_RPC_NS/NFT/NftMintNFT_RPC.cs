@@ -13,6 +13,15 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         public ulong wallet_id { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
+        public NftGetInfo_RPC Get_NftGetInfo_Rpc()
+        {
+            NftGetInfo_RPC nftRequest = new NftGetInfo_RPC()
+            {
+                wallet_id = wallet_id,
+                coin_id = spend_bundle.coin_solutions[0].coin.GetCoinID()
+            };
+            return nftRequest;
+        }
     }
     public class NftMintNFT_RPC
     {

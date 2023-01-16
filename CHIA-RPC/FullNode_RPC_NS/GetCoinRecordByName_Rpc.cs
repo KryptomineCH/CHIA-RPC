@@ -1,40 +1,33 @@
-﻿using System.Text.Json;
-using System.Text;
+﻿using CHIA_RPC.Objects_NS;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.Objects_NS;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
+namespace CHIA_RPC.FullNode_RPC_NS
 {
-    public class GetCoinRecordsByNames_Response
+    public class GetCoinRecordByName_Response
     {
-        public CoinRecord[] coin_records { get; set; }
+        public CoinRecord coin_record { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
     }
-    
-    public class GetCoinRecordsByNames_RPC
+    /// <summary>
+    /// finds a coin record in the blockchain. 
+    /// Warning: This is barely useful, since it does not include spent coins!
+    /// </summary>
+    public class GetCoinRecordByName_RPC
     {
         /// <summary>
         /// A list of coin names from which to retrieve records
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string[] names { get; set; }
-        /// <summary>
-        /// The block height at which to start the query
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong? start_height { get; set; }
-        /// <summary>
-        /// The block height at which to end the query
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public ulong? end_height { get; set; }
-        /// <summary>
-        /// Include spent coins in the result[Default: false]
-        /// </summary>
-        /// <remarks>optional</remarks>
-        public bool? include_spent_coins { get; set; }
+        public string name { get; set; }
+
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -57,11 +50,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetCoinRecordsByNames_RPC Load(string path)
+        public static GetCoinRecordByName_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordsByNames_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByNames_RPC>(text);
+            GetCoinRecordByName_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordByName_RPC>(text);
             return rpc;
         }
         /// <summary>
