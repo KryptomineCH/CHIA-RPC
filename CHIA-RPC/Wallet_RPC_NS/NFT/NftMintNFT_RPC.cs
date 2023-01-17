@@ -13,6 +13,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         public ulong wallet_id { get; set; }
         public bool success { get; set; }
         public string error { get; set; }
+        /// <summary>
+        /// this function converts the spendbundle into a coin-id.
+        /// </summary>
+        /// <returns>the resulting NftGetInfo_RPC can be used to look up the minted nft</returns>
         public NftGetInfo_RPC Get_NftGetInfo_Rpc()
         {
             NftGetInfo_RPC nftRequest = new NftGetInfo_RPC()
@@ -21,6 +25,39 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
                 coin_id = spend_bundle.coin_solutions[0].coin.GetCoinID()
             };
             return nftRequest;
+        }
+        /// <summary>
+        /// saves the NftMintNFT_Response as mint-file (json) to the specified path
+        /// </summary>
+        /// <param name="path"></param>
+        public void Save(string path)
+        {
+            if (!path.EndsWith(".mint"))
+            {
+                path += ".mint";
+            }
+            JsonSerializerOptions options = new JsonSerializerOptions();
+            options.WriteIndented = true;
+            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+            string testText = JsonSerializer.Serialize(this, options: options);
+            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
+            File.WriteAllText(path, testText, utf8WithoutBom);
+        }
+        /// <summary>
+        /// loads a mint file from the specified path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static NftMintNFT_Response Load(string path)
+        {
+            if (!path.EndsWith(".mint"))
+            {
+                path += ".mint";
+            }
+            FileInfo testFile = new FileInfo(path);
+            string text = File.ReadAllText(testFile.FullName);
+            NftMintNFT_Response rpc = JsonSerializer.Deserialize<NftMintNFT_Response>(text);
+            return rpc;
         }
     }
     public class NftMintNFT_RPC
