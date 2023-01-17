@@ -16,12 +16,15 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>rpc;chia;blockchain;chia-blockchain;cli</PackageTags>
-    <PackageReleaseNotes>- added functionality to generate coin_ID from coin object</PackageReleaseNotes>
+    <PackageReleaseNotes>- added functionality to generate coin_ID from coin object.
+- added capabilty to await and verify an nft mint.
+if the NFT mint was successful, return the on chain stored nft info.
+otherwise return the error message such as nft with id {x} not found.</PackageReleaseNotes>
     <AssemblyVersion>1.6.2</AssemblyVersion>
     <FileVersion>1.6.2</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.6.2.2</Version>
+    <Version>1.6.2.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
