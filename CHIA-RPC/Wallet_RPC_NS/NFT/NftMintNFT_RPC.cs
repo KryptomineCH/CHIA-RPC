@@ -122,7 +122,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         /// sha256 hashsum for the image, document or whatever file is beeing uploaded
         /// </summary>
-        public string hash { get; private set; }
+        public string hash { get; set; }
         /// <summary>
         /// urls for the metadata information json file
         /// </summary>
@@ -133,7 +133,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         /// sha256 hashsum for the metadata file
         /// </summary>
-        public string meta_hash { get; private set; }
+        public string meta_hash { get; set; }
         /// <summary>
         /// urls to the license file
         /// </summary>
@@ -144,7 +144,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         /// sha256 hashsum for the license file
         /// </summary>
-        public string license_hash { get; private set; }
+        public string license_hash { get; set; }
         /// <summary>
         /// future transactions will pay a royalty fee to this address
         /// </summary>
@@ -157,7 +157,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// 150 = 1.5% <br/>
         /// 1250 = 12.5%
         /// </remarks>
-        public ulong royalty_percentage { get; private set; }
+        public ulong royalty_percentage { get; set; }
         /// <summary>
         /// The target address which will be the first owner of the nft
         /// </summary>
@@ -169,14 +169,14 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <remarks>
         /// please set this correctly in the json metadata! it will be pulled from there
         /// </remarks>
-        public ulong edition_number { get; private set; }
+        public ulong edition_number { get; set; }
         /// <summary>
         /// the edition total specifies ho many images there are within one collection
         /// </summary>
         /// <remarks>
         /// please set this correctly in the json metadata! it will be pulled from there
         /// </remarks>
-        public ulong edition_total { get; private set; }
+        public ulong edition_total { get; set; }
         /// <summary>
         /// the fee (in mojos) which should be spent for minting.
         /// </summary>
