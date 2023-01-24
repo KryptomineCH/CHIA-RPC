@@ -208,6 +208,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <returns></returns>
         public static NftMintNFT_RPC Load(string path)
         {
+            if (!path.EndsWith(".rpc"))
+            {
+                path += ".rpc";
+            }
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
             NftMintNFT_RPC rpc = JsonSerializer.Deserialize<NftMintNFT_RPC>(text);
