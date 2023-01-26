@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
     <RootNamespace>CHIA_RPC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -16,13 +16,12 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>rpc;chia;blockchain;chia-blockchain;cli</PackageTags>
-    <PackageReleaseNotes>- added capability to save/load nft info to/from disk
-- added capability to save/load nft mint info to/from disk</PackageReleaseNotes>
-    <AssemblyVersion>1.6.2</AssemblyVersion>
-    <FileVersion>1.6.2</FileVersion>
+    <PackageReleaseNotes>target -net 6 &amp; 7</PackageReleaseNotes>
+    <AssemblyVersion>$(PackageVersion)</AssemblyVersion>
+    <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.6.2.4</Version>
+    <Version>1.6.2.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
@@ -61,7 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chia-Metadata" Version="1.6.2" />
+    <PackageReference Include="Chia-Metadata" Version="1.6.2.1" />
     <PackageReference Include="NFT.Storage.Net" Version="1.0.0.1" />
   </ItemGroup>
 
