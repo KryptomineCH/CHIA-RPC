@@ -13,6 +13,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         /// A list of dicts containing the metadata for each NFT to be minted
         /// </summary>
+        /// <remarks>
+        /// up to 25 nfts may be minted at a time. 
+        /// You can set more but the bulkmint will chunk. 
+        /// It is recommended to supply only up to 25 nfts at a time
+        /// </remarks>
         public List<Metadata> metadata_list { get; set; }
 
         /// <summary>
@@ -43,6 +48,9 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// <summary>
         /// A list of coins to be used for funding the minting spend
         /// </summary>
+        /// <remarks>
+        /// this is required if no fee is set. You may obtain it with the select coins by amont command
+        /// </remarks>
         public List<string> xch_coin_list { get; set; }
 
         /// <summary>
@@ -79,11 +87,6 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// A blockchain fee (in mojos) to be deducted with each mint
         /// </summary>
         public ulong fee { get; set; }
-
-        /// <summary>
-        /// Success status of the mint
-        /// </summary>
-        public bool success { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
