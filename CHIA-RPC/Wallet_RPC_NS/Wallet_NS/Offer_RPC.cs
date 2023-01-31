@@ -6,10 +6,6 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
     public class Offer_RPC
     {
-        public Offer_RPC()
-        {
-            offer = new Dictionary<string, long>();
-        }
         /// <summary>
         /// this dictionary contains your requested additions ans substractions, in mojos.<br/>
         /// if you wan to offer an nft for example, use the launcher id such as <br/>
@@ -17,7 +13,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
         /// "cc4138f8debe4fbedf26ccae0f965be19c67a49d525f1416c0749c3c865dxxx", -1 <br/>
         /// 
         /// </summary>
-        public Dictionary<string, long> offer { get; set; }
+        //public Dictionary<string, long> offer { get; set; } = new  Dictionary<string, long>();
+        public List<KeyValuePair<string, long>> offer { get; set; } = new List<KeyValuePair<string, long>>();
 
         public ulong? fee { get; set; }
 
@@ -29,7 +26,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 
         public ulong? max_coin_amount { get; set; }
 
-        public Dictionary<string, object>? solver { get; set; }
+        public List<KeyValuePair<string, object>>? solver { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -73,13 +70,16 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
             Offer_RPC offer_rpc = new Offer_RPC();
             foreach ( Nft sell in sells )
             {
-                offer_rpc.offer.Add(sell.launcher_id, -1);
+                //offer_rpc.offer.Add(sell.launcher_id, -1);
+                offer_rpc.offer.Add(new KeyValuePair<string, long>(sell.launcher_id, -1));
             }
             foreach ( Nft buy in buys )
             {
-                offer_rpc.offer.Add(buy.launcher_id, 1);
+                //offer_rpc.offer.Add(buy.launcher_id, 1);
+                offer_rpc.offer.Add(new KeyValuePair<string, long>(buy.launcher_id, 1));
             }
-            offer_rpc.offer.Add("1", mojoValue);
+           // offer_rpc.offer.Add("1", mojoValue);
+            offer_rpc.offer.Add(new KeyValuePair<string, long>("1", mojoValue));
             return offer_rpc;
         }
     } 
