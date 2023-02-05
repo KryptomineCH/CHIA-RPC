@@ -60,8 +60,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chia-Metadata" Version="1.6.2.1" />
-    <PackageReference Include="NFT.Storage.Net" Version="1.0.0.1" />
+    <PackageReference Include="Chia-Metadata" Version="1.6.2.2" />
+    <PackageReference Include="NFT.Storage.Net" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
