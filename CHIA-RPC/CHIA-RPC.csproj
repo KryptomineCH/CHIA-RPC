@@ -62,7 +62,7 @@ Please use the update functions in chia metadata</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="Chia-Metadata" Version="1.6.2.2" />
-    <PackageReference Include="NFT.Storage.Net" Version="1.0.1" />
+    <PackageReference Include="NFT.Storage.Net" Version="1.0.1.2" />
   </ItemGroup>
 
   <ItemGroup>
