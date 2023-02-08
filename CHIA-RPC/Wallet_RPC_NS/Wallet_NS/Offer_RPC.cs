@@ -14,7 +14,7 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
         /// 
         /// </summary>
         //public Dictionary<string, long> offer { get; set; } = new  Dictionary<string, long>();
-        public List<KeyValuePair<string, long>> offer { get; set; } = new List<KeyValuePair<string, long>>();
+        public Dictionary<string, long> offer { get; set; } = new Dictionary<string, long>();
 
         public ulong? fee { get; set; }
 
@@ -71,15 +71,15 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
             foreach ( Nft sell in sells )
             {
                 //offer_rpc.offer.Add(sell.launcher_id, -1);
-                offer_rpc.offer.Add(new KeyValuePair<string, long>(sell.launcher_id, -1));
+                offer_rpc.offer.Add(sell.launcher_id, -1);
             }
             foreach ( Nft buy in buys )
             {
                 //offer_rpc.offer.Add(buy.launcher_id, 1);
-                offer_rpc.offer.Add(new KeyValuePair<string, long>(buy.launcher_id, 1));
+                offer_rpc.offer.Add(buy.launcher_id, 1);
             }
            // offer_rpc.offer.Add("1", mojoValue);
-            offer_rpc.offer.Add(new KeyValuePair<string, long>("1", mojoValue));
+            offer_rpc.offer.Add("1", mojoValue);
             return offer_rpc;
         }
     } 
