@@ -11,7 +11,7 @@ namespace CHIA_RPC.Objects_NS
 		public bool success { get; set; }
 		public string? error { get; set; }
         /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
+        /// saves the offer as rpc-file (json) to the specified path which can be reimported
         /// </summary>
         /// <param name="path"></param>
         public void Save(string path)
@@ -27,6 +27,10 @@ namespace CHIA_RPC.Objects_NS
             Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
             File.WriteAllText(path, testText, utf8WithoutBom);
         }
+        /// <summary>
+        /// exports the offer as offer file which can be uploaded to exchanges
+        /// </summary>
+        /// <param name="path"></param>
         public void Export(string path)
         {
             if (!path.EndsWith(".offer"))
