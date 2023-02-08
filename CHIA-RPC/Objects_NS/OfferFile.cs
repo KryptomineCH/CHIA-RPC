@@ -16,7 +16,7 @@ namespace CHIA_RPC.Objects_NS
         /// <param name="path"></param>
         public void Save(string path)
         {
-            if (!path.EndsWith(".offer"))
+            if (!path.EndsWith(".offer.json"))
             {
                 path += ".offer";
             }
@@ -27,6 +27,15 @@ namespace CHIA_RPC.Objects_NS
             Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
             File.WriteAllText(path, testText, utf8WithoutBom);
         }
+        public void Export(string path)
+        {
+            if (!path.EndsWith(".offer"))
+            {
+                path += ".offer";
+            }
+            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
+            File.WriteAllText(path, offer, utf8WithoutBom);
+        }
         /// <summary>
         /// loads an rpc file from the specified path
         /// </summary>
@@ -34,7 +43,7 @@ namespace CHIA_RPC.Objects_NS
         /// <returns></returns>
         public static OfferFile Load(string path)
         {
-            if (!path.EndsWith(".offer"))
+            if (!path.EndsWith(".offer.json"))
             {
                 path += ".offer";
             }
