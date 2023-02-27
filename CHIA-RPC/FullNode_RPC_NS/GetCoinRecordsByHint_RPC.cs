@@ -1,25 +1,18 @@
 ﻿using System.Text.Json;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
+namespace CHIA_RPC.General
 {
-    public class GetCoinRecordsByNames_Response
-    {
-        public CoinRecord[] coin_records { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-    }
-    
-    public class GetCoinRecordsByNames_RPC
+
+    public class GetCoinRecordsByHint_RPC
     {
         /// <summary>
-        /// A list of coin names from which to retrieve records
+        /// The hint to examine
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string[] names { get; set; }
+        public string hint { get; set; }
         /// <summary>
         /// The block height at which to start the query
         /// </summary>
@@ -57,11 +50,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetCoinRecordsByNames_RPC Load(string path)
+        public static GetCoinRecordsByHint_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordsByNames_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByNames_RPC>(text);
+            GetCoinRecordsByHint_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByHint_RPC>(text);
             return rpc;
         }
         /// <summary>
