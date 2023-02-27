@@ -1,28 +1,18 @@
-﻿using CHIA_RPC.Objects_NS;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.General
 {
-    public class GetCoinRecordByName_Response
-    {
-        public CoinRecord coin_record { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-    }
-    /// <summary>
-    /// finds a coin record in the blockchain. 
-    /// Warning: This is barely useful, since it does not include spent coins!
-    /// </summary>
-    public class GetCoinRecordByName_Rpc
+    public class StartEnd_RPC
     {
         /// <summary>
-        /// A list of coin names from which to retrieve records
+        /// The start height to include
         /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public string name { get; set; }
+        public ulong start { get; set; }
+        /// <summary>
+        /// the end height to include
+        /// </summary>
+        public ulong end { get; set; }
 
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
@@ -46,11 +36,11 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetCoinRecordByName_Rpc Load(string path)
+        public static StartEnd_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordByName_Rpc rpc = JsonSerializer.Deserialize<GetCoinRecordByName_Rpc>(text);
+            StartEnd_RPC rpc = JsonSerializer.Deserialize<StartEnd_RPC>(text);
             return rpc;
         }
         /// <summary>
