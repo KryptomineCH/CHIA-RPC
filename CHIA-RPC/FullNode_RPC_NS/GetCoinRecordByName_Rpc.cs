@@ -15,7 +15,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// finds a coin record in the blockchain. 
     /// Warning: This is barely useful, since it does not include spent coins!
     /// </summary>
-    public class GetCoinRecordByName_Rpc
+    public class GetCoinRecordByName_RPC
     {
         /// <summary>
         /// A list of coin names from which to retrieve records
@@ -46,11 +46,11 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetCoinRecordByName_Rpc Load(string path)
+        public static GetCoinRecordByName_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordByName_Rpc rpc = JsonSerializer.Deserialize<GetCoinRecordByName_Rpc>(text);
+            GetCoinRecordByName_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordByName_RPC>(text);
             return rpc;
         }
         /// <summary>

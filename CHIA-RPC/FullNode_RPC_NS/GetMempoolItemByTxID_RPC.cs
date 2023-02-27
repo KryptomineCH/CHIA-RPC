@@ -7,12 +7,12 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// <summary>
     /// used by the server to return a specific block
     /// </summary>
-    public class GetBlocks_Response
+    public class GetMempoolItemByTxID_Response
     {
         /// <summary>
         /// the block which is returned
         /// </summary>
-        public Block[] blocks { get; set; }
+        public MempoolItem mempool_item { get; set; }
         /// <summary>
         /// indicates wether the server accepted the request
         /// </summary>
@@ -25,20 +25,9 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// <summary>
     /// Warning: Gets a list of full blocks by height. Important note: there might be multiple blocks at each height. To find out which one is in the blockchain, use get_block_record_by_height.
     /// </summary>
-    public class GetBlocks_RPC
+    public class GetMempoolItemByTxID_RPC
     {
-        /// <summary>
-        /// The start height.
-        /// </summary>
-        public ulong? start { get; set; }
-        /// <summary>
-        /// The end height(non-inclusive).
-        /// </summary>
-        public ulong? end { get; set; }
-        /// <summary>
-        /// whether to exclude the header hash in the response(default false)
-        /// </summary>
-        public bool? exclude_header_hash { get; set; }
+        public string tx_id { get; set; }
 
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
@@ -62,11 +51,11 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetBlocks_RPC Load(string path)
+        public static GetMempoolItemByTxID_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetBlocks_RPC rpc = JsonSerializer.Deserialize<GetBlocks_RPC>(text);
+            GetMempoolItemByTxID_RPC rpc = JsonSerializer.Deserialize<GetMempoolItemByTxID_RPC>(text);
             return rpc;
         }
         /// <summary>

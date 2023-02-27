@@ -4,41 +4,33 @@ using System.Text.Json;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
-    /// <summary>
-    /// used by the server to return a specific block
-    /// </summary>
-    public class GetBlocks_Response
+    public class GetFeeEstimate_Response
     {
-        /// <summary>
-        /// the block which is returned
-        /// </summary>
-        public Block[] blocks { get; set; }
-        /// <summary>
-        /// indicates wether the server accepted the request
-        /// </summary>
-        public bool success { get; set; }
-        /// <summary>
-        /// if the server refused the request, it will add an error here
-        /// </summary>
-        public string error { get; set; }
+        public ulong CurrentFeeRate { get; set; }
+        public ulong[] Estimates { get; set; }
+        public bool FullNodeSynced { get; set; }
+        public ulong LastPeakTimestamp { get; set; }
+        public ulong MempoolMaxSize { get; set; }
+        public ulong MempoolSize { get; set; }
+        public ulong NodeTimeUTC { get; set; }
+        public ulong PeakHeight { get; set; }
+        public bool Success { get; set; }
+        public ulong[] TargetTimes { get; set; }
     }
     /// <summary>
-    /// Warning: Gets a list of full blocks by height. Important note: there might be multiple blocks at each height. To find out which one is in the blockchain, use get_block_record_by_height.
+    /// Retrieves the info about the net space (total space allocated by farmers)
     /// </summary>
-    public class GetBlocks_RPC
+    public class GetFeeEstimate_RPC
     {
         /// <summary>
-        /// The start height.
+        /// the start header hash
         /// </summary>
-        public ulong? start { get; set; }
+        public string spend_bundle { get; set; }
         /// <summary>
-        /// The end height(non-inclusive).
+        /// the end header hash
         /// </summary>
-        public ulong? end { get; set; }
-        /// <summary>
-        /// whether to exclude the header hash in the response(default false)
-        /// </summary>
-        public bool? exclude_header_hash { get; set; }
+        public ulong cost { get; set; }
+        public ulong[] target_times { get; set; }
 
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
@@ -62,11 +54,11 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetBlocks_RPC Load(string path)
+        public static GetNetworkSpace_Rpc Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetBlocks_RPC rpc = JsonSerializer.Deserialize<GetBlocks_RPC>(text);
+            GetNetworkSpace_Rpc rpc = JsonSerializer.Deserialize<GetNetworkSpace_Rpc>(text);
             return rpc;
         }
         /// <summary>

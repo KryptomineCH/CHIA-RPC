@@ -1,45 +1,33 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿using System.Text.Json;
 using System.Text;
-using System.Text.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
-    /// <summary>
-    /// used by the server to return a specific block
-    /// </summary>
-    public class GetBlocks_Response
-    {
-        /// <summary>
-        /// the block which is returned
-        /// </summary>
-        public Block[] blocks { get; set; }
-        /// <summary>
-        /// indicates wether the server accepted the request
-        /// </summary>
-        public bool success { get; set; }
-        /// <summary>
-        /// if the server refused the request, it will add an error here
-        /// </summary>
-        public string error { get; set; }
-    }
-    /// <summary>
-    /// Warning: Gets a list of full blocks by height. Important note: there might be multiple blocks at each height. To find out which one is in the blockchain, use get_block_record_by_height.
-    /// </summary>
-    public class GetBlocks_RPC
-    {
-        /// <summary>
-        /// The start height.
-        /// </summary>
-        public ulong? start { get; set; }
-        /// <summary>
-        /// The end height(non-inclusive).
-        /// </summary>
-        public ulong? end { get; set; }
-        /// <summary>
-        /// whether to exclude the header hash in the response(default false)
-        /// </summary>
-        public bool? exclude_header_hash { get; set; }
 
+    public class GetCoinRecordsByPuzzleHashes_RPC
+    {
+        /// <summary>
+        /// A list of coin names from which to retrieve records
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [Required]
+        public string puzzle_hashes { get; set; }
+        /// <summary>
+        /// The block height at which to start the query
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong? start_height { get; set; }
+        /// <summary>
+        /// The block height at which to end the query
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong? end_height { get; set; }
+        /// <summary>
+        /// Include spent coins in the result[Default: false]
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public bool? include_spent_coins { get; set; }
         /// <summary>
         /// saves the rpc as rpc-file (json) to the specified path
         /// </summary>
@@ -62,11 +50,11 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static GetBlocks_RPC Load(string path)
+        public static GetCoinRecordsByPuzzleHashes_RPC Load(string path)
         {
             FileInfo testFile = new FileInfo(path);
             string text = File.ReadAllText(testFile.FullName);
-            GetBlocks_RPC rpc = JsonSerializer.Deserialize<GetBlocks_RPC>(text);
+            GetCoinRecordsByPuzzleHashes_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByPuzzleHashes_RPC>(text);
             return rpc;
         }
         /// <summary>
