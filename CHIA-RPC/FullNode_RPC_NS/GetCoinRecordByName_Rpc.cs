@@ -1,69 +1,85 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
+    /// <summary>
+    /// Represents the response of a GetCoinRecordByName request.
+    /// </summary>
     public class GetCoinRecordByName_Response
     {
+        /// <summary>
+        /// A CoinRecord object containing information about the retrieved coin.
+        /// </summary>
         public CoinRecord coin_record { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
+        /// <summary>
+        /// Saves the response to the specified file path with a ".response" file extension.
+        /// </summary>
+        /// <param name="filePath">The path to save the response to.</param>
+        public void SaveResponseToFile(string filePath)
+        {
+            RpcFileManager.SaveObjectToFile(this, filePath, "response");
+        }
+
+        /// <summary>
+        /// Loads a response from the specified file path.
+        /// </summary>
+        /// <param name="filePath">The path to load the response from.</param>
+        /// <returns>The loaded response.</returns>
+        public static GetCoinRecordByName_Response LoadResponseFromFile(string filePath)
+        {
+            return RpcFileManager.LoadObjectFromFile<GetCoinRecordByName_Response>(filePath);
+        }
+
+        /// <summary>
+        /// Returns a JSON formatted string representing this object with indentation.
+        /// </summary>
+        /// <returns>A JSON formatted string representing this object with indentation.</returns>
+        public override string ToString()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
     }
+
     /// <summary>
-    /// finds a coin record in the blockchain. 
-    /// Warning: This is barely useful, since it does not include spent coins!
+    /// Represents the request for retrieving a coin record by its name or ID.
     /// </summary>
     public class GetCoinRecordByName_RPC
     {
         /// <summary>
-        /// A list of coin names from which to retrieve records
+        /// A string containing the name or ID of the coin to retrieve.
         /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
         public string name { get; set; }
 
         /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
+        /// Saves the RPC request to the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
+        /// <param name="filePath">The path to save the RPC request to.</param>
+        public void SaveRpcToFile(string filePath)
         {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
+            RpcFileManager.SaveObjectToFile(this, filePath);
         }
+
         /// <summary>
-        /// loads an rpc file from the specified path
+        /// Loads an RPC request from the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static GetCoinRecordByName_RPC Load(string path)
+        /// <param name="filePath">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static GetCoinRecordByName_RPC LoadRpcFromFile(string filePath)
         {
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordByName_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordByName_RPC>(text);
-            return rpc;
+            return RpcFileManager.LoadObjectFromFile<GetCoinRecordByName_RPC>(filePath);
         }
+
         /// <summary>
-        /// serializes this object into a json string
+        /// Serializes this object into a JSON formatted string.
         /// </summary>
-        /// <returns>json formatted string</returns>
+        /// <returns>A JSON formatted string representing this object.</returns>
         public override string ToString()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = false;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonString = JsonSerializer.Serialize(this, options: options);
-            return jsonString;
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = false });
         }
     }
 }

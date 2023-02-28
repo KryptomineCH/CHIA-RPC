@@ -1,73 +1,62 @@
 ﻿using System.Text.Json;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
 
-    public class GetCoinRecordsByPuzzleHashes_RPC
+    /// <summary>
+    /// Class to retrieve a list of coin records with a certain puzzle hash.
+    /// </summary>
+    public class GetCoinRecordsByPuzzleHash_RPC
     {
         /// <summary>
-        /// A list of coin names from which to retrieve records
+        /// Puzzle hash to search for.
         /// </summary>
-        /// <remarks>mandatory</remarks>
-        [Required]
-        public string puzzle_hashes { get; set; }
+        public string puzzle_hash { get; set; }
+
         /// <summary>
-        /// The block height at which to start the query
+        /// Confirmation start height for search. Optional parameter.
         /// </summary>
-        /// <remarks>optional</remarks>
         public ulong? start_height { get; set; }
+
         /// <summary>
-        /// The block height at which to end the query
+        /// Confirmation end height for search. Optional parameter.
         /// </summary>
-        /// <remarks>optional</remarks>
         public ulong? end_height { get; set; }
+
         /// <summary>
-        /// Include spent coins in the result[Default: false]
+        /// Whether to include spent coins too, instead of just unspent. Defaults to false.
         /// </summary>
-        /// <remarks>optional</remarks>
         public bool? include_spent_coins { get; set; }
+
         /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
+        /// Saves the RPC request to the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
+        /// <param name="filePath">The path to save the RPC request to.</param>
+        public void SaveRpcToFile(string filePath)
         {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
+            RpcFileManager.SaveObjectToFile(this, filePath);
         }
+
         /// <summary>
-        /// loads an rpc file from the specified path
+        /// Loads an RPC request from the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static GetCoinRecordsByPuzzleHashes_RPC Load(string path)
+        /// <param name="filePath">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static GetCoinRecordsByPuzzleHash_RPC LoadRpcFromFile(string filePath)
         {
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordsByPuzzleHashes_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByPuzzleHashes_RPC>(text);
-            return rpc;
+            return RpcFileManager.LoadObjectFromFile<GetCoinRecordsByPuzzleHash_RPC>(filePath);
         }
+
         /// <summary>
-        /// serializes this object into a json string
+        /// Serializes this object into a JSON formatted string.
         /// </summary>
-        /// <returns>json formatted string</returns>
+        /// <returns>A JSON formatted string representing this object.</returns>
         public override string ToString()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = false;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonString = JsonSerializer.Serialize(this, options: options);
-            return jsonString;
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = false });
         }
     }
 }

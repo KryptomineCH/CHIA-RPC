@@ -1,61 +1,54 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 using System.Text;
 using System.Text.Json;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
-
     /// <summary>
-    /// Warning: Gets a list of full blocks by height. Important note: there might be multiple blocks at each height. To find out which one is in the blockchain, use get_block_record_by_height.
+    /// Warning: Gets a list of full blocks by height. 
     /// </summary>
+    /// <remarks>
+    /// Important note: there might be multiple blocks at each height. 
+    /// To find out which one is in the blockchain, use get_block_record_by_height.
+    /// </remarks>
     public class GetRecentSignagePointOrEos_Rpc
     {
         /// <summary>
-        /// 
+        /// Gets or sets the hash of the output for a signage point (if it's in the middle of a sub slot).
         /// </summary>
         public string sp_hash { get; set; }
+        /// <summary>
+        /// Gets or sets the challenge_hash for the subslot (if it's an end of sub slot challenge).
+        /// </summary>
         public string challenge_hash { get; set; }
 
         /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
+        /// Saves the RPC request to the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
+        /// <param name="filePath">The path to save the RPC request to.</param>
+        public void SaveRpcToFile(string filePath)
         {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
+            RpcFileManager.SaveObjectToFile(this, filePath);
         }
+
         /// <summary>
-        /// loads an rpc file from the specified path
+        /// Loads an RPC request from the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static GetRecentSignagePointOrEos_Rpc Load(string path)
+        /// <param name="filePath">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static GetRecentSignagePointOrEos_Rpc LoadRpcFromFile(string filePath)
         {
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            GetRecentSignagePointOrEos_Rpc rpc = JsonSerializer.Deserialize<GetRecentSignagePointOrEos_Rpc>(text);
-            return rpc;
+            return RpcFileManager.LoadObjectFromFile<GetRecentSignagePointOrEos_Rpc>(filePath);
         }
+
         /// <summary>
-        /// serializes this object into a json string
+        /// Serializes this object into a JSON formatted string.
         /// </summary>
-        /// <returns>json formatted string</returns>
+        /// <returns>A JSON formatted string representing this object.</returns>
         public override string ToString()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = false;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonString = JsonSerializer.Serialize(this, options: options);
-            return jsonString;
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = false });
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.General
 {
@@ -28,46 +29,33 @@ namespace CHIA_RPC.General
         /// </summary>
         /// <remarks>optional</remarks>
         public bool? include_spent_coins { get; set; }
+
         /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
+        /// Saves the RPC request to the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
+        /// <param name="filePath">The path to save the RPC request to.</param>
+        public void SaveRpcToFile(string filePath)
         {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
+            RpcFileManager.SaveObjectToFile(this, filePath);
         }
+
         /// <summary>
-        /// loads an rpc file from the specified path
+        /// Loads an RPC request from the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static GetCoinRecordsByHint_RPC Load(string path)
+        /// <param name="filePath">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static GetCoinRecordsByHint_RPC LoadRpcFromFile(string filePath)
         {
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            GetCoinRecordsByHint_RPC rpc = JsonSerializer.Deserialize<GetCoinRecordsByHint_RPC>(text);
-            return rpc;
+            return RpcFileManager.LoadObjectFromFile<GetCoinRecordsByHint_RPC>(filePath);
         }
+
         /// <summary>
-        /// serializes this object into a json string
+        /// Serializes this object into a JSON formatted string.
         /// </summary>
-        /// <returns>json formatted string</returns>
+        /// <returns>A JSON formatted string representing this object.</returns>
         public override string ToString()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = false;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonString = JsonSerializer.Serialize(this, options: options);
-            return jsonString;
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = false });
         }
     }
 }

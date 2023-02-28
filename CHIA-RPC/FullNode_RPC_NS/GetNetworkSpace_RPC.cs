@@ -1,5 +1,4 @@
-﻿using CHIA_RPC.Objects_NS;
-using System.Text;
+﻿using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json;
 
 namespace CHIA_RPC.FullNode_RPC_NS
@@ -68,13 +67,40 @@ namespace CHIA_RPC.FullNode_RPC_NS
             }
         }
         /// <summary>
-        /// indicates wether the server accepted the request
+        /// this boolean indicates wether the server accepted the request or not.
         /// </summary>
         public bool success { get; set; }
         /// <summary>
-        /// if the server refused the request, it will add an error here
+        /// this string contains the error message when the server refused the request. This will only happen, when the server actually got reached.
         /// </summary>
-        public string error { get; set; }
+        public string? error { get; set; }
+        /// <summary>
+        /// Saves the response to the specified file path with a ".response" file extension.
+        /// </summary>
+        /// <param name="filePath">The path to save the response to.</param>
+        public void SaveResponseToFile(string filePath)
+        {
+            RpcFileManager.SaveObjectToFile(this, filePath, "response");
+        }
+
+        /// <summary>
+        /// Loads a response from the specified file path.
+        /// </summary>
+        /// <param name="filePath">The path to load the response from.</param>
+        /// <returns>The loaded response.</returns>
+        public static GetNetworkSpace_Response LoadResponseFromFile(string filePath)
+        {
+            return RpcFileManager.LoadObjectFromFile<GetNetworkSpace_Response>(filePath);
+        }
+
+        /// <summary>
+        /// Returns a JSON formatted string representing this object with indentation.
+        /// </summary>
+        /// <returns>A JSON formatted string representing this object with indentation.</returns>
+        public override string ToString()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
     }
     /// <summary>
     /// Retrieves the info about the net space (total space allocated by farmers)
@@ -91,45 +117,31 @@ namespace CHIA_RPC.FullNode_RPC_NS
         public string newer_block_header_hash { get; set; }
 
         /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
+        /// Saves the RPC request to the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
+        /// <param name="filePath">The path to save the RPC request to.</param>
+        public void SaveRpcToFile(string filePath)
         {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
+            RpcFileManager.SaveObjectToFile(this, filePath);
         }
+
         /// <summary>
-        /// loads an rpc file from the specified path
+        /// Loads an RPC request from the specified file path.
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static GetNetworkSpace_Rpc Load(string path)
+        /// <param name="filePath">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static GetNetworkSpace_Rpc LoadRpcFromFile(string filePath)
         {
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            GetNetworkSpace_Rpc rpc = JsonSerializer.Deserialize<GetNetworkSpace_Rpc>(text);
-            return rpc;
+            return RpcFileManager.LoadObjectFromFile<GetNetworkSpace_Rpc>(filePath);
         }
+
         /// <summary>
-        /// serializes this object into a json string
+        /// Serializes this object into a JSON formatted string.
         /// </summary>
-        /// <returns>json formatted string</returns>
+        /// <returns>A JSON formatted string representing this object.</returns>
         public override string ToString()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = false;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonString = JsonSerializer.Serialize(this, options: options);
-            return jsonString;
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = false });
         }
     }
 }
