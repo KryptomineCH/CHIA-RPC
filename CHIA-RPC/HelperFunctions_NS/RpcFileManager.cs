@@ -24,10 +24,10 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <typeparam name="T">The type of object to deserialize.</typeparam>
         /// <param name="filePath">The path to load the object from.</param>
         /// <returns>The loaded object.</returns>
-        internal static T LoadObjectFromFile<T>(string filePath)
+        internal static T LoadObjectFromFile<T>(string filePath, string fileExtension = "rpc")
         {
-            string serializedObject = LoadStringFromFile(filePath);
-            return JsonSerializer.Deserialize<T>(serializedObject);
+            string serializedObject = LoadStringFromFile(filePath, fileExtension);
+            return JsonSerializer.Deserialize<T>(serializedObject, new JsonSerializerOptions { AllowTrailingCommas = true });
         }
 
         /// <summary>
@@ -51,8 +51,12 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="filePath">The path to load the string from.</param>
         /// <returns>The loaded string.</returns>
-        internal static string LoadStringFromFile(string filePath)
+        internal static string LoadStringFromFile(string filePath, string fileExtension = "rpc")
         {
+            if (!filePath.EndsWith("." + fileExtension))
+            {
+                filePath += "." + fileExtension;
+            }
             FileInfo fileInfo = new FileInfo(filePath);
             return File.ReadAllText(fileInfo.FullName);
         }

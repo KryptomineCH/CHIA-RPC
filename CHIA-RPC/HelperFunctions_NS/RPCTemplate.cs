@@ -2,7 +2,19 @@
 
 namespace CHIA_RPC.HelperFunctions_NS
 {
-    public class RPCTemplate<T>
+    /// <summary>
+    /// this class is the base class for RPC classes. It contains some functions for IO and Serialisation/Deserialisation
+    /// </summary>
+    /// <remarks>
+    /// An abstract class is a class that cannot be instantiated on its own, but instead is meant to be used as a base class for other classes. 
+    /// </remarks>
+    /// <typeparam name="T"> 
+    /// this constraint ensures that the T type parameter represents a class that inherits from the RPCTemplate<T> base class. 
+    /// This is known as a recursive type constraint, because it constrains the type parameter to be related to the base class in a recursive way.
+    /// By using this recursive type constraint, 
+    /// you can ensure that any derived classes of RPCTemplate<T> can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
+    /// </typeparam>
+    public abstract class RPCTemplate<T> where T : RPCTemplate<T>
     {
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
@@ -10,7 +22,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <param name="filePath">The path to save the RPC request to.</param>
         public void SaveRpcToFile(string filePath)
         {
-            RpcFileManager.SaveObjectToFile(this, filePath);
+            RpcFileManager.SaveObjectToFile(this as T, filePath);
         }
 
         /// <summary>
@@ -30,7 +42,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <returns>The loaded RPC</returns>
         public static T LoadRpcFromString(string inputString)
         {
-            return JsonSerializer.Deserialize<T>(inputString);
+            return JsonSerializer.Deserialize<T>(inputString,new JsonSerializerOptions { AllowTrailingCommas = true});
         }
 
         /// <summary>
@@ -39,7 +51,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <returns>A JSON formatted string representing this RPC with indentation.</returns>
         public override string ToString()
         {
-            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+            return JsonSerializer.Serialize(this as T, new JsonSerializerOptions { WriteIndented = false });
         }
     }
 }
