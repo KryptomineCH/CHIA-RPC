@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using System.ComponentModel.DataAnnotations;
 
 namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class VerifySignature_RPC
+    public class VerifySignature_RPC : RPCTemplate<VerifySignature_RPC>
     {
         /// <summary>
         /// The public key of the signature to verify

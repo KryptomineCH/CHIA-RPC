@@ -1,66 +1,17 @@
 ﻿using Chia_Metadata;
+using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 using NFT.Storage.Net;
 using NFT.Storage.Net.API;
-using System.Text;
-using System.Text.Json;
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT
 {
-    public class NftMintNFT_Response
+    public class NftMintNFT_Response : ResponseTemplate<NftMintNFT_Response>
     {
         public SpendBundle spend_bundle { get; set; }
         public ulong wallet_id { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
-        /// <summary>
-        /// this function converts the spendbundle into a coin-id.
-        /// </summary>
-        /// <returns>the resulting NftGetInfo_RPC can be used to look up the minted nft</returns>
-        public NftGetInfo_RPC Get_NftGetInfo_Rpc()
-        {
-            NftGetInfo_RPC nftRequest = new NftGetInfo_RPC()
-            {
-                wallet_id = wallet_id,
-                coin_id = spend_bundle.coin_solutions[0].coin.GetCoinID()
-            };
-            return nftRequest;
-        }
-        /// <summary>
-        /// saves the NftMintNFT_Response as mint-file (json) to the specified path
-        /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
-        {
-            if (!path.EndsWith(".mint"))
-            {
-                path += ".mint";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
-        }
-        /// <summary>
-        /// loads a mint file from the specified path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static NftMintNFT_Response Load(string path)
-        {
-            if (!path.EndsWith(".mint"))
-            {
-                path += ".mint";
-            }
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            NftMintNFT_Response rpc = JsonSerializer.Deserialize<NftMintNFT_Response>(text);
-            return rpc;
-        }
     }
-    public class NftMintNFT_RPC
+    public class NftMintNFT_RPC : RPCTemplate<NftMintNFT_RPC>
     {
         /// <summary>
         /// 
@@ -184,46 +135,5 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT
         /// a fee under 1000 mojos won't even be included into hpool's mempool.
         /// </remarks>
         public ulong fee { get; set; }
-        /// <summary>
-        /// saves the rpc as rpc-file (json) to the specified path
-        /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
-        {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
-        }
-        /// <summary>
-        /// loads an rpc file from the specified path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static NftMintNFT_RPC Load(string path)
-        {
-            if (!path.EndsWith(".rpc"))
-            {
-                path += ".rpc";
-            }
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            NftMintNFT_RPC rpc = JsonSerializer.Deserialize<NftMintNFT_RPC>(text);
-            return rpc;
-        }
-        public override string ToString()
-        {
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = false;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonString = JsonSerializer.Serialize(this, options: options);
-            return jsonString;
-        }
     }
 }

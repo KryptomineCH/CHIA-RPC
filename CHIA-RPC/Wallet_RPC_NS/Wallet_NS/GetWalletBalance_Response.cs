@@ -1,11 +1,10 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 namespace CHIA_RPC.Wallet_RPC_NS.Wallet_NS
 {
-    public class GetWalletBalance_Response
+    public class GetWalletBalance_Response : ResponseTemplate<GetWalletBalance_Response>
     {
         public WalletBalanceInfo wallet_balance { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
     }
     public class WalletBalanceInfo
     {

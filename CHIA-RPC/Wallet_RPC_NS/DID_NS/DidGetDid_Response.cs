@@ -1,6 +1,8 @@
-﻿namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
-    public class DidGetDid_Response
+    public class DidGetDid_Response : ResponseTemplate<DidGetDid_Response>
     {
         public string coin_id { get; set; }
         /// <summary>
@@ -8,7 +10,5 @@
         /// </summary>
         public string my_did { get; set; }
         public ulong wallet_id { get; set; }
-        public bool success { get; set; }
-        public string error { get; set; }
     }
 }
