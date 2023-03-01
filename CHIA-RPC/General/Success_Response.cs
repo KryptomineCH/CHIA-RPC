@@ -1,14 +1,12 @@
-﻿namespace CHIA_RPC.General
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.General
 {
-    public class Success_Response
+    /// <summary>
+    /// This is the most basic response which the chia node returns. It just contains a boolean success and an optional error message.
+    /// </summary>
+    public class Success_Response : ResponseTemplate<Success_Response>
     {
-        /// <summary>
-        /// indicates if the rpc was executed successfully
-        /// </summary>
-        public bool success { get; set; }
-        /// <summary>
-        /// in case of rpc failure, there might be an error message attached
-        /// </summary>
-        public string error { get; set; }
+        /// inherits all Properties and functions from the Response Template as the template is originally created from this class
     }
 }
