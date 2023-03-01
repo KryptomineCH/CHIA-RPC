@@ -1,6 +1,6 @@
 using CHIA_RPC.Wallet_RPC_NS.NFT;
 
-namespace TestProject1
+namespace CHIA_RPC_Tests
 {
     public class UnitTest1
     {
@@ -29,8 +29,8 @@ namespace TestProject1
                 targetAddress: "xch1e426jf55z7npqnw7ae7h9ap0gez7wrljvqqeskx97p928jshfapq2w7p5l",
                 mintingFee_Mojos: 2441556
                 );
-            rpc.Save("NftMintNft_SaveLoadRPC");
-            NftMintNFT_RPC loadedRpc = NftMintNFT_RPC.Load("NftMintNft_SaveLoadRPC");
+            rpc.SaveRpcToFile("NftMintNft_SaveLoadRPC");
+            NftMintNFT_RPC loadedRpc = NftMintNFT_RPC.LoadRpcFromFile("NftMintNft_SaveLoadRPC");
             if (rpc.wallet_id != loadedRpc.wallet_id)
             {
                 throw new System.Exception("Wallet Ids do not match!");
