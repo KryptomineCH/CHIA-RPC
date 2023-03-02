@@ -94,7 +94,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// A list of reward claims incorporated, if the block is a transaction block
         /// </summary>
-        public List<RewardClaim> reward_claims_incorporated { get; set; }
+        public RewardClaim[] reward_claims_incorporated { get; set; }
 
         /// <summary>
         /// The reward infusion new challenge

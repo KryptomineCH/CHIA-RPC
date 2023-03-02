@@ -19,7 +19,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// <summary>
     /// An object that contains the metric values
     /// </summary>
-    public class Metrics
+    public class Metrics : ObjectTemplate<Metrics>
     {
         /// <summary>
         /// The number of compact blocks

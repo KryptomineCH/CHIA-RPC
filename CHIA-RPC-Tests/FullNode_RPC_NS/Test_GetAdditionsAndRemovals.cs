@@ -16,27 +16,27 @@ namespace CHIA_RPC_Tests.FullNode_RPC_NS
         };
 
         [Fact]
-        public void Test_BuildingRPC()
+        public void Test_RPCSerialisation()
         {
            
             Test_RPCClasses<HeaderHash_RPC> helper = new Test_RPCClasses<HeaderHash_RPC>();
             helper.Test_RPCSerialisation(ExpectedRPCResults);
         }
         [Fact]
-        public void Test_SavingRpc()
+        public void Test_SavingDiskIO()
         {
             Test_RPCClasses<HeaderHash_RPC> helper = new Test_RPCClasses<HeaderHash_RPC>();
             helper.Test_RPCDiskIO(ExpectedRPCResults);
         }
         [Fact]
-        public void Test_LoadingResponse()
+        public void Test_ResponseSerialisation()
         {
             
             Test_ResponseClasses<GetAdditionsAndRemovals_Response> helper = new Test_ResponseClasses<GetAdditionsAndRemovals_Response>();
             helper.Test_ResponseSerialisation(ExpectedResponseResults);
         }
         [Fact]
-        public void Test_SavingResponse()
+        public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<GetAdditionsAndRemovals_Response> helper = new Test_ResponseClasses<GetAdditionsAndRemovals_Response>();
             helper.Test_ResponseDiskIO(ExpectedResponseResults);
