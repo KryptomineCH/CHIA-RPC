@@ -1,7 +1,9 @@
 ﻿
+using CHIA_RPC.HelperFunctions_NS;
+
 namespace CHIA_RPC.Objects_NS
 {
-    public class Transaction
+    public class Transaction : ObjectTemplate<Transaction>
     {
         public Coin[] additions { get; set; }
         public ulong amount { get; set; }

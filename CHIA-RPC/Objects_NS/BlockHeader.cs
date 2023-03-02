@@ -1,6 +1,8 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
-    public class BlockHeader
+    public class BlockHeader : ObjectTemplate<BlockHeader>
     {
         public Proof challenge_chain_sp_proof { get; set; }
         public object[] finished_sub_slots { get; set; }

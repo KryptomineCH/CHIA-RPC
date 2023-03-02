@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Objects_NS
 {
-    public class TradeRecord
+    public class TradeRecord : ObjectTemplate<TradeRecord>
     {
 		public bool? accepted_at_time { get; set; } 
 		public Coin[] coins_of_interest { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
-    public class PrivateKeyInfo
+    public class PrivateKeyInfo : ObjectTemplate<PrivateKeyInfo>
     {
         public string farmer_pk { get; set; }
         /// <summary>

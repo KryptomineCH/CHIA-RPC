@@ -1,8 +1,9 @@
-﻿using System.Security.Cryptography;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Security.Cryptography;
 
 namespace CHIA_RPC.Objects_NS
 {
-    public class Coin
+    public class Coin : ObjectTemplate<Coin>
     {
         /// <summary>
         /// the coins value in mojos

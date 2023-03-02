@@ -1,5 +1,6 @@
-﻿
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
@@ -13,7 +14,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// <summary>
     /// Class representing the blockchain state
     /// </summary>
-    public class BlockchainState
+    public class BlockchainState : ObjectTemplate<BlockchainState>
     {
         /// <summary>
         /// The difficulty of the blockchain
@@ -38,7 +39,8 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// <summary>
         /// The space of the blockchain
         /// </summary>
-        public ulong space { get; set; }
+        [JsonConverter(typeof(BigIntegerConverter))]
+        public BigInteger space { get; set; }
 
         /// <summary>
         /// The number of sub-slot iterations of the blockchain
@@ -54,7 +56,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// <summary>
     /// Class representing information about the peak of the blockchain
     /// </summary>
-    public class Peak
+    public class Peak : ObjectTemplate<Peak>
     {
         /// <summary>
         /// The hash of the challenge block information
@@ -182,12 +184,12 @@ namespace CHIA_RPC.FullNode_RPC_NS
         public ulong weight { get; set; }
     }
 
-    public class ChallengeVdfOutput
+    public class ChallengeVdfOutput : ObjectTemplate<ChallengeVdfOutput>
     {
         public string data { get; set; }
     }
 
-    public class Sync
+    public class Sync : ObjectTemplate<Sync>
     {
         /// <summary>
         /// indicates wether the wallet is currently syncing or not

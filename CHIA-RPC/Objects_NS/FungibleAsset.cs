@@ -1,6 +1,8 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
-    public class FungibleAsset
+    public class FungibleAsset : ObjectTemplate<FungibleAsset>
     {
         /// <summary>
         /// The name of the asset for which to trade one or more NFTs

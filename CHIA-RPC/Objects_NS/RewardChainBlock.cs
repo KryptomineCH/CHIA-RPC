@@ -1,7 +1,9 @@
 ﻿
+using CHIA_RPC.HelperFunctions_NS;
+
 namespace CHIA_RPC.Objects_NS
 {
-    public class RewardChainBlock
+    public class RewardChainBlock : ObjectTemplate<RewardChainBlock>
     {
         public Vdf challenge_chain_ip_vdf { get; set; }
         public string challenge_chain_sp_signature { get; set; }
@@ -18,13 +20,13 @@ namespace CHIA_RPC.Objects_NS
         public ulong total_iters { get; set; }
         public ulong weight { get; set; }
     }
-    public class Vdf
+    public class Vdf : ObjectTemplate<Vdf>
     {
         public string challenge { get; set; }
         public ulong number_of_iterations { get; set; }
         public OutputData output { get; set; }
 
-        public class OutputData
+        public class OutputData : ObjectTemplate<OutputData>
         {
             public string data { get; set; }
         }

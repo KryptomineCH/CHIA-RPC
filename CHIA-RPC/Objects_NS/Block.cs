@@ -1,10 +1,12 @@
 ﻿
+using CHIA_RPC.HelperFunctions_NS;
+
 namespace CHIA_RPC.Objects_NS
 {
     /// <summary>
     /// Class representing a Block object
     /// </summary>
-    public class Block
+    public class Block : ObjectTemplate<Block>
     {
         /// <summary>
         /// The challenge_chain_ip_proof for the block

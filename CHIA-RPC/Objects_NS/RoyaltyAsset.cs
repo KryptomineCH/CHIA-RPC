@@ -1,6 +1,8 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
-    public class RoyaltyAsset
+    public class RoyaltyAsset : ObjectTemplate<RoyaltyAsset>
     {
         /// <summary>
         /// The asset ID of the NFT to be traded

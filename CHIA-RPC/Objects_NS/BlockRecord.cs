@@ -1,10 +1,11 @@
-﻿
+﻿using CHIA_RPC.HelperFunctions_NS;
+
 namespace CHIA_RPC.Objects_NS
 {
     /// <summary>
     /// A class to represent the block record information
     /// </summary>
-    public class BlockRecord
+    public class BlockRecord : ObjectTemplate<BlockRecord>
     {
         /// <summary>
         /// The challenge block information hash
@@ -134,7 +135,7 @@ namespace CHIA_RPC.Objects_NS
     /// <summary>
     /// An object that contains the challenge VDF output data
     /// </summary>
-    public class VdfOutput
+    public class VdfOutput : ObjectTemplate<VdfOutput>
     {
         /// <summary>
         /// The data value
@@ -145,7 +146,7 @@ namespace CHIA_RPC.Objects_NS
     /// <summary>
     /// A class to represent a reward claim
     /// </summary>
-    public class RewardClaim
+    public class RewardClaim : ObjectTemplate<RewardClaim>
     {
         /// <summary>
         /// The amount of the reward claim

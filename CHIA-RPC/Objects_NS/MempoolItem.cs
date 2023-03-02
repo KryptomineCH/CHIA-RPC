@@ -1,6 +1,8 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
-    public class MempoolItem
+    public class MempoolItem : ObjectTemplate<MempoolItem>
     {
         public Coin[] additions { get; set; }
         public ulong cost { get; set; }

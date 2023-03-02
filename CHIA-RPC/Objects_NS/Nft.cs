@@ -1,10 +1,10 @@
-﻿using CHIA_RPC.Wallet_RPC_NS.NFT;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Objects_NS
 {
-    public class Nft
+    public class Nft : ObjectTemplate<Nft>
     {
         /// <summary>
         /// some non human readable data and a chain logo
@@ -77,38 +77,5 @@ namespace CHIA_RPC.Objects_NS
         public ulong edition_total { get; set; }
         public bool supports_did { get; set; }
         public string updater_puzhash { get; set; }
-        /// <summary>
-        /// saves the nft-info as nft-file (json) to the specified path
-        /// </summary>
-        /// <param name="path"></param>
-        public void Save(string path)
-        {
-            if (!path.EndsWith(".nft"))
-            {
-                path += ".nft";
-            }
-            JsonSerializerOptions options = new JsonSerializerOptions();
-            options.WriteIndented = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string testText = JsonSerializer.Serialize(this, options: options);
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, testText, utf8WithoutBom);
-        }
-        /// <summary>
-        /// loads an nft file from the specified path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static Nft Load(string path)
-        {
-            if (!path.EndsWith(".nft"))
-            {
-                path += ".nft";
-            }
-            FileInfo testFile = new FileInfo(path);
-            string text = File.ReadAllText(testFile.FullName);
-            Nft nft = JsonSerializer.Deserialize<Nft>(text);
-            return nft;
-        }
     }
 }

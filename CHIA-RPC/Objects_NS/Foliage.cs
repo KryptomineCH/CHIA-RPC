@@ -1,9 +1,11 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
     /// <summary>
     /// Class to represent the foliage object in the JSON
     /// </summary>
-    public class Foliage
+    public class Foliage : ObjectTemplate<Foliage>
     {
         /// <summary>
         /// Foliage block data object
@@ -39,7 +41,7 @@
     /// <summary>
     /// Class to represent the Foliage Block Data.
     /// </summary>
-    public class FoliageBlockData
+    public class FoliageBlockData : ObjectTemplate<FoliageBlockData>
     {
         /// <summary>
         /// Gets or sets the extension data.
@@ -70,7 +72,7 @@
     /// <summary>
     /// Class to represent the pool target.
     /// </summary>
-    public class PoolTarget
+    public class PoolTarget : ObjectTemplate<PoolTarget>
     {
         /// <summary>
         /// Gets or sets the maximum height.
@@ -85,7 +87,7 @@
     /// <summary>
     /// Class to represent the Foliage Transaction Block.
     /// </summary>
-    public class FoliageTransactionBlock
+    public class FoliageTransactionBlock : ObjectTemplate<FoliageTransactionBlock>
     {
         /// <summary>
         /// Gets or sets the additions root.
