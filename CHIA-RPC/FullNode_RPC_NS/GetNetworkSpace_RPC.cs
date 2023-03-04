@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
@@ -15,6 +16,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// the netspace, calculated in petabytes
         /// <remarks>calculated on demand with binary prefix (/1024^5)</remarks>
         /// </summary>
+        [JsonIgnore]
         public decimal space_pb { get
             {
                 return space / 1099511627776m;
@@ -24,6 +26,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// the netspace, calculated in exobytes
         /// <remarks>calculated on demand with binary prefix (/1024^6)</remarks>
         /// </summary>
+        [JsonIgnore]
         public decimal space_eb
         {
             get
@@ -35,6 +38,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// the netspace, calculated in zettabytes
         /// <remarks>calculated on demand with binary prefix (/1024^7)</remarks>
         /// </summary>
+        [JsonIgnore]
         public decimal space_zb
         {
             get
@@ -46,6 +50,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// the netspace, calculated in yottabytes
         /// <remarks>calculated on demand with binary prefix (/1024^8)</remarks>
         /// </summary>
+        [JsonIgnore]
         public decimal space_yb
         {
             get
@@ -58,6 +63,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// the netspace, calculated in brontobytes
         /// <remarks>calculated on demand with binary prefix (/1024^9)</remarks>
         /// </summary>
+        [JsonIgnore]
         public decimal space_bb
         {
             get
@@ -69,7 +75,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// <summary>
     /// Retrieves the info about the net space (total space allocated by farmers)
     /// </summary>
-    public class GetNetworkSpace_Rpc : RPCTemplate<GetNetworkSpace_Rpc>
+    public class GetNetworkSpace_RPC : RPCTemplate<GetNetworkSpace_RPC>
     {
         /// <summary>
         /// the start header hash

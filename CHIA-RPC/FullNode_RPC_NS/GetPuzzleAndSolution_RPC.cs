@@ -11,9 +11,9 @@ namespace CHIA_RPC.FullNode_RPC_NS
     public class GetPuzzleAndSolution_Response : ResponseTemplate<GetPuzzleAndSolution_Response>
     {
         /// <summary>
-        /// A collection of coin records returned from the response.
+        /// The puzzle and solution are provided in CLVM format.
         /// </summary>
-        public CoinRecord[] coin_records { get; set; }
+        public CoinSolution coin_solution { get; set; }
     }
     /// <summary>
     /// Retrieves a coin's spend record by its coin id, sometimes referred to as coin name. 

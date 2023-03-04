@@ -9,7 +9,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
     /// Important note: there might be multiple blocks at each height. 
     /// To find out which one is in the blockchain, use get_block_record_by_height.
     /// </remarks>
-    public class GetRecentSignagePointOrEos_Rpc : RPCTemplate<GetRecentSignagePointOrEos_Rpc>
+    public class GetRecentSignagePointOrEos_RPC : RPCTemplate<GetRecentSignagePointOrEos_RPC>
     {
         /// <summary>
         /// Gets or sets the hash of the output for a signage point (if it's in the middle of a sub slot).

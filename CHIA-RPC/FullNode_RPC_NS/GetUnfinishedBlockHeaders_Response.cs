@@ -1,6 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
-using System.Text.Json;
 
 namespace CHIA_RPC.FullNode_RPC_NS
 {
@@ -18,6 +17,6 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// Some of these blocks might not get confirmed, which will affect the blocks after it.
         /// The height and header hash of these blocks is unknown.
         /// </remarks>
-        BlockHeader[] headers { get; set; }
+        public BlockHeader[] headers { get; set; }
     }
 }

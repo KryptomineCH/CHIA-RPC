@@ -9,7 +9,7 @@ namespace CHIA_RPC.General
         public CoinRecord[] coin_records { get; set; }
     }
 
-    public class GetCoinRecordsByParentIDs_RPC : RPCTemplate<GetCoinRecordsByParentIDs_RPC>
+    public class GetCoinRecordsByNames_RPC : RPCTemplate<GetCoinRecordsByNames_RPC>
     {
         /// <summary>
         /// A list of coin names from which to retrieve records

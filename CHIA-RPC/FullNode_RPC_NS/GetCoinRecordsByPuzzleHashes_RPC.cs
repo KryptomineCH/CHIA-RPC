@@ -11,7 +11,7 @@ namespace CHIA_RPC.FullNode_RPC_NS
         /// <summary>
         /// Gets or sets the list of puzzle hashes to examine.
         /// </summary>
-        public string puzzle_hashes { get; set; }
+        public string[] puzzle_hashes { get; set; }
         /// <summary>
         /// Gets or sets the block height at which to begin the search.
         /// </summary>
