@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
+namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
     /// <summary>
     /// a did wallet is a digital identity
