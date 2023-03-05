@@ -1,7 +1,7 @@
 ﻿using CHIA_RPC.Objects_NS;
 using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.NFT
+namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
     public class NftSetNftDID_Response : ResponseTemplate<NftSetNftDID_Response>
     {

@@ -4,7 +4,7 @@ using CHIA_RPC.Objects_NS;
 using NFT.Storage.Net;
 using NFT.Storage.Net.API;
 
-namespace CHIA_RPC.Wallet_RPC_NS.NFT
+namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
     public class NftMintNFT_Response : ResponseTemplate<NftMintNFT_Response>
     {

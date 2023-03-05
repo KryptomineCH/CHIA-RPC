@@ -1,6 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.NFT
+namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
     public class NftSetNftStatus_RPC : RPCTemplate<NftSetNftStatus_RPC>
     {
