@@ -4,13 +4,6 @@ using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
-    public class DidRecoverySpend_Response : ResponseTemplate<DidRecoverySpend_Response>
-    {
-        /// <summary>
-        /// the validation data for the recovery
-        /// </summary>
-        public SpendBundle spend_bundle { get; set; }
-    }
     /// <summary>
     /// Recover a DID to a new DID by using an attest file
     /// </summary>
