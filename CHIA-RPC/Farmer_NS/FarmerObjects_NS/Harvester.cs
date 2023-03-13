@@ -3,7 +3,7 @@
 namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
 {
     /// <summary>
-    /// Contains information about a harvester node
+    /// Contains detailed information about a harvester node
     /// </summary>
     public class Harvester : ObjectTemplate<Harvester>
     {
