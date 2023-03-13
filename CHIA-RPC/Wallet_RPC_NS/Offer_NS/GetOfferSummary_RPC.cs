@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.Offer_NS
 {
-    internal class GetOfferSummary_RPC
+    /// <summary>
+    /// Returns the summary of a specific offer. Works for offers in any state.
+    /// </summary>
+    public class GetOfferSummary_RPC : RPCTemplate<GetOfferSummary_RPC>
     {
+        /// <summary>
+        /// The offer to summarize.
+        /// </summary>
+        public string offer { get; set; }
     }
 }

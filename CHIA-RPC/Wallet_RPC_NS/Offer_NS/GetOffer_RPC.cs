@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.Offer_NS
 {
-    internal class GetOffer_RPC
+    /// <summary>
+    /// Given an offer's unique identifier, return that offer's details.
+    /// </summary>
+    public class GetOffer_RPC : RPCTemplate<GetOffer_RPC>
     {
+        /// <summary>
+        /// The ID of the offer to examine. Can be retrieved from an offer file by calling cdv inspect spendbundles <offer_file>.
+        /// </summary>
+        public string trade_id { get; set; }
+
+        /// <summary>
+        /// Set to True to return a summary for the offer. Defaults to False, which only returns the offer's basic metadata.
+        /// </summary>
+        public bool file_contents { get; set; } = false;
     }
 }
