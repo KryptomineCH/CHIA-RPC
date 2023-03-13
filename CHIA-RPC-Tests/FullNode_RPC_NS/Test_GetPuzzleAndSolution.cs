@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.FullNode_RPC_NS;
+﻿using CHIA_RPC.DataLayer_NS;
+using CHIA_RPC.FullNode_RPC_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.FullNode_RPC_NS
@@ -18,13 +19,13 @@ namespace CHIA_RPC_Tests.FullNode_RPC_NS
         public void Test_RPCSerialisation()
         {
            
-            Test_RPCClasses<GetPuzzleAndSolution_RPC> helper = new Test_RPCClasses<GetPuzzleAndSolution_RPC>();
+            Test_RPCClasses<CreateDataStore_RPC> helper = new Test_RPCClasses<CreateDataStore_RPC>();
             helper.Test_RPCSerialisation(ExpectedRPCResults);
         }
         [Fact]
         public void Test_RpcDiskIO()
         {
-            Test_RPCClasses<GetPuzzleAndSolution_RPC> helper = new Test_RPCClasses<GetPuzzleAndSolution_RPC>();
+            Test_RPCClasses<CreateDataStore_RPC> helper = new Test_RPCClasses<CreateDataStore_RPC>();
             helper.Test_RPCDiskIO(ExpectedRPCResults);
         }
         [Fact]

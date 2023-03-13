@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.FullNode_RPC_NS;
+using CHIA_RPC.General_NS;
 using CHIA_RPC_Tests.Testhelpers;
 using System.Xml.Schema;
 
