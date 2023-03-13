@@ -73,5 +73,9 @@ both formats are compatible with the chia client</PackageReleaseNotes>
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
+	
+	<ItemGroup>
+		<AdditionalFiles Include="GlobalSuppressions.cs" />
+	</ItemGroup>
 
 </Project>
