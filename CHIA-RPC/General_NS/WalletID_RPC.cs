@@ -1,6 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.General
+namespace CHIA_RPC.General_NS
 {
     public class WalletID_Response : ResponseTemplate<WalletID_Response>
     {

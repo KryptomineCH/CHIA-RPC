@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace CHIA_RPC.General
+namespace CHIA_RPC.General_NS
 {
     public class HeaderHash_RPC : RPCTemplate<HeaderHash_RPC>
     {

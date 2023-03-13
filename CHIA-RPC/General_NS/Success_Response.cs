@@ -1,6 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.General
+namespace CHIA_RPC.General_NS
 {
     /// <summary>
     /// This is the most basic response which the chia node returns. It just contains a boolean success and an optional error message.
