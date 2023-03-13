@@ -5,7 +5,7 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
     /// <summary>
     /// Represents the configuration of the pool.
     /// </summary>
-    public class PoolConfig_FarmerObject : ObjectTemplate<PoolConfig_FarmerObject>
+    public class PoolConfig : ObjectTemplate<PoolConfig>
     {
         /// <summary>
         /// The launcher ID of the pool.

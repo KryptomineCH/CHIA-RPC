@@ -5,7 +5,7 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
     /// <summary>
     /// Details of a signage point
     /// </summary>
-    public class SignagePoint_FarmerObject : ObjectTemplate<SignagePoint_FarmerObject>
+    public class SignagePoint : ObjectTemplate<SignagePoint>
     {
         /// <summary>
         /// The challenge chain sub-block hash associated with this signage point

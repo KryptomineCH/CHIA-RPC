@@ -5,7 +5,7 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
     /// <summary>
     /// Represents the state of the pool.
     /// </summary>
-    public class PoolState_FarmerObject : ObjectTemplate<PoolState_FarmerObject>
+    public class PoolState : ObjectTemplate<PoolState>
     {
         /// <summary>
         /// The time in seconds until the authentication token expires.
@@ -65,11 +65,11 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// The configuration of the pool.
         /// </summary>
-        public PoolConfig_FarmerObject pool_config { get; set; }
+        public PoolConfig pool_config { get; set; }
 
         /// <summary>
         /// The errors that occurred in the past 24 hours.
         /// </summary>
-        public PoolError_FarmerObject[] pool_errors_24h { get; set; }
+        public PoolError[] pool_errors_24h { get; set; }
     }
 }

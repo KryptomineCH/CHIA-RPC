@@ -2,7 +2,7 @@
 
 namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
 {
-    public class PoolError_FarmerObject : ObjectTemplate<PoolError_FarmerObject>
+    public class PoolError : ObjectTemplate<PoolError>
     {
         /// <summary>
         /// The error code.

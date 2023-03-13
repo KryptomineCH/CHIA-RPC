@@ -11,7 +11,7 @@ namespace CHIA_RPC.Farmer_NS
         /// <summary>
         /// The details of the signage point
         /// </summary>
-        public SignagePoint_FarmerObject signage_point { get; set; }
+        public SignagePoint signage_point { get; set; }
 
         /// <summary>
         /// Empty list of proofs
