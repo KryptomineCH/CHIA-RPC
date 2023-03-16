@@ -13,6 +13,6 @@ namespace CHIA_RPC.Harvester_NS
         /// <summary>
         /// The file name of the plot to delete
         /// </summary>
-        public string filename { get; set; };
+        public string filename { get; set; }
     }
 }

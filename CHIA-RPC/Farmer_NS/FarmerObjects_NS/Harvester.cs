@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Harvester_NS.HarvesterObjects_NS;
 
 namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
 {
@@ -30,7 +31,7 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// a list with proper, valid plots
         /// </summary>
-        HarvesterPlotInfo[] plots { get; set; }
+        public HarvesterPlotInfo[] plots { get; set; }
         /// <summary>
         /// bool identifying if the harvester node was synchronizing or not at the time of request
         /// </summary>
