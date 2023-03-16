@@ -41,6 +41,6 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
         /// <remarks>
         /// optional
         /// </remarks>
-        public ulong fee { get; set; }
+        public ulong? fee { get; set; }
     }
 }

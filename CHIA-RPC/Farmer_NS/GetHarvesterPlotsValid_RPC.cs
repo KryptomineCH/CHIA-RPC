@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.Farmer_NS.FarmerObjects_NS;
+using CHIA_RPC.Harvester_NS.HarvesterObjects_NS;
 using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Farmer_NS

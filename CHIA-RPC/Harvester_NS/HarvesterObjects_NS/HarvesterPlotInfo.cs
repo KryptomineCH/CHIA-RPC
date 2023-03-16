@@ -1,6 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
+namespace CHIA_RPC.Harvester_NS.HarvesterObjects_NS
 {
     /// <summary>
     /// contains info about a specific plot in the harvester
