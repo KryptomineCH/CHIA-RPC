@@ -1,14 +1,16 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.WalletNode_NS
+namespace CHIA_RPC.General_NS
 {
     /// <summary>
     /// Show the current network (eg mainnet) and network prefix (eg XCH)
     /// </summary>
     /// <remarks>
-    /// <see href="https://docs.chia.net/wallet-rpc#get_network_info"/>
+    /// the request is parameterless<br/>
+    /// <see href="https://docs.chia.net/wallet-rpc#get_network_info"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_network_info"/>
     /// </remarks>
-    public class GetNetworkInfo_Response: ResponseTemplate<GetNetworkInfo_Response>
+    public class GetNetworkInfo_Response : ResponseTemplate<GetNetworkInfo_Response>
     {
         /// <summary>
         /// eg mainnet or testnet

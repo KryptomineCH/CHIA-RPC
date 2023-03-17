@@ -1,7 +1,7 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// Retrieves recent unfinished header blocks. 

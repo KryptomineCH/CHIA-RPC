@@ -1,11 +1,15 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// used by the server to return a specific block
     /// </summary>
+    /// <remarks>
+    /// uses an <see cref="General_NS.HeaderHash_RPC"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_block"/>
+    /// </remarks>
     public class GetBlock_Response : ResponseTemplate<GetBlock_Response>
     {
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// Warning: Gets a list of full blocks by height. 

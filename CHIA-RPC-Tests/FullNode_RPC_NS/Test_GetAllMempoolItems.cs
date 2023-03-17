@@ -1,7 +1,7 @@
-﻿using CHIA_RPC.FullNode_RPC_NS;
+﻿using CHIA_RPC.FullNode_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
-namespace CHIA_RPC_Tests.FullNode_RPC_NS
+namespace CHIA_RPC_Tests.FullNode_NS
 {
     public class Test_GetAllMempoolItems
     {

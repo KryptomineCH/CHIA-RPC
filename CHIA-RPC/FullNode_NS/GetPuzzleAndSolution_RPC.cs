@@ -2,7 +2,7 @@
 using CHIA_RPC.Objects_NS;
 using System.Text.Json;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// a coin's spend record by its coin id, sometimes referred to as coin name. 

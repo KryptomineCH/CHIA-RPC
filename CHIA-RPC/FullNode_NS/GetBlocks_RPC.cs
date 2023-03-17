@@ -1,7 +1,7 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// a list of full blocks by height. Important note: there might be multiple blocks at each height. To find out which one is in the blockchain, use get_block_record_by_height.

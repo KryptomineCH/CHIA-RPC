@@ -1,7 +1,7 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// Represents the response of the get_additions_and_removals API call, which retrieves the additions and removals (state transitions) for a certain block.

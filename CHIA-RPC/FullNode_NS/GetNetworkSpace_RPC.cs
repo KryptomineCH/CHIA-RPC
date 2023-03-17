@@ -1,7 +1,7 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json.Serialization;
 
-namespace CHIA_RPC.FullNode_RPC_NS
+namespace CHIA_RPC.FullNode_NS
 {
     /// <summary>
     /// Retrieves an estimate of the netspace, which is the total plotted space of all farmers, in bytes.
