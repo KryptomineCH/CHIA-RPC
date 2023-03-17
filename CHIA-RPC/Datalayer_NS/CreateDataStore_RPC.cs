@@ -1,13 +1,14 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// creates a new datastore
     /// </summary>
     /// <remarks>
-    /// can be validated with chia wallets show
+    /// request requires a <see cref="CreateDataStore_RPC"/><br/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/>
     /// </remarks>
     public class CreateDataStore_Response : ResponseTemplate<CreateDataStore_Response>
     {
@@ -23,6 +24,8 @@ namespace CHIA_RPC.DataLayer_NS
     /// <summary>
     /// Create a data store. Triggers a Chia transaction
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/></remarks>
+    /// <returns><see cref="CreateDataStore_Response"/></returns>
     public class CreateDataStore_RPC : RPCTemplate<CreateDataStore_RPC>
     {
         /// <summary>

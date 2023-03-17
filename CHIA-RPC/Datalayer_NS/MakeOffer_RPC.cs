@@ -1,11 +1,12 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Make an offer to include one or more keys in exchange for a Taker including one or more keys
     /// </summary>
-    /// <remarks>request returns a OfferFile_DataLayer</remarks>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#make_offer"/></remarks>
+    /// <returns><see cref="DatalayerObjects_NS.OfferFile_Datalayer"/></returns>
     public class MakeOffer_RPC : RPCTemplate<MakeOffer_RPC>
     {
         /// <summary>
@@ -27,7 +28,8 @@ namespace CHIA_RPC.DataLayer_NS
         /// <summary>
         /// The maker's data
         /// </summary>
-        public class DealParticipant
+        /// <remarks><see href="https://docs.chia.net/datalayer-rpc#make_offer"/></remarks>
+        public class DealParticipant : ObjectTemplate<DealParticipant>
         {
             /// <summary>
             /// The hexadecimal store ID

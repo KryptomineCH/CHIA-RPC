@@ -1,10 +1,11 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
 {
     /// <summary>
     /// Connection details
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#get_connections"/></remarks>
     public class Datalayer_Connection : ObjectTemplate<Datalayer_Connection>
     {
         /// <summary>

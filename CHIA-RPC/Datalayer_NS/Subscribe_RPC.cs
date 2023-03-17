@@ -1,11 +1,14 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Subscribe to a store ID
     /// </summary>
-    /// <remarks>request returns a success response</remarks>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/datalayer-rpc#subscribe"/>
+    /// </remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class Subscribe_RPC : RPCTemplate<Subscribe_RPC>
     {
         /// <summary>

@@ -1,10 +1,14 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Given a key and the data store in which the key is located, return corresponding value
     /// </summary>
+    /// <remarks>
+    /// requires a <see cref="GetValue_RPC"/> <br/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_value"/>
+    /// </remarks>
     public class GetValue_Response : ResponseTemplate<GetValue_Response>
     {
         /// <summary>
@@ -16,6 +20,8 @@ namespace CHIA_RPC.DataLayer_NS
     /// <summary>
     /// Given a key and the data store in which the key is located, return corresponding value
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#get_value"/></remarks>
+    /// <returns><see cref="GetValue_Response"/></returns>
     public class GetValue_RPC : RPCTemplate<GetValue_RPC>
     {
         /// <summary>

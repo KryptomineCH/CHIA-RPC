@@ -1,14 +1,27 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 using System.Text;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
 {
-	public class OfferFile_DataLayer : ObjectTemplate<OfferFile_DataLayer>
+    /// <summary>
+    /// The Maker offers to include a new key exchange for the Taker including a new key. A few things to keep in mind:OfferFile_Datalayer
+    /// <list type="bullet">
+    /// <item>Offers for multiple keys are also possible</item>
+    /// <item>Typically the Maker should not offer keys that have already been included because the Taker will have no incentive to accept the offer. (In making an offer, the Maker is essentially saying, "I'll include these keys if you agree to include these other keys.")</item>
+    /// <item>The fee is an optional transaction fee that will go to a farmer</item>
+    /// </list>
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#take_offer"/> <br/>
+    /// <seealso href="https://docs.chia.net/datalayer-rpc/#make_offer"/>
+    /// </remarks>
+    public class OfferFile_Datalayer : ObjectTemplate<OfferFile_Datalayer>
     {
         /// <summary>
         /// Represents the maker details.
         /// </summary>
-        public OfferFile_DataLayer_Maker[] maker { get; set; }
+        public OfferFile_Datalayer_Maker[] maker { get; set; }
 
         /// <summary>
         /// Represents the offer id.
@@ -18,7 +31,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// Represents the taker details.
         /// </summary>
-        public OfferFile_DataLayer_Taker[] taker { get; set; }
+        public OfferFile_Datalayer_Taker[] taker { get; set; }
 
         /// <summary>
         /// Represents the trade id.
@@ -41,7 +54,7 @@ namespace CHIA_RPC.Objects_NS
     /// <summary>
     /// Represents the details of a maker.
     /// </summary>
-    public class OfferFile_DataLayer_Maker
+    public class OfferFile_Datalayer_Maker
     {
         /// <summary>
         /// Represents the proofs details.
@@ -56,7 +69,7 @@ namespace CHIA_RPC.Objects_NS
     /// <summary>
     /// Represents the details of a taker.
     /// </summary>
-    public class OfferFile_DataLayer_Taker
+    public class OfferFile_Datalayer_Taker
     {
         /// <summary>
         /// Represents the inclusions details.

@@ -1,10 +1,12 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Close an active connection
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#close_connection"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class CloseConnection_RPC : RPCTemplate<CloseConnection_RPC>
     {
         /// <summary>

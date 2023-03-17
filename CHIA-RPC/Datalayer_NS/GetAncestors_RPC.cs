@@ -1,10 +1,14 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Return all ancestors of a given hash
     /// </summary>
+    /// <remarks>
+    /// request requires an <see cref="GetAncestors_RPC"/><br/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#get_ancestors"/>
+    /// </remarks>
     public class GetAncestors_Response : ResponseTemplate<GetAncestors_Response>
     {
         /// <summary>
@@ -16,6 +20,8 @@ namespace CHIA_RPC.DataLayer_NS
     /// <summary>
     /// Create a data store. Triggers a Chia transaction
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc/#get_ancestors"/></remarks>
+    /// <returns><see cref="GetAncestors_Response"/></returns>
     public class GetAncestors_RPC : RPCTemplate<GetAncestors_RPC>
     {
         /// <summary>

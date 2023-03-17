@@ -5,6 +5,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// <summary>
     /// Represents a cancel_offer RPC request.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc/#cancel_offer"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class CancelOffer_RPC : RPCTemplate<CancelOffer_RPC>
     {
         /// <summary>

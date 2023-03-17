@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.General
+namespace CHIA_RPC.FullNode_RPC_NS
 {
 
     public class GetCoinRecordsByHint_RPC : RPCTemplate<GetCoinRecordsByHint_RPC>

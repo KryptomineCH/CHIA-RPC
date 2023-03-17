@@ -5,6 +5,10 @@ namespace CHIA_RPC.Datalayer_NS
     /// <summary>
     /// Represents the response to a request for a list of store IDs for current subscriptions.
     /// </summary>
+    /// <remarks>
+    /// the request is parameterless <br/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#subscriptions"/>
+    /// </remarks>
     public class Subscriptions_Response : ResponseTemplate<Subscriptions_Response>
     {
         /// <summary>

@@ -1,12 +1,13 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Get all keys associated with a store_id
     /// </summary>
     /// <remarks>
-    /// the rpc is an ID_RPC
+    /// request requires an <see cref="General_NS.ID_RPC"/><br/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#get_keys"/>
     /// </remarks>
     public class GetKeys_Response : ResponseTemplate<GetKeys_Response>
     {

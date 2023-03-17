@@ -1,10 +1,13 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
 {
     /// <summary>
     /// Represents a mirror object.
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_mirrors"/>
+    /// </remarks>
     public class Mirror : ObjectTemplate<Mirror>
     {
         /// <summary>

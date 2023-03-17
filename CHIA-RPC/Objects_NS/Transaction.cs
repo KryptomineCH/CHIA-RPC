@@ -3,6 +3,12 @@ using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Objects_NS
 {
+    /// <summary>
+    /// a general transaction
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/><br/>
+    /// </remarks>
     public class Transaction : ObjectTemplate<Transaction>
     {
         public Coin[] additions { get; set; }

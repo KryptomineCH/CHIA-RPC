@@ -1,12 +1,13 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Class representing the insert function of the data_layer RPC.
     /// triggers a chia transaction
     /// </summary>
-    /// <remarks>Request returns a TxID_Response</remarks>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#insert"/></remarks>
+    /// <returns><see cref="General_NS.TxID_Response"/></returns>
     public class Insert_RPC : RPCTemplate<Insert_RPC>
     {
         /// <summary>

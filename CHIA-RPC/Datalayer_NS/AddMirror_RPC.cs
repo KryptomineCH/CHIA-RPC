@@ -1,11 +1,14 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.DataLayer_NS
+namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Add a new mirror from a local or remote data store. Triggers a Chia transaction
     /// </summary>
-    /// <remarks>Request returns a success_response</remarks>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/datalayer-rpc#add_mirror"/>
+    /// </remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class GetSignagePoint_RPC : RPCTemplate<GetSignagePoint_RPC>
     {
         /// <summary>
@@ -29,5 +32,4 @@ namespace CHIA_RPC.DataLayer_NS
         /// <remares>optional</remares>
         public ulong? fee { get; set; }
     }
-
 }
