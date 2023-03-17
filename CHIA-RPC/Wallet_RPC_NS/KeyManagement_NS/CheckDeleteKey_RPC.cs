@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
-using System.Text;
 using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
 {
+    /// <summary>
+    /// Display whether a fingerprint has a balance, and whether it is used for farming or pool rewards. 
+    /// This is helpful when determining whether it is safe to delete a key without first backing it up
+    /// </summary>
     public class CheckDeleteKey_Response : ResponseTemplate<CheckDeleteKey_Response>
     {
         /// <summary>
@@ -24,6 +26,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
         /// </summary>
         public bool wallet_balance { get; set; }
     }
+    /// <summary>
+    /// Display whether a fingerprint has a balance, and whether it is used for farming or pool rewards. 
+    /// This is helpful when determining whether it is safe to delete a key without first backing it up
+    /// </summary>
     public class CheckDeleteKey_RPC : RPCTemplate<CheckDeleteKey_RPC>
     {
         /// <summary>
@@ -36,6 +42,6 @@ namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
         /// The maximum number of puzzle hashes to search [Default: 100]
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong max_ph_to_search { get; set; }
+        public ulong? max_ph_to_search { get; set; }
     }
 }

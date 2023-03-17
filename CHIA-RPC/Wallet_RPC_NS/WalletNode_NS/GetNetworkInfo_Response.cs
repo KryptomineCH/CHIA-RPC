@@ -2,6 +2,12 @@
 
 namespace CHIA_RPC.Wallet_RPC_NS.WalletNode_NS
 {
+    /// <summary>
+    /// Show the current network (eg mainnet) and network prefix (eg XCH)
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/wallet-rpc#get_network_info"/>
+    /// </remarks>
     public class GetNetworkInfo_Response: ResponseTemplate<GetNetworkInfo_Response>
     {
         /// <summary>
