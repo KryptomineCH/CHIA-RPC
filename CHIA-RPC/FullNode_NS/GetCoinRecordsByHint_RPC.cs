@@ -3,7 +3,11 @@ using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.FullNode_NS
 {
-
+    /// <summary>
+    /// Retrieves coins by hint; by default only returns unspent coins
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_coin_records_by_hint"/></remarks>
+    /// <returns><see cref="General_NS.GetCoinRecords_Response"/></returns>
     public class GetCoinRecordsByHint_RPC : RPCTemplate<GetCoinRecordsByHint_RPC>
     {
         /// <summary>

@@ -2,10 +2,11 @@
 
 namespace CHIA_RPC.FullNode_NS
 {
-
     /// <summary>
     /// Class for retrieving coins for given parent coin IDs, by default returns unspent coins.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_coin_records_by_parent_ids"/></remarks>
+    /// <returns><see cref="General_NS.GetCoinRecords_Response"/></returns>
     public class GetCoinRecordsByParentIDs_RPC : RPCTemplate<GetCoinRecordsByParentIDs_RPC>
     {
         /// <summary>

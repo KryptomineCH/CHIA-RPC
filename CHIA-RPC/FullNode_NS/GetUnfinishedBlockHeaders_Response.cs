@@ -1,5 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.FullNode_NS
 {
@@ -8,6 +8,10 @@ namespace CHIA_RPC.FullNode_NS
     /// These blocks might get finished and confirmed soon. 
     /// The height and header hash is unknown, because some of these blocks might not get confirmed, which will affect the blocks after it.
     /// </summary>
+    /// <remarks>
+    /// this request has no parameters<br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_unfinished_block_headers"/>
+    /// </remarks>
     public class GetUnfinishedBlockHeaders_Response : ResponseTemplate<GetUnfinishedBlockHeaders_Response>
     {
         /// <summary>

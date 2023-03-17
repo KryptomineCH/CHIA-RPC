@@ -15,6 +15,10 @@ namespace CHIA_RPC.General_NS
     /// <summary>
     /// This class represents the response received after pushing a transaction to the mempool.
     /// </summary>
+    /// <remarks>
+    /// request uses a <see cref="PushTx_RPC"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#push_tx"/>
+    /// </remarks>
     public class PushTx_Response : ResponseTemplate<PushTx_Response>
     {
         /// <summary>
@@ -25,6 +29,8 @@ namespace CHIA_RPC.General_NS
     /// <summary>
     /// Represents an RPC request to push a transaction to the blockchain.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#push_tx"/></remarks>
+    /// <returns><see cref="PushTx_Response"/></returns>
     public class PushTx_RPC : RPCTemplate<PushTx_RPC>
     {
         /// <summary>

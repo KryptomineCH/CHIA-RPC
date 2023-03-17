@@ -1,5 +1,5 @@
-﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 using System.Text;
 
 namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS

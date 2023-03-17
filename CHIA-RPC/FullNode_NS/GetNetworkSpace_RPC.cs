@@ -6,6 +6,10 @@ namespace CHIA_RPC.FullNode_NS
     /// <summary>
     /// Retrieves an estimate of the netspace, which is the total plotted space of all farmers, in bytes.
     /// </summary>
+    /// <remarks>
+    /// request uses an <see cref="GetNetworkSpace_RPC"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_network_space"/>
+    /// </remarks>
     public class GetNetworkSpace_Response : ResponseTemplate<GetNetworkSpace_Response>
     {
         /// <summary>
@@ -75,6 +79,8 @@ namespace CHIA_RPC.FullNode_NS
     /// <summary>
     /// Retrieves the info about the net space (total space allocated by farmers)
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_network_space"/></remarks>
+    /// <returns><see cref="GetNetworkSpace_Response"/></returns>
     public class GetNetworkSpace_RPC : RPCTemplate<GetNetworkSpace_RPC>
     {
         /// <summary>

@@ -8,6 +8,10 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// the coins value in mojos
         /// </summary>
+        /// <remarks>
+        /// used by full node and wallet node<br/>
+        /// <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/>
+        /// </remarks>
         public ulong amount { get; set; }
         public string parent_coin_info { get; set; }
         public string puzzle_hash { get; set; }

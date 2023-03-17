@@ -1,11 +1,15 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
     /// <summary>
     /// Class representing a Block object
     /// </summary>
-    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_block"/></remarks>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_block"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_blocks"/>
+    /// </remarks>
     public class Block : ObjectTemplate<Block>
     {
         /// <summary>

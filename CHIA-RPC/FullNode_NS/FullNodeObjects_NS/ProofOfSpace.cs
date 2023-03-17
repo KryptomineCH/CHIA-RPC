@@ -2,6 +2,13 @@
 
 namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_block"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_blocks"/>
+    /// </remarks>
     public class ProofOfSpace : ObjectTemplate<ProofOfSpace>
     {
         public string challenge { get; set; }

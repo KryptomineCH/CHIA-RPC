@@ -1,8 +1,12 @@
-﻿
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_additions_and_removals"/></remarks>
     public class CoinTransaction : ObjectTemplate<CoinTransaction>
     {
         /// <summary>

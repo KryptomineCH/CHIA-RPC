@@ -1,8 +1,14 @@
-﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_unfinished_block_headers"/>
+    /// </remarks>
     public class BlockHeader : ObjectTemplate<BlockHeader>
     {
         public Proof challenge_chain_sp_proof { get; set; }

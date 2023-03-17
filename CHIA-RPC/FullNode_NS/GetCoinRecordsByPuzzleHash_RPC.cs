@@ -6,6 +6,8 @@ namespace CHIA_RPC.FullNode_NS
     /// <summary>
     /// Class to retrieve a list of coin records with a certain puzzle hash.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_coin_records_by_puzzle_hash"/></remarks>
+    /// <returns><see cref="General_NS.GetCoinRecords_Response"/></returns>
     public class GetCoinRecordsByPuzzleHash_RPC : RPCTemplate<GetCoinRecordsByPuzzleHash_RPC>
     {
         /// <summary>

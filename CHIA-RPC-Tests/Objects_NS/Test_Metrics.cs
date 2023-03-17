@@ -1,5 +1,4 @@
-﻿using CHIA_RPC.FullNode_NS;
-using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Objects_NS
@@ -14,13 +13,13 @@ namespace CHIA_RPC_Tests.Objects_NS
         [Fact]
         public void Test_ObjectSerialisation()
         {
-            Test_ObjectClasses<Metrics> helper = new Test_ObjectClasses<Metrics>();
+            Test_ObjectClasses<BlockCountMetrics> helper = new Test_ObjectClasses<BlockCountMetrics>();
             helper.Test_ObjectSerialisation(ExpectedResults);
         }
         [Fact]
         public void Test_ObjectDiskIO()
         {
-            Test_ObjectClasses<Metrics> helper = new Test_ObjectClasses<Metrics>();
+            Test_ObjectClasses<BlockCountMetrics> helper = new Test_ObjectClasses<BlockCountMetrics>();
             helper.Test_ObjectDiskIO(ExpectedResults);
         }
     }

@@ -6,6 +6,8 @@ namespace CHIA_RPC.FullNode_NS
     /// <summary>
     /// Represents a class that contains input parameters for the get_coin_records_by_puzzle_hashes RPC request.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_coin_records_by_puzzle_hashes"/></remarks>
+    /// <returns><see cref="General_NS.GetCoinRecords_Response"/></returns>
     public class GetCoinRecordsByPuzzleHashes_RPC : RPCTemplate<GetCoinRecordsByPuzzleHashes_RPC>
     {
         /// <summary>

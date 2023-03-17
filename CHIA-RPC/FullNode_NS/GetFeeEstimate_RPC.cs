@@ -5,6 +5,10 @@ namespace CHIA_RPC.FullNode_NS
     /// <summary>
     /// Contains information about the estimated Transaction Fees from the Chia Client
     /// </summary>
+    /// <remarks>
+    /// the request uses a <see cref="GetFeeEstimate_RPC"/><br/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_fee_estimate"/>
+    /// </remarks>
     public class GetFeeEstimate_Response : ResponseTemplate<GetFeeEstimate_Response>
     {
         /// <summary>
@@ -56,6 +60,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Contains the request parameters for the get_fee_estimate RPC method. 
     /// Used to obtain an estimated fee for one or more targeted times for a transaction to be included in the blockchain.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_fee_estimate"/></remarks>
+    /// <returns><see cref="GetFeeEstimate_Response"/></returns>
     public class GetFeeEstimate_RPC : RPCTemplate<GetFeeEstimate_RPC>
     {
         /// <summary>
