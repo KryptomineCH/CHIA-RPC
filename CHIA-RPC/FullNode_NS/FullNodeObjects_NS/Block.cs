@@ -1,11 +1,11 @@
-﻿
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
     /// <summary>
     /// Class representing a Block object
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_block"/></remarks>
     public class Block : ObjectTemplate<Block>
     {
         /// <summary>
@@ -21,7 +21,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The finished_sub_slots for the block
         /// </summary>
-        public List<object> finished_sub_slots { get; set; }
+        public object[] finished_sub_slots { get; set; }
 
         /// <summary>
         /// The foliage data for the block
@@ -61,7 +61,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The transactions_generator_ref_list for the block
         /// </summary>
-        public List<object> transactions_generator_ref_list { get; set; }
+        public object[] transactions_generator_ref_list { get; set; }
 
         /// <summary>
         /// The transactions_info for the block

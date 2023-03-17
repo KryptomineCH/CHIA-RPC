@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Objects_NS
 {

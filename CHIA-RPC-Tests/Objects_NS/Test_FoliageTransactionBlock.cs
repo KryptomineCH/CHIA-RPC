@@ -1,4 +1,4 @@
-﻿using CHIA_RPC.Objects_NS;
+﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Objects_NS
