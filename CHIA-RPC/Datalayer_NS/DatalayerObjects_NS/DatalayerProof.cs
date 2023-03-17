@@ -1,5 +1,4 @@
-﻿
-namespace CHIA_RPC.Objects_NS
+﻿namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
 {
     internal class DatalayerProof
     {
