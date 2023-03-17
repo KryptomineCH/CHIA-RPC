@@ -5,6 +5,10 @@ namespace CHIA_RPC.Farmer_NS
     /// <summary>
     /// Response for getting payout targets for the farmer and pool
     /// </summary>
+    /// <remarks>
+    /// request uses an <see cref="GetRewardTargets_RPC"/><br/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_reward_targets"/>
+    /// </remarks>
     public class GetRewardTargets_Response : ResponseTemplate<GetRewardTargets_Response>
     {
         /// <summary>
@@ -20,6 +24,8 @@ namespace CHIA_RPC.Farmer_NS
     /// <summary>
     /// List the payout targets for the farmer (1/8 of the reward) and pool (7/8)
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/farmer-rpc#get_reward_targets"/></remarks>
+    /// <returns><see cref="GetRewardTargets_Response"/></returns>
     public class GetRewardTargets_RPC : RPCTemplate<GetRewardTargets_RPC>
     {
         /// <summary>

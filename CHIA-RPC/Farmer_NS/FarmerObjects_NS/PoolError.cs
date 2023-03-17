@@ -2,6 +2,10 @@
 
 namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/farmer-rpc#get_pool_state"/></remarks>
     public class PoolError : ObjectTemplate<PoolError>
     {
         /// <summary>

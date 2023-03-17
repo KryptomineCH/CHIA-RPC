@@ -6,6 +6,10 @@ namespace CHIA_RPC.Farmer_NS
     /// <summary>
     /// Response object for get_harvesters_summary API endpoint.
     /// </summary>
+    /// <remarks>
+    /// request is parameterless<br/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters_summary"/>
+    /// </remarks>
     public class GetHarvestersSummary_Response : ResponseTemplate<GetHarvestersSummary_Response>
     {
         /// <summary>

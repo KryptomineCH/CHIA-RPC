@@ -5,7 +5,8 @@ namespace CHIA_RPC.Farmer_NS
     /// <summary>
     /// Represents the RPC request to set the farmer and/or pool reward target address(es).
     /// </summary>
-    /// <remarks>returns a success response object</remarks>
+    /// <remarks><see href="https://docs.chia.net/farmer-rpc#set_reward_targets"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class SetRewardTargets_RPC : RPCTemplate<SetRewardTargets_RPC>
     {
         /// <summary>

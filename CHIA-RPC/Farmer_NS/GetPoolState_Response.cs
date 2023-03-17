@@ -6,6 +6,10 @@ namespace CHIA_RPC.Farmer_NS
     /// <summary>
     /// Represents the response of the get_pool_state endpoint.
     /// </summary>
+    /// <remarks>
+    /// request is parameterless<br/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_pool_state"/>
+    /// </remarks>
     public class GetPoolState_Response : ResponseTemplate<GetPoolState_Response>
     {
         /// <summary>

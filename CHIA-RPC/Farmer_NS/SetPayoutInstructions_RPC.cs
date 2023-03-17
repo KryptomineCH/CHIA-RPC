@@ -5,7 +5,8 @@ namespace CHIA_RPC.Farmer_NS
     /// <summary>
     /// Set the payout instructions parameter for your pool configuration.
     /// </summary>
-    /// <remarks>Request returns a success response</remarks>
+    /// <remarks><see href="https://docs.chia.net/farmer-rpc#set_payout_instructions"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class SetPayoutInstructions_RPC : RPCTemplate<SetPayoutInstructions_RPC>
     {
         /// <summary>

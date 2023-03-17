@@ -6,6 +6,10 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
     /// <summary>
     /// Contains detailed information about a harvester node
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters"/><br/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters_summary"/>
+    /// </remarks>
     public class Harvester : ObjectTemplate<Harvester>
     {
         /// <summary>

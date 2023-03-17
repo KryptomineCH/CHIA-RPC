@@ -5,6 +5,10 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
     /// <summary>
     /// specifying the host information
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters"/><br/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters_summary"/>
+    /// </remarks>
     public class HarvesterConnection : ObjectTemplate<HarvesterConnection>
     {
         /// <summary>

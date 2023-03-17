@@ -5,6 +5,7 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
     /// <summary>
     /// Details of a signage point
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/farmer-rpc#get_signage_point"/></remarks>
     public class SignagePoint : ObjectTemplate<SignagePoint>
     {
         /// <summary>
