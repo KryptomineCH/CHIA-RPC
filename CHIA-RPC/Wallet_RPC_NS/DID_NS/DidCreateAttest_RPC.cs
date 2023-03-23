@@ -5,6 +5,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// Response class for the Create Attest functionality.
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/did-rpc#did_create_attest"/><br/><br/>
+    /// uses:<br/><see cref="DidCreateAttest_RPC"/>
+    /// </remarks>
     public class DidCreateAttest_Response : ResponseTemplate<DidCreateAttest_Response>
     {
         /// <summary>
@@ -26,6 +30,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// Response from the did_create_attest RPC command
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#did_create_attest"/></remarks>
+    /// <returns><see cref="DidCreateAttest_Response"/></returns>
     public class DidCreateAttest_RPC : RPCTemplate<DidUpdateRecoveryIDs_RPC>
     {
         /// <summary>

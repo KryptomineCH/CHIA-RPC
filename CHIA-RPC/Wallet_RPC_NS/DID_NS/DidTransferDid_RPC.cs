@@ -6,6 +6,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// Response  class for the did_transfer_did API method
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/did-rpc#did_transfer_did"/><br/><br/>
+    /// uses:<br/> <see cref="DidTransferDid_RPC"/>
+    /// </remarks>
     public class DidTransferDid_Response : ResponseTemplate<DidTransferDid_Response>
     {
         /// <summary>
@@ -17,6 +21,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// RPC class for the did_transfer_did API method
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#did_transfer_did"/></remarks>
+    /// <returns><see cref="DidTransferDid_Response"/></returns>
     public class DidTransferDid_RPC : RPCTemplate<DidTransferDid_RPC>
     {
         /// <summary>

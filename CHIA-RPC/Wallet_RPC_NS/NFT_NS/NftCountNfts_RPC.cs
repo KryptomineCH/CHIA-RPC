@@ -5,6 +5,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
     /// <summary>
     /// A class representing the response for the NFT count in a wallet.
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/nft-rpc#nft_count_nfts"/><br/><br/>
+    /// Uses:<br/><see cref="NftCountNfts_RPC"/>
+    /// </remarks>
     public class NftCountNfts_Response : ResponseTemplate<NftCountNfts_Response>
     {
         /// <summary>
@@ -21,6 +25,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
     /// NftCountNfts_RPC is a class for serializing and deserializing the JSON RPC request
     /// for counting the number of NFTs in a wallet.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/nft-rpc#nft_count_nfts"/></remarks>
+    /// <returns><see cref="NftCountNfts_Response"/></returns>
     public class NftCountNfts_RPC : RPCTemplate<NftCountNfts_RPC>
     {
         /// <summary>

@@ -2,6 +2,11 @@
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
+    /// <summary>
+    /// Transfer an NFT to a new wallet address
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/nft-rpc#nft_transfer_nft"/></remarks>
+    /// <returns><see cref="General_NS.SpendBundle_Response"/></returns>
     public class NftTransferNft_RPC : RPCTemplate<NftTransferNft_RPC>
     {
         /// <summary>
@@ -22,6 +27,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
         /// <summary>
         /// The one-time blockchain fee (in mojos) to be used upon transferring the NFT
         /// </summary>
-        public ulong fee { get; set; }
+        public ulong? fee { get; set; }
+        /// <summary>
+        /// If true, will not generate a new puzzle hash / address for this transaction only. 
+        /// Note that setting this parameter to true will override the global default setting from config.yaml
+        /// </summary>
+        public bool? reuse_puzhash { get; set; }
     }
 }

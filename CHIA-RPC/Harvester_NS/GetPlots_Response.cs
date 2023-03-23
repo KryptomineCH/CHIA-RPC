@@ -7,6 +7,10 @@ namespace CHIA_RPC.Harvester_NS
     /// GetPlots_Response represents the server response for the get_plots functionality.
     /// The functionality lists all local plots of the harvester.
     /// </summary>
+    /// <remarks>
+    /// request has no parameters<br/>
+    /// <see href="https://docs.chia.net/harvester-rpc/#get_plots"/>
+    /// </remarks>
     public class GetPlots_Response : ResponseTemplate<GetPlots_Response>
     {
         /// <summary>

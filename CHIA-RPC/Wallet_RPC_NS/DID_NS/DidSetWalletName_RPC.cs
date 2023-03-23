@@ -6,6 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// renames a did wallet. Returns a wallet_id response
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#did_set_wallet_name"/></remarks>
+    /// <returns><see cref="General_NS.WalletID_Response"/></returns>
     public class DidSetWalletName_RPC : RPCTemplate<DidSetWalletName_RPC>
     {
         /// <summary>

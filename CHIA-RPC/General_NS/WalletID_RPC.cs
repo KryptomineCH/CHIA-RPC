@@ -11,7 +11,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// The Wallet ID of the wallet from which to obtain the balance
         /// </summary>
-        /// <remarks>MUST BE larges than 0 <br/>
+        /// <remarks>MUST BE larger than 0 <br/>
         /// eg. 5</remarks>
         public ulong wallet_id { get; set; }
     }

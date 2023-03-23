@@ -1,5 +1,4 @@
-﻿
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
@@ -7,7 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// Response class for the did_get_info RPC.
     /// </summary>
     /// <remarks>
-    /// uses a WalletID_RPC
+    /// <see href="https://docs.chia.net/did-rpc#did_get_info"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
     public class DidGetInfo_Response : ResponseTemplate<DidGetInfo_Response>
     {

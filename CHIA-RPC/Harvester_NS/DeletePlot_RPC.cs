@@ -5,9 +5,8 @@ namespace CHIA_RPC.Harvester_NS
     /// <summary>
     /// Delete a single plot
     /// </summary>
-    /// <remarks>
-    /// Returns a Success_Response
-    /// </remarks>
+    /// <remarks><see href="https://docs.chia.net/harvester-rpc/#delete_plot"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class DeletePlot_RPC : RPCTemplate<DeletePlot_RPC>
     {
         /// <summary>

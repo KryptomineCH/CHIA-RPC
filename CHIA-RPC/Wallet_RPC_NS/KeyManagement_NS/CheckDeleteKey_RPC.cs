@@ -7,6 +7,10 @@ namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
     /// Display whether a fingerprint has a balance, and whether it is used for farming or pool rewards. 
     /// This is helpful when determining whether it is safe to delete a key without first backing it up
     /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/wallet-rpc#check_delete_key"/><br/><br/>
+    /// Uses:<br/><see cref="CheckDeleteKey_RPC"/>
+    /// </remarks>
     public class CheckDeleteKey_Response : ResponseTemplate<CheckDeleteKey_Response>
     {
         /// <summary>
@@ -30,6 +34,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.KeyManagement
     /// Display whether a fingerprint has a balance, and whether it is used for farming or pool rewards. 
     /// This is helpful when determining whether it is safe to delete a key without first backing it up
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/wallet-rpc#check_delete_key"/></remarks>
+    /// <returns><see cref="CheckDeleteKey_Response"/></returns>
     public class CheckDeleteKey_RPC : RPCTemplate<CheckDeleteKey_RPC>
     {
         /// <summary>

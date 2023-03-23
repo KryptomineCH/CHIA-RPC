@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
@@ -7,7 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// returns the public key of a did wallet.
     /// </summary>
     /// <remarks>
-    /// requires a wallet id rpc
+    /// <see href="https://docs.chia.net/did-rpc#did_get_pubkey"/><br/><br/>
+    /// uses: <br/><see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
     public class DidGetPubkey_Response : ResponseTemplate<DidGetPubkey_Response>
     {

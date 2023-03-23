@@ -3,10 +3,22 @@ using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
+    /// <summary>
+    /// Get info about an NFT
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/nft-rpc#nft_get_info"/><br/><br/>
+    /// Uses:<br/><see cref="NftGetInfo_RPC"/>
+    /// </remarks>
     public class NftGetInfo_Response : ResponseTemplate<NftGetInfo_Response>
     {
         public Nft nft_info { get; set; }
     }
+    /// <summary>
+    /// Get info about an NFT
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/nft-rpc#nft_get_info"/></remarks>
+    /// <returns><see cref="NftGetInfo_Response"/></returns>
     public class NftGetInfo_RPC : RPCTemplate<NftGetInfo_RPC>
     {
         /// <summary>

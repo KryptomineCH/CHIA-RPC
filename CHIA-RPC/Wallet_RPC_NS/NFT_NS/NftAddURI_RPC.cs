@@ -2,6 +2,11 @@
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
+    /// <summary>
+    /// Add a new URI to the location URI list
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/nft-rpc#nft_add_uri"/></remarks>
+    /// <returns><see cref="General_NS.SpendBundle_Response"/></returns>
     public class NftAddURI_RPC : RPCTemplate<NftAddURI_RPC>
     {
         /// <summary>
@@ -27,6 +32,12 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
         /// <summary>
         /// The one-time blockchain fee (in mojos) to be used upon adding a URI
         /// </summary>
-        public ulong fee { get; set; }
+        public ulong? fee { get; set; }
+
+        /// <summary>
+        /// If true, will not generate a new puzzle hash / address for this transaction only. 
+        /// Note that setting this parameter to true will override the global default setting from config.yaml
+        /// </summary>
+        public bool? reuse_puzhash { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
@@ -7,7 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// Fetch the metadata for a given wallet
     /// </summary>
     /// <remarks>
-    /// uses a WalletID rpc
+    /// <see href="https://docs.chia.net/did-rpc#did_get_metadata"/><br/><br/>
+    /// uses:<br/> <see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
     public class DidGetMetadata_Response : ResponseTemplate<DidGetMetadata_Response>
     {

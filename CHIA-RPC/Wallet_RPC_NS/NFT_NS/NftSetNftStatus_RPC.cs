@@ -2,6 +2,11 @@
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
+    /// <summary>
+    /// Set the transaction status of an NFT
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/nft-rpc#nft_set_nft_status"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class NftSetNftStatus_RPC : RPCTemplate<NftSetNftStatus_RPC>
     {
         /// <summary>

@@ -1,30 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
     /// <summary>
     /// a did wallet is a digital identity
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#create_new_wallet"/></remarks>
+    /// <returns><see cref="WalletManagement_NS.CreateNewWallet_Response"/></returns>
     public class CreateNewDIDWallet_RPC : RPCTemplate<CreateNewDIDWallet_RPC>
     {
-        public CreateNewDIDWallet_RPC()
-        {
-            wallet_type = "did_wallet";
-            did_type = "new";
-        }
         /// <summary>
         /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string wallet_type { get; set; }
+        public WalletType wallet_type { get; set; } = WalletType.did_wallet;
         /// <summary>
         /// Must be either new or recovery. If recovery, then each of the following parameters will be ignored
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string did_type { get; set; }
+        public string did_type { get; set; } = "new";
         /// <summary>
         /// TThe name of the DID wallet [Default: None]
         /// </summary>

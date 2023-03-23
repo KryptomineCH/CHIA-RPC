@@ -7,7 +7,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// Represents the response for the `did_message_spend` RPC.
     /// </summary>
     /// <remarks>
-    /// Uses a WalletID_RPC
+    /// <see href="https://docs.chia.net/did-rpc#did_message_spend"/><br/><br/>
+    /// Uses:<br/> <see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
     public class DidMessageSpend_Response : ResponseTemplate<DidMessageSpend_Response>
     {

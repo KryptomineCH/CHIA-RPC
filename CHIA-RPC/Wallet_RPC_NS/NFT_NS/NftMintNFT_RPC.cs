@@ -6,11 +6,23 @@ using NFT.Storage.Net.API;
 
 namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
 {
+    /// <summary>
+    /// Mint a new NFT
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/nft-rpc#nft_mint_nft"/><br/><br/>
+    /// Uses:<br/><see cref="NftMintNFT_RPC"/>
+    /// </remarks>
     public class NftMintNFT_Response : ResponseTemplate<NftMintNFT_Response>
     {
         public SpendBundle spend_bundle { get; set; }
         public ulong wallet_id { get; set; }
     }
+    /// <summary>
+    /// Mint a new NFT
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/nft-rpc#nft_mint_nft"/></remarks>
+    /// <returns><see cref="NftMintNFT_Response"/></returns>
     public class NftMintNFT_RPC : RPCTemplate<NftMintNFT_RPC>
     {
         /// <summary>
@@ -59,10 +71,12 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
             meta_uris = new List<string>();
             license_uris = new List<string>();
         }
+
         /// <summary>
         ///  the NFT wallet which should be used for minting
         /// </summary>
         public ulong wallet_id { get; set; }
+
         /// <summary>
         /// set of urls for the image, document or whatever file is beeing uploaded
         /// </summary>
@@ -70,36 +84,51 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
         /// Multiple backup links have to be provided but all data needs to be equal
         /// </remarks>
         public List<string> uris { get; set; }
+
         /// <summary>
         /// sha256 hashsum for the image, document or whatever file is beeing uploaded
         /// </summary>
         public string hash { get; set; }
+
+        /// <summary>
+        /// Optionally specify the DID to be associated with this NFT
+        /// </summary>
+        /// <remarks>
+        /// If not specified and mint with did is choosen, automatically uses the wallets did
+        /// </remarks>
+        public string? did_id { get; set; }
+
         /// <summary>
         /// urls for the metadata information json file
         /// </summary>
         /// <remarks>
         /// Multiple backup links have to be provided but all data needs to be equal
         /// </remarks>
-        public List<string> meta_uris { get; set; }
+        public List<string>? meta_uris { get; set; }
+
         /// <summary>
         /// sha256 hashsum for the metadata file
         /// </summary>
-        public string meta_hash { get; set; }
+        public string? meta_hash { get; set; }
+
         /// <summary>
         /// urls to the license file
         /// </summary>
         /// <remarks>
         /// Multiple backup links have to be provided but all data needs to be equal
         /// </remarks>
-        public List<string> license_uris { get; set; }
+        public List<string>? license_uris { get; set; }
+
         /// <summary>
         /// sha256 hashsum for the license file
         /// </summary>
-        public string license_hash { get; set; }
+        public string? license_hash { get; set; }
+
         /// <summary>
         /// future transactions will pay a royalty fee to this address
         /// </summary>
-        public string royalty_address { get; set; }
+        public string? royalty_address { get; set; }
+
         /// <summary>
         /// the royalty amount in rpc format.
         /// </summary>
@@ -108,11 +137,13 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
         /// 150 = 1.5% <br/>
         /// 1250 = 12.5%
         /// </remarks>
-        public ulong royalty_percentage { get; set; }
+        public ulong? royalty_percentage { get; set; }
+
         /// <summary>
         /// The target address which will be the first owner of the nft
         /// </summary>
-        public string target_address { get; set; }
+        public string? target_address { get; set; }
+
         /// <summary>
         /// the edition number specifies the number of the nft in the whole collection. 
         /// Every number should be unique for each collection
@@ -120,20 +151,31 @@ namespace CHIA_RPC.Wallet_RPC_NS.NFT_NS
         /// <remarks>
         /// please set this correctly in the json metadata! it will be pulled from there
         /// </remarks>
-        public ulong edition_number { get; set; }
+        public ulong? edition_number { get; set; }
+
         /// <summary>
         /// the edition total specifies ho many images there are within one collection
         /// </summary>
         /// <remarks>
         /// please set this correctly in the json metadata! it will be pulled from there
         /// </remarks>
-        public ulong edition_total { get; set; }
+        public ulong? edition_total { get; set; }
+
         /// <summary>
         /// the fee (in mojos) which should be spent for minting.
         /// </summary>
         /// <remarks>
         /// a fee under 1000 mojos won't even be included into hpool's mempool.
         /// </remarks>
-        public ulong fee { get; set; }
+        public ulong? fee { get; set; }
+
+        /// <summary>
+        /// Optionally: If true, will not generate a new puzzle hash / address for this transaction only. 
+        /// Note that setting this parameter to true will override the global default setting from config.yaml
+        /// </summary>
+        /// <remarks>
+        /// optional
+        /// </remarks>
+        public bool? reuse_puzhash { get; set; }
     }
 }

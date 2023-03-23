@@ -1,15 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
 {
     /// <summary>
     /// Recover a DID to a new DID by using an attest file
     /// </summary>
-    /// <remarks>
-    /// returns spendbundle
-    /// </remarks>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#did_recovery_spend"/></remarks>
+    /// <returns><see cref="General_NS.SpendBundle_Response"/></returns>
     public class DidRecoverySpend_RPC : RPCTemplate<DidRecoverySpend_RPC>
     {
         /// <summary>

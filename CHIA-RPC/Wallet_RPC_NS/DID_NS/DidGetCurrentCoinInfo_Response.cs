@@ -6,7 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// Response class for the did_get_current_coin_info API method
     /// </summary>
     /// <remarks>
-    /// uses a WalletID_RPC
+    /// <see href="https://docs.chia.net/did-rpc#did_get_current_coin_info"/><br/><br/>
+    /// uses:<br/> <see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
     public class DidGetCurrentCoinInfo_Response : ResponseTemplate<DidGetCurrentCoinInfo_Response>
     {

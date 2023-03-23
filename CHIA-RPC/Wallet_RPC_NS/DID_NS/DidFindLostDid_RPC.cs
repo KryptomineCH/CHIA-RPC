@@ -5,7 +5,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// Represents the response object for the did_find_lost_did RPC command.
     /// </summary>
-    public class DidFindLostDidResponse : ResponseTemplate<DidFindLostDidResponse>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/did-rpc#did_find_lost_did"/><br/><br/>
+    /// Uses:<br/><see cref="DidFindLostDid_RPC"/>
+    /// </remarks>
+    public class DidFindLostDid_Response : ResponseTemplate<DidFindLostDid_Response>
     {
         /// <summary>
         /// The latest coin ID of the recovered DID wallet.
@@ -16,6 +20,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// RPC request for recovering a missing or unspendable DID wallet by submitting a coin id of the DID
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#did_find_lost_did"/></remarks>
+    /// <returns><see cref="DidFindLostDid_Response"/></returns>
     public class DidFindLostDid_RPC : RPCTemplate<DidFindLostDid_RPC>
     {
         /// <summary>

@@ -6,9 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// <summary>
     /// Update the metadata for a DID wallet. The current metadata can be obtained with the did_get_metadata endpoint
     /// </summary>
-    /// <remarks>
-    /// returns a success response
-    /// </remarks>
+    /// <remarks><see href="https://docs.chia.net/did-rpc#did_update_metadata"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class DidUpdateMetadata_RPC : RPCTemplate<DidUpdateMetadata_RPC>
     {
         /// <summary>

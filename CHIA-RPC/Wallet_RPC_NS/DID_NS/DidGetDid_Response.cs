@@ -6,7 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.DID_NS
     /// Fetch the my_did and coin_id (if applicable) settings for a given wallet
     /// </summary>
     /// <remarks>
-    /// requires a wallet ID rpc
+    /// <see href="https://docs.chia.net/did-rpc#did_get_did"/><br/><br/>
+    /// uses:<br/><see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
     public class DidGetDid_Response : ResponseTemplate<DidGetDid_Response>
     {
