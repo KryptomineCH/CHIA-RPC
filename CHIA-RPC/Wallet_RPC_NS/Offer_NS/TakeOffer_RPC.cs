@@ -2,9 +2,12 @@
 
 namespace CHIA_RPC.Wallet_RPC_NS.Offer_NS
 {
+
     /// <summary>
     /// Takes (accepts) a specific offer, with a given fee.
     /// </summary>
+    /// <remarks><see href="https://docs.chia.net/offer-rpc#take_offer"/></remarks>
+    /// <returns><see cref="General_NS.TradeRecord_Response"/></returns>
     public class TakeOffer_RPC : RPCTemplate<TakeOffer_RPC>
     {
         /// <summary>

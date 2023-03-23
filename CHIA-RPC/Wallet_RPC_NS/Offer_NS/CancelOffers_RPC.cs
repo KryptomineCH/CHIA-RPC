@@ -5,7 +5,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.Offer_NS
     /// <summary>
     /// Class for JSON rpc request to cancel multiple Offers.
     /// </summary>
-    /// <remarks>Returns a Success_Response</remarks>
+    /// <remarks><see href="https://docs.chia.net/offer-rpc#cancel_offers"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class CancelOffers_RPC : RPCTemplate<CancelOffers_RPC>
     {
         /// <summary>
