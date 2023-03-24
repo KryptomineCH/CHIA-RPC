@@ -6,7 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.WalletNode_NS
     /// Show whether the current wallet is syncing or synced
     /// </summary>
     /// <remarks>
-    /// <see href="https://docs.chia.net/wallet-rpc#get_sync_status"/>
+    /// <see href="https://docs.chia.net/wallet-rpc#get_sync_status"/><br/><br/>
+    /// Uses:<br/>the request does not have parameters
     /// </remarks>
     public class GetSyncStatus_Response : ResponseTemplate<GetSyncStatus_Response>
     {

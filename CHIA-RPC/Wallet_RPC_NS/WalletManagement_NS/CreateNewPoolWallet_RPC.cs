@@ -3,6 +3,12 @@ using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
+    /// <summary>
+    /// Create a new wallet for pooling
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/wallet-rpc#create_new_wallet"/></remarks>
+    /// <returns><see cref="CreateNewWallet_Response"/></returns>
     public class CreateNewPoolWallet_RPC : RPCTemplate<CreateNewPoolWallet_RPC>
     {
         public CreateNewPoolWallet_RPC()

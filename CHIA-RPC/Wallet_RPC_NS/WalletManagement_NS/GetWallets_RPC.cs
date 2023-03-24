@@ -3,6 +3,13 @@ using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {
+    /// <summary>
+    /// Show all wallets associated with the current fingerprint, including (by default) coin information
+    /// </summary>
+    /// <remarks>
+    /// <see href="https://docs.chia.net/wallet-rpc#get_wallets"/><br/><br/>
+    /// Uses:<br/><see cref="GetWallets_RPC"/>
+    /// </remarks>
     public class GetWallets_Response : ResponseTemplate<GetWallets_Response>
     {
         /// <summary>
@@ -31,6 +38,11 @@ namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
         private string _name { get; set; }
         public WalletType type { get; set; }
     }
+    /// <summary>
+    /// Show all wallets associated with the current fingerprint, including (by default) coin information
+    /// </summary>
+    /// <remarks><see href="https://docs.chia.net/wallet-rpc#get_wallets"/></remarks>
+    /// <returns><see cref="GetWallets_Response"/></returns>
     public class GetWallets_RPC : RPCTemplate<GetWallets_RPC>
     {
         /// <summary>

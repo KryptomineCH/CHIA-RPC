@@ -6,9 +6,8 @@ namespace CHIA_RPC.Wallet_RPC_NS.WalletNode_NS
     /// <summary>
     /// Push a spend bundle (transaction) to the blockchain
     /// </summary>
-    /// <remarks>
-    /// <see href="https://docs.chia.net/wallet-rpc#push_tx"/>
-    /// </remarks>
+    /// <remarks><see href="https://docs.chia.net/wallet-rpc#push_tx"/></remarks>
+    /// <returns>?</returns>
     public class PushTx_RPC : RPCTemplate<PushTx_RPC>
     {
         /// <summary>
