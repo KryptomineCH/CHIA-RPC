@@ -1,5 +1,8 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using CHIA_RPC.Wallet_RPC_NS.CATsAndTrading_NS;
+using CHIA_RPC.Wallet_RPC_NS.NFT_NS;
+using CHIA_RPC.Wallet_RPC_NS.PoolWallet_NS;
 
 namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
 {

@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS;
 
-namespace CHIA_RPC.Wallet_RPC_NS.WalletManagement_NS
+namespace CHIA_RPC.Wallet_RPC_NS.CATsAndTrading_NS
 {
     /// <summary>
     /// Create a new wallet for CATs
