@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json;
 
 namespace CHIA_RPC_Tests.Testhelpers
 {
@@ -8,9 +9,16 @@ namespace CHIA_RPC_Tests.Testhelpers
         {
             foreach (string expectedResult in expectedResults)
             {
-                T rpc = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
-                string rpcString = rpc.ToString();
-                Assert.Equal(expectedResult, rpcString);
+                // parse teststring into a dynamic type for comparison later
+                JsonElement inputParsed = JsonSerializer.Deserialize<JsonElement>(expectedResult);
+                // parse teststring into class which is to be tested
+                T myObject = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
+                // parse object back into a json
+                string myObject_Json = myObject.ToString();
+                // parse myObject output into a dynamic type for comparison with expectedResult
+                JsonElement myObject_Result = JsonSerializer.Deserialize<JsonElement>(myObject_Json);
+                // test result
+                JsonElementComparer.AssertEqual(inputParsed, myObject_Result);
             }
         }
         internal void Test_ObjectDiskIO(string[] expectedResults)
