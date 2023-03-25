@@ -1,5 +1,5 @@
 ﻿using CHIA_RPC.FullNode_NS;
-using CHIA_RPC.General_NS;
+using CHIA_RPC.Wallet_RPC_NS.Wallet_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.FullNode_NS

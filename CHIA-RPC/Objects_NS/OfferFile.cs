@@ -37,12 +37,17 @@ namespace CHIA_RPC.Objects_NS
         /// <param name="path"></param>
         public void Export(string path)
         {
-            if (!path.EndsWith(".offer"))
+            for(int i = 0; i < offers.Length; i++)
             {
-                path += ".offer";
+                string tempPath = path + i.ToString();
+                if (!tempPath.EndsWith(".offer"))
+                {
+                    tempPath += ".offer";
+                }
+                Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
+                File.WriteAllText(tempPath, offers[i], utf8WithoutBom);
             }
-            Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
-            File.WriteAllText(path, offer, utf8WithoutBom);
+            
         }
     }
 }
