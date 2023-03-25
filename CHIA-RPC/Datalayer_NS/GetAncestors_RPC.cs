@@ -6,8 +6,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Return all ancestors of a given hash
     /// </summary>
     /// <remarks>
-    /// request requires an <see cref="GetAncestors_RPC"/><br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc/#get_ancestors"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#get_ancestors"/><br/><br/>
+    /// Uses:<br/><see cref="GetAncestors_RPC"/>
     /// </remarks>
     public class GetAncestors_Response : ResponseTemplate<GetAncestors_Response>
     {

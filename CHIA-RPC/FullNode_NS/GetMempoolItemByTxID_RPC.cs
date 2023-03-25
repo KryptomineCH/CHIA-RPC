@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Represents a response containing a mempool item retrieved by tx ID.
     /// </summary>
     /// <remarks>
-    /// the request uses a <see cref="GetMempoolItemByTxID_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_mempool_item_by_tx_id"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_mempool_item_by_tx_id"/><br/><br/>
+    /// Uses:<br/><see cref="GetMempoolItemByTxID_RPC"/>
     /// </remarks>
     public class GetMempoolItemByTxID_Response : ResponseTemplate<GetMempoolItemByTxID_Response>
     {

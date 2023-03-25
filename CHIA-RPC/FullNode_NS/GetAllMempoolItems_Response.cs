@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Represents the response for the Get_All_Mempool_Items API call, which returns all items in the mempool.
     /// </summary>
     /// <remarks>
-    /// this Request does not contain any parameters<br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_all_mempool_items"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_all_mempool_items"/><br/><br/>
+    /// Uses:<br/>the request does not have parameters
     /// </remarks>
     public class GetAllMempoolItems_Response : ResponseTemplate<GetAllMempoolItems_Response>
     {

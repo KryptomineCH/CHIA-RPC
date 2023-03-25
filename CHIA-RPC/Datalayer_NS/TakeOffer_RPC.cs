@@ -7,11 +7,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Accept an offer to create one or more keys in exchange for the Maker creating one or more keys. Triggers a Chia transaction
     /// </summary>
     /// <remarks>
-    /// <see href="https://docs.chia.net/datalayer-rpc#take_offer"/>
-    /// </remarks>
-    /// <returns>
-    /// <see cref="General_NS.TradeID_Response"/>
-    /// </returns>
+    /// <see href="https://docs.chia.net/datalayer-rpc#take_offer"/></remarks>
+    /// <returns><see cref="General_NS.TradeID_Response"/></returns>
     public class TakeOffer_RPC : RPCTemplate<TakeOffer_RPC>
     {
         /// <summary>

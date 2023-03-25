@@ -7,8 +7,8 @@ namespace CHIA_RPC.Farmer_NS
     /// Represents the response from the 'get_harvesters' RPC call in Chia farmer.
     /// </summary>
     /// <remarks>
-    /// request is parameterless<br/>
-    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters"/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_harvesters"/><br/><br/>
+    /// Uses:<br/>the request has no parameters
     /// </remarks>
     public class GetHarvesters_Response : ResponseTemplate<GetHarvesters_Response>
     {

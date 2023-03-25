@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// used by the server to return a specific block
     /// </summary>
     /// <remarks>
-    /// uses an <see cref="General_NS.HeaderHash_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_block"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_block"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.HeaderHash_RPC"/>
     /// </remarks>
     public class GetBlock_Response : ResponseTemplate<GetBlock_Response>
     {

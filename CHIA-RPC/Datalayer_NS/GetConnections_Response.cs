@@ -7,8 +7,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Get a list of active connections
     /// </summary>
     /// <remarks>
-    /// the request is parameterless <br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_connections"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_connections"/><br/><br/>
+    /// Uses:<br/>the request has no parameters
     /// </remarks>
     public class GetConnections_Response : ResponseTemplate<GetConnections_Response>
     {

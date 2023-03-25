@@ -1,6 +1,5 @@
 ﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
 using CHIA_RPC.HelperFunctions_NS;
-using static System.Net.WebRequestMethods;
 
 namespace CHIA_RPC.FullNode_NS
 {

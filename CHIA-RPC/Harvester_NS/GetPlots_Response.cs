@@ -8,8 +8,8 @@ namespace CHIA_RPC.Harvester_NS
     /// The functionality lists all local plots of the harvester.
     /// </summary>
     /// <remarks>
-    /// request has no parameters<br/>
-    /// <see href="https://docs.chia.net/harvester-rpc/#get_plots"/>
+    /// <see href="https://docs.chia.net/harvester-rpc/#get_plots"/><br/><br/>
+    /// Uses:<br/>the request does not have paramters
     /// </remarks>
     public class GetPlots_Response : ResponseTemplate<GetPlots_Response>
     {

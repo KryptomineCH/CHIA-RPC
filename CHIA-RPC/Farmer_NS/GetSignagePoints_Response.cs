@@ -7,8 +7,8 @@ namespace CHIA_RPC.Farmer_NS
     /// List details for all signage points going back several challenges
     /// </summary>
     /// <remarks>
-    /// the request is parameterless<br/>
-    /// <see href="https://docs.chia.net/farmer-rpc#get_signage_points"/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_signage_points"/><br/><br/>
+    /// Uses:<br/>the request has no parameters
     /// </remarks>
     public class GetSignagePoints_Response : ResponseTemplate<GetSignagePoints_Response>
     {

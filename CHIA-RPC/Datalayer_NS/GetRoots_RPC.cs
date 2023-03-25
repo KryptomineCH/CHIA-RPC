@@ -8,8 +8,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Note that an invalid hash will be returned for remote stores. Use get_local_root instead
     /// </summary>
     /// <remarks>
-    /// requires a <see cref="GetRoots_RPC"/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_roots"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_roots"/><br/><br/>
+    /// Uses:<br/><see cref="GetRoots_RPC"/>
     /// </remarks>
     public class GetRoots_Response : ResponseTemplate<GetRoots_Response>
     {

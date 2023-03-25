@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Represents the response from the get_recent_signage_point_or_eos RPC call.
     /// </summary>
     /// <remarks>
-    /// request uses a <see cref="GetRecentSignagePointOrEos_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_recent_signage_point_or_eos"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_recent_signage_point_or_eos"/><br/><br/>
+    /// Uses:<br/><see cref="GetRecentSignagePointOrEos_RPC"/>
     /// </remarks>
     public class GetRecentSignagePointOrEos_Response : ResponseTemplate<GetRecentSignagePointOrEos_Response>
     {

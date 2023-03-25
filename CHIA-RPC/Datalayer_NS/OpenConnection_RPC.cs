@@ -5,12 +5,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// <summary>
     /// Class for serializing/deserializing an open_connection RPC request.
     /// </summary>
-    /// <remarks>
-    /// <see href="https://docs.chia.net/datalayer-rpc#open_connection"/>
-    /// </remarks>
-    /// <returns>
-    /// <see cref="General_NS.Success_Response"/>
-    /// </returns>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#open_connection"/></remarks>
+    /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class OpenConnection_RPC : RPCTemplate<OpenConnection_RPC>
     {
         /// <summary>

@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Represents a response object containing a list of all transaction IDs in the mempool.
     /// </summary>
     /// <remarks>
-    /// this request does not have any Parameters<br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_all_mempool_tx_ids"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_all_mempool_tx_ids"/><br/><br/>
+    /// Uses:<br/>the request does not have parameters
     /// </remarks>
     public class GetAllMempoolTxIDs_Response : ResponseTemplate<GetAllMempoolTxIDs_Response>
     {

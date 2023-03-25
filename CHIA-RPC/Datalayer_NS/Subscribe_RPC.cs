@@ -5,9 +5,7 @@ namespace CHIA_RPC.Datalayer_NS
     /// <summary>
     /// Subscribe to a store ID
     /// </summary>
-    /// <remarks>
-    /// <see href="https://docs.chia.net/datalayer-rpc#subscribe"/>
-    /// </remarks>
+    /// <remarks><see href="https://docs.chia.net/datalayer-rpc#subscribe"/></remarks>
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class Subscribe_RPC : RPCTemplate<Subscribe_RPC>
     {

@@ -6,8 +6,8 @@ namespace CHIA_RPC.Farmer_NS
     /// Represents the response returned by the "get_pool_login_link" API endpoint.
     /// </summary>
     /// <remarks>
-    /// request uses a <see cref="General_NS.LauncherID_RPC"/><br/>
-    /// <see cref="https://docs.chia.net/farmer-rpc#get_pool_login_link"/>
+    /// <see cref="https://docs.chia.net/farmer-rpc#get_pool_login_link"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.LauncherID_RPC"/>
     /// </remarks>
     public class GetPoolLoginLink_Response : ResponseTemplate<GetPoolLoginLink_Response>
     {

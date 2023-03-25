@@ -1,5 +1,4 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
-using static System.Net.WebRequestMethods;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -7,8 +6,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Get all keys and values for a store. Must be subscribed to store ID
     /// </summary>
     /// <remarks>
-    /// the request requires a <see cref="General_NS.ID_RPC"/> <br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc/#get_keys_values"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#get_keys_values"/><br/><br/>
+    /// Uses:<br/><see cref="GetKeys_RPC"/>
     /// </remarks>
     public class GetKeysValues_Response : ResponseTemplate<GetKeysValues_Response>
     {

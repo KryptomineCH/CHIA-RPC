@@ -6,8 +6,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// List the id (store_id) of each data_store owned by this wallet
     /// </summary>
     /// <remarks>
-    /// the rpc is parameterless <br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc/#get_owned_stores"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#get_owned_stores"/><br/><br/>
+    /// Uses:<br/>the request has no parameters
     /// </remarks>
     public class GetOwnedStores_Response : ResponseTemplate<GetOwnedStores_Response>
     {

@@ -8,8 +8,8 @@ namespace CHIA_RPC.FullNode_NS
     /// </summary>
     /// <remarks>
     /// Keep in mind that most blocks do not cointain any transactions. These blocks will simply return "[]" for this request.<br/>
-    /// the request is using a <see cref="General_NS.HeaderHash_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_block_spends"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_block_spends"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.HeaderHash_RPC"/>
     /// </remarks>
     public class GetBlockSpends_Response : ResponseTemplate<GetBlockSpends_Response>
     {

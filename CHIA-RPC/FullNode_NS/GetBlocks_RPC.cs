@@ -8,8 +8,8 @@ namespace CHIA_RPC.FullNode_NS
     /// </summary>
     /// <remarks>
     /// Important note: there might be multiple blocks at each height. To find out which one is in the blockchain, use get_block_record_by_height.<br/>
-    /// request uses an <see cref="GetBlocks_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_blocks"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_blocks"/><br/><br/>
+    /// Uses:<br/><see cref="GetBlocks_RPC"/>
     /// </remarks>
     public class GetBlocks_Response : ResponseTemplate<GetBlocks_Response>
     {

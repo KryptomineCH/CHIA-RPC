@@ -1,6 +1,5 @@
 ﻿using CHIA_RPC.DatalayerObjects_NS;
 using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.Objects_NS;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
@@ -9,8 +8,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// creates a new datastore
     /// </summary>
     /// <remarks>
-    /// request requires a <see cref="CreateDataStore_RPC"/><br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/><br/><br/>
+    /// Uses:<br/><see cref="CreateDataStore_RPC"/>
     /// </remarks>
     public class CreateDataStore_Response : ResponseTemplate<CreateDataStore_Response>
     {

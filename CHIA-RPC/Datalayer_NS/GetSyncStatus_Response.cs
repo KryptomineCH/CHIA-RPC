@@ -7,8 +7,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Obtain the current sync status for a provided data store
     /// </summary>
     /// <remarks>
-    /// request uses a <see cref="General_NS.ID_RPC"/><br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_sync_status"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_sync_status"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.ID_RPC"/>
     /// </remarks>
     public class GetSyncStatus_Response : ResponseTemplate<GetSyncStatus_Response>
     {

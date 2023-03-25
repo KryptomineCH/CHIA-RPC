@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Represents the response of the get_additions_and_removals API call, which retrieves the additions and removals (state transitions) for a certain block.
     /// </summary>
     /// <remarks>
-    /// uses a <see cref="General_NS.HeaderHash_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_additions_and_removals"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_additions_and_removals"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.HeaderHash_RPC"/>
     /// </remarks>
     public class GetAdditionsAndRemovals_Response : ResponseTemplate<GetAdditionsAndRemovals_Response>
     {

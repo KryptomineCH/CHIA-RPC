@@ -7,8 +7,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Get a history of root hashes for a Store ID that you subscribe to
     /// </summary>
     /// <remarks>
-    /// Requires an <see cref="General_NS.ID_RPC"/> <br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_root_history"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_root_history"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.ID_RPC"/>
     /// </remarks>
     public class GetRootHistory_Response : ResponseTemplate<GetRootHistory_Response>
     {

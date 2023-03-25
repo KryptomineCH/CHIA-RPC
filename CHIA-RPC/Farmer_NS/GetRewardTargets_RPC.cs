@@ -6,8 +6,8 @@ namespace CHIA_RPC.Farmer_NS
     /// Response for getting payout targets for the farmer and pool
     /// </summary>
     /// <remarks>
-    /// request uses an <see cref="GetRewardTargets_RPC"/><br/>
-    /// <see href="https://docs.chia.net/farmer-rpc#get_reward_targets"/>
+    /// <see href="https://docs.chia.net/farmer-rpc#get_reward_targets"/><br/><br/>
+    /// Uses:<br/><see cref="GetRewardTargets_RPC"/>
     /// </remarks>
     public class GetRewardTargets_Response : ResponseTemplate<GetRewardTargets_Response>
     {

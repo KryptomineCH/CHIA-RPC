@@ -6,8 +6,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Contains information about the estimated Transaction Fees from the Chia Client
     /// </summary>
     /// <remarks>
-    /// the request uses a <see cref="GetFeeEstimate_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_fee_estimate"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_fee_estimate"/><br/><br/>
+    /// Uses:<br/><see cref="GetFeeEstimate_RPC"/>
     /// </remarks>
     public class GetFeeEstimate_Response : ResponseTemplate<GetFeeEstimate_Response>
     {

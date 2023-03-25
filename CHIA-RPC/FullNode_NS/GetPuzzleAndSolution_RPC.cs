@@ -8,8 +8,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Coin IDs can be calculated by hashing the coin. The puzzle and solution are provided in CLVM format.
     /// </summary>
     /// <remarks>
-    /// request uses a <see cref="GetPuzzleAndSolution_RPC"/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_puzzle_and_solution"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_puzzle_and_solution"/><br/><br/>
+    /// Uses:<br/><see cref="GetPuzzleAndSolution_RPC"/>
     /// </remarks>
     public class GetPuzzleAndSolution_Response : ResponseTemplate<GetPuzzleAndSolution_Response>
     {

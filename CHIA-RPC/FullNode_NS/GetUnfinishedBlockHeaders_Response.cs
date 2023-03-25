@@ -9,8 +9,8 @@ namespace CHIA_RPC.FullNode_NS
     /// The height and header hash is unknown, because some of these blocks might not get confirmed, which will affect the blocks after it.
     /// </summary>
     /// <remarks>
-    /// this request has no parameters<br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_unfinished_block_headers"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_unfinished_block_headers"/><br/><br/>
+    /// Uses:<br/>the request does not have any parameters
     /// </remarks>
     public class GetUnfinishedBlockHeaders_Response : ResponseTemplate<GetUnfinishedBlockHeaders_Response>
     {

@@ -6,8 +6,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Represents the server response for get_kv_diff
     /// </summary>
     /// <remarks>
-    /// request requires a <see cref="GetKvDiff_RPC"/>
-    /// <see href="https://docs.chia.net/datalayer-rpc/#get_kv_diff"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc/#get_kv_diff"/><br/><br/>
+    /// Uses:<br/><see cref="GetKvDiff_RPC"/>
     /// </remarks>
     public class GetKvDiff_Response : ResponseTemplate<GetKvDiff_Response>
     {

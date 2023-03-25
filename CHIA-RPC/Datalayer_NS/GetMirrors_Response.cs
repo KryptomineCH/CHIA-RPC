@@ -7,8 +7,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Represents a response from the "get_mirrors" API endpoint.
     /// </summary>
     /// <remarks>
-    /// Request requires an <see cref="General_NS.ID_RPC"/><br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_mirrors"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_mirrors"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.ID_RPC"/>
     /// </remarks>
     public class GetMirrors_Response : ResponseTemplate<GetMirrors_Response>
     {

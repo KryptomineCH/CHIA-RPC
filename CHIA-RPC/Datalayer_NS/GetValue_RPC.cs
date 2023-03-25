@@ -6,8 +6,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Given a key and the data store in which the key is located, return corresponding value
     /// </summary>
     /// <remarks>
-    /// requires a <see cref="GetValue_RPC"/> <br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_value"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_value"/><br/><br/>
+    /// Uses:<br/><see cref="GetValue_RPC"/>
     /// </remarks>
     public class GetValue_Response : ResponseTemplate<GetValue_Response>
     {

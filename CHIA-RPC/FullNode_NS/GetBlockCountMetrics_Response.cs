@@ -1,6 +1,5 @@
 ﻿using CHIA_RPC.FullNode_NS.FullNodeObjects_NS;
 using CHIA_RPC.HelperFunctions_NS;
-using static System.Net.WebRequestMethods;
 
 namespace CHIA_RPC.FullNode_NS
 {
@@ -11,8 +10,8 @@ namespace CHIA_RPC.FullNode_NS
     /// uncompact blocks<br/>
     /// </summary>
     /// <remarks>
-    /// request has no parameters<br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_block_count_metrics"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_block_count_metrics"/><br/><br/>
+    /// Uses:<br/>the request does not have paramters
     /// </remarks>
     public class GetBlockCountMetrics_Response : ResponseTemplate<GetBlockCountMetrics_Response>
     {

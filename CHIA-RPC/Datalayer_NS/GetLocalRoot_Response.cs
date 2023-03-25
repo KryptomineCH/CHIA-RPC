@@ -6,8 +6,8 @@ namespace CHIA_RPC.Datalayer_NS
     /// Get the root hash and timestamp of a store ID. Can be used for either local or remote stores
     /// </summary>
     /// <remarks>
-    /// request uses an <see cref="General_NS.ID_RPC"/><br/>
-    /// <see href="https://docs.chia.net/datalayer-rpc#get_local_root"/>
+    /// <see href="https://docs.chia.net/datalayer-rpc#get_local_root"/><br/><br/>
+    /// Uses:<br/><see cref="General_NS.ID_RPC"/>
     /// </remarks>
     public class GetLocalRoot_Response : ResponseTemplate<GetLocalRoot_Response>
     {

@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// Represents the response of a GetCoinRecordByName request.
     /// </summary>
     /// <remarks>
-    /// request uses a <see cref="GetCoinRecordByName_RPC"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/><br/><br/>
+    /// Uses:<br/><see cref="GetCoinRecordByName_RPC"/>
     /// </remarks>
     public class GetCoinRecordByName_Response : ResponseTemplate<GetCoinRecordByName_Response>
     {

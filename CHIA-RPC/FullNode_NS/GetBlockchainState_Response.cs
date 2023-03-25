@@ -7,8 +7,8 @@ namespace CHIA_RPC.FullNode_NS
     /// represents the server response containing the blockchain state as well as request success information
     /// </summary>
     /// <remarks>
-    /// Request is Parameterless<br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_blockchain_state"/>
+    /// <see href="https://docs.chia.net/full-node-rpc#get_blockchain_state"/><br/><br/>
+    /// Uses:<br/>the request does not have parameters
     /// </remarks>
     public class GetBlockchainState_Response : ResponseTemplate<GetBlockchainState_Response>
     {
