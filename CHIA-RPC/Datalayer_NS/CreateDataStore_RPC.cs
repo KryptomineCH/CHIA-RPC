@@ -1,5 +1,7 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.DatalayerObjects_NS;
+using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -19,7 +21,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// the transactions for the datastore creation
         /// </summary>
-        public Transaction[] txs { get; set; }
+        public Datalayer_Transaction[] txs { get; set; }
     }
     /// <summary>
     /// Create a data store. Triggers a Chia transaction
@@ -32,6 +34,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// the optional fee of the blockchain
         /// </summary>
         /// <remarks>defaults to 1000000000</remarks>
+        [JsonConverter(typeof(StringToUlongNullableConverter))]
         public ulong? fee { get; set; }
     }
 }
