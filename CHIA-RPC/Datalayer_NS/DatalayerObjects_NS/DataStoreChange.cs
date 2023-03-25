@@ -1,5 +1,6 @@
 ﻿
 using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
 {
@@ -12,6 +13,7 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// can be insert or delete
         /// </summary>
+        [JsonConverter(typeof(CaseInsensitiveEnumConverter<DataStoreChangeAction>))]
         public DataStoreChangeAction action { get; set; }
         /// <summary>
         /// the key of the dictionary which should be changed. Must be encoded to hex

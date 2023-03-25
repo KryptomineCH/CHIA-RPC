@@ -34,5 +34,9 @@ namespace CHIA_RPC.Datalayer_NS
         /// </summary>
         /// <remarks>encoded as hexadecimal string</remarks>
         public string key { get; set; }
+        /// <summary>
+        /// The root hash from which to obtain data
+        /// </summary>
+        public string root_hash { get; set; }
     }
 }
