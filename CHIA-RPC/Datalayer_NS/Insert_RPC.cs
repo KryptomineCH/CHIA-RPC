@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -28,6 +29,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// Set the fee for the transaction, in mojos.
         /// </summary>
+        [JsonConverter(typeof(StringToUlongNullableConverter))]
         public ulong? fee { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace CHIA_RPC.Datalayer_NS
     /// <see href="https://docs.chia.net/datalayer-rpc#add_mirror"/>
     /// </remarks>
     /// <returns><see cref="General_NS.Success_Response"/></returns>
-    public class GetSignagePoint_RPC : RPCTemplate<GetSignagePoint_RPC>
+    public class AddMirror_RPC : RPCTemplate<AddMirror_RPC>
     {
         /// <summary>
         /// The hexadecimal ID of the store to mirror
