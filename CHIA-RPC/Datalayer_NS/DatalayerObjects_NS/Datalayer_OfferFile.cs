@@ -51,6 +51,10 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
             Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
             File.WriteAllText(path, offer, utf8WithoutBom);
         }
+        /// <summary>
+        /// generates a <see cref="VerifyOffer_RPC"/> to be used with the API
+        /// </summary>
+        /// <returns><see cref="VerifyOffer_RPC"/></returns>
         public VerifyOffer_RPC ToVerifyOffer_RPC()
         {
             return new VerifyOffer_RPC
@@ -58,6 +62,11 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
                 offer = offer,
             };
         }
+        /// <summary>
+        /// generates a <see cref="TakeOffer_RPC"/> to be used in order to accept a datalayer offer
+        /// </summary>
+        /// <param name="fee">an optional fee in order to speed up the transaction</param>
+        /// <returns><see cref="TakeOffer_RPC"/></returns>
         public TakeOffer_RPC ToTakeOffer_RPC(ulong? fee)
         {
             return new TakeOffer_RPC
