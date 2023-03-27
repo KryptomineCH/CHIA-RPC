@@ -75,6 +75,23 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
                 offer = offer,
             };
         }
+        /// <summary>
+        /// generates a <see cref="CancelOffer_RPC"/> to be used in order to cancel a datalayer offer
+        /// </summary>
+        /// <param name="secure">If true, the offer will be canceled on the blockchain, making it impossible to be accepted later. 
+        /// If false, the offer will only be canceled locally. 
+        /// We recommend that you set this to true unless you are certain that the offer file has not left your computer</param>
+        /// <param name="fee">an optional fee in order to speed up the transaction</param>
+        /// <returns><see cref="CancelOffer_RPC"/></returns>
+        public CancelOffer_RPC ToTakeOffer_RPC(ulong? fee, bool secure = true)
+        {
+            return new CancelOffer_RPC
+            {
+                trade_id = trade_id,
+                fee = fee,
+                secure = secure
+            };
+        }
     }
     /// <summary>
     /// Represents the details of a maker.

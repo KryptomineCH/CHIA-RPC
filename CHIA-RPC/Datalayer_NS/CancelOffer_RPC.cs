@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -19,12 +20,14 @@ namespace CHIA_RPC.Datalayer_NS
         /// If false, the offer will only be canceled locally. We recommend that you set this to true unless
         /// you are certain that the offer file has not left your computer.
         /// </summary>
+        [JsonConverter(typeof(StringToBoolConverter))]
         public bool secure { get; set; }
 
         /// <summary>
         /// If secure is true, this will set the fee for the transaction, in mojos. If secure is false,
         /// the fee will be ignored.
         /// </summary>
+        [JsonConverter(typeof(StringToUlongNullableConverter))]
         public ulong? fee { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -17,6 +18,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The port through which to connect to the remote node.
         /// </summary>
+        [JsonConverter(typeof(StringToUlongConverter))]
         public ulong port { get; set; }
     }
 
