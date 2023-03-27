@@ -19,7 +19,11 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// The root hash
         /// </summary>
-        public string hash { get; set; }
+        public string? root_hash { get; set; }
+        /// <summary>
+        /// The root hash
+        /// </summary>
+        public string? hash { get; set; }
 
         /// <summary>
         /// The store ID

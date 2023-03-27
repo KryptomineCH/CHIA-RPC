@@ -1,6 +1,6 @@
 ﻿namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
 {
-    internal class DatalayerProof
+    public class Datalayer_Proof
     {
         /// <summary>
         /// Represents the key.

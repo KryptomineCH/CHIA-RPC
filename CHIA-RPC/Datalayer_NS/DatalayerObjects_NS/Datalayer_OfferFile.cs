@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
@@ -16,7 +17,7 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
     /// <see href="https://docs.chia.net/datalayer-rpc/#take_offer"/> <br/>
     /// <seealso href="https://docs.chia.net/datalayer-rpc/#make_offer"/>
     /// </remarks>
-    public class OfferFile_Datalayer : ObjectTemplate<OfferFile_Datalayer>
+    public class Datalayer_OfferFile : ObjectTemplate<Datalayer_OfferFile>
     {
         /// <summary>
         /// Represents the maker details.
@@ -50,6 +51,21 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
             Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
             File.WriteAllText(path, offer, utf8WithoutBom);
         }
+        public VerifyOffer_RPC ToVerifyOffer_RPC()
+        {
+            return new VerifyOffer_RPC
+            {
+                offer = offer,
+            };
+        }
+        public TakeOffer_RPC ToTakeOffer_RPC(ulong? fee)
+        {
+            return new TakeOffer_RPC
+            {
+                fee = fee,
+                offer = offer,
+            };
+        }
     }
     /// <summary>
     /// Represents the details of a maker.
@@ -59,7 +75,7 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Represents the proofs details.
         /// </summary>
-        public Proof[] proofs { get; set; }
+        public Datalayer_Proof[] proofs { get; set; }
 
         /// <summary>
         /// Represents the store id.
