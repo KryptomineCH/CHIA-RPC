@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace CHIA_RPC.HelperFunctions_NS
 {
-    public class CaseInsensitiveEnumConverter<TEnum> : JsonConverter<TEnum> where TEnum : struct, Enum
+    public class StringToEnumConverter<TEnum> : JsonConverter<TEnum> where TEnum : struct, Enum
     {
         public override TEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

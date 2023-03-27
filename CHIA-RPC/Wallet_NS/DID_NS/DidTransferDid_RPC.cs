@@ -1,5 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.Objects_NS;
+using CHIA_RPC.Wallet_NS.DID_NS.DIDObjects_NS;
 
 namespace CHIA_RPC.Wallet_NS.DID_NS
 {
@@ -15,7 +15,11 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The transaction object.
         /// </summary>
-        public Transaction transaction { get; set; }
+        public DID_Transaction transaction { get; set; }
+        /// <summary>
+        /// the unique identifier of the transaction
+        /// </summary>
+        public string transaction_id { get; set; }
     }
 
     /// <summary>

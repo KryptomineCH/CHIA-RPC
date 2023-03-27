@@ -21,7 +21,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string new_list { get; set; }
+        public string[] new_list { get; set; }
         /// <summary>
         /// Optionally set the number of IDs required for wallet recovery. If not set, then the entire updated list will be required by default
         /// </summary>

@@ -1,0 +1,44 @@
+﻿using CHIA_RPC.Wallet_NS.DID_NS;
+using CHIA_RPC_Tests.Testhelpers;
+
+namespace CHIA_RPC_Tests.Wallet_NS.DID_NS
+{
+    public class Test_DidTransferDid
+    {
+        private string[] ExpectedRPCResults = new string[]
+        {
+            "{\"wallet_id\": 4, \"inner_address\": \"txch1r2hc8zaxmqetkwuqz99nspwa7dlhnyx6uuxlt8srrsd2n7pscwfqgjhy7h\"}"
+        };
+        string[] ExpectedResponseResults = new string[]
+        {
+            "{\r\n  \"success\": true,\r\n  \"transaction\": {\r\n    \"additions\": [\r\n      {\r\n        \"amount\": 1,\r\n        \"parent_coin_info\": \"0x78daa350eeb408613973c4b60496a306fed5a3986eb2e45b22d075eeb7c29a69\",\r\n        \"puzzle_hash\": \"0x347677678e38bbdfe4ed17039f39c2f147d1887f7cc2bccbaf3527bb5acffdc0\"\r\n      }\r\n    ],\r\n    \"amount\": 1,\r\n    \"confirmed\": false,\r\n    \"confirmed_at_height\": 0,\r\n    \"created_at_time\": 1655565303,\r\n    \"fee_amount\": 0,\r\n    \"memos\": {\r\n      \"8b43e84b7e42831bf6c02b01d69a5c0a6710b3ff521750fd9c49b4b99396acd4\": \"1aaf838ba6d832bb3b80114b3805ddf37f7990dae70df59e031c1aa9f830c392\"\r\n    },\r\n    \"name\": \"0x0af39652e953671261b177b3624041c17770f810c8f77a88f295e683774956be\",\r\n    \"removals\": [\r\n      {\r\n        \"amount\": 1,\r\n        \"parent_coin_info\": \"0x44a3e90ab1f103d6a259aa3009bdb34e9b092dce9f320f96342368df6b0555c7\",\r\n        \"puzzle_hash\": \"0x4661af019be51293df0052563b1d2e5ab658a66b71df38db7ca96d8b0645b785\"\r\n      }\r\n    ],\r\n    \"sent\": 0,\r\n    \"sent_to\": [],\r\n    \"spend_bundle\": {\r\n      \"aggregated_signature\": \"0xaf4ec07cd194c50ff3ee219fa2be43d216e7851925eadc076254745080e4861a5ab59a89a6034fc1cf84dee1866420f20589c7c33c7d1f0d41c90bc60be8ee9a14c68ea6c608c38c4a37360136702db9c1fd7d118c2bbb67a1b2f9865ba493b4\",\r\n      \"coin_spends\": [\r\n        {\r\n          \"coin\": {\r\n            \"amount\": 1,\r\n            \"parent_coin_info\": \"0x44a3e90ab1f103d6a259aa3009bdb34e9b092dce9f320f96342368df6b0555c7\",\r\n            \"puzzle_hash\": \"0x4661af019be51293df0052563b1d2e5ab658a66b71df38db7ca96d8b0645b785\"\r\n          },\r\n          \"puzzle_reveal\": \"0xff02ffff01ff02ffff01ff02ffff03ffff18ff2fff3c80ffff01ff04ffff04ff10ffff04ff2fff808080ffff04ffff02ff3effff04ff02ffff04ff05ffff04ffff0bff27ffff02ffff03ff77ffff01ff02ff36ffff04ff02ffff04ff09ffff04ff57ffff04ffff02ff2effff04ff02ffff04ff05ff80808080ff808080808080ffff011d80ff0180ffff02ffff03ff77ffff0181b7ffff015780ff018080ffff04ff77ff808080808080ffff02ff26ffff04ff02ffff04ff05ffff04ffff02ff0bff5f80ffff01ff8080808080808080ffff01ff088080ff0180ffff04ffff01ffffff49ff4702ff33ff0401ffff01ff02ff02ffff03ff05ffff01ff02ff3affff04ff02ffff04ff0dffff04ffff0bff2affff0bff3cff2c80ffff0bff2affff0bff2affff0bff3cff1280ff0980ffff0bff2aff0bffff0bff3cff8080808080ff8080808080ffff010b80ff0180ffffff02ffff03ff0bffff01ff02ffff03ffff02ffff03ffff09ff23ff1480ffff01ff02ffff03ffff18ff81b3ff3c80ffff01ff0101ff8080ff0180ff8080ff0180ffff01ff02ffff03ffff20ff1780ffff01ff02ffff03ffff09ff81b3ffff01818f80ffff01ff02ff26ffff04ff02ffff04ff05ffff04ff1bffff04ff3cff808080808080ffff01ff04ffff04ff23ffff04ffff02ff36ffff04ff02ffff04ff09ffff04ff53ffff04ffff02ff2effff04ff02ffff04ff05ff80808080ff808080808080ff738080ffff02ff26ffff04ff02ffff04ff05ffff04ff1bffff04ff3cff8080808080808080ff0180ffff01ff088080ff0180ffff01ff04ff13ffff02ff26ffff04ff02ffff04ff05ffff04ff1bffff04ff17ff8080808080808080ff0180ffff01ff02ffff03ff17ff80ffff01ff088080ff018080ff0180ff0bff2affff0bff3cff3880ffff0bff2affff0bff2affff0bff3cff1280ff0580ffff0bff2affff02ff3affff04ff02ffff04ff07ffff04ffff0bff3cff3c80ff8080808080ffff0bff3cff8080808080ffff02ffff03ffff07ff0580ffff01ff0bffff0102ffff02ff2effff04ff02ffff04ff09ff80808080ffff02ff2effff04ff02ffff04ff0dff8080808080ffff01ff0bff3cff058080ff0180ff02ffff03ffff21ff17ffff09ff0bff158080ffff01ff04ff28ffff04ff0bff808080ffff01ff088080ff0180ff018080ffff04ffff01ffa0f1e8350cec62f8204aaf867cc3c12cae369f619258206616108c6cfd7be760b3ffa06a8d474f7587eb25667d3dbb14918737962c159453d105b6224b7950a758512da0eff07522495060c066f66f32acc2a77e3a3e737aca8baea4d1a64ea4cdc13da9ffff04ffff01ff02ffff01ff02ffff01ff02ffff03ff81bfffff01ff02ff05ff82017f80ffff01ff02ffff03ffff22ffff09ffff02ff7effff04ff02ffff04ff8217ffff80808080ff0b80ffff15ff17ff808080ffff01ff04ffff04ff28ffff04ff82017fff808080ffff04ffff04ff34ffff04ff8202ffffff04ff82017fffff04ffff04ff8202ffff8080ff8080808080ffff04ffff04ff38ffff04ff822fffff808080ffff02ff26ffff04ff02ffff04ff2fffff04ff17ffff04ff8217ffffff04ff822fffffff04ff8202ffffff04ff8205ffffff04ff820bffffff01ff8080808080808080808080808080ffff01ff088080ff018080ff0180ffff04ffff01ffffffff313dff4946ffff0233ff3c04ffffff0101ff02ff02ffff03ff05ffff01ff02ff3affff04ff02ffff04ff0dffff04ffff0bff2affff0bff22ff3c80ffff0bff2affff0bff2affff0bff22ff3280ff0980ffff0bff2aff0bffff0bff22ff8080808080ff8080808080ffff010b80ff0180ffffff02ffff03ff17ffff01ff02ffff03ff82013fffff01ff04ffff04ff30ffff04ffff0bffff0bffff02ff36ffff04ff02ffff04ff05ffff04ff27ffff04ff82023fffff04ff82053fffff04ff820b3fff8080808080808080ffff02ff7effff04ff02ffff04ffff02ff2effff04ff02ffff04ff2fffff04ff5fffff04ff82017fff808080808080ff8080808080ff2f80ff808080ffff02ff26ffff04ff02ffff04ff05ffff04ff0bffff04ff37ffff04ff2fffff04ff5fffff04ff8201bfffff04ff82017fffff04ffff10ff8202ffffff010180ff808080808080808080808080ffff01ff02ff26ffff04ff02ffff04ff05ffff04ff37ffff04ff2fffff04ff5fffff04ff8201bfffff04ff82017fffff04ff8202ffff8080808080808080808080ff0180ffff01ff02ffff03ffff15ff8202ffffff11ff0bffff01018080ffff01ff04ffff04ff20ffff04ff82017fffff04ff5fff80808080ff8080ffff01ff088080ff018080ff0180ff0bff17ffff02ff5effff04ff02ffff04ff09ffff04ff2fffff04ffff02ff7effff04ff02ffff04ffff04ff09ffff04ff0bff1d8080ff80808080ff808080808080ff5f80ffff04ffff0101ffff04ffff04ff2cffff04ff05ff808080ffff04ffff04ff20ffff04ff17ffff04ff0bff80808080ff80808080ffff0bff2affff0bff22ff2480ffff0bff2affff0bff2affff0bff22ff3280ff0580ffff0bff2affff02ff3affff04ff02ffff04ff07ffff04ffff0bff22ff2280ff8080808080ffff0bff22ff8080808080ff02ffff03ffff07ff0580ffff01ff0bffff0102ffff02ff7effff04ff02ffff04ff09ff80808080ffff02ff7effff04ff02ffff04ff0dff8080808080ffff01ff0bffff0101ff058080ff0180ff018080ffff04ffff01ff02ffff01ff02ffff01ff02ffff03ff0bffff01ff02ffff03ffff09ff05ffff1dff0bffff1effff0bff0bffff02ff06ffff04ff02ffff04ff17ff8080808080808080ffff01ff02ff17ff2f80ffff01ff088080ff0180ffff01ff04ffff04ff04ffff04ff05ffff04ffff02ff06ffff04ff02ffff04ff17ff80808080ff80808080ffff02ff17ff2f808080ff0180ffff04ffff01ff32ff02ffff03ffff07ff0580ffff01ff0bffff0102ffff02ff06ffff04ff02ffff04ff09ff80808080ffff02ff06ffff04ff02ffff04ff0dff8080808080ffff01ff0bffff0101ff058080ff0180ff018080ffff04ffff01b0a3e80190c5920d683e1058cba5d4fbaede4d62c08db85047e256eba971fde5aad1762cb79bd0be6b990f1005d0cbef8bff018080ffff04ffff01a04bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459affff04ffff0180ffff04ffff01ffa0f1e8350cec62f8204aaf867cc3c12cae369f619258206616108c6cfd7be760b3ffa06a8d474f7587eb25667d3dbb14918737962c159453d105b6224b7950a758512da0eff07522495060c066f66f32acc2a77e3a3e737aca8baea4d1a64ea4cdc13da9ffff04ffff0180ff01808080808080ff01808080\",\r\n          \"solution\": \"0xffffa07738c8bc6629a6ece9197280238fa2db9437a66d4dc09d8c7d8446956e91e905ffa0b83b62a297e44cb53878276e51db3daaf6b0a69ca8fdd4165c8c5bb1816289eaff0180ff01ffff02ffff80ffff01ffff33ffa0120a2e3743c2ca08ff09e64c6615537d0269c39137d413c3034d8d5fde4fa316ff01ffffa01aaf838ba6d832bb3b80114b3805ddf37f7990dae70df59e031c1aa9f830c392808080ff8080ff80ff80ff80ff808080\"\r\n        }\r\n      ]\r\n    },\r\n    \"to_address\": \"txch1r2hc8zaxmqetkwuqz99nspwa7dlhnyx6uuxlt8srrsd2n7pscwfqgjhy7h\",\r\n    \"to_puzzle_hash\": \"0x1aaf838ba6d832bb3b80114b3805ddf37f7990dae70df59e031c1aa9f830c392\",\r\n    \"trade_id\": null,\r\n    \"type\": 1,\r\n    \"wallet_id\": 4\r\n  },\r\n  \"transaction_id\": \"0x0af39652e953671261b177b3624041c17770f810c8f77a88f295e683774956be\"\r\n}"
+        };
+
+        [Fact]
+        public void Test_RPCSerialisation()
+        {
+           
+            Test_RPCClasses<DidTransferDid_RPC> helper = new Test_RPCClasses<DidTransferDid_RPC>();
+            helper.Test_RPCSerialisation(ExpectedRPCResults);
+        }
+        [Fact]
+        public void Test_RPCDiskIO()
+        {
+            Test_RPCClasses<DidTransferDid_RPC> helper = new Test_RPCClasses<DidTransferDid_RPC>();
+            helper.Test_RPCDiskIO(ExpectedRPCResults);
+        }
+        [Fact]
+        public void Test_ResponseSerialisation()
+        {
+            
+            Test_ResponseClasses<DidTransferDid_Response> helper = new Test_ResponseClasses<DidTransferDid_Response>();
+            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+        }
+        [Fact]
+        public void Test_ResponseDiskIO()
+        {
+            Test_ResponseClasses<DidTransferDid_Response> helper = new Test_ResponseClasses<DidTransferDid_Response>();
+            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+        }
+    }
+}

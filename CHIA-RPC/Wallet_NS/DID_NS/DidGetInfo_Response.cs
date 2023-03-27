@@ -7,7 +7,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/did-rpc#did_get_info"/><br/><br/>
-    /// Uses:<br/><see cref="General_NS.WalletID_RPC"/>
+    /// Uses:<br/><see cref="DidGetInfo_RPC"/>
     /// </remarks>
     public class DidGetInfo_Response : ResponseTemplate<DidGetInfo_Response>
     {
@@ -55,5 +55,18 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// The recovery list hash of the DID wallet.
         /// </summary>
         public string recovery_list_hash { get; set; }
+    }
+
+    /// <summary>
+    /// Response class for the did_get_info RPC.
+    /// </summary>
+    /// <remarks> <see href="https://docs.chia.net/did-rpc#did_get_info"/></remarks>
+    /// <returns><see cref="DidGetInfo_Response"/></returns>
+    public class DidGetInfo_RPC : RPCTemplate<DidGetInfo_RPC>
+    {
+        /// <summary>
+        /// the coin id to look up
+        /// </summary>
+        public string coin_id { get; set; }
     }
 }

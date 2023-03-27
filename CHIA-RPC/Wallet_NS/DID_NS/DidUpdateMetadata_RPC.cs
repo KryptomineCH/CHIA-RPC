@@ -21,7 +21,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string metadata { get; set; }
+        public Dictionary<string, object> metadata { get; set; }
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>
