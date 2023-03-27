@@ -1,4 +1,4 @@
-using CHIA_RPC.Wallet_RPC_NS.NFT_NS;
+using CHIA_RPC.Wallet_NS.NFT_NS;
 
 namespace CHIA_RPC_Tests
 {
