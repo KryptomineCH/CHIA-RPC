@@ -10,13 +10,13 @@ namespace CHIA_RPC_Tests.Testhelpers
             foreach (string expectedResult in expectedResults)
             {
                 // parse teststring into a dynamic type for comparison later
-                JsonElement inputParsed = JsonSerializer.Deserialize<JsonElement>(expectedResult);
+                JsonElement inputParsed = JsonSerializer.Deserialize<JsonElement>(expectedResult, new JsonSerializerOptions { AllowTrailingCommas = true });
                 // parse teststring into class which is to be tested
                 T myObject = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
                 // parse object back into a json
                 string myObject_Json = myObject.ToString();
                 // parse myObject output into a dynamic type for comparison with expectedResult
-                JsonElement myObject_Result = JsonSerializer.Deserialize<JsonElement>(myObject_Json);
+                JsonElement myObject_Result = JsonSerializer.Deserialize<JsonElement>(myObject_Json, new JsonSerializerOptions { AllowTrailingCommas = true });
                 // test result
                 JsonElementComparer.AssertEqual(inputParsed, myObject_Result);
             }
