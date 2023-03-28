@@ -33,6 +33,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <remarks>
         /// optional
         /// </remarks>
-        public string? folder_name { get; set; }
+        public string? foldername { get; set; }
     }
 }
