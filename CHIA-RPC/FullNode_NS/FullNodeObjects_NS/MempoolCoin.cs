@@ -12,6 +12,7 @@ namespace CHIA_RPC.Objects_NS
         /// <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/>
         /// </remarks>
         public ulong amount { get; set; }
+
         /// <summary>
         /// The memos
         /// </summary>
