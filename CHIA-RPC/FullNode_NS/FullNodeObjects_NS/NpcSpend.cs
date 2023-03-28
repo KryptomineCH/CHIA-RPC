@@ -29,7 +29,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Array of created coins. Each entry is a tuple with a string, ulong, and nullable ulong.
         /// </summary>
-        [JsonConverter(typeof(CoinArrayJsonConverter))]
+        [JsonConverter(typeof(MempoolCoinArrayJsonConverter))]
         public Coin[] create_coin { get; set; }
 
         /// <summary>

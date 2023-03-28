@@ -4,24 +4,24 @@ using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.HelperFunctions_NS
 {
-    public class CoinArrayJsonConverter : JsonConverter<Coin[]>
+    public class MempoolCoinArrayJsonConverter : JsonConverter<MempoolCoin[]>
     {
-        private CreateCoinJsonConverter _createCoinConverter = new CreateCoinJsonConverter();
+        private CreateMempoolCoinJsonConverter _createCoinConverter = new CreateMempoolCoinJsonConverter();
 
-        public override Coin[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override MempoolCoin[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartArray)
             {
                 throw new JsonException();
             }
 
-            var coins = new List<Coin>();
+            var coins = new List<MempoolCoin>();
 
             while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
             {
                 if (reader.TokenType == JsonTokenType.StartArray)
                 {
-                    coins.Add(_createCoinConverter.Read(ref reader, typeof(Coin), options));
+                    coins.Add(_createCoinConverter.Read(ref reader, typeof(MempoolCoin), options));
                 }
                 else
                 {
@@ -32,7 +32,7 @@ namespace CHIA_RPC.HelperFunctions_NS
             return coins.ToArray();
         }
 
-        public override void Write(Utf8JsonWriter writer, Coin[] value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, MempoolCoin[] value, JsonSerializerOptions options)
         {
             writer.WriteStartArray();
 
