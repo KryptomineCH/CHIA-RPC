@@ -22,6 +22,6 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// the port which is used for communication
         /// </summary>
-        public string port { get; set; }
+        public ulong port { get; set; }
     }
 }
