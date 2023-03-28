@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace CHIA_RPC_Tests.Testhelpers
 {
-    internal class Test_ObjectClasses<T> where T : ObjectTemplate<T>
+    internal class Test_ObjectClasses<T> where T : ObjectTemplate<T>, new()
     {
         internal void Test_ObjectSerialisation(string[] expectedResults)
         {
