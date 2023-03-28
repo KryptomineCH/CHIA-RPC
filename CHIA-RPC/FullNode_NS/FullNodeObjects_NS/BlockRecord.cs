@@ -34,7 +34,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The fees, if the block is a transaction block
         /// </summary>
-        public ulong fees { get; set; }
+        public ulong? fees { get; set; }
 
         /// <summary>
         /// The finished challenge slot hashes, if the block is the first block in a sub slot
@@ -123,7 +123,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The timestamp, if the block is a transaction block
         /// </summary>
-        public ulong timestamp { get; set; }
+        public ulong? timestamp { get; set; }
 
         /// <summary>
         /// The total number of iterations

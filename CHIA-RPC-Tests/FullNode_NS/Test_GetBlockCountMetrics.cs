@@ -7,7 +7,8 @@ namespace CHIA_RPC_Tests.FullNode_NS
     {
         private string[] ExpectedResults = new string[]
         {
-            "{\r\n  \"metrics\": {\r\n    \"compact_blocks\": 1347047,\r\n    \"hint_count\": 1072468,\r\n    \"uncompact_blocks\": 494593\r\n  },\r\n  \"success\": true,\r\n  \"error\": null\r\n}"
+            "{\r\n  \"metrics\": {\r\n    \"compact_blocks\": 1347047,\r\n    \"hint_count\": 1072468,\r\n    \"uncompact_blocks\": 494593\r\n  },\r\n  \"success\": true,\r\n  \"error\": null\r\n}",
+            "{\r\n    \"metrics\": {\r\n        \"compact_blocks\": 2190434,\r\n        \"hint_count\": 5895366,\r\n        \"uncompact_blocks\": 1135855\r\n    },\r\n    \"success\": true\r\n}"
         };
         [Fact]
         public void Test_ResponseSerialisation()

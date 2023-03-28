@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Numerics;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS
@@ -15,7 +16,8 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the network space in bytes
         /// </summary>
-        public ulong space { get; set; }
+        [JsonConverter(typeof(BigIntegerConverter))]
+        public BigInteger space { get; set; }
         /// <summary>
         /// the netspace, calculated in petabytes
         /// <remarks>calculated on demand with binary prefix (/1024^5)</remarks>
@@ -23,7 +25,7 @@ namespace CHIA_RPC.FullNode_NS
         [JsonIgnore]
         public decimal space_pb { get
             {
-                return space / 1099511627776m;
+                return (decimal)space / 1099511627776m;
             }
         }
         /// <summary>
@@ -35,7 +37,7 @@ namespace CHIA_RPC.FullNode_NS
         {
             get
             {
-                return space / 1152921504606846976m;
+                return (decimal)space / 1152921504606846976m;
             }
         }
         /// <summary>
@@ -47,7 +49,7 @@ namespace CHIA_RPC.FullNode_NS
         {
             get
             {
-                return space / 1152921504606846976000m;
+                return (decimal)space / 1152921504606846976000m;
             }
         }
         /// <summary>
@@ -59,7 +61,7 @@ namespace CHIA_RPC.FullNode_NS
         {
             get
             {
-                return space / 1152921504606846976000000m;
+                return (decimal)space / 1152921504606846976000000m;
             }
         }
 
@@ -72,7 +74,7 @@ namespace CHIA_RPC.FullNode_NS
         {
             get
             {
-                return space / 1152921504606846976000000000m;
+                return (decimal)space / 1152921504606846976000000000m;
             }
         }
     }

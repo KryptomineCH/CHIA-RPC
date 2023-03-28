@@ -13,7 +13,15 @@ namespace CHIA_RPC.Objects_NS
         /// <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/>
         /// </remarks>
         public ulong amount { get; set; }
+        /// <summary>
+        /// The puzzlehash of the Parent Coin which gets spend for this coin
+        /// </summary>
         public string parent_coin_info { get; set; }
+
+        /// <summary>
+        /// the puzzle hash of this coin
+        /// </summary>
+        /// <remarks>When in the Mempool and for creation, the own puzzhash can be unknown (since the coin is yet to be minted)</remarks>
         public string puzzle_hash { get; set; }
         public string GetCoinID()
         {

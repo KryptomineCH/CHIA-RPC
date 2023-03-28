@@ -9,8 +9,8 @@ namespace CHIA_RPC.Objects_NS
     public class SpendBundle : ObjectTemplate<SpendBundle>
     {
         public string aggregated_signature { get; set; }
-        public Spend[] coin_spends { get; set; }
-        public Spend[] coin_solutions { get; set; }
+        public CoinSpend[] coin_spends { get; set; }
+        public CoinSpend[] coin_solutions { get; set; }
         public override string ToString()
         {
             string json = JsonSerializer.Serialize(this);

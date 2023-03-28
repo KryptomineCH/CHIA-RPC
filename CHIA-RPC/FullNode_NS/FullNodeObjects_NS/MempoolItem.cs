@@ -1,6 +1,7 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.Objects_NS
+namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
     public class MempoolItem : ObjectTemplate<MempoolItem>
     {

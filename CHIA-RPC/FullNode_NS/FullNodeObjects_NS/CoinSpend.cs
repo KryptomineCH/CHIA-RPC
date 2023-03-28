@@ -9,7 +9,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
     /// <remarks>
     /// <see href="https://docs.chia.net/full-node-rpc#get_block_spends"/>
     /// </remarks>
-    public class Spend : ObjectTemplate<Spend>
+    public class CoinSpend : ObjectTemplate<CoinSpend>
     {
         public Coin coin { get; set; }
         public string puzzle_reveal { get; set; }

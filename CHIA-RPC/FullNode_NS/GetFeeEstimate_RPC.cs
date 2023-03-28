@@ -14,12 +14,22 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Current fee rate in mojos per byte.
         /// </summary>
-        public ulong current_fee_rate { get; set; }
+        public decimal current_fee_rate { get; set; }
 
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
-        public ulong[] estimates { get; set; }
+        public decimal[] estimates { get; set; }
+
+        /// <summary>
+        /// the actual fee rate of the last block
+        /// </summary>
+        public decimal fee_rate_last_block { get; set; }
+
+        /// <summary>
+        /// The accumulated fees of the last block
+        /// </summary>
+        public ulong fees_last_block { get; set; }
 
         /// <summary>
         /// Whether or not the full node is synced.
@@ -27,9 +37,24 @@ namespace CHIA_RPC.FullNode_NS
         public bool full_node_synced { get; set; }
 
         /// <summary>
+        /// the total cost of the last block
+        /// </summary>
+        public ulong last_block_cost { get; set; }
+
+        /// <summary>
         /// Timestamp in seconds of the last peak.
         /// </summary>
         public ulong last_peak_timestamp { get; set; }
+
+        /// <summary>
+        /// the mempool fees
+        /// </summary>
+        public ulong mempool_fees { get; set; }
+
+        /// <summary>
+        /// the block height of the last block
+        /// </summary>
+        public ulong last_tx_block_height { get; set; }
 
         /// <summary>
         /// Maximum size of the mempool in bytes.
@@ -45,6 +70,11 @@ namespace CHIA_RPC.FullNode_NS
         /// The current UTC timestamp of the node.
         /// </summary>
         public ulong node_time_utc { get; set; }
+
+        /// <summary>
+        /// the amount of block spends
+        /// </summary>
+        public ulong num_spends { get; set; }
 
         /// <summary>
         /// The height of the last peak.

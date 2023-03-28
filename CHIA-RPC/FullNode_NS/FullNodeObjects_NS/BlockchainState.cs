@@ -11,6 +11,11 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
     public class BlockchainState : ObjectTemplate<BlockchainState>
     {
         /// <summary>
+        /// The maximum cost of a block in the blockchain
+        /// </summary>
+        public ulong block_max_cost { get; set; }
+
+        /// <summary>
         /// The difficulty of the blockchain
         /// </summary>
         public ulong difficulty { get; set; }
@@ -21,9 +26,34 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         public bool genesis_challenge_initialized { get; set; }
 
         /// <summary>
+        /// The current cost of the mempool
+        /// </summary>
+        public ulong mempool_cost { get; set; }
+
+        /// <summary>
+        /// The total fees of the transactions in the mempool
+        /// </summary>
+        public ulong mempool_fees { get; set; }
+
+        /// <summary>
+        /// The maximum total cost of transactions allowed in the mempool
+        /// </summary>
+        public ulong mempool_max_total_cost { get; set; }
+
+        /// <summary>
+        /// The minimum fees required for transactions in the mempool, per unit of cost
+        /// </summary>
+        public Dictionary<string, ulong> mempool_min_fees { get; set; }
+
+        /// <summary>
         /// The size of the mempool
         /// </summary>
         public ulong mempool_size { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the node
+        /// </summary>
+        public string node_id { get; set; }
 
         /// <summary>
         /// Information about the peak of the blockchain

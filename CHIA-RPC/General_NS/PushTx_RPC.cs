@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.General_NS
 {
@@ -24,6 +25,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// the Status indicates wether the transaction was pushed to the Mempool successfully
         /// </summary>
+        [JsonConverter(typeof(StringToEnumConverter<TransactionStatus>))]
         public TransactionStatus status { get; set; }
     }
     /// <summary>
