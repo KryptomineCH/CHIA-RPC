@@ -1,5 +1,4 @@
 ﻿using CHIA_RPC.Farmer_NS;
-using CHIA_RPC.Farmer_NS.FarmerObjects_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Farmer_NS
