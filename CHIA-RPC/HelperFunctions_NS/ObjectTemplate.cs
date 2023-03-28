@@ -14,7 +14,7 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// By using this recursive type constraint, 
     /// you can ensure that any derived classes of ObjectTemplate<T> can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
-    public abstract class ObjectTemplate<T> where T : ObjectTemplate<T>
+    public abstract class ObjectTemplate<T> where T : ObjectTemplate<T>, new()
     {
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
@@ -44,6 +44,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <returns>The loaded RPC</returns>
         public static T LoadObjectFromString(string inputString)
         {
+            if (inputString == "") return (T)Activator.CreateInstance(typeof(T));
             var options = new JsonSerializerOptions();
             options.AllowTrailingCommas = true;
             options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;

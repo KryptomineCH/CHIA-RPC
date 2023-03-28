@@ -16,7 +16,7 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// By using this recursive type constraint, 
     /// you can ensure that any derived classes of ResponseTemplate<T> can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
-    public abstract class ResponseTemplate<T> where T : ResponseTemplate<T>
+    public abstract class ResponseTemplate<T> where T : ResponseTemplate<T>, new()
     {
         /// <summary>
         /// this boolean indicates whether the server accepted and processed the request or not.
@@ -57,6 +57,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <returns>The loaded response.</returns>
         public static T LoadResponseFromString(string inputString)
         {
+            if (inputString == "") return (T)Activator.CreateInstance(typeof(T));
             return JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
         }
 
