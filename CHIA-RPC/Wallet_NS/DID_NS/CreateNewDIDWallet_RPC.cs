@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
 using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_NS.DID_NS

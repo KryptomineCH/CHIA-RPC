@@ -12,6 +12,6 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     /// </remarks>
     public class NftGetWalletsWithDIDs_Response : ResponseTemplate<NftGetWalletsWithDIDs_Response>
     {
-        NftWallet[] nft_wallets { get; set; }
+        public NftWallet[] nft_wallets { get; set; }
     }
 }

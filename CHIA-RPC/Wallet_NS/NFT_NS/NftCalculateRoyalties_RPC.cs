@@ -1,5 +1,7 @@
 ﻿using CHIA_RPC.Objects_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
 
 namespace CHIA_RPC.Wallet_NS.NFT_NS
 {
@@ -15,6 +17,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     /// <see href="https://docs.chia.net/nft-rpc#nft_calculate_royalties"/><br/><br/>
     /// Uses:<br/><see cref="NftCalculateRoyalties_Response"/>
     /// </remarks>
+    [JsonConverter(typeof(NftCalculateRoyaltiesResponseConverter))]
     public class NftCalculateRoyalties_Response : ResponseTemplate<NftCalculateRoyalties_Response>
     {
         /// <summary>

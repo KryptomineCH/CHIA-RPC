@@ -1,5 +1,6 @@
 ﻿
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS

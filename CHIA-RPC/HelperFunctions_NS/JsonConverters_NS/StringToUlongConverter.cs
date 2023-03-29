@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 
-namespace CHIA_RPC.HelperFunctions_NS
+namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 {
     public class StringToUlongConverter : JsonConverter<ulong>
     {
@@ -28,7 +28,7 @@ namespace CHIA_RPC.HelperFunctions_NS
 
         public override void Write(Utf8JsonWriter writer, ulong value, JsonSerializerOptions options)
         {
-                writer.WriteStringValue(value.ToString());
+            writer.WriteStringValue(value.ToString());
         }
     }
     public class StringToUlongNullableConverter : JsonConverter<ulong?>

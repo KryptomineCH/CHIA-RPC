@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using System.Text;
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
 {
@@ -9,6 +9,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// some non human readable data and a chain logo
         /// </summary>
+        [JsonConverter(typeof(ChainInfoConverter))]
         public string chain_info { get; set; }
         /// <summary>
         /// a sha256sum to validate data from the nft data-uri

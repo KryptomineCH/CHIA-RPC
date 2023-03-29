@@ -2,7 +2,7 @@
 using System.Text.Json;
 using CHIA_RPC.Objects_NS;
 
-namespace CHIA_RPC.HelperFunctions_NS
+namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 {
     public class MempoolCoinArrayJsonConverter : JsonConverter<MempoolCoin[]>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 
-namespace CHIA_RPC.HelperFunctions_NS
+namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 {
     public class StringToEnumConverter<TEnum> : JsonConverter<TEnum> where TEnum : struct, Enum
     {
