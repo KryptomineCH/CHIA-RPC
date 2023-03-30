@@ -1,5 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
-
+using System.Collections.Specialized;
 
 namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
 {
@@ -12,6 +12,10 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     /// </remarks>
     public class CheckOfferValidity_Response : ResponseTemplate<CheckOfferValidity_Response>
     {
+        /// <summary>
+        /// the offer ID
+        /// </summary>
+        public string id { get; set; }
         /// <summary>
         /// Whether the offer is valid or not.
         /// </summary>

@@ -18,6 +18,7 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// An optional fee (in mojos) to include with the cancellation [Default: 0]
         /// </summary>
         public ulong? fee { get; set; }
+        public ulong? batch_fee { get; set; }
 
         /// <summary>
         /// The number of offers to cancel in one batch [Default: 5]
