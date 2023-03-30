@@ -14,13 +14,13 @@ namespace CHIA_RPC_Tests.Objects_NS
         public void Test_ObjectSerialisation()
         {
             Test_ObjectClasses<BlockCountMetrics> helper = new Test_ObjectClasses<BlockCountMetrics>();
-            helper.Test_ObjectSerialisation(ExpectedResults);
+            helper.Test_Serialisation(ExpectedResults);
         }
         [Fact]
         public void Test_ObjectDiskIO()
         {
             Test_ObjectClasses<BlockCountMetrics> helper = new Test_ObjectClasses<BlockCountMetrics>();
-            helper.Test_ObjectDiskIO(ExpectedResults);
+            helper.Test_DiskIO(ExpectedResults);
         }
     }
 }

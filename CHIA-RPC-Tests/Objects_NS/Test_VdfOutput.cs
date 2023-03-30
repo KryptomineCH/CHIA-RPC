@@ -15,13 +15,13 @@ namespace CHIA_RPC_Tests.Objects_NS
         public void Test_ObjectSerialisation()
         {
             Test_ObjectClasses<VdfOutput> helper = new Test_ObjectClasses<VdfOutput>();
-            helper.Test_ObjectSerialisation(ExpectedResults);
+            helper.Test_Serialisation(ExpectedResults);
         }
         [Fact]
         public void Test_ObjectDiskIO()
         {
             Test_ObjectClasses<VdfOutput> helper = new Test_ObjectClasses<VdfOutput>();
-            helper.Test_ObjectDiskIO(ExpectedResults);
+            helper.Test_DiskIO(ExpectedResults);
         }
     }
 }

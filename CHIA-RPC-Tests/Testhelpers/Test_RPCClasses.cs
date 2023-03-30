@@ -5,7 +5,7 @@ namespace CHIA_RPC_Tests.Testhelpers
 {
     internal class Test_RPCClasses<T> where T : RPCTemplate<T>, new()
     {
-        internal void Test_RPCSerialisation(string[] expectedResults)
+        internal void Test_Serialisation(string[] expectedResults)
         {
             foreach (string expectedResult in expectedResults)
             {
@@ -21,7 +21,7 @@ namespace CHIA_RPC_Tests.Testhelpers
                 JsonElementComparer.AssertEqual(inputParsed, myRPC_Result);
             }
         }
-        internal void Test_RPCDiskIO(string[] expectedResults)
+        internal void Test_DiskIO(string[] expectedResults)
         {
             foreach (string expectedResult in expectedResults)
             {

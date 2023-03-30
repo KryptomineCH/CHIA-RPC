@@ -20,26 +20,26 @@ namespace CHIA_RPC_Tests.Datalayer_NS
         {
            
             Test_RPCClasses<CancelOffer_RPC> helper = new Test_RPCClasses<CancelOffer_RPC>();
-            helper.Test_RPCSerialisation(ExpectedRPCResults);
+            helper.Test_Serialisation(ExpectedRPCResults);
         }
         [Fact]
         public void Test_RPCDiskIO()
         {
             Test_RPCClasses<CancelOffer_RPC> helper = new Test_RPCClasses<CancelOffer_RPC>();
-            helper.Test_RPCDiskIO(ExpectedRPCResults);
+            helper.Test_DiskIO(ExpectedRPCResults);
         }
         [Fact]
         public void Test_ResponseSerialisation()
         {
             
             Test_ResponseClasses<Success_Response> helper = new Test_ResponseClasses<Success_Response>();
-            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+            helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<Success_Response> helper = new Test_ResponseClasses<Success_Response>();
-            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+            helper.Test_DiskIO(ExpectedResponseResults);
         }
     }
 }

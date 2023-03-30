@@ -14,13 +14,13 @@ namespace CHIA_RPC_Tests.Objects_NS
         public void Test_SpendSerialisation()
         {
             Test_ObjectClasses<CoinSpend> helper = new Test_ObjectClasses<CoinSpend>();
-            helper.Test_ObjectSerialisation(ExpectedResults);
+            helper.Test_Serialisation(ExpectedResults);
         }
         [Fact]
         public void Test_SpendDiskIO()
         {
             Test_ObjectClasses<CoinSpend> helper = new Test_ObjectClasses<CoinSpend>();
-            helper.Test_ObjectDiskIO(ExpectedResults);
+            helper.Test_DiskIO(ExpectedResults);
         }
     }
 }

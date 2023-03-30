@@ -19,26 +19,26 @@ namespace CHIA_RPC_Tests.Wallet_NS.DID_NS
         {
            
             Test_RPCClasses<DidTransferDid_RPC> helper = new Test_RPCClasses<DidTransferDid_RPC>();
-            helper.Test_RPCSerialisation(ExpectedRPCResults);
+            helper.Test_Serialisation(ExpectedRPCResults);
         }
         [Fact]
         public void Test_RPCDiskIO()
         {
             Test_RPCClasses<DidTransferDid_RPC> helper = new Test_RPCClasses<DidTransferDid_RPC>();
-            helper.Test_RPCDiskIO(ExpectedRPCResults);
+            helper.Test_DiskIO(ExpectedRPCResults);
         }
         [Fact]
         public void Test_ResponseSerialisation()
         {
             
             Test_ResponseClasses<DidTransferDid_Response> helper = new Test_ResponseClasses<DidTransferDid_Response>();
-            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+            helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<DidTransferDid_Response> helper = new Test_ResponseClasses<DidTransferDid_Response>();
-            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+            helper.Test_DiskIO(ExpectedResponseResults);
         }
     }
 }

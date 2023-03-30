@@ -16,13 +16,13 @@ namespace CHIA_RPC_Tests.FullNode_NS
         public void Test_ResponseSerialisation()
         {
             Test_ResponseClasses<GetRoutes_Response> helper = new Test_ResponseClasses<GetRoutes_Response>();
-            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+            helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<GetRoutes_Response> helper = new Test_ResponseClasses<GetRoutes_Response>();
-            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+            helper.Test_DiskIO(ExpectedResponseResults);
         }
     }
 }

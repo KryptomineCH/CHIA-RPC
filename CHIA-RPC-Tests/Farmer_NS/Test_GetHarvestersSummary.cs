@@ -15,13 +15,13 @@ namespace CHIA_RPC_Tests.Farmer_NS
         {
             
             Test_ResponseClasses<GetHarvestersSummary_Response> helper = new Test_ResponseClasses<GetHarvestersSummary_Response>();
-            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+            helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<GetHarvestersSummary_Response> helper = new Test_ResponseClasses<GetHarvestersSummary_Response>();
-            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+            helper.Test_DiskIO(ExpectedResponseResults);
         }
     }
 }

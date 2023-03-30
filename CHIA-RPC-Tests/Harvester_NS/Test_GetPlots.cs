@@ -14,13 +14,13 @@ namespace CHIA_RPC_Tests.Harvester_NS
         public void Test_ResponseSerialisation()
         {
             Test_ResponseClasses<GetPlots_Response> helper = new Test_ResponseClasses<GetPlots_Response>();
-            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+            helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<GetPlots_Response> helper = new Test_ResponseClasses<GetPlots_Response>();
-            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+            helper.Test_DiskIO(ExpectedResponseResults);
         }
     }
 }

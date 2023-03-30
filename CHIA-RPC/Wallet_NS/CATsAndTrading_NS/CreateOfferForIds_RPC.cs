@@ -13,7 +13,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// The offer to create
         /// </summary>
-        public string offer { get; set; }
+        public Dictionary<string,long> offer { get; set; }
 
         /// <summary>
         /// Only validate the offer instead of creating it [Default: false]

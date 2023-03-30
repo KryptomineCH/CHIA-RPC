@@ -18,25 +18,25 @@ namespace CHIA_RPC_Tests.FullNode_NS
         public void Test_RPCSerialisation()
         {
             Test_RPCClasses<GetRecentSignagePointOrEos_RPC> helper = new Test_RPCClasses<GetRecentSignagePointOrEos_RPC>();
-            helper.Test_RPCSerialisation(ExpectedRPCResults);
+            helper.Test_Serialisation(ExpectedRPCResults);
         }
         [Fact]
         public void Test_RpcDiskIO()
         {
             Test_RPCClasses<GetRecentSignagePointOrEos_RPC> helper = new Test_RPCClasses<GetRecentSignagePointOrEos_RPC>();
-            helper.Test_RPCDiskIO(ExpectedRPCResults);
+            helper.Test_DiskIO(ExpectedRPCResults);
         }
         [Fact]
         public void Test_ResponseSerialisation()
         {
             Test_ResponseClasses<GetRecentSignagePointOrEos_Response> helper = new Test_ResponseClasses<GetRecentSignagePointOrEos_Response>();
-            helper.Test_ResponseSerialisation(ExpectedResponseResults);
+            helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<GetRecentSignagePointOrEos_Response> helper = new Test_ResponseClasses<GetRecentSignagePointOrEos_Response>();
-            helper.Test_ResponseDiskIO(ExpectedResponseResults);
+            helper.Test_DiskIO(ExpectedResponseResults);
         }
     }
 }

@@ -15,13 +15,13 @@ namespace CHIA_RPC_Tests.Datalayer_NS
         {
            
             Test_RPCClasses<Subscribe_RPC> helper = new Test_RPCClasses<Subscribe_RPC>();
-            helper.Test_RPCSerialisation(ExpectedRPCResults);
+            helper.Test_Serialisation(ExpectedRPCResults);
         }
         [Fact]
         public void Test_RPCDiskIO()
         {
             Test_RPCClasses<Subscribe_RPC> helper = new Test_RPCClasses<Subscribe_RPC>();
-            helper.Test_RPCDiskIO(ExpectedRPCResults);
+            helper.Test_DiskIO(ExpectedRPCResults);
         }
     }
 }
