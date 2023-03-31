@@ -1,4 +1,7 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
+using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS.Simulator_NS
 {
@@ -15,6 +18,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// Dictionary containing puzzle hashes used in the blockchain as keys,
         /// and a two-element array with total unspent amount and count of unspent coins as values.
         /// </summary>
-        public Dictionary<string, ulong[]> puzzle_hashes { get; init; }
+        [JsonConverter(typeof(BigIntegerArrayDictionaryConverter))]
+        public Dictionary<string, BigInteger[]> puzzle_hashes { get; init; }
     }
 }

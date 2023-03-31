@@ -23,7 +23,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     /// Represents the RPC request for the Set Auto Farming API.
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/simulator-rpc#set_auto_farming"/></remarks>
-    /// <returns><see cref="SetAutoFarming_Response"/></returns>
+    /// <returns><see cref="AutoFarming_Response"/></returns>
     public class SetAutoFarming_RPC : RPCTemplate<SetAutoFarming_RPC>
     {
         /// <summary>
