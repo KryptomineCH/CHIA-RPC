@@ -1,5 +1,4 @@
-﻿using CHIA_RPC.General_NS;
-using CHIA_RPC.Wallet_NS.Wallet_NS;
+﻿using CHIA_RPC.Wallet_NS.Wallet_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Wallet_NS.Wallet_NS

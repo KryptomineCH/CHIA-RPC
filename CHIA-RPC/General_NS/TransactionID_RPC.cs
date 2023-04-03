@@ -18,7 +18,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// optional the transaction details
         /// </summary>
-        public Transaction? transaction { get; set; }
+        public Transaction_DictMemos? transaction { get; set; }
         /// <summary>
         /// The ID of the transaction. This is listed as name in the output of the transactions RPC
         /// </summary>

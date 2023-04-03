@@ -20,7 +20,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// The list of transactions associated with the wallet.
         /// </summary>
-        public Transaction[] transactions { get; set; }
+        public Transaction_DictMemos[] transactions { get; set; }
     }
     /// <summary>
     /// Create a new DataLayer wallet

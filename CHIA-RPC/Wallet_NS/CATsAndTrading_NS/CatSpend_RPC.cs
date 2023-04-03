@@ -12,7 +12,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     /// </remarks>
     public class CatSpend_Response : ResponseTemplate<CatSpend_Response>
     {
-        public Transaction transaction { get; set; }
+        public Transaction_DictMemos transaction { get; set; }
         public string transaction_id { get; set; }
     }
     /// <summary>

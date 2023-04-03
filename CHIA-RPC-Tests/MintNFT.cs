@@ -2,7 +2,7 @@ using CHIA_RPC.Wallet_NS.NFT_NS;
 
 namespace CHIA_RPC_Tests
 {
-    public class UnitTest1
+    public class MintNFT
     {
         [Fact]
         public void NftMintNft_SaveLoadRPC()

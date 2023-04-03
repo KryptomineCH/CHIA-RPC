@@ -11,7 +11,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class SendNotification_Response : ResponseTemplate<SendNotification_Response>
     {
-        public Transaction tx { get; set; }
+        public Transaction_DictMemos tx { get; set; }
     }
     /// <summary>
     /// Send a notification to a specified puzzle hash

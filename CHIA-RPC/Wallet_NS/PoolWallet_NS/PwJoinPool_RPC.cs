@@ -15,7 +15,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// <summary>
         /// Represents a fee transaction.
         /// </summary>
-        public Transaction fee_transaction { get; set; }
+        public Transaction_StringMemos fee_transaction { get; set; }
 
         /// <summary>
         /// Represents the total fee.
@@ -25,7 +25,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// <summary>
         /// Represents a transaction.
         /// </summary>
-        public Transaction transaction { get; set; }
+        public Transaction_StringMemos transaction { get; set; }
     }
     /// <summary>
     /// Join a pool

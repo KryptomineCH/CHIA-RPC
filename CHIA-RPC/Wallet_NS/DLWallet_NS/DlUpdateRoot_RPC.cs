@@ -13,7 +13,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     /// </remarks>
     public class DlUpdateRoot_Response : ResponseTemplate<DlUpdateRoot_Response>
     {
-        public Transaction tx_record { get; set; }
+        public Transaction_DictMemos tx_record { get; set; }
     }
     /// <summary>
     /// Represents a JSON RPC request to update the root of a data store.

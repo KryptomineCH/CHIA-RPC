@@ -16,7 +16,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// An array of transactions returned in the response.
         /// </summary>
-        public Transaction[] transactions { get; set; }
+        public Transaction_DictMemos[] transactions { get; set; }
     }
     /// <summary>
     /// Add a new on chain message for a specific singleton

@@ -8,7 +8,7 @@ namespace CHIA_RPC.Objects_NS
     /// <remarks>
     /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/><br/>
     /// </remarks>
-    public class Transaction : ObjectTemplate<Transaction>
+    public class Transaction_NoMemo : ObjectTemplate<Transaction_NoMemo>
     {
         public Coin[] additions { get; set; }
         public ulong amount { get; set; }
@@ -16,10 +16,6 @@ namespace CHIA_RPC.Objects_NS
         public ulong confirmed_at_height { get; set; }
         public ulong created_at_time { get; set; }
         public ulong fee_amount { get; set; }
-        /// <summary>
-        /// note: could not be validated yet
-        /// </summary>
-        public Dictionary<string,string> memos { get; set; }
         /// <summary>
         /// This is the transaction ID!!!
         /// </summary>
@@ -33,5 +29,16 @@ namespace CHIA_RPC.Objects_NS
         public string trade_id { get; set; }
         public ulong type { get; set; }
         public ulong wallet_id { get; set; }
+    }
+    public class Transaction_StringMemos : Transaction_NoMemo
+    {
+        public string[] memos { get; set; }
+    }
+    public class Transaction_DictMemos : Transaction_NoMemo
+    {
+        /// <summary>
+        /// note: could not be validated yet
+        /// </summary>
+        public Dictionary<string, string> memos { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class GetTransaction_Response : ResponseTemplate<GetTransaction_Response>
     {
-        public Transaction transaction { get; set; }
+        public Transaction_DictMemos transaction { get; set; }
         public string transaction_id { get; set; }
     }
     /// <summary>
@@ -24,7 +24,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class GetTransactions_Response : ResponseTemplate<GetTransactions_Response>
     {
-        public Transaction[] transactions { get; set; }
+        public Transaction_DictMemos[] transactions { get; set; }
         public ulong wallet_id { get; set; }
     }
     /// <summary>

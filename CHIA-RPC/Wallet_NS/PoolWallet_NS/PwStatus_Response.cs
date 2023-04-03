@@ -12,7 +12,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
     /// <see href="https://docs.chia.net/wallet-rpc#pw_status"/><br/><br/>
     /// Uses:<br/><see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
-    public class PwStatusResponse : ResponseTemplate<PwStatusResponse>
+    public class PwStatus_Response : ResponseTemplate<PwStatus_Response>
     {
         /// <summary>
         /// The state of the pooling wallet
