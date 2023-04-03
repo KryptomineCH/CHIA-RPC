@@ -10,17 +10,15 @@ namespace CHIA_RPC_Tests.Wallet_NS.WalletNode_NS
             "{\r\n    \"height\": 2863319,\r\n    \"success\": true\r\n}"
         };
 
-        [Fact]
+        [Fact(Skip = "Incomplete documentation at https://docs.chia.net/wallet-rpc#push_tx, unable to test this method yet.")]
         public void Test_ResponseSerialisation()
         {
-            throw new NotImplementedException("no documentation on https://docs.chia.net/wallet-rpc#push_tx");
             Test_ResponseClasses<GetHeightInfo_Response> helper = new Test_ResponseClasses<GetHeightInfo_Response>();
             helper.Test_Serialisation(ExpectedResponseResults);
         }
-        [Fact]
+        [Fact(Skip = "Incomplete documentation at https://docs.chia.net/wallet-rpc#push_tx, unable to test this method yet.")]
         public void Test_ResponseDiskIO()
         {
-            throw new NotImplementedException("no documentation on https://docs.chia.net/wallet-rpc#push_tx");
             Test_ResponseClasses<GetHeightInfo_Response> helper = new Test_ResponseClasses<GetHeightInfo_Response>();
             helper.Test_DiskIO(ExpectedResponseResults);
         }

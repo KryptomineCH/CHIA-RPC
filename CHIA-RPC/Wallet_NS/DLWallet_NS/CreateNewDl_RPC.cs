@@ -8,7 +8,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/wallet-rpc#create_new_dl"/><br/><br/>
-    /// Uses:<br/><see cref="CreateNewDl_RPC"/>
+    /// Uses:<br/><see cref="CreateNewDL_RPC"/>
     /// </remarks>
     public class CreateNewDL_Response : ResponseTemplate<CreateNewDL_Response>
     {
@@ -27,7 +27,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc#create_new_dl"/></remarks>
     /// <returns><see cref="CreateNewDL_Response"/></returns>
-    public class CreateNewDl_RPC : RPCTemplate<CreateNewDl_RPC>
+    public class CreateNewDL_RPC : RPCTemplate<CreateNewDL_RPC>
     {
         /// <summary>
         /// The root hash of an existing data store

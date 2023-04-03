@@ -14,17 +14,15 @@ namespace CHIA_RPC_Tests.Wallet_NS.Wallet_NS
             "{\r\n    \"notifications\": [\r\n        {\r\n            \"amount\": 10000000,\r\n            \"id\": \"f74fb363fbdeef3f6bcf7a0664a8ef76ea3e5f22bb4ffc9a1f9ef23b9329ae28\",\r\n            \"message\": \"fadedcab\"\r\n        }\r\n    ],\r\n    \"success\": true\r\n}"
         };
 
-        [Fact]
+        [Fact(Skip = "Incomplete documentation at https://docs.chia.net/wallet-rpc#get_notifications, unable to test this method yet.")]
         public void Test_RPCSerialisation()
         {
-           throw new NotImplementedException("cannot be validated due to missing documentation");
             Test_RPCClasses<Index_RPC> helper = new Test_RPCClasses<Index_RPC>();
             helper.Test_Serialisation(ExpectedRPCResults);
         }
-        [Fact]
+        [Fact(Skip = "Incomplete documentation at https://docs.chia.net/wallet-rpc#get_notifications, unable to test this method yet.")]
         public void Test_RPCDiskIO()
         {
-            throw new NotImplementedException("cannot be validated due to missing documentation");
             Test_RPCClasses<Index_RPC> helper = new Test_RPCClasses<Index_RPC>();
             helper.Test_DiskIO(ExpectedRPCResults);
         }
