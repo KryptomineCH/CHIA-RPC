@@ -28,11 +28,12 @@ namespace CHIA_RPC.Wallet_NS.WalletManagement_NS
         public string name {
             get { return _name; }
             set {
-                if (value.Contains(' '))
-                {
-                    _name = value.Split(' ')[1];
-                }
-                else { _name = value; }
+                //if (value.Contains(' '))
+                //{
+                //    _name = value.Split(' ')[1];
+                //}
+                //else { _name = value; }
+                _name = value; // required for example for chia wallet
             } 
         }
         private string _name { get; set; }

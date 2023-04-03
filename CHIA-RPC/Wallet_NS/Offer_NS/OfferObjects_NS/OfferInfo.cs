@@ -12,6 +12,8 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS.OfferObjects_NS
         // The type of offer.
         public string type { get; set; }
 
+        public string tail { get; set; }
+
         // The nested "also" object containing additional information about the offer.
         public Also also { get; set; }
     }

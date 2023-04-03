@@ -1,0 +1,45 @@
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.Wallet_NS.Wallet_NS;
+using CHIA_RPC_Tests.Testhelpers;
+
+namespace CHIA_RPC_Tests.Wallet_NS.Wallet_NS
+{
+    public class Test_GetCoinRecordsByNames
+    {
+        private string[] ExpectedRPCResults = new string[]
+        {
+            "{\"names\": [\"0xeb17e80fcb72f15bfb28924f0bcd684df626646dca282bc88098cb0d59ffe1bb\"]}"
+        };
+        string[] ExpectedResponseResults = new string[]
+        {
+            "{\r\n    \"coin_records\": [\r\n        {\r\n            \"coin\": {\r\n                \"amount\": 999996796,\r\n                \"parent_coin_info\": \"0xfecaf9d1cffe1b71f00aee7816ea90562b18307d4461757e23f097703340beb7\",\r\n                \"puzzle_hash\": \"0x138373343443d3cdf6bd033244f32d904dd93e1ad2772f120955c0d8d761b722\"\r\n            },\r\n            \"coinbase\": false,\r\n            \"confirmed_block_index\": 2867783,\r\n            \"spent_block_index\": 0,\r\n            \"timestamp\": 1669261898\r\n        }\r\n    ],\r\n    \"success\": true\r\n}"
+        };
+
+        [Fact]
+        public void Test_RPCSerialisation()
+        {
+           
+            Test_RPCClasses<GetCoinRecordsByNames_RPC> helper = new Test_RPCClasses<GetCoinRecordsByNames_RPC>();
+            helper.Test_Serialisation(ExpectedRPCResults);
+        }
+        [Fact]
+        public void Test_RPCDiskIO()
+        {
+            Test_RPCClasses<GetCoinRecordsByNames_RPC> helper = new Test_RPCClasses<GetCoinRecordsByNames_RPC>();
+            helper.Test_DiskIO(ExpectedRPCResults);
+        }
+        [Fact]
+        public void Test_ResponseSerialisation()
+        {
+            
+            Test_ResponseClasses<GetCoinRecords_Response> helper = new Test_ResponseClasses<GetCoinRecords_Response>();
+            helper.Test_Serialisation(ExpectedResponseResults);
+        }
+        [Fact]
+        public void Test_ResponseDiskIO()
+        {
+            Test_ResponseClasses<GetCoinRecords_Response> helper = new Test_ResponseClasses<GetCoinRecords_Response>();
+            helper.Test_DiskIO(ExpectedResponseResults);
+        }
+    }
+}

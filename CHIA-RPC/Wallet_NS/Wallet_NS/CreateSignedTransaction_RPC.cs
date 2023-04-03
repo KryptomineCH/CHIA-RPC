@@ -5,7 +5,8 @@ using CHIA_RPC.HelperFunctions_NS;
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
     /// <summary>
-    /// Class representing a JSON RPC request for the create_signed_transaction method.
+    /// Class representing a JSON RPC request for the create_signed_transaction method.<br/>
+    /// WARNING: could not be validated due to incomplete documentation
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc/#create_signed_transaction"/></remarks>
     public class CreateSignedTransaction_RPC : RPCTemplate<CreateSignedTransaction_RPC>

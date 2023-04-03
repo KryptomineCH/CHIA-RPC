@@ -19,7 +19,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// note: could not be validated yet
         /// </summary>
-        public Memos memos { get; set; }
+        public Dictionary<string,string> memos { get; set; }
         /// <summary>
         /// This is the transaction ID!!!
         /// </summary>
