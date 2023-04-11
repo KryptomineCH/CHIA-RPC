@@ -15,13 +15,13 @@ namespace CHIA_RPC_Tests.Wallet_NS.WalletNode_NS
         public void Test_ResponseSerialisation()
         {
             
-            Test_ResponseClasses<GetSyncStatus_Response> helper = new Test_ResponseClasses<GetSyncStatus_Response>();
+            Test_ResponseClasses<GetWalletSyncStatus_Response> helper = new Test_ResponseClasses<GetWalletSyncStatus_Response>();
             helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
-            Test_ResponseClasses<GetSyncStatus_Response> helper = new Test_ResponseClasses<GetSyncStatus_Response>();
+            Test_ResponseClasses<GetWalletSyncStatus_Response> helper = new Test_ResponseClasses<GetWalletSyncStatus_Response>();
             helper.Test_DiskIO(ExpectedResponseResults);
         }
     }

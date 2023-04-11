@@ -9,7 +9,7 @@ namespace CHIA_RPC.Wallet_NS.WalletNode_NS
     /// <see href="https://docs.chia.net/wallet-rpc#get_sync_status"/><br/><br/>
     /// Uses:<br/>the request does not have parameters
     /// </remarks>
-    public class GetSyncStatus_Response : ResponseTemplate<GetSyncStatus_Response>
+    public class GetWalletSyncStatus_Response : ResponseTemplate<GetWalletSyncStatus_Response>
     {
         public bool genesis_initialized { get; set; }
         /// <summary>

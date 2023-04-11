@@ -17,6 +17,24 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     {
         public SpendBundle spend_bundle { get; set; }
         public ulong wallet_id { get; set; }
+        public NftGetInfo_RPC Get_NftGetInfo_RPC()
+        {
+            string coinID = spend_bundle.coin_solutions[0].coin.GetCoinID();
+            NftGetInfo_RPC nftRequest = new NftGetInfo_RPC
+            {
+                coin_id = coinID,
+                wallet_id = wallet_id
+            };
+            return nftRequest;
+        }
+        /// <summary>
+        /// Define the implicit conversion operator
+        /// </summary>
+        /// <param name="response"></param>
+        public static implicit operator NftGetInfo_RPC(NftMintNFT_Response response)
+        {
+            return response.Get_NftGetInfo_RPC();
+        }
     }
     /// <summary>
     /// Mint a new NFT

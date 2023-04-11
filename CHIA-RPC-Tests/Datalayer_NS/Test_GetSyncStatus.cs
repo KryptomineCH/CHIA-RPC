@@ -33,13 +33,13 @@ namespace CHIA_RPC_Tests.Datalayer_NS
         public void Test_ResponseSerialisation()
         {
             
-            Test_ResponseClasses<GetSyncStatus_Response> helper = new Test_ResponseClasses<GetSyncStatus_Response>();
+            Test_ResponseClasses<GetDatalayerSyncStatus_Response> helper = new Test_ResponseClasses<GetDatalayerSyncStatus_Response>();
             helper.Test_Serialisation(ExpectedResponseResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
-            Test_ResponseClasses<GetSyncStatus_Response> helper = new Test_ResponseClasses<GetSyncStatus_Response>();
+            Test_ResponseClasses<GetDatalayerSyncStatus_Response> helper = new Test_ResponseClasses<GetDatalayerSyncStatus_Response>();
             helper.Test_DiskIO(ExpectedResponseResults);
         }
     }

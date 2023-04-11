@@ -10,7 +10,7 @@ namespace CHIA_RPC.Datalayer_NS
     /// <see href="https://docs.chia.net/datalayer-rpc#get_sync_status"/><br/><br/>
     /// Uses:<br/><see cref="General_NS.ID_RPC"/>
     /// </remarks>
-    public class GetSyncStatus_Response : ResponseTemplate<GetSyncStatus_Response>
+    public class GetDatalayerSyncStatus_Response : ResponseTemplate<GetDatalayerSyncStatus_Response>
     {
         /// <summary>
         /// The current sync status
