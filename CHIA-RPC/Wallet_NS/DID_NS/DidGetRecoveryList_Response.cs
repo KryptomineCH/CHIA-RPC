@@ -5,7 +5,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// <summary>
     /// For a given wallet, fetch the recovery list, as well as the number of IDs required for recovery
     /// </summary>
-    /// <remarks
+    /// <remarks>
     /// <see href="https://docs.chia.net/did-rpc#did_get_recovery_list"/><br/><br/>
     /// uses:<br/> <see cref="General_NS.WalletID_RPC"/>
     /// </remarks>
