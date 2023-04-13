@@ -13,7 +13,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// Set to true to cancel on the blockchain by spending the coin(s) being offered; set to false to cancel in the wallet only. If false, the offer could still be taken if it has been shared.
         /// </summary>
-        public bool secure { get; set; }
+        public bool secure { get; set; } = true;
 
         /// <summary>
         /// The ID of the offer to cancel.

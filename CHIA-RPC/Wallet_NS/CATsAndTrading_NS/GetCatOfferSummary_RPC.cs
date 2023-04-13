@@ -10,17 +10,17 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     /// <see href="https://docs.chia.net/wallet-rpc/#get_offer_summary"/><br/><br/>
     /// Uses:<see cref="GetOfferSummary_RPC"/>
     /// </remarks>
-    public class GetOfferSummary_Response : ResponseTemplate<GetOfferSummary_Response>
+    public class GetCatOfferSummary_Response : ResponseTemplate<GetCatOfferSummary_Response>
     {
         public string id { get; set; }
-        public OfferSummary summary { get; set; }
+        public CatOfferSummary summary { get; set; }
     }
     /// <summary>
     /// A summary of the offer including fees, information, offered, and requested amounts.
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc/#get_offer_summary"/></remarks>
     /// <returns><see cref="GetOfferSummary_Response"/></returns>
-    public class GetOfferSummary_RPC : RPCTemplate<GetOfferSummary_RPC>
+    public class GetCatOfferSummary_RPC : RPCTemplate<GetCatOfferSummary_RPC>
     {
         /// <summary>
         /// The offer for which to retrieve a summary.

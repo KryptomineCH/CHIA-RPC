@@ -2,7 +2,7 @@
 
 namespace CHIA_RPC.Wallet_NS.Offer_NS.OfferObjects_NS
 {
-    public class OfferSummary : ObjectTemplate<OfferSummary>
+    public class CatOfferSummary : ObjectTemplate<CatOfferSummary>
     {
         // The fees associated with the offer.
         public ulong fees { get; set; }

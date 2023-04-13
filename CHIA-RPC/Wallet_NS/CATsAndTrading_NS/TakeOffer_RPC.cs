@@ -8,7 +8,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc/#take_offer"/></remarks>
     /// <returns><see cref="General_NS.TradeRecord_Response"/></returns>
-    public class TakeOffer_RPC : RPCTemplate<TakeOffer_RPC>
+    public class TakeCatOffer_RPC : RPCTemplate<TakeCatOffer_RPC>
     {
         /// <summary>
         /// Gets or sets the offer to create.

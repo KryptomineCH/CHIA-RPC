@@ -7,7 +7,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc/#cancel_offers"/></remarks>
     /// <returns><see cref="General_NS.Success_Response"/></returns>
-    public class CancelOffers_RPC : RPCTemplate<CancelOffers_RPC>
+    public class CancelCatOffers_RPC : RPCTemplate<CancelCatOffers_RPC>
     {
         /// <summary>
         /// Set to true to cancel on the blockchain by spending the coin(s) being offered; set to false to cancel in the wallet only. 

@@ -17,7 +17,11 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// </summary>
         public string id { get; set; }
         /// <summary>
-        /// Whether the offer is valid or not.
+        /// Indicating whether the offer is valid.<br/><br/>
+        /// The offer is considered valid if it is in any of the following states:<br/>
+        /// PENDING_ACCEPT, PENDING_CONFIRM, PENDING_CANCEL.<br/><br/>
+        /// The offer is no longer valid if it is in any of the following states:<br/>
+        /// CANCELLED, CONFIRMED, FAILED.
         /// </summary>
         public bool valid { get; set; }
     }
