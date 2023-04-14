@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.Wallet_NS.CATsAndTrading_NS;
+using CHIA_RPC.Wallet_NS.Offer_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Wallet_NS.Offer_NS

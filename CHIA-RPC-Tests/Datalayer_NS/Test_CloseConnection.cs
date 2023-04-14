@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.Datalayer_NS;
 using CHIA_RPC.General_NS;
+using CHIA_RPC.Wallet_NS.RoutesAndConnections_NS;
 using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Datalayer_NS
