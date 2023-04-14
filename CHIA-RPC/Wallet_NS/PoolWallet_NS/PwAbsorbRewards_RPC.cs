@@ -8,7 +8,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc#pw_absorb_rewards"/></remarks>
     /// <returns>?</returns>
-    public class PwAbsorbRewardsRPC : RPCTemplate<PwAbsorbRewardsRPC>
+    public class PwAbsorbRewards_RPC : RPCTemplate<PwAbsorbRewards_RPC>
     {
         /// <summary>
         /// The Wallet ID to which to absorb funds (must be of type POOLING_WALLET)
