@@ -49,9 +49,9 @@ To use the rpcs, you would create a new instance of it, set its properties, and 
 
 It's important to note that this example doesn't actually send a transaction, it's just creating a serialized object which contains information needed to be sent to the network. You need to send it to your own wallet or any other software which can communicate with the network, and finally, the transaction will be broadcasted to the network.
 
-NOTE: `Chia-Client-API` package is available to actually communicate the rpcs to the client
+`NOTE:` `Chia-Client-API` package is available to actually communicate the rpcs to the client
 
-*Note:* Per default, chia rpc will only listen to requests from the local machine.  
+`NOTE 2:` Per default, chia rpc will only listen to requests from the local machine.  
 If you have remote machines to manage, eg a full node or farmers, you need to enable public port listening.  
 For that, edit the chia configuration (default at `~/.chia/mainnet/config/config.yaml`).  
 Look for a line starting with self-hostname like so: `self_hostname: &self_hostname "localhost"`   
