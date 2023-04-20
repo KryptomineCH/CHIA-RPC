@@ -11,6 +11,14 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
     /// <remarks><see href="https://docs.chia.net/datalayer-rpc#batch_update"/></remarks>
     public class DataStoreChange : ObjectTemplate<DataStoreChange>
     {
+        public DataStoreChange() { /* used for serialisation */ }
+        public DataStoreChange(DataStoreChangeAction action, string key, string? value = null)
+        {
+            this.action = action;
+            this.key = key;
+            this.value = value;
+        }
+
         /// <summary>
         /// can be insert or delete
         /// </summary>
