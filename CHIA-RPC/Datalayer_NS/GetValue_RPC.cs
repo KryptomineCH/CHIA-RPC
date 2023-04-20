@@ -24,6 +24,14 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetValue_Response"/></returns>
     public class GetValue_RPC : RPCTemplate<GetValue_RPC>
     {
+        public GetValue_RPC() { /* for serialisation */ }
+        public GetValue_RPC(string id, string key, string? root_hash = null)
+        {
+            this.id = id;
+            this.key = key;
+            this.root_hash = root_hash;
+        }
+
         /// <summary>
         /// the hexadecimal data store id which to fetch a value from
         /// </summary>
@@ -37,6 +45,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The root hash from which to obtain data
         /// </summary>
-        public string root_hash { get; set; }
+        public string? root_hash { get; set; }
     }
 }

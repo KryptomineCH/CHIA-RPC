@@ -52,7 +52,13 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <returns>A JSON formatted string representing this RPC with indentation.</returns>
         public override string ToString()
         {
-            return JsonSerializer.Serialize(this as T, new JsonSerializerOptions { WriteIndented = false });
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = false,
+                IgnoreNullValues = true
+            };
+
+            return JsonSerializer.Serialize(this as T, options);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using NFT.Storage.Net.ClientResponse;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -30,6 +31,22 @@ namespace CHIA_RPC.Datalayer_NS
         public static implicit operator ID_RPC(GetOwnedStores_Response response)
         {
             return response.GetID_RPC();
+        }
+        public GetRoots_RPC ToGetRoots_RPC()
+        {
+            GetRoots_RPC rpc = new GetRoots_RPC()
+            {
+                ids = (string[])store_ids.Clone()
+            };
+            return rpc;
+        }
+        /// <summary>
+        /// implicit conversion of to getRoots rpc
+        /// </summary>
+        /// <param name="response"></param>
+        public static implicit operator GetRoots_RPC(GetOwnedStores_Response response)
+        {
+            return response.ToGetRoots_RPC();
         }
     }
 }

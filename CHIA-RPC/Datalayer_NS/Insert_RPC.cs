@@ -12,6 +12,14 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.TxID_Response"/></returns>
     public class Insert_RPC : RPCTemplate<Insert_RPC>
     {
+        public Insert_RPC() { /* fos serialisation */ }
+        public Insert_RPC(string storeID, string keyToInsert, string valueToInsert, ulong? feeInMojos = null)
+        {
+            id = storeID;
+            key = keyToInsert;
+            value = valueToInsert;
+            fee = feeInMojos;
+        }
         /// <summary>
         /// The hexadecimal store ID.
         /// </summary>

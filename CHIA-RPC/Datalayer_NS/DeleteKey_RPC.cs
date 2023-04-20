@@ -12,6 +12,13 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.TxID_Response"/></returns>
     public class DeleteKey_RPC : RPCTemplate<DeleteKey_RPC>
     {
+        public DeleteKey_RPC() { /* for serialisation */ }
+        public DeleteKey_RPC(string datastoreID, string keyToDelete, ulong? feeInMojos = null)
+        {
+            id = datastoreID;
+            key = keyToDelete;
+            fee = feeInMojos;
+        }
         /// <summary>
         /// The hexadecimal store ID.
         /// </summary>
