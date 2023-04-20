@@ -17,12 +17,20 @@ namespace CHIA_RPC.Datalayer_NS
         public string[] keys { get; set; }
     }
     /// <summary>
-    /// Get all keys associated with a store_id
+    /// Get all keys associated with a store_id<br/>
+    /// root hash is important to make sure not to receive stale data
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/datalayer-rpc#get_keys"/></remarks>
     /// <returns><see cref="GetKeys_RPC"/></returns>
     public class GetKeys_RPC : RPCTemplate<GetKeys_RPC>
     {
+        public GetKeys_RPC() { /* for serialisation */ }
+
+        public GetKeys_RPC(string storeId, string? rootHash = null)
+        {
+            id = storeId;
+            root_hash = rootHash;
+        }
         /// <summary>
         /// the hexadecimal data store id which to fetch a value from
         /// </summary>
@@ -32,6 +40,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The root hash from which to obtain data
         /// </summary>
-        public string root_hash { get; set; }
+        public string? root_hash { get; set; }
     }
 }
