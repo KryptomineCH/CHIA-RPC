@@ -15,6 +15,36 @@ namespace CHIA_RPC.Datalayer_NS
         /// all available keyvaluepairs
         /// </summary>
         public DataStoreKeyValuePair[] keys_values { get; set; }
+        /// <summary>
+        /// Converts the GetKeysValues_Response object to a Dictionary with hex-encoded keys and values.
+        /// </summary>
+        /// <param name="response">The GetKeysValues_Response object to be converted.</param>
+        /// <returns>A Dictionary with hex-encoded keys and values.</returns>
+        public Dictionary<string, string> ToDictionary()
+        {
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+
+            if (keys_values != null)
+            {
+                foreach (DataStoreKeyValuePair kvp in keys_values)
+                {
+                    string key = kvp.key;
+                    if (key.StartsWith("0x")) key = key.Substring(2);
+                    keyValuePairs.Add(key, kvp.value);
+                }
+            }
+
+            return keyValuePairs;
+        }
+        /// <summary>
+        /// Implicit conversion operator from GetKeysValues_Response to Dictionary.
+        /// </summary>
+        /// <param name="response">The GetKeysValues_Response object to be converted.</param>
+        /// <returns>A Dictionary with hex-encoded keys and values.</returns>
+        public static implicit operator Dictionary<string, string>(GetKeysValues_Response response)
+        {
+            return response.ToDictionary();
+        }
     }
     /// <summary>
     /// a key and value for a store. Must be subscribed to store ID
