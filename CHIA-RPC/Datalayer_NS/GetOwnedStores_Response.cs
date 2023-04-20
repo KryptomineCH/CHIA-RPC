@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -15,5 +16,20 @@ namespace CHIA_RPC.Datalayer_NS
         /// The created Data Store ID
         /// </summary>
         public string[] store_ids { get; set; }
+        public ID_RPC GetID_RPC (int index = 0)
+        {
+            if (store_ids == null) throw new NullReferenceException("the response contains no store ids!");
+            if (index > store_ids.Length) throw new IndexOutOfRangeException($"the requested index {index} is highes than the awailable ids {store_ids.Length}!");
+            ID_RPC rpc = new ID_RPC(store_ids[index]);
+            return rpc;
+        }
+        /// <summary>
+        /// implicit conversion of the first store to ID RPC
+        /// </summary>
+        /// <param name="response"></param>
+        public static implicit operator ID_RPC(GetOwnedStores_Response response)
+        {
+            return response.GetID_RPC();
+        }
     }
 }
