@@ -64,6 +64,12 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// <returns><see cref="DidGetInfo_Response"/></returns>
     public class DidGetInfo_RPC : RPCTemplate<DidGetInfo_RPC>
     {
+        public DidGetInfo_RPC() { /* for serialisation */ }
+        public DidGetInfo_RPC(string coin_id)
+        {
+            this.coin_id = coin_id;
+        }
+
         /// <summary>
         /// the coin id to look up
         /// </summary>

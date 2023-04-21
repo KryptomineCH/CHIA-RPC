@@ -23,5 +23,13 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// The wallet id which the did was requested for
         /// </summary>
         public ulong wallet_id { get; set; }
+        public DidGetInfo_RPC ToDidGetInfo_RPC()
+        {
+            return new DidGetInfo_RPC(coin_id);
+        }
+        public static implicit operator DidGetInfo_RPC(DidGetDid_Response response)
+        {
+            return response.ToDidGetInfo_RPC();
+        }
     }
 }
