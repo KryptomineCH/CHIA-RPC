@@ -10,6 +10,13 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// <returns><see cref="General_NS.WalletID_Response"/></returns>
     public class DidSetWalletName_RPC : RPCTemplate<DidSetWalletName_RPC>
     {
+        public DidSetWalletName_RPC() { /* for Serialisation */ }
+        public DidSetWalletName_RPC(ulong wallet_id, string name)
+        {
+            this.wallet_id = wallet_id;
+            this.name = name;
+        }
+
         /// <summary>
         /// the id of the wallet which should be updated
         /// </summary>
