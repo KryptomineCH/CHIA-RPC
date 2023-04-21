@@ -3,7 +3,7 @@
 namespace CHIA_RPC.Wallet_NS.DID_NS
 {
     /// <summary>
-    /// Fetch the my_did and coin_id (if applicable) settings for a given wallet
+    /// Fetch the my_did and coin_id for a given wallet
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/did-rpc#did_get_did"/><br/><br/>
@@ -20,7 +20,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// </summary>
         public string my_did { get; set; }
         /// <summary>
-        /// The wallet idwhich the did was requested for
+        /// The wallet id which the did was requested for
         /// </summary>
         public ulong wallet_id { get; set; }
     }
