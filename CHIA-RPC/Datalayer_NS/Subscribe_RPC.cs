@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -9,6 +10,16 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class Subscribe_RPC : RPCTemplate<Subscribe_RPC>
     {
+        public Subscribe_RPC() { /* for serialisation */ }
+        public Subscribe_RPC(string id, string[]? urls = null)
+        {
+            this.id = id;
+            if (urls != null)
+            {
+                this.urls = urls;
+            }
+        }
+
         /// <summary>
         /// The hexadecimal store ID
         /// </summary>
@@ -18,5 +29,14 @@ namespace CHIA_RPC.Datalayer_NS
         /// A list of URLs where the data store resides. This list can be left blank
         /// </summary>
         public string[] urls { get; set; } = new string[] { };
+        
+        public ID_RPC ToID_RPC()
+        {
+            return new ID_RPC(id);
+        }
+        public static implicit operator ID_RPC(Subscribe_RPC subscribeRpc)
+        {
+            return subscribeRpc.ToID_RPC();
+        }
     }
 }
