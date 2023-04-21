@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.Objects_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.General_NS;
 
 namespace CHIA_RPC.Wallet_NS.WalletManagement_NS
 {
@@ -24,20 +25,29 @@ namespace CHIA_RPC.Wallet_NS.WalletManagement_NS
     public class Wallets_info
     {
         public dynamic data { get; set; }
+        /// <summary>
+        /// the wallet id in the currently logged in fingerprint. Use this to pull the wallet name
+        /// </summary>
         public ulong id { get; set; }
-        public string name {
-            get { return _name; }
-            set {
-                //if (value.Contains(' '))
-                //{
-                //    _name = value.Split(' ')[1];
-                //}
-                //else { _name = value; }
-                _name = value; // required for example for chia wallet
-            } 
-        }
-        private string _name { get; set; }
+        /// <summary>
+        /// WARNING: tnis is the friendly name which a user has set.<br/>
+        /// if no name string has been set, shows the did ID. Best pull the did id from the wallet
+        /// </summary>
+        public string name { get; set; }
         public WalletType type { get; set; }
+        /// <summary>
+        /// gets a walletID RPC which may be used to obtain further information about the wallet
+        /// </summary>
+        /// <returns></returns>
+        public WalletID_RPC GetWalletID_RPC()
+        {
+            return new WalletID_RPC(id);
+        }
+        public static implicit operator WalletID_RPC(Wallets_info walletsInfo)
+        {
+            return walletsInfo.GetWalletID_RPC();
+        }
+
     }
     /// <summary>
     /// Show all wallets associated with the current fingerprint, including (by default) coin information
