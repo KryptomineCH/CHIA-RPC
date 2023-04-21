@@ -35,6 +35,17 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// <returns><see cref="CreateNewDIDWallet_Response"/></returns>
     public class CreateNewDIDWallet_RPC : RPCTemplate<CreateNewDIDWallet_RPC>
     {
+        public CreateNewDIDWallet_RPC() { /* for serialisation */ }
+        public CreateNewDIDWallet_RPC(string[] backupDids, ulong numOfBackupIdsNeeded, string didType = "new", string walletName = null, ulong amount = 1, ulong? fee = null)
+        {
+            this.did_type = didType;
+            this.wallet_name = walletName;
+            this.amount = amount;
+            this.backup_dids = backupDids;
+            this.num_of_backup_ids_needed = numOfBackupIdsNeeded;
+            this.fee = fee;
+        }
+
         /// <summary>
         /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
@@ -48,16 +59,16 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         [Required]
         public string did_type { get; set; } = "new";
         /// <summary>
-        /// TThe name of the DID wallet [Default: None]
+        /// The name of the DID wallet [Default: None]
         /// </summary>
         /// <remarks>optional</remarks>
-        public string wallet_name { get; set; }
+        public string? wallet_name { get; set; }
         /// <summary>
         /// *Required if mode is new. Specify the value, in mojos, of this wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public ulong amount { get; set; }
+        public ulong amount { get; set; } = 1;
         /// <summary>
         /// *Required if did_type is new. An array of backup DID IDs to be used for recovery. Must match actual DIDs
         /// </summary>
@@ -70,6 +81,6 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// An optional blockchain fee, in mojos
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong fee { get; set; }
+        public ulong? fee { get; set; }
     }
 }
