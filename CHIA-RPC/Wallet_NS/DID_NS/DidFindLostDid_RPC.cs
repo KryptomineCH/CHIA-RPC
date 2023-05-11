@@ -29,13 +29,22 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// </summary>
         /// <remarks>mandatory</remarks>
         public string coin_id { get; set; }
+
         /// <summary>
-        /// The hash of the recovery list
+        /// Override the recovery list hash of the DID. Only set this if your last DID spend updated the recovery list   
         /// </summary>
         /// <remarks>optional</remarks>
         public string? recovery_list_hash { get; set; }
+
+        /// <summary>
+        /// Override the required verification number of the DID. Only set this if your last DID spend updated the required verification number
+        /// </summary>
         /// <remarks>optional</remarks>
         public ulong? num_verification { get; set; }
+
+        /// <summary>
+        /// The new whole metadata in json format 
+        /// </summary>
         /// <remarks>optional</remarks>
         public string? metadata { get; set; }
     }
