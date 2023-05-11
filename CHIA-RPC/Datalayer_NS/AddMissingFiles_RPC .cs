@@ -3,8 +3,8 @@
 namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
-    /// Use the database to restore all files for one or more local data stores
-    /// Note: For remote stores, this command will do nothing. Use unsubscribe and subscribe instead
+    /// Use the database to restore all files for one or more owned data stores
+    /// Note: For subscribed stores, this command will do nothing. Use [unsubscribe](#unsubscribe) and [subscribe](#subscribe) instead
     /// Usage: chia rpc data_layer [OPTIONS] add_missing_files [REQUEST]
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/datalayer-rpc#add_missing_files"/></remarks>
@@ -12,7 +12,7 @@ namespace CHIA_RPC.Datalayer_NS
     public class AddMissingFiles_RPC : RPCTemplate<AddMissingFiles_RPC>
     {
         /// <summary>
-        /// A list of hexadecimal store IDs to restore (default: all subscribed local stores)
+        /// A list of hexadecimal store IDs to restore (default: all subscribed stores)
         /// </summary>
         /// <remarks>
         /// optional

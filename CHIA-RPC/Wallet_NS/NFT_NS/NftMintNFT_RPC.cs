@@ -93,26 +93,30 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <summary>
         ///  the NFT wallet which should be used for minting
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong wallet_id { get; set; }
 
         /// <summary>
         /// set of urls for the image, document or whatever file is beeing uploaded
         /// </summary>
         /// <remarks>
-        /// Multiple backup links have to be provided but all data needs to be equal
+        /// Multiple backup links have to be provided but all data needs to be equal<br/><br/>
+        /// mandatory
         /// </remarks>
         public List<string> uris { get; set; }
 
         /// <summary>
-        /// sha256 hashsum for the image, document or whatever file is beeing uploaded
+        /// The hash of the NFT's data. This should use sha256 for proper verification against the URI list 
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string hash { get; set; }
 
         /// <summary>
         /// Optionally specify the DID to be associated with this NFT
         /// </summary>
         /// <remarks>
-        /// If not specified and mint with did is choosen, automatically uses the wallets did
+        /// If not specified and mint with did is choosen, automatically uses the wallets did<br/><br/>
+        /// optional
         /// </remarks>
         public string? did_id { get; set; }
 
@@ -120,31 +124,36 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// urls for the metadata information json file
         /// </summary>
         /// <remarks>
-        /// Multiple backup links have to be provided but all data needs to be equal
+        /// Multiple backup links have to be provided but all data needs to be equal<br/><br/>
+        /// optional
         /// </remarks>
         public List<string>? meta_uris { get; set; }
 
         /// <summary>
         /// sha256 hashsum for the metadata file
         /// </summary>
+        /// <remarks>mandatory if meta uris are provided</remarks>
         public string? meta_hash { get; set; }
 
         /// <summary>
         /// urls to the license file
         /// </summary>
         /// <remarks>
-        /// Multiple backup links have to be provided but all data needs to be equal
+        /// Multiple backup links have to be provided but all data needs to be equal<br/><br/>
+        /// optional
         /// </remarks>
         public List<string>? license_uris { get; set; }
 
         /// <summary>
         /// sha256 hashsum for the license file
         /// </summary>
+        /// <remarks>mandatory, if license links are provided</remarks>
         public string? license_hash { get; set; }
 
         /// <summary>
         /// future transactions will pay a royalty fee to this address
         /// </summary>
+        /// <remarks>optional</remarks>
         public string? royalty_address { get; set; }
 
         /// <summary>
@@ -153,13 +162,15 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <remarks>
         /// 100 = 1% <br/>
         /// 150 = 1.5% <br/>
-        /// 1250 = 12.5%
+        /// 1250 = 12.5%<br/><br/>
+        /// optional
         /// </remarks>
         public ulong? royalty_percentage { get; set; }
 
         /// <summary>
         /// The target address which will be the first owner of the nft
         /// </summary>
+        /// <remarks>optional, defaults to the wallet wich the nft was minted with</remarks>
         public string? target_address { get; set; }
 
         /// <summary>
@@ -167,7 +178,8 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// Every number should be unique for each collection
         /// </summary>
         /// <remarks>
-        /// please set this correctly in the json metadata! it will be pulled from there
+        /// please set this correctly in the json metadata! it will be pulled from there<br/><br/>
+        /// optional
         /// </remarks>
         public ulong? edition_number { get; set; }
 
@@ -175,7 +187,8 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// the edition total specifies ho many images there are within one collection
         /// </summary>
         /// <remarks>
-        /// please set this correctly in the json metadata! it will be pulled from there
+        /// please set this correctly in the json metadata! it will be pulled from there<br/><br/>
+        /// optional
         /// </remarks>
         public ulong? edition_total { get; set; }
 
@@ -183,7 +196,8 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// the fee (in mojos) which should be spent for minting.
         /// </summary>
         /// <remarks>
-        /// a fee under 1000 mojos won't even be included into hpool's mempool.
+        /// a fee under 1000 mojos won't even be included into hpool's mempool.<br/><br/>
+        /// optional
         /// </remarks>
         public ulong? fee { get; set; }
 

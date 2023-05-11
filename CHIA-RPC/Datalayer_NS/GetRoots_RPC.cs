@@ -5,7 +5,8 @@ namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
     /// Get the root hashes and timestamps from a list of stores.
-    /// Note that an invalid hash will be returned for remote stores. Use get_local_root instead
+    /// Note that an invalid hash will be returned for remote stores. <br/>
+    /// Use <see cref="GetLocalRoot_Response"/>  instead
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/datalayer-rpc#get_roots"/><br/><br/>
@@ -20,8 +21,9 @@ namespace CHIA_RPC.Datalayer_NS
     }
 
     /// <summary>
-    /// Represents a request to get the root hashes and timestamps from a list of stores.
-    /// Note that an invalid hash will be returned for remote stores. Use get_local_root instead.
+    /// Get the root hashes and timestamps from a list of stores. 
+    /// Note that an invalid hash will be returned for subscribed stores. <br/>
+    /// Use <see cref="GetLocalRoot_Response"/> instead.
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/datalayer-rpc#get_roots"/></remarks>
     /// <returns><see cref="GetRoots_Response"/></returns>

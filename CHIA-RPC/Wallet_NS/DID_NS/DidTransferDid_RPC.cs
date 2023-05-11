@@ -32,17 +32,25 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The Wallet ID of the DID wallet to transfer
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong wallet_id { get; set; }
 
         /// <summary>
         /// The address of the inner puzzle to which to transfer the DID
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string inner_address { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>
-        public ulong fee { get; set; }
+        /// <remarks>optional</remarks>
+        public ulong? fee { get; set; }
+        /// <summary>
+        /// If `True`, transfer recovery info [Default: `True`] 
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public bool? with_recovery_info { get; set; }
     }
 
 }

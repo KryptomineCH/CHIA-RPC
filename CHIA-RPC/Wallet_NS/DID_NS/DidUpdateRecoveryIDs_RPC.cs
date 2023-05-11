@@ -11,12 +11,13 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     public class DidUpdateRecoveryIDs_RPC : RPCTemplate<DidUpdateRecoveryIDs_RPC>
     {
         public DidUpdateRecoveryIDs_RPC() { /* for serialisation */ }
-        public DidUpdateRecoveryIDs_RPC(ulong wallet_id, string[] new_list, ulong? num_verifications_required = null, ulong? fee = null)
+        public DidUpdateRecoveryIDs_RPC(ulong wallet_id, string[] new_list, ulong? num_verifications_required = null, ulong? fee = null, bool? reuse_puzzhash = null)
         {
             this.wallet_id = wallet_id;
             this.new_list = new_list;
             this.num_verifications_required = num_verifications_required;
             this.fee = fee;
+            this.reuse_puzhash = reuse_puzzhash;
         }
 
         /// <summary>
@@ -39,5 +40,10 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// An optional blockchain fee, in mojos
         /// </summary>
         public ulong? fee { get; set; }
+        /// <summary>
+        /// If `true`, will not generate a new puzzle hash / address for this transaction only. 
+        /// Note that setting this parameter to `true` will override the global default setting from config.yaml
+        /// </summary>
+        public bool? reuse_puzhash { get; set; }
     }
 }

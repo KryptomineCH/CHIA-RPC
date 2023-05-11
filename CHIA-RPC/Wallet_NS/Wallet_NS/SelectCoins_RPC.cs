@@ -41,5 +41,15 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// </summary>
         /// <remarks>optional</remarks>
         public ulong? max_coin_amount { get; set; }
+        /// <summary>
+        /// A list of coin amounts to exclude
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public ulong[]? excluded_coin_amounts { get; set; }
+        /// <summary>
+        /// A list of coins to exclude
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public string[]? excluded_coins { get; set; }
     }
 }

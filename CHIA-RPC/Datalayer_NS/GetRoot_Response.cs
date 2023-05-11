@@ -3,7 +3,9 @@
 namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
-    /// Get root hash and timestamp of a given store ID
+    /// Get the root hash and timestamp of a given store ID. <br/>
+    /// If it is a subscribed store, this command will return an invalid hash (see example).<br/>
+    /// In this case, use <see cref="GetLocalRoot_Response"/> instead
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/datalayer-rpc#get_root"/><br/><br/>

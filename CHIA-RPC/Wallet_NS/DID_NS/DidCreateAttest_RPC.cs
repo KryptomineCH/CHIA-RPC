@@ -37,26 +37,25 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The Wallet ID for which to create the attest
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public int wallet_id { get; set; }
 
         /// <summary>
         /// The coin to use for the attest
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string coin_name { get; set; }
 
         /// <summary>
         /// The public key to use for the attest
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string pubkey { get; set; }
 
         /// <summary>
         /// The puzzle hash to use for the attest
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string puzhash { get; set; }
-
-        /// <summary>
-        /// An optional blockchain fee, in mojos
-        /// </summary>
-        public long? fee { get; set; }
     }
 }

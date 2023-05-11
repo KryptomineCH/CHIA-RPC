@@ -7,8 +7,9 @@ namespace CHIA_RPC.General_NS
     /// </summary>
     /// <remarks>
     /// the request is parameterless<br/>
-    /// <see href="https://docs.chia.net/wallet-rpc#get_network_info"/><br/>
-    /// <see href="https://docs.chia.net/full-node-rpc#get_network_info"/>
+    /// used in:<br/>
+    /// - wallet <see href="https://docs.chia.net/wallet-rpc#get_network_info"/><br/>
+    /// - full node <see href="https://docs.chia.net/full-node-rpc#get_network_info"/>
     /// </remarks>
     public class GetNetworkInfo_Response : ResponseTemplate<GetNetworkInfo_Response>
     {

@@ -44,6 +44,12 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// An optional blockchain fee, in mojos
         /// </summary>
         public ulong? fee { get; set; }
-    }
 
+        /// <summary>
+        ///  If `true`, will not generate a new puzzle hash / address for this transaction only. 
+        ///  Note that setting this parameter to `true` will override the global default setting from config.yaml
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public bool? reuse_puzhash { get; set; }
+    }
 }

@@ -59,6 +59,12 @@ namespace CHIA_RPC.Wallet_NS.WalletManagement_NS
         /// <summary>
         /// Set to true to include all coin info for this wallet [Default: true]
         /// </summary>
+        /// <remarks>optional</remarks>
         public bool include_data { get; set; }
+        /// <summary>
+        /// The type of wallet to retrieve. If included, must be one of `cat_wallet`, `did_wallet`, `nft_wallet`, or `pool_wallet`
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public string? type { get; set; }
     }
 }

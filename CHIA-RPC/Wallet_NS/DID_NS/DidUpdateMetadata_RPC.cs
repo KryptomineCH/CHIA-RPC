@@ -10,21 +10,35 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class DidUpdateMetadata_RPC : RPCTemplate<DidUpdateMetadata_RPC>
     {
+        public DidUpdateMetadata_RPC() { /* for serialisation purposes */ }
+        public DidUpdateMetadata_RPC(ulong wallet_id, Dictionary<string, object> metadata, ulong? fee = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id;
+            this.metadata = metadata;
+            this.fee = fee;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+
         /// <summary>
         /// the id of the wallet which should be updated
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public ulong wallet_id { get; set; }
         /// <summary>
         /// The new metadata
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public Dictionary<string, object> metadata { get; set; }
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>
-        public ulong fee { get; set; }
+        /// <remarks>optional</remarks>
+        public ulong? fee { get; set; }
+        /// <summary>
+        /// If `true`, will not generate a new puzzle hash / address for this transaction only. 
+        /// Note that setting this parameter to `true` will override the global default setting from config.yaml
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public bool? reuse_puzhash { get; set; }
     }
 }

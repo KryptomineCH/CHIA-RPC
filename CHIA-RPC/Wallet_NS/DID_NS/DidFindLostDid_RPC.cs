@@ -27,6 +27,16 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The DID ID, launcher ID, or latest coin ID of the DID you want to recover. The most time-efficient of these is the latest coin ID.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string coin_id { get; set; }
+        /// <summary>
+        /// The hash of the recovery list
+        /// </summary>
+        /// <remarks>optional</remarks>
+        public string? recovery_list_hash { get; set; }
+        /// <remarks>optional</remarks>
+        public ulong? num_verification { get; set; }
+        /// <remarks>optional</remarks>
+        public string? metadata { get; set; }
     }
 }

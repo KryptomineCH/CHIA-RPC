@@ -17,7 +17,7 @@ namespace CHIA_RPC.Datalayer_NS
         public string id { get; set; }
 
         /// <summary>
-        /// A list of URLs where the mirror will reside. Can be empty
+        /// A list of URLs where the mirror will reside.
         /// </summary>
         public string[] urls { get; set; }
 
