@@ -1,10 +1,16 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Wallet_NS.Wallet_NS;
 
 namespace CHIA_RPC.General_NS
 {
     /// <summary>
-    /// Represents a response object that contains a wallet ID.
+    /// Represents a response object that contains a wallet ID which is required as an identifier for many requests.
     /// </summary>
+    /// <remarks>
+    /// Implicit conversions exist for ease of use with rpcs:<br/>
+    /// - <see cref="WalletID_RPC"/><br/>
+    /// - <see cref="GetNextAddress_RPC"/>
+    /// </remarks>
     public class WalletID_Response : ResponseTemplate<WalletID_Response>
     {
         /// <summary>
@@ -30,8 +36,23 @@ namespace CHIA_RPC.General_NS
         {
             return new WalletID_RPC(response.wallet_id);
         }
+        /// <summary>
+        /// Implicitly converts a WalletID_Response object to a GetNextAddress_RPC object.
+        /// </summary>
+        /// <param name="response">The WalletID_Response object to convert.</param>
+        /// <returns>A new GetNextAddress_RPC object initialized with the wallet ID.</returns>
+        public static implicit operator GetNextAddress_RPC(WalletID_Response response)
+        {
+            return new GetNextAddress_RPC(response);
+        }
     }
-
+    /// <summary>
+    /// The wallet_ID RPC is used for a variety of tasks which require a wallet id as only request parameter such as <see cref="GetNextAddress_RPC"/>
+    /// </summary>
+    /// <remarks>
+    /// Implicit conversions exist for other requests:<br/>
+    /// - <see cref="GetNextAddress_RPC"/>
+    /// </remarks>
     public class WalletID_RPC : RPCTemplate<WalletID_RPC>
     {
         public WalletID_RPC() { /* for serialisation */ }
@@ -46,5 +67,14 @@ namespace CHIA_RPC.General_NS
         /// <remarks>MUST BE larger than 0 <br/>
         /// eg. 5</remarks>
         public ulong wallet_id { get; set; }
+        /// <summary>
+        /// Implicitly converts a WalletID_RPC object to a GetNextAddress_RPC object.
+        /// </summary>
+        /// <param name="response">The WalletID_Response object to convert.</param>
+        /// <returns>A new GetNextAddress_RPC object initialized with the wallet ID.</returns>
+        public static implicit operator GetNextAddress_RPC(WalletID_RPC response)
+        {
+            return new GetNextAddress_RPC(response);
+        }
     }
 }
