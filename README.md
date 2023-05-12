@@ -2,12 +2,8 @@ Welcome to the CHIA-RPC Nuget package!
 
 This package is a wrapper for RPC-JSON files used to communicate with the Chia client through the HTTP-API, WebSocket API, or CLI. The wrapper allows you to easily create the appropriate RPC object for all wallet endpoint calls, and access the RPC JSON either by calling .ToString() or by saving and loading the JSON file to and from disk.
 
-To install the package, simply run the following command in the Nuget Package Manager console:
-It is very recommended to check out the package `Chia-Client-API` as well which uses CHIA-RPC to communicate with the chia client.
-```
-dotnet add package CHIA-RPC
-dotnet add package Chia-Client-API
-```
+find the nuget package here: https://www.nuget.org/packages/CHIA-RPC
+find the github repo here to submit issues: https://github.com/KryptomineCH/CHIA-RPC
 
 Here is a usage example of how all rpc endpoints are usable:
 ```
