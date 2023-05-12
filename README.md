@@ -45,19 +45,20 @@ supported functions for each rpc are:
 
 Each RPC has its counter part such as `SendXCH_Response` which is used to deserialize the client response
 
-To use the rpcs, you would create a new instance of it, set its properties, and use its methods to save or load the rpc, and to get a string representation of the object.
+Addidionally, there are c# classes for objects like `Coin`, `NFT`, `Transaction`, ...
+The structure of the chia API can be confusing and mahy rpcs (eg `WalletID_RPC`) are used for multiple endpoints so it is strongly recommended to use the chia-client-library to see how the interaction with the RPC requests is.
 
 It's important to note that this example doesn't actually send a transaction, it's just creating a serialized object which contains information needed to be sent to the network. You need to send it to your own wallet or any other software which can communicate with the network, and finally, the transaction will be broadcasted to the network.
 
 `NOTE:` `Chia-Client-API` package is available to actually communicate the rpcs to the client
 
-`NOTE 2:` Per default, chia rpc will only listen to requests from the local machine.  
+`NOTE 2:` Per default, the chia client will only listen to rpc requests from the local machine.  
 If you have remote machines to manage, eg a full node or farmers, you need to enable public port listening.  
 For that, edit the chia configuration (default at `~/.chia/mainnet/config/config.yaml`).  
 Look for a line starting with self-hostname like so: `self_hostname: &self_hostname "localhost"`   
 change it to: `self_hostname: 0.0.0.0` to listen on all interfaces or to the local interface ip to listen on a specific interface.  
 
-For a full documentation besides xaml markup, please refer to the official chia documentation:
+For a full documentation besides xml markup, please refer to the official chia documentation:
 https://docs.chia.net/rpc
 
 Thank you for using CHIA-RPC!
