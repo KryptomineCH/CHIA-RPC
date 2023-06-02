@@ -11,6 +11,11 @@ namespace CHIA_RPC.Datalayer_NS
     public class Subscribe_RPC : RPCTemplate<Subscribe_RPC>
     {
         public Subscribe_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Subscribe to a store ID
+        /// </summary>
+        /// <param name="id">The hexadecimal store ID</param>
+        /// <param name="urls">A list of URLs where the data store resides. This list can be left blank</param>
         public Subscribe_RPC(string id, string[]? urls = null)
         {
             this.id = id;
@@ -23,11 +28,13 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The hexadecimal store ID
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string id { get; set; }
 
         /// <summary>
         /// A list of URLs where the data store resides. This list can be left blank
         /// </summary>
+        /// <remarks>mandatory but array can be empty</remarks>
         public string[] urls { get; set; } = new string[] { };
         
         public ID_RPC ToID_RPC()

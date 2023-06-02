@@ -24,7 +24,16 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetValue_Response"/></returns>
     public class GetValue_RPC : RPCTemplate<GetValue_RPC>
     {
+        /// <summary>
+        /// for serialisation 
+        /// </summary>
         public GetValue_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Given a key and the data store in which the key is located, return corresponding value
+        /// </summary>
+        /// <param name="id">The hexadecimal store ID</param>
+        /// <param name="key">The hexadecimal key</param>
+        /// <param name="root_hash">The root hash from which to obtain data</param>
         public GetValue_RPC(string id, string key, string? root_hash = null)
         {
             this.id = id;
@@ -35,16 +44,19 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// the hexadecimal data store id which to fetch a value from
         /// </summary>
-        /// <remarks>encoded as hexadecimal string</remarks>
+        /// <remarks>encoded as hexadecimal string<br/>
+        /// mandatory</remarks>
         public string id { get; set; }
         /// <summary>
         /// the hexadecimal key of the dictionary to look up
         /// </summary>
-        /// <remarks>encoded as hexadecimal string</remarks>
+        /// <remarks>encoded as hexadecimal string<br/>
+        /// mandatory</remarks>
         public string key { get; set; }
         /// <summary>
         /// The root hash from which to obtain data
         /// </summary>
+        /// <remarks>optional</remarks>
         public string? root_hash { get; set; }
     }
 }

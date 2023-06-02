@@ -11,28 +11,36 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class AddMissingFiles_RPC : RPCTemplate<AddMissingFiles_RPC>
     {
+        public AddMissingFiles_RPC() { /* required for json serialisation */ }
+        /// <summary>
+        /// Use the database to restore all files for one or more owned data stores
+        /// </summary>
+        /// <param name="ids">A list of hexadecimal store IDs to restore (default: all subscribed stores)</param>
+        /// <param name="override_files">If True, will overwrite files that already exist (default: False)</param>
+        /// <param name="foldername">The name of the folder where the files to be restored are located (default: ~/.chia/mainnet/data_layer/db/server_files_location_{network})</param>
+        public AddMissingFiles_RPC(string[]? ids = null, bool? override_files = null, string? foldername = null)
+        {
+            this.ids = ids;
+            this.override_files = override_files;
+            this.foldername = foldername;
+        }
+
         /// <summary>
         /// A list of hexadecimal store IDs to restore (default: all subscribed stores)
         /// </summary>
-        /// <remarks>
-        /// optional
-        /// </remarks>
+        /// <remarks>optional</remarks>
         public string[]? ids { get; set; }
 
         /// <summary>
         /// If True, will overwrite files that already exist (default: False)
         /// </summary>
-        /// <remarks>
-        /// optional
-        /// </remarks>
+        /// <remarks>optional</remarks>
         public bool? override_files { get; set; }
 
         /// <summary>
         /// The name of the folder where the files to be restored are located (default: ~/.chia/mainnet/data_layer/db/server_files_location_<network>)
         /// </summary>
-        /// <remarks>
-        /// optional
-        /// </remarks>
+        /// <remarks>optional</remarks>
         public string? foldername { get; set; }
     }
 }

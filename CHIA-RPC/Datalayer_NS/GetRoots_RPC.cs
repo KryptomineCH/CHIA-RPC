@@ -29,9 +29,20 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetRoots_Response"/></returns>
     public class GetRoots_RPC : RPCTemplate<GetRoots_RPC>
     {
+        public GetRoots_RPC () { /*  required for serialisation */ }
+        /// <summary>
+        /// Get the root hashes and timestamps from a list of stores. Note that an invalid hash will be returned for subscribed stores.
+        /// </summary>
+        /// <param name="ids">A list of hexadecimal store IDs</param>
+        public GetRoots_RPC(string[] ids)
+        {
+            this.ids = ids;
+        }
+
         /// <summary>
         /// A list of hexadecimal store IDs
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string[] ids { get; set; }
     }
 }

@@ -22,17 +22,34 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.TxID_Response"/></returns>
     public class BatchUpdate_RPC : RPCTemplate<BatchUpdate_RPC>
     {
+        public BatchUpdate_RPC() { /* required for json serialisation */ }
+        /// <summary>
+        /// Apply multiple updates to a data store with a given changelist. Triggers a Chia transaction
+        /// </summary>
+        /// <param name="id">The hexadecimal store ID</param>
+        /// <param name="changelist">the changes which should be applied to the datastore</param>
+        /// <param name="fee">Set the fee for the transaction, in mojos</param>
+        public BatchUpdate_RPC(string id, DataStoreChange[] changelist, ulong? fee = null)
+        {
+            this.id = id;
+            this.changelist = changelist;
+            this.fee = fee;
+        }
+
         /// <summary>
         /// The hexadecimal store ID
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string id { set; get; }
         /// <summary>
         /// the changes which should be applied to the datastore
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public DataStoreChange[] changelist { get; set; }
         /// <summary>
         /// Set the fee for the transaction, in mojos
         /// </summary>
+        /// <remarks>optional</remarks>
         public ulong? fee { get; set; }
     }
 }

@@ -13,6 +13,12 @@ namespace CHIA_RPC.Datalayer_NS
     public class DeleteKey_RPC : RPCTemplate<DeleteKey_RPC>
     {
         public DeleteKey_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Delete a key/value pair from a store that you control. Triggers a Chia transaction
+        /// </summary>
+        /// <param name="datastoreID">The hexadecimal store ID</param>
+        /// <param name="keyToDelete">The hexadecimal key</param>
+        /// <param name="feeInMojos">Set the fee for the transaction, in mojos</param>
         public DeleteKey_RPC(string datastoreID, string keyToDelete, ulong? feeInMojos = null)
         {
             id = datastoreID;
@@ -22,16 +28,19 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The hexadecimal store ID.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string id { get; set; }
 
         /// <summary>
         /// The hexadecimal key.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string key { get; set; }
 
         /// <summary>
         /// Set the fee for the transaction, in mojos.
         /// </summary>
+        /// <remarks>optional</remarks>
         [JsonConverter(typeof(StringToUlongNullableConverter))]
         public ulong? fee { get; set; }
     }

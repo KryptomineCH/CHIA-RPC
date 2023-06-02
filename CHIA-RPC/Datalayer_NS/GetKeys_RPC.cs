@@ -25,7 +25,11 @@ namespace CHIA_RPC.Datalayer_NS
     public class GetKeys_RPC : RPCTemplate<GetKeys_RPC>
     {
         public GetKeys_RPC() { /* for serialisation */ }
-
+        /// <summary>
+        /// Get all keys associated with a store_id
+        /// </summary>
+        /// <param name="storeId">The hexadecimal store ID</param>
+        /// <param name="rootHash">The root hash from which to obtain data</param>
         public GetKeys_RPC(string storeId, string? rootHash = null)
         {
             id = storeId;
@@ -34,12 +38,14 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// the hexadecimal data store id which to fetch a value from
         /// </summary>
-        /// <remarks>encoded as hexadecimal string</remarks>
+        /// <remarks>encoded as hexadecimal string<br/>
+        /// mandatory</remarks>
         public string id { get; set; }
 
         /// <summary>
         /// The root hash from which to obtain data
         /// </summary>
+        /// <remarks>optional</remarks>
         public string? root_hash { get; set; }
     }
 }

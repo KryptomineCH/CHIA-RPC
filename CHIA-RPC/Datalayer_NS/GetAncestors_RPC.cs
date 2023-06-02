@@ -25,6 +25,11 @@ namespace CHIA_RPC.Datalayer_NS
     public class GetAncestors_RPC : RPCTemplate<GetAncestors_RPC>
     {
         public GetAncestors_RPC() { /* for serialisation */}
+        /// <summary>
+        /// Return all ancestors of a given hash
+        /// </summary>
+        /// <param name="id">The hexadecimal store ID</param>
+        /// <param name="hash">The hash from which to display ancestors</param>
         public GetAncestors_RPC(string id, string hash) 
         {
             this.id = id;
@@ -33,10 +38,12 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// Return all ancestors of a given hash
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string id { set; get; }
         /// <summary>
         /// The hash from which to display ancestors
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string hash { set; get; }
     }
 }

@@ -15,6 +15,20 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="DatalayerObjects_NS.Datalayer_OfferFile"/></returns>
     public class MakeOffer_RPC : RPCTemplate<MakeOffer_RPC>
     {
+        public MakeOffer_RPC() { /* for serialisation */}
+        /// <summary>
+        /// Make an offer to include one or more keys in exchange for a Taker including one or more keys
+        /// </summary>
+        /// <param name="maker">The hexadecimal ID of the store for which to list mirrors (??)</param>
+        /// <param name="taker">(??)</param>
+        /// <param name="fee">Set the fee for the offer, in mojos</param>
+        public MakeOffer_RPC(DealParticipant[] maker, DealParticipant[] taker, ulong? fee = null)
+        {
+            this.maker = maker;
+            this.taker = taker;
+            this.fee = fee;
+        }
+
         /// <summary>
         /// The hexadecimal ID of the store for which to list mirrors
         /// </summary>

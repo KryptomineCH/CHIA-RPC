@@ -30,6 +30,12 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="CreateDataStore_Response"/></returns>
     public class CreateDataStore_RPC : RPCTemplate<CreateDataStore_RPC>
     {
+        public CreateDataStore_RPC() { /* required for json serialisation */ }
+        public CreateDataStore_RPC(ulong? fee)
+        {
+            this.fee = fee;
+        }
+
         /// <summary>
         /// the optional fee of the blockchain
         /// </summary>
