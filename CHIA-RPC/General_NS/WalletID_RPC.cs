@@ -47,7 +47,8 @@ namespace CHIA_RPC.General_NS
         }
     }
     /// <summary>
-    /// The wallet_ID RPC is used for a variety of tasks which require a wallet id as only request parameter such as <see cref="GetNextAddress_RPC"/>
+    /// The wallet_ID RPC is used for a variety of tasks which require a wallet id as only request parameter such as <see cref="GetNextAddress_RPC"/><br/>
+    /// WalletID starts at 1(!)
     /// </summary>
     /// <remarks>
     /// Implicit conversions exist for other requests:<br/>
@@ -62,7 +63,7 @@ namespace CHIA_RPC.General_NS
         }
 
         /// <summary>
-        /// The Wallet ID of the wallet from which to obtain the balance
+        /// The Wallet ID of the wallet from which to obtain the balance (starts at 1)
         /// </summary>
         /// <remarks>MUST BE larger than 0 <br/>
         /// eg. 5</remarks>
