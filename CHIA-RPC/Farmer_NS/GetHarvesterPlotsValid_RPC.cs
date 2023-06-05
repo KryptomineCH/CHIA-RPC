@@ -95,18 +95,38 @@ namespace CHIA_RPC.Farmer_NS
     public class GetHarvesterPlots_RPC : RPCTemplate<GetHarvesterPlots_RPC>
     {
         /// <summary>
-        /// This node's node_id, obtainable from the get_harvesters RPC.
+        /// for serialisation
         /// </summary>
+        public GetHarvesterPlots_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// List plots in your local network.
+        /// </summary>
+        /// <param name="node_id">This node's node_id, obtainable from the <see cref="GetHarvesters_Response"/> RPC.</param>
+        /// <param name="page">The page in the results sequence to list (starts with 0).</param>
+        /// <param name="page_size">The number of entries per page to list.</param>
+        public GetHarvesterPlots_RPC(string node_id, ulong page, ulong page_size)
+        {
+            this.node_id = node_id;
+            this.page = page;
+            this.page_size = page_size;
+        }
+
+        /// <summary>
+        /// This node's node_id, obtainable from the <see cref="GetHarvesters_Response"/> RPC.
+        /// </summary>
+        /// <remarks>mandatory</remarks>
         public string node_id { get; set; }
 
         /// <summary>
         /// The page in the results sequence to list (starts with 0).
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong page { get; set; }
 
         /// <summary>
         /// The number of entries per page to list.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong page_size { get; set; }
     }
 }

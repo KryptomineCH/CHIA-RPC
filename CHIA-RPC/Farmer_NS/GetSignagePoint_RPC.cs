@@ -11,8 +11,22 @@ namespace CHIA_RPC.Farmer_NS
     public class GetSignagePoint_RPC : RPCTemplate<GetSignagePoint_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public GetSignagePoint_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Given a signage point's hash, list the details of that signage point
+        /// </summary>
+        /// <param name="sp_hash">The hash of a signage point, listed as pos_ss_cc_challenge_hash in the block details</param>
+        public GetSignagePoint_RPC(string sp_hash)
+        {
+            this.sp_hash = sp_hash;
+        }
+
+        /// <summary>
         /// The hash of a signage point, listed as pos_ss_cc_challenge_hash in the block details
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string sp_hash { get; set; }
     }
 }
