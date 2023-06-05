@@ -36,12 +36,29 @@ namespace CHIA_RPC.FullNode_NS
     public class GetRecentSignagePointOrEos_RPC : RPCTemplate<GetRecentSignagePointOrEos_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public GetRecentSignagePointOrEos_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Retrieves a recent signage point or end of slot
+        /// </summary>
+        /// <param name="sp_hash">Gets or sets the hash of the output for a signage point (if it's in the middle of a sub slot).</param>
+        /// <param name="challenge_hash">Gets or sets the challenge_hash for the subslot (if it's an end of sub slot challenge).</param>
+        public GetRecentSignagePointOrEos_RPC(string sp_hash, string challenge_hash)
+        {
+            this.sp_hash = sp_hash;
+            this.challenge_hash = challenge_hash;
+        }
+
+        /// <summary>
         /// Gets or sets the hash of the output for a signage point (if it's in the middle of a sub slot).
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string sp_hash { get; set; }
         /// <summary>
         /// Gets or sets the challenge_hash for the subslot (if it's an end of sub slot challenge).
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string challenge_hash { get; set; }
     }
 }

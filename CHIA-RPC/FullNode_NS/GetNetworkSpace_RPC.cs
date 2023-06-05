@@ -86,12 +86,29 @@ namespace CHIA_RPC.FullNode_NS
     public class GetNetworkSpace_RPC : RPCTemplate<GetNetworkSpace_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public GetNetworkSpace_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Retrieves the info about the net space (total space allocated by farmers)
+        /// </summary>
+        /// <param name="older_block_header_hash">the start header hash</param>
+        /// <param name="newer_block_header_hash">the end header hash</param>
+        public GetNetworkSpace_RPC(string older_block_header_hash, string newer_block_header_hash)
+        {
+            this.older_block_header_hash = older_block_header_hash;
+            this.newer_block_header_hash = newer_block_header_hash;
+        }
+
+        /// <summary>
         /// the start header hash
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string older_block_header_hash { get; set; }
         /// <summary>
         /// the end header hash
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string newer_block_header_hash { get; set; }
     }
 }

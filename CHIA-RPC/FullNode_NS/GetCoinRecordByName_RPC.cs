@@ -26,8 +26,29 @@ namespace CHIA_RPC.FullNode_NS
     public class GetCoinRecordByName_RPC : RPCTemplate<GetCoinRecordByName_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public GetCoinRecordByName_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Represents the request for retrieving a coin record by its name or ID.
+        /// </summary>
+        /// <param name="name">A string containing the name or ID of the coin to retrieve.</param>
+        public GetCoinRecordByName_RPC(string name)
+        {
+            this.name = name;
+        }
+        /// <summary>
+        /// Represents the request for retrieving a coin record by its name or ID.
+        /// </summary>
+        /// <param name="coin">the coin which to obtain the coin id from</param>
+        public GetCoinRecordByName_RPC(Coin coin)
+        {
+            this.name = coin.GetCoinID();
+        }
+        /// <summary>
         /// A string containing the name or ID of the coin to retrieve.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string name { get; set; }
     }
 }

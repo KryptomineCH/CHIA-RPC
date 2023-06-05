@@ -95,6 +95,41 @@ namespace CHIA_RPC.FullNode_NS
     public class GetFeeEstimate_RPC : RPCTemplate<GetFeeEstimate_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public GetFeeEstimate_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Contains the request parameters for the get_fee_estimate RPC method. 
+        /// </summary>
+        /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
+        /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
+        /// <param name="cost">The CLVM cost for which to estimate the fee. </param>
+        public GetFeeEstimate_RPC(ulong[] target_times, string? spend_bundle = null, ulong? cost = null)
+        {
+            this.spend_bundle = spend_bundle;
+            this.cost = cost;
+            this.target_times = target_times;
+        }
+        /// <summary>
+        /// Contains the request parameters for the get_fee_estimate RPC method. 
+        /// </summary>
+        /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
+        /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
+        /// <param name="cost">The CLVM cost for which to estimate the fee.</param>
+        public GetFeeEstimate_RPC(TimeSpan[] target_times, string? spend_bundle = null, ulong? cost = null)
+        {
+            this.spend_bundle = spend_bundle;
+            this.cost = cost;
+            List<ulong> targets = new List<ulong>();
+            foreach (TimeSpan targetTime in target_times)
+            {
+                targets.Add((ulong)targetTime.TotalSeconds);
+            }
+            this.target_times = targets.ToArray();
+        }
+
+
+        /// <summary>
         /// The spend bundle file (in json format) for which to estimate the fee. 
         /// Exactly one of spend_bundle or cost must be specified.
         /// </summary>

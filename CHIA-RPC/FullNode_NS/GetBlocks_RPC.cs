@@ -29,16 +29,36 @@ namespace CHIA_RPC.FullNode_NS
     public class GetBlocks_RPC : RPCTemplate<GetBlocks_RPC>
     {
         /// <summary>
-        /// The start height.
+        /// for serializer
         /// </summary>
+        public GetBlocks_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Gets a list of full blocks by height. 
+        /// </summary>
+        /// <param name="start">The start height.</param>
+        /// <param name="end">The end height(non-inclusive).</param>
+        /// <param name="exclude_header_hash">whether to exclude the header hash in the response(default false)</param>
+        public GetBlocks_RPC(ulong start, ulong end, bool? exclude_header_hash = null)
+        {
+            this.start = start;
+            this.end = end;
+            this.exclude_header_hash = exclude_header_hash;
+        }
+
+        /// <summary>
+        /// The start height.
+        /// </summary>/
+        /// <remarks>mandatory</remarks>
         public ulong start { get; set; }
         /// <summary>
         /// The end height(non-inclusive).
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong end { get; set; }
         /// <summary>
         /// whether to exclude the header hash in the response(default false)
         /// </summary>
+        /// <remarks>optional</remarks>
         public bool? exclude_header_hash { get; set; }
     }
 }

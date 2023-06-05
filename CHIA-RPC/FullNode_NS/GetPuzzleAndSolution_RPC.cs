@@ -27,13 +27,40 @@ namespace CHIA_RPC.FullNode_NS
     public class GetPuzzleAndSolution_RPC : RPCTemplate<GetPuzzleAndSolution_RPC>
     {
         /// <summary>
-        /// the coin id too look up
+        /// for serializer
         /// </summary>
+        public GetPuzzleAndSolution_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Retrieves a coin's spend record by its coin id, sometimes referred to as coin name. 
+        /// </summary>
+        /// <param name="coin_id">the coin id to look up</param>
+        /// <param name="height">the height to search for</param>
+        public GetPuzzleAndSolution_RPC(string coin_id, ulong height)
+        {
+            this.coin_id = coin_id;
+            this.height = height;
+        }
+        /// <summary>
+        /// Retrieves a coin's spend record by its coin id, sometimes referred to as coin name. 
+        /// </summary>
+        /// <param name="coin">the coin to look up</param>
+        /// <param name="height">the height to search for</param>
+        public GetPuzzleAndSolution_RPC(Coin coin, ulong height)
+        {
+            this.coin_id = coin.GetCoinID();
+            this.height = height;
+        }
+
+        /// <summary>
+        /// the coin id to look up
+        /// </summary>
+        /// <remarks>mandatory</remarks>
         public string coin_id { get; set; }
 
         /// <summary>
         /// the height to search for
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong height { get; set; }
     }
 }
