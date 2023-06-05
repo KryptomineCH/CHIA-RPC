@@ -37,8 +37,29 @@ namespace CHIA_RPC.General_NS
     public class PushTx_RPC : RPCTemplate<PushTx_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serialisation
+        /// </summary>
+        public PushTx_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Represents an RPC request to push a transaction to the blockchain.
+        /// </summary>
+        /// <param name="spend_bundle">The SpendBundle to be included in the transaction.</param>
+        public PushTx_RPC(SpendBundle spend_bundle)
+        {
+            this.spend_bundle = spend_bundle;
+        }
+
+        /// <summary>
         /// The SpendBundle to be included in the transaction.
         /// </summary
         public SpendBundle spend_bundle { get; set; }
+        /// <summary>
+        /// Implicit conversion from SpendBundle to PushTx_RPC.
+        /// </summary>
+        /// <param name="response">PushTx_RPC object</param>
+        public static implicit operator PushTx_RPC(SpendBundle response)
+        {
+            return new PushTx_RPC(response);
+        }
     }
 }

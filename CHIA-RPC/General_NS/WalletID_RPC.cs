@@ -17,34 +17,6 @@ namespace CHIA_RPC.General_NS
         /// The wallet ID.
         /// </summary>
         public ulong wallet_id { get; set; }
-
-        /// <summary>
-        /// Returns a new WalletID_RPC object initialized with the wallet ID.
-        /// </summary>
-        /// <returns>A new WalletID_RPC object.</returns>
-        public WalletID_RPC GetWalletID_RPC()
-        {
-            return new WalletID_RPC(wallet_id);
-        }
-
-        /// <summary>
-        /// Implicitly converts a WalletID_Response object to a WalletID_RPC object.
-        /// </summary>
-        /// <param name="response">The WalletID_Response object to convert.</param>
-        /// <returns>A new WalletID_RPC object initialized with the wallet ID.</returns>
-        public static implicit operator WalletID_RPC(WalletID_Response response)
-        {
-            return new WalletID_RPC(response.wallet_id);
-        }
-        /// <summary>
-        /// Implicitly converts a WalletID_Response object to a GetNextAddress_RPC object.
-        /// </summary>
-        /// <param name="response">The WalletID_Response object to convert.</param>
-        /// <returns>A new GetNextAddress_RPC object initialized with the wallet ID.</returns>
-        public static implicit operator GetNextAddress_RPC(WalletID_Response response)
-        {
-            return new GetNextAddress_RPC(response);
-        }
     }
     /// <summary>
     /// The wallet_ID RPC is used for a variety of tasks which require a wallet id as only request parameter such as <see cref="GetNextAddress_RPC"/><br/>
@@ -56,10 +28,25 @@ namespace CHIA_RPC.General_NS
     /// </remarks>
     public class WalletID_RPC : RPCTemplate<WalletID_RPC>
     {
+        /// <summary>
+        /// this constructor is parameterless, for serialisation
+        /// </summary>
         public WalletID_RPC() { /* for serialisation */ }
+        /// <summary>
+        ///  The wallet_ID RPC is used for a variety of tasks which require a wallet id as only request parameter such as <see cref="GetNextAddress_RPC"/>
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID of the wallet from which to obtain the balance (starts at 1)</param>
         public WalletID_RPC(ulong wallet_id)
         {
             this.wallet_id = wallet_id;
+        }
+        /// <summary>
+        ///  The wallet_ID RPC is used for a variety of tasks which require a wallet id as only request parameter such as <see cref="GetNextAddress_RPC"/>
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID of the wallet from which to obtain the balance (starts at 1)</param>
+        public WalletID_RPC(WalletID_Response wallet_id)
+        {
+            this.wallet_id = wallet_id.wallet_id;
         }
 
         /// <summary>
@@ -69,13 +56,13 @@ namespace CHIA_RPC.General_NS
         /// eg. 5</remarks>
         public ulong wallet_id { get; set; }
         /// <summary>
-        /// Implicitly converts a WalletID_RPC object to a GetNextAddress_RPC object.
+        /// Implicitly converts a WalletID_Response object to a WalletID_RPC object.
         /// </summary>
         /// <param name="response">The WalletID_Response object to convert.</param>
-        /// <returns>A new GetNextAddress_RPC object initialized with the wallet ID.</returns>
-        public static implicit operator GetNextAddress_RPC(WalletID_RPC response)
+        /// <returns>A new WalletID_RPC object initialized with the wallet ID.</returns>
+        public static implicit operator WalletID_RPC(WalletID_Response response)
         {
-            return new GetNextAddress_RPC(response);
+            return new WalletID_RPC(response.wallet_id);
         }
     }
 }

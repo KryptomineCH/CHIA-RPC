@@ -14,10 +14,28 @@ namespace CHIA_RPC.General_NS
     public class GetCoinRecordsByNames_RPC : RPCTemplate<GetCoinRecordsByNames_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serialisation
+        /// </summary>
+        public GetCoinRecordsByNames_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Retrieves the coins for given coin IDs; by default only returns unspent coins
+        /// </summary>
+        /// <param name="names">A list of coin names from which to retrieve records</param>
+        /// <param name="start_height">The block height at which to start the query</param>
+        /// <param name="end_height">The block height at which to end the query</param>
+        /// <param name="include_spent_coins">Include spent coins in the result[Default: false]</param>
+        public GetCoinRecordsByNames_RPC(string[] names, ulong? start_height = null, ulong? end_height = null, bool? include_spent_coins = null)
+        {
+            this.names = names;
+            this.start_height = start_height;
+            this.end_height = end_height;
+            this.include_spent_coins = include_spent_coins;
+        }
+
+        /// <summary>
         /// A list of coin names from which to retrieve records
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public string[] names { get; set; }
         /// <summary>
         /// The block height at which to start the query

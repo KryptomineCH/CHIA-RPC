@@ -71,5 +71,21 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// specifies if a new address should be generated or the last one used
         /// </summary>
         public bool new_address { get; set; } = false;
+        /// <summary>
+        /// Implicit conversion from WalletID_RPC to DidID_RPC.
+        /// </summary>
+        /// <param name="response">DidID_Response object</param>
+        public static implicit operator GetNextAddress_RPC(WalletID_RPC response)
+        {
+            return new GetNextAddress_RPC(response);
+        }
+        /// <summary>
+        /// Implicit conversion from WalletID_Response to DidID_RPC.
+        /// </summary>
+        /// <param name="response">DidID_Response object</param>
+        public static implicit operator GetNextAddress_RPC(WalletID_Response response)
+        {
+            return new GetNextAddress_RPC(response);
+        }
     }
 }
