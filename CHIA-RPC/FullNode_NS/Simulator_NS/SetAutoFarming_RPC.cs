@@ -27,8 +27,22 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class SetAutoFarming_RPC : RPCTemplate<SetAutoFarming_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public SetAutoFarming_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Represents the RPC request for the Set Auto Farming API.
+        /// </summary>
+        /// <param name="auto_farm">Boolean to enable or disable auto farming.</param>
+        public SetAutoFarming_RPC(bool auto_farm)
+        {
+            this.auto_farm = auto_farm;
+        }
+
+        /// <summary>
         /// Boolean to enable or disable auto farming.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public bool auto_farm { get; set; }
     }
 

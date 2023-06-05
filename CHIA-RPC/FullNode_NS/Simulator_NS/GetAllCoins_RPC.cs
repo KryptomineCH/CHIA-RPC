@@ -26,8 +26,22 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class GetAllCoins_RPC : RPCTemplate<GetAllCoins_RPC>
     {
         /// <summary>
+        /// for serializer
+        /// </summary>
+        public GetAllCoins_RPC() { /* for serializer */ }
+        /// <summary>
+        /// Represents the RPC request for the Get All Coins API.
+        /// </summary>
+        /// <param name="include_spent_coins">Boolean indicating whether to include spent coins in the result.</param>
+        public GetAllCoins_RPC(bool? include_spent_coins = null)
+        {
+            this.include_spent_coins = include_spent_coins;
+        }
+
+        /// <summary>
         /// Boolean indicating whether to include spent coins in the result.
         /// </summary>
+        /// <remarks>optional</remarks>
         public bool? include_spent_coins { get; set; }
     }
 
