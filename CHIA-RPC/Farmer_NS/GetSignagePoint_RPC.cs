@@ -11,7 +11,7 @@ namespace CHIA_RPC.Farmer_NS
     public class GetSignagePoint_RPC : RPCTemplate<GetSignagePoint_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetSignagePoint_RPC() { /* for serialisation */ }
         /// <summary>

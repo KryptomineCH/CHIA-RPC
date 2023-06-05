@@ -29,7 +29,7 @@ namespace CHIA_RPC.Farmer_NS
     public class GetRewardTargets_RPC : RPCTemplate<GetRewardTargets_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetRewardTargets_RPC () { /* for serialisation */ }
 

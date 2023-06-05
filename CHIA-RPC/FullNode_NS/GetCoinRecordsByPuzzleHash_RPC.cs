@@ -11,7 +11,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetCoinRecordsByPuzzleHash_RPC : RPCTemplate<GetCoinRecordsByPuzzleHash_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetCoinRecordsByPuzzleHash_RPC() { /* for serialisation */ }
         /// <summary>

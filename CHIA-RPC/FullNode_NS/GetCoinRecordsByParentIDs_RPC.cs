@@ -10,7 +10,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetCoinRecordsByParentIDs_RPC : RPCTemplate<GetCoinRecordsByParentIDs_RPC>
     {
         /// <summary>
-        /// for serialisation
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetCoinRecordsByParentIDs_RPC() { /* for serialisation */ }
         /// <summary>

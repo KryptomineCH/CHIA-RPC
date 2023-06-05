@@ -22,6 +22,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.TxID_Response"/></returns>
     public class BatchUpdate_RPC : RPCTemplate<BatchUpdate_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public BatchUpdate_RPC() { /* required for json serialisation */ }
         /// <summary>
         /// Apply multiple updates to a data store with a given changelist. Triggers a Chia transaction

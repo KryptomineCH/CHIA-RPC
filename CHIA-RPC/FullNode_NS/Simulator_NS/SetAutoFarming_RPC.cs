@@ -27,7 +27,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class SetAutoFarming_RPC : RPCTemplate<SetAutoFarming_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public SetAutoFarming_RPC() { /* for serialisation */ }
         /// <summary>

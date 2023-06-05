@@ -10,6 +10,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class Subscribe_RPC : RPCTemplate<Subscribe_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public Subscribe_RPC() { /* for serialisation */ }
         /// <summary>
         /// Subscribe to a store ID

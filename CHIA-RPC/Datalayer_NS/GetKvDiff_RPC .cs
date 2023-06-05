@@ -46,6 +46,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetKvDiff_Response"/></returns>
     public class GetKvDiff_RPC : RPCTemplate<GetKvDiff_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public GetKvDiff_RPC() { /* required for serialisation */ }
         /// <summary>
         /// Get the kv diff between two hashes within the same store ID

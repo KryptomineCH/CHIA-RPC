@@ -25,7 +25,7 @@ namespace CHIA_RPC.Datalayer_NS
     public class GetValue_RPC : RPCTemplate<GetValue_RPC>
     {
         /// <summary>
-        /// for serialisation 
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetValue_RPC() { /* for serialisation */ }
         /// <summary>

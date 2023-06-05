@@ -86,7 +86,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetNetworkSpace_RPC : RPCTemplate<GetNetworkSpace_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetNetworkSpace_RPC() { /* for serialisation */ }
         /// <summary>

@@ -95,7 +95,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetFeeEstimate_RPC : RPCTemplate<GetFeeEstimate_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetFeeEstimate_RPC() { /* for serialisation */ }
         /// <summary>

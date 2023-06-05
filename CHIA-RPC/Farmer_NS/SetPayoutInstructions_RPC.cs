@@ -10,7 +10,7 @@ namespace CHIA_RPC.Farmer_NS
     public class SetPayoutInstructions_RPC : RPCTemplate<SetPayoutInstructions_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public SetPayoutInstructions_RPC() { /* for serialisation */ }
         /// <summary>

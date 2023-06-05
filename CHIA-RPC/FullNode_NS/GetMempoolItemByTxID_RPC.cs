@@ -26,7 +26,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetMempoolItemByTxID_RPC : RPCTemplate<GetMempoolItemByTxID_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetMempoolItemByTxID_RPC() { /* for serialisation */ }
         /// <summary>

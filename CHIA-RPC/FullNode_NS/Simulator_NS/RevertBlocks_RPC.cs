@@ -12,7 +12,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class RevertBlocks_RPC : RPCTemplate<RevertBlocks_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public RevertBlocks_RPC() { /* for serialisation */ }
         /// <summary>

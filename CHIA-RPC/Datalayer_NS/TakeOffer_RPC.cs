@@ -10,7 +10,10 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.TradeID_Response"/></returns>
     public class TakeOffer_RPC : RPCTemplate<TakeOffer_RPC>
     {
-        public TakeOffer_RPC() {/*for serialisation*/ }
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public TakeOffer_RPC() { /* for serialisation */ }
         /// <summary>
         /// Accept an offer to create one or more keys in exchange for the Maker creating one or more keys. Triggers a Chia transaction
         /// </summary>

@@ -11,6 +11,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class CancelOffer_RPC : RPCTemplate<CancelOffer_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public CancelOffer_RPC() { /* required for json serialisation */ }
         /// <summary>
         /// Cancel a DataLayer offer

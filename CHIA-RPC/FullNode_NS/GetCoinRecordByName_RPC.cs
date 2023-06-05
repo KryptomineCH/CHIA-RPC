@@ -26,7 +26,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetCoinRecordByName_RPC : RPCTemplate<GetCoinRecordByName_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetCoinRecordByName_RPC() { /* for serialisation */ }
         /// <summary>

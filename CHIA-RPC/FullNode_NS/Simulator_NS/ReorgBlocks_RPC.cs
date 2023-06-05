@@ -10,7 +10,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class ReorgBlocks_RPC : RPCTemplate<ReorgBlocks_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public ReorgBlocks_RPC() { /* for serialisation */ }
         /// <summary>

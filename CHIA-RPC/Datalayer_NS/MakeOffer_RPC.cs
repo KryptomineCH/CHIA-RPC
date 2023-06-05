@@ -15,6 +15,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="DatalayerObjects_NS.Datalayer_OfferFile"/></returns>
     public class MakeOffer_RPC : RPCTemplate<MakeOffer_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public MakeOffer_RPC() { /* for serialisation */}
         /// <summary>
         /// Make an offer to include one or more keys in exchange for a Taker including one or more keys

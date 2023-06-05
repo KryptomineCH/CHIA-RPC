@@ -36,7 +36,7 @@ namespace CHIA_RPC.FullNode_NS
     public class GetRecentSignagePointOrEos_RPC : RPCTemplate<GetRecentSignagePointOrEos_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetRecentSignagePointOrEos_RPC() { /* for serialisation */ }
         /// <summary>

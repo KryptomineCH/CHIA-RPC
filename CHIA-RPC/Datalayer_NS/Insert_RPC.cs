@@ -13,7 +13,7 @@ namespace CHIA_RPC.Datalayer_NS
     public class Insert_RPC : RPCTemplate<Insert_RPC>
     {
         /// <summary>
-        /// for serialisation
+        /// parameterless constructor, for serializer
         /// </summary>
         public Insert_RPC() { /* for serialisation */ }
         /// <summary>

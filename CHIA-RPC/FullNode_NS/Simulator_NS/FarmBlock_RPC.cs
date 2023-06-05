@@ -25,7 +25,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class FarmBlock_RPC : RPCTemplate<FarmBlock_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public FarmBlock_RPC() { /* for serialisation */ }
         /// <summary>

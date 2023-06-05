@@ -24,6 +24,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetKeys_RPC"/></returns>
     public class GetKeys_RPC : RPCTemplate<GetKeys_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public GetKeys_RPC() { /* for serialisation */ }
         /// <summary>
         /// Get all keys associated with a store_id

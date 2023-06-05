@@ -95,7 +95,7 @@ namespace CHIA_RPC.Farmer_NS
     public class GetHarvesterPlots_RPC : RPCTemplate<GetHarvesterPlots_RPC>
     {
         /// <summary>
-        /// for serialisation
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetHarvesterPlots_RPC() { /* for serialisation */ }
         /// <summary>

@@ -11,6 +11,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class AddMirror_RPC : RPCTemplate<AddMirror_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public AddMirror_RPC() { /* required for json serialisation */}
         /// <summary>
         /// Add a new mirror from a local or remote data store. Triggers a Chia transaction

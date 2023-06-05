@@ -29,6 +29,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetRoots_Response"/></returns>
     public class GetRoots_RPC : RPCTemplate<GetRoots_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public GetRoots_RPC () { /*  required for serialisation */ }
         /// <summary>
         /// Get the root hashes and timestamps from a list of stores. Note that an invalid hash will be returned for subscribed stores.

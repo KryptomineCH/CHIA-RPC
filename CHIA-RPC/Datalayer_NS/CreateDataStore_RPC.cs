@@ -30,7 +30,14 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="CreateDataStore_Response"/></returns>
     public class CreateDataStore_RPC : RPCTemplate<CreateDataStore_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public CreateDataStore_RPC() { /* required for json serialisation */ }
+        /// <summary>
+        /// create a datastore
+        /// </summary>
+        /// <param name="fee">an optional fee to use</param>
         public CreateDataStore_RPC(ulong? fee)
         {
             this.fee = fee;

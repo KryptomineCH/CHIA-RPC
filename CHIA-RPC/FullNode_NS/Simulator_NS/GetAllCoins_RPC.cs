@@ -26,7 +26,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
     public class GetAllCoins_RPC : RPCTemplate<GetAllCoins_RPC>
     {
         /// <summary>
-        /// for serializer
+        /// parameterless constructor, for serializer
         /// </summary>
         public GetAllCoins_RPC() { /* for serializer */ }
         /// <summary>

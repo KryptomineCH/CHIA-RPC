@@ -12,6 +12,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="General_NS.TxID_Response"/></returns>
     public class DeleteKey_RPC : RPCTemplate<DeleteKey_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public DeleteKey_RPC() { /* for serialisation */ }
         /// <summary>
         /// Delete a key/value pair from a store that you control. Triggers a Chia transaction

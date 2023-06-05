@@ -24,6 +24,9 @@ namespace CHIA_RPC.Datalayer_NS
     /// <returns><see cref="GetAncestors_Response"/></returns>
     public class GetAncestors_RPC : RPCTemplate<GetAncestors_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public GetAncestors_RPC() { /* for serialisation */}
         /// <summary>
         /// Return all ancestors of a given hash

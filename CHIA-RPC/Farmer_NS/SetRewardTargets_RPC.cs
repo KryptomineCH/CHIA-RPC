@@ -10,7 +10,7 @@ namespace CHIA_RPC.Farmer_NS
     public class SetRewardTargets_RPC : RPCTemplate<SetRewardTargets_RPC>
     {
         /// <summary>
-        /// Represents the RPC request to set the farmer and/or pool reward target address(es).
+        /// parameterless constructor, for serializer
         /// </summary>
         public SetRewardTargets_RPC() { /* for serialisation */ }
         /// <summary>
