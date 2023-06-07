@@ -54,11 +54,11 @@ namespace CHIA_RPC.FullNode_NS
         /// Gets or sets the hash of the output for a signage point (if it's in the middle of a sub slot).
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string sp_hash { get; set; }
+        public string? sp_hash { get; set; }
         /// <summary>
         /// Gets or sets the challenge_hash for the subslot (if it's an end of sub slot challenge).
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string challenge_hash { get; set; }
+        public string? challenge_hash { get; set; }
     }
 }
