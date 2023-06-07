@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS
 {
@@ -19,7 +20,23 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
+        /// <remarks>in mojos</remarks>
         public decimal[] estimates { get; set; }
+        /// <summary>
+        /// Estimated fee for each targeted time in seconds.
+        /// </summary>
+        /// <remarks>in mojos</remarks>
+        [JsonIgnore]
+        public decimal[] estimates_in_chia { get
+            {
+                List<decimal> result = new List<decimal>();
+                foreach(decimal fee in estimates)
+                {
+                    result.Add(fee / 1000000000000);
+                }
+                return result.ToArray();
+            } 
+        }
 
         /// <summary>
         /// the actual fee rate of the last block
@@ -104,7 +121,19 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         /// <param name="cost">The CLVM cost for which to estimate the fee. </param>
-        public GetFeeEstimate_RPC(ulong[] target_times, string? spend_bundle = null, ulong? cost = null)
+        public GetFeeEstimate_RPC(ulong[] target_times, ulong cost)
+        {
+            this.spend_bundle = spend_bundle;
+            this.cost = cost;
+            this.target_times = target_times;
+        }
+        /// <summary>
+        /// Contains the request parameters for the get_fee_estimate RPC method. 
+        /// </summary>
+        /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
+        /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
+        /// <param name="cost">The CLVM cost for which to estimate the fee. </param>
+        public GetFeeEstimate_RPC(ulong[] target_times, string spend_bundle)
         {
             this.spend_bundle = spend_bundle;
             this.cost = cost;
@@ -116,7 +145,24 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         /// <param name="cost">The CLVM cost for which to estimate the fee.</param>
-        public GetFeeEstimate_RPC(TimeSpan[] target_times, string? spend_bundle = null, ulong? cost = null)
+        public GetFeeEstimate_RPC(TimeSpan[] target_times, string spend_bundle)
+        {
+            this.spend_bundle = spend_bundle;
+            this.cost = cost;
+            List<ulong> targets = new List<ulong>();
+            foreach (TimeSpan targetTime in target_times)
+            {
+                targets.Add((ulong)targetTime.TotalSeconds);
+            }
+            this.target_times = targets.ToArray();
+        }
+        /// <summary>
+        /// Contains the request parameters for the get_fee_estimate RPC method. 
+        /// </summary>
+        /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
+        /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
+        /// <param name="cost">The CLVM cost for which to estimate the fee.</param>
+        public GetFeeEstimate_RPC(TimeSpan[] target_times, ulong cost)
         {
             this.spend_bundle = spend_bundle;
             this.cost = cost;
