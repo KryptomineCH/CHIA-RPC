@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_NS.DID_NS
 {
@@ -28,17 +29,67 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     }
 
     /// <summary>
-    /// Response from the did_create_attest RPC command
+    /// Create an attest for a DID, to be used for recovery. This command will output the attest data, which can then be added or redirected to a file
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/did-rpc#did_create_attest"/></remarks>
     /// <returns><see cref="DidCreateAttest_Response"/></returns>
     public class DidCreateAttest_RPC : RPCTemplate<DidCreateAttest_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public DidCreateAttest_RPC() { /* for serialisation */ }
+
+        /// <summary>
+        /// Create an attest for a DID, to be used for recovery. This command will output the attest data, which can then be added or redirected to a file
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID for which to create the attest</param>
+        /// <param name="coin_name">The coin to use for the attest</param>
+        /// <param name="pubkey">The public key to use for the attest</param>
+        /// <param name="puzhash">The puzzle hash to use for the attest</param>
+        public DidCreateAttest_RPC(ulong wallet_id, string coin_name, string pubkey, string puzhash)
+        {
+            this.wallet_id = wallet_id;
+            this.coin_name = coin_name;
+            this.pubkey = pubkey;
+            this.puzhash = puzhash;
+        }
+        /// <summary>
+        /// Create an attest for a DID, to be used for recovery. This command will output the attest data, which can then be added or redirected to a file
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID for which to create the attest</param>
+        /// <param name="coin_name">The coin to use for the attest</param>
+        /// <param name="pubkey">The public key to use for the attest</param>
+        /// <param name="puzhash">The puzzle hash to use for the attest</param>
+        public DidCreateAttest_RPC(WalletID_RPC wallet_id, string coin_name, string pubkey, string puzhash)
+        {
+            this.wallet_id = wallet_id.wallet_id;
+            this.coin_name = coin_name;
+            this.pubkey = pubkey;
+            this.puzhash = puzhash;
+        }
+        /// <summary>
+        /// Create an attest for a DID, to be used for recovery. This command will output the attest data, which can then be added or redirected to a file
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID for which to create the attest</param>
+        /// <param name="coin_name">The coin to use for the attest</param>
+        /// <param name="pubkey">The public key to use for the attest</param>
+        /// <param name="puzhash">The puzzle hash to use for the attest</param>
+        public DidCreateAttest_RPC(WalletID_Response wallet_id, string coin_name, string pubkey, string puzhash)
+        {
+            this.wallet_id = wallet_id.wallet_id;
+            this.coin_name = coin_name;
+            this.pubkey = pubkey;
+            this.puzhash = puzhash;
+        }
+
+
+
+        /// <summary>
         /// The Wallet ID for which to create the attest
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public int wallet_id { get; set; }
+        public ulong wallet_id { get; set; }
 
         /// <summary>
         /// The coin to use for the attest

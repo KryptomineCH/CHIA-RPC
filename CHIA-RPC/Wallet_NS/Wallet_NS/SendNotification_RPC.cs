@@ -21,6 +21,25 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     public class SendNotification_RPC : RPCTemplate<SendNotification_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public SendNotification_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Send a notification to a specified puzzle hash
+        /// </summary>
+        /// <param name="target">The puzzle hash you would like to send a message to</param>
+        /// <param name="message">The hex-encoded message you would like to send</param>
+        /// <param name="amount">The number of mojos to include with this message</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        public SendNotification_RPC(string target, string message, ulong amount, ulong? fee = null)
+        {
+            this.target = target;
+            this.message = message;
+            this.amount = amount;
+            this.fee = fee;
+        }
+
+        /// <summary>
         /// The puzzle hash you would like to send a message to
         /// </summary>
         /// <remarks>mandatory</remarks>

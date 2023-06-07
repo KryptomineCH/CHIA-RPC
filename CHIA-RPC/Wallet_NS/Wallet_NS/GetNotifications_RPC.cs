@@ -22,10 +22,28 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     public class GetNotifications_RPC : RPCTemplate<GetNotifications_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public GetNotifications_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Obtain current notifications
+        /// </summary>
+        /// <param name="ids">Set to receive notifications only from the specified IDs. [Default: receive from all IDs]</param>
+        /// <param name="start">The number corresponding to the first notification to list. [Default: the first notification]</param>
+        /// <param name="end">The number corresponding to the last notification to list. [Default: the last notification]</param>
+        public GetNotifications_RPC(string? ids = null, ulong? start = null, ulong? end=null)
+        {
+            this.ids = ids;
+            this.start = start;
+            this.end = end;
+        }
+
+
+        /// <summary>
         /// Set to receive notifications only from the specified IDs. [Default: receive from all IDs]
         /// </summary>
         /// <remarks>optional</remarks>
-        public string ids { get; set; }
+        public string? ids { get; set; }
         /// <summary>
         /// The number corresponding to the first notification to list. [Default: the first notification]
         /// </summary>

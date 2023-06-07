@@ -30,13 +30,30 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     public class CreateNewDL_RPC : RPCTemplate<CreateNewDL_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public CreateNewDL_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Create a new DataLayer wallet
+        /// </summary>
+        /// <param name="root">The root hash of an existing data store</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        public CreateNewDL_RPC(string root, ulong? fee = null)
+        {
+            this.root = root;
+            this.fee = fee;
+        }
+
+        /// <summary>
         /// The root hash of an existing data store
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string root { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>
+        /// <remarks>optional</remarks>
         public ulong? fee { get; set; }
     }
 

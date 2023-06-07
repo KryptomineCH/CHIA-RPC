@@ -26,13 +26,30 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     public class DlSingletonsByRoot_RPC : RPCTemplate<DlSingletonsByRoot_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public DlSingletonsByRoot_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Request to get the singleton records that contain the specified root.
+        /// </summary>
+        /// <param name="launcher_id">The launcher ID of the DataLayer wallet.</param>
+        /// <param name="root">The root hash of an existing data store.</param>
+        public DlSingletonsByRoot_RPC(string launcher_id, string root)
+        {
+            this.launcher_id = launcher_id;
+            this.root = root;
+        }
+
+        /// <summary>
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string launcher_id { get; set; }
 
         /// <summary>
         /// The root hash of an existing data store.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string root { get; set; }
     }
 }

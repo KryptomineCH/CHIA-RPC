@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_NS.Offer_NS
 {
@@ -86,8 +87,29 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
     public class GetOfferSummary_RPC : RPCTemplate<GetOfferSummary_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public GetOfferSummary_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Returns the summary of a specific offer. Works for offers in any state.
+        /// </summary>
+        /// <param name="offer">The offer to summarize.</param>
+        public GetOfferSummary_RPC(string offer)
+        {
+            this.offer = offer;
+        }
+        /// <summary>
+        /// Returns the summary of a specific offer. Works for offers in any state.
+        /// </summary>
+        /// <param name="offer">The offer to summarize.</param>
+        public GetOfferSummary_RPC(OfferFile offerFile)
+        {
+            this.offer = offerFile.offer;
+        }
+        /// <summary>
         /// The offer to summarize.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string offer { get; set; }
     }
 

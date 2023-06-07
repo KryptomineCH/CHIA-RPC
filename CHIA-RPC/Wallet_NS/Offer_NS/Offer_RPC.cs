@@ -13,6 +13,33 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
     public class Offer_RPC : RPCTemplate<Offer_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public Offer_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Creates a new offer.
+        /// </summary>
+        /// <param name="offer">this dictionary contains your requested additions and substractions, in mojos.</param>
+        /// <param name="fee">An optional fee (in mojos) to include with the offer. Defaults to 0.</param>
+        /// <param name="validate_only">Defaults to False. Set to True to verify the validity of a potential offer, rather than actually creating an offer.</param>
+        /// <param name="driver_dict">A dictionary [str, Any] containing metadata of the asset being requested, for example an NFT's on-chain metadata</param>
+        /// <param name="min_coin_amount">The minimum coin size to be included in the offer [Default: 0]</param>
+        /// <param name="max_coin_amount">The maximum coin size to be included in the offer [Default: 0]</param>
+        /// <param name="solver">Default: None</param>
+        public Offer_RPC(
+            Dictionary<string, long> offer, ulong? fee = null, bool? validate_only = null, 
+            Dictionary<string, object>? driver_dict = null, ulong? min_coin_amount = null, ulong? max_coin_amount = null, List<KeyValuePair<string, object>>? solver = null)
+        {
+            this.offer = offer;
+            this.fee = fee;
+            this.validate_only = validate_only;
+            this.driver_dict = driver_dict;
+            this.min_coin_amount = min_coin_amount;
+            this.max_coin_amount = max_coin_amount;
+            this.solver = solver;
+        }
+
+        /// <summary>
         /// this dictionary contains your requested additions and substractions, in mojos.<br/>
         /// if you wan to offer an nft for example, use the launcher id such as <br/>
         /// "1": 1000000000000 (offer for 1 xch) <br/>

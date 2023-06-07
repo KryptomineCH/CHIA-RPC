@@ -32,23 +32,46 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     public class DlHistory_RPC : RPCTemplate<DlHistory_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public DlHistory_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// RPC request class for the "dl_history" command in the Chia wallet RPC API.
+        /// </summary>
+        /// <param name="launcher_id">The launcher ID of the DataLayer wallet.</param>
+        /// <param name="min_generation">The first generation of singleton to show [Default: none].</param>
+        /// <param name="max_generation">The last generation of the singleton to show [Default: none].</param>
+        /// <param name="num_results">The number of results to show [Default: show all results].</param>
+        public DlHistory_RPC(string launcher_id, ulong? min_generation = null, ulong? max_generation = null, ulong? num_results = null)
+        {
+            this.launcher_id = launcher_id;
+            this.min_generation = min_generation;
+            this.max_generation = max_generation;
+            this.num_results = num_results;
+        }
+
+        /// <summary>
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string launcher_id { get; set; }
 
         /// <summary>
         /// The first generation of singleton to show [Default: none].
         /// </summary>
+        /// <remarks>optional</remarks>
         public ulong? min_generation { get; set; }
 
         /// <summary>
         /// The last generation of the singleton to show [Default: none].
         /// </summary>
+        /// <remarks>optional</remarks>
         public ulong? max_generation { get; set; }
 
         /// <summary>
         /// The number of results to show [Default: show all results].
         /// </summary>
+        /// <remarks>optional</remarks>
         public ulong? num_results { get; set; }
     }
 

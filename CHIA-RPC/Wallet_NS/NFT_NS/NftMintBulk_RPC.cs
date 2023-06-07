@@ -12,6 +12,57 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     public class NftMintBulk_RPC : RPCTemplate<NftMintBulk_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public NftMintBulk_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Create a spend bundle to mint multiple NFTs.
+        /// </summary>
+        /// <param name="wallet_id">The ID of the NFT wallet to use for bulk minting</param>
+        /// <param name="metadata_list">A list of dicts containing the metadata for each NFT to be minted</param>
+        /// <param name="royalty_percentage">The royalty that will go to the original artist each time the NFT is sold</param>
+        /// <param name="royalty_address">The wallet address of the NFT's artist. This is where royalties will be sent. It could be either an XCH address or a DID address</param>
+        /// <param name="target_address_list">A list of wallet addresses where the NFTs will be sent upon minting</param>
+        /// <param name="mint_number_start">The starting point for mint number used in intermediate launcher puzzle</param>
+        /// <param name="mint_total">The total number of NFTs in the collection. </param>
+        /// <param name="xch_coin_list">A list of coins to be used for funding the minting spend</param>
+        /// <param name="xch_change_target">For use with bulk minting, so we can specify the puzzle hash that the change from the funding transaction goes to</param>
+        /// <param name="new_innerpuzhash">The new inner puzzle hash for the DID once it is spent.</param>
+        /// <param name="new_p2_puzhash">The new p2 puzzle hash for the DID once it is spent</param>
+        /// <param name="did_coin_dict">The did coin to use for minting. </param>
+        /// <param name="did_lineage_parent_hex">The parent coin to use for the lineage proof in the DID spend</param>
+        /// <param name="mint_from_did">Boolean to determine whether to mint from a DID</param>
+        /// <param name="fee">A blockchain fee (in mojos) to be deducted with each mint</param>
+        /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only. </param>
+        public NftMintBulk_RPC(
+            ulong wallet_id, MintMetadata[] metadata_list, 
+            ulong? royalty_percentage = null, string? royalty_address = null, 
+            string[]? target_address_list = null, ulong? mint_number_start = null, 
+            ulong? mint_total = null, string[]? xch_coin_list = null, 
+            string? xch_change_target = null, string? new_innerpuzhash = null, 
+            string? new_p2_puzhash = null, object? did_coin_dict = null, 
+            string? did_lineage_parent_hex = null, bool? mint_from_did = null, 
+            ulong? fee = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id;
+            this.metadata_list = metadata_list;
+            this.royalty_percentage = royalty_percentage;
+            this.royalty_address = royalty_address;
+            this.target_address_list = target_address_list;
+            this.mint_number_start = mint_number_start;
+            this.mint_total = mint_total;
+            this.xch_coin_list = xch_coin_list;
+            this.xch_change_target = xch_change_target;
+            this.new_innerpuzhash = new_innerpuzhash;
+            this.new_p2_puzhash = new_p2_puzhash;
+            this.did_coin_dict = did_coin_dict;
+            this.did_lineage_parent_hex = did_lineage_parent_hex;
+            this.mint_from_did = mint_from_did;
+            this.fee = fee;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+
+        /// <summary>
         /// The ID of the NFT wallet to use for bulk minting
         /// </summary>
         public ulong wallet_id { get; set; }

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
@@ -12,17 +11,31 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// <remarks><see href="https://docs.chia.net/wallet-rpc/#sign_message_by_id"/></remarks>
     /// <returns><see cref="SignMessage_Response"/></returns>
     public class SignMessageByID_RPC : RPCTemplate<SignMessageByID_RPC>
-    {   /// <summary>
+    {   
+        /// <summary>
+        /// parameterless Constructor, for serializer
+        /// </summary>
+        public SignMessageByID_RPC() { /* for serialisation */ }
+        /// <summary>
+        ///  The sign_message_by_id function is used to sign a message using a Decentralized Identifier (DID) or Non-Fungible Token (NFT) ID, without creating an on-chain transaction. 
+        /// </summary>
+        /// <param name="id">The address to use for signing.Must possess the key for this address</param>
+        /// <param name="message">The message to include with the signature</param>
+        public SignMessageByID_RPC(string id, string message)
+        {
+            this.id = id;
+            this.message = message;
+        }
+
+        /// <summary>
         /// The address to use for signing.Must possess the key for this address
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public string id { get; set; }
         /// <summary>
         /// The message to include with the signature
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public string message { get; set; }
     }
 }

@@ -35,24 +35,50 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
     public class PwJoinPool_RPC : RPCTemplate<PwJoinPool_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public PwJoinPool_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Join a pool
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID to use to join the pool (must be of type POOLING_WALLET)</param>
+        /// <param name="target_puzzlehash">This is the target of where rewards will be sent to from the singleton. Controlled by the pool</param>
+        /// <param name="pool_url">The URL of the pool to join</param>
+        /// <param name="relative_lock_height">The number of blocks required to wait when attempting to leave the pool</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        public PwJoinPool_RPC(ulong wallet_id, string target_puzzlehash, string pool_url, ulong relative_lock_height, ulong? fee = null)
+        {
+            this.wallet_id = wallet_id;
+            this.target_puzzlehash = target_puzzlehash;
+            this.pool_url = pool_url;
+            this.relative_lock_height = relative_lock_height;
+            this.fee = fee;
+        }
+
+        /// <summary>
         /// The Wallet ID to use to join the pool (must be of type POOLING_WALLET)
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong wallet_id { get; set; }
         /// <summary>
         /// This is the target of where rewards will be sent to from the singleton. Controlled by the pool
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string target_puzzlehash { get; set; }
         /// <summary>
         /// The URL of the pool to join
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string pool_url { get; set; }
         /// <summary>
         /// The number of blocks required to wait when attempting to leave the pool
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public ulong relative_lock_height { get; set; }
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>
+        /// <remarks>optional</remarks>
         public ulong? fee { get; set; }
     }
 

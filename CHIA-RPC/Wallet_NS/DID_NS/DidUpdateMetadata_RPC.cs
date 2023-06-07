@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 
 namespace CHIA_RPC.Wallet_NS.DID_NS
@@ -10,10 +11,48 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
     /// <returns><see cref="General_NS.Success_Response"/></returns>
     public class DidUpdateMetadata_RPC : RPCTemplate<DidUpdateMetadata_RPC>
     {
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
         public DidUpdateMetadata_RPC() { /* for serialisation purposes */ }
+        /// <summary>
+        /// Update the metadata for a DID wallet. The current metadata can be obtained with the did_get_metadata endpoint
+        /// </summary>
+        /// <param name="wallet_id">the id of the wallet which should be updated</param>
+        /// <param name="metadata">The new metadata</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only. </param>
         public DidUpdateMetadata_RPC(ulong wallet_id, Dictionary<string, object> metadata, ulong? fee = null, bool? reuse_puzhash = null)
         {
             this.wallet_id = wallet_id;
+            this.metadata = metadata;
+            this.fee = fee;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+        /// <summary>
+        /// Update the metadata for a DID wallet. The current metadata can be obtained with the did_get_metadata endpoint
+        /// </summary>
+        /// <param name="wallet_id">the id of the wallet which should be updated</param>
+        /// <param name="metadata">The new metadata</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only. </param>
+        public DidUpdateMetadata_RPC(WalletID_RPC wallet_id, Dictionary<string, object> metadata, ulong? fee = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id.wallet_id;
+            this.metadata = metadata;
+            this.fee = fee;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+        /// <summary>
+        /// Update the metadata for a DID wallet. The current metadata can be obtained with the did_get_metadata endpoint
+        /// </summary>
+        /// <param name="wallet_id">the id of the wallet which should be updated</param>
+        /// <param name="metadata">The new metadata</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only. </param>
+        public DidUpdateMetadata_RPC(WalletID_Response wallet_id, Dictionary<string, object> metadata, ulong? fee = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id.wallet_id;
             this.metadata = metadata;
             this.fee = fee;
             this.reuse_puzhash = reuse_puzhash;

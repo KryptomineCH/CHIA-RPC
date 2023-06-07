@@ -28,13 +28,30 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     public class DlLatestSingleton_RPC : RPCTemplate<DlLatestSingleton_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public DlLatestSingleton_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// RPC request object for the "dl_latest_singleton" command.
+        /// </summary>
+        /// <param name="launcher_id">The launcher ID of the DataLayer wallet.</param>
+        /// <param name="only_confirmed">Only show the latest confirmed record. [Default: false]</param>
+        public DlLatestSingleton_RPC(string launcher_id, bool? only_confirmed)
+        {
+            this.launcher_id = launcher_id;
+            this.only_confirmed = only_confirmed;
+        }
+
+        /// <summary>
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string launcher_id { get; set; }
 
         /// <summary>
         /// Only show the latest confirmed record. [Default: false]
         /// </summary>
+        /// <remarks>optional</remarks>
         public bool? only_confirmed { get; set; }
     }
 

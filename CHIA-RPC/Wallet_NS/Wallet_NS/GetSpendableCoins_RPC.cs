@@ -26,6 +26,30 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     public class GetSpendableCoins_RPC : RPCTemplate<GetSpendableCoins_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public GetSpendableCoins_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Get all spendable coins, with various possible filters
+        /// </summary>
+        /// <param name="wallet_id">The ID of the wallet from which to display coins</param>
+        /// <param name="min_coin_amount">The smallest coin to be selected in this query[Default: No minimum]</param>
+        /// <param name="max_coin_amount">The largest coin to be selected in this query[Default: No maximum]</param>
+        /// <param name="excluded_coin_amounts">A list of coin amounts to exclude</param>
+        /// <param name="excluded_coins">A list of coins to exclude</param>
+        /// <param name="excluded_coin_ids">A list of coin IDs to exclude</param>
+        public GetSpendableCoins_RPC(ulong wallet_id, ulong? min_coin_amount = null, ulong? max_coin_amount = null, 
+            ulong[]? excluded_coin_amounts = null, string[]? excluded_coins = null, string[]? excluded_coin_ids = null)
+        {
+            this.wallet_id = wallet_id;
+            this.min_coin_amount = min_coin_amount;
+            this.max_coin_amount = max_coin_amount;
+            this.excluded_coin_amounts = excluded_coin_amounts;
+            this.excluded_coins = excluded_coins;
+            this.excluded_coin_ids = excluded_coin_ids;
+        }
+
+        /// <summary>
         /// The ID of the wallet from which to display coins
         /// </summary>
         /// <remarks>mandatory</remarks>

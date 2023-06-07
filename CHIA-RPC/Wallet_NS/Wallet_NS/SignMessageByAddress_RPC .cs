@@ -25,6 +25,21 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     public class SignMessageByAddress_RPC : RPCTemplate<SignMessageByAddress_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public SignMessageByAddress_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// The sign_message_by_address function is useful for creating a digital signature of a message using a specific XCH address, without having to create an on-chain transaction.
+        /// </summary>
+        /// <param name="address">The address to use for signing.Must possess the key for this address</param>
+        /// <param name="message">The message to include with the signature</param>
+        public SignMessageByAddress_RPC(string address, string message)
+        {
+            this.address = address;
+            this.message = message;
+        }
+
+        /// <summary>
         /// The address to use for signing.Must possess the key for this address
         /// </summary>
         /// <remarks>mandatory</remarks>

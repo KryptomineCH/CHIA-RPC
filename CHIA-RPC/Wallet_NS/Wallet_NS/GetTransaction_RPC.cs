@@ -35,33 +35,62 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     public class GetTransactions_RPC : RPCTemplate<GetTransactions_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serialisation
+        /// </summary>
+        public GetTransactions_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Represents a JSON RPC request for getting all transactions for a given wallet.
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID of the wallet from which to obtain transactions.</param>
+        /// <param name="start">The sequence number of the first transaction to show. Default: 0.</param>
+        /// <param name="end">The sequence number of the last transaction to show. Default: 50.</param>
+        /// <param name="sort_key">The key for sorting. Default: None.</param>
+        /// <param name="reverse">Set to true to sort the results in reverse order. Default: false.</param>
+        /// <param name="to_address">Only include transactions with this to_address. Default: None.</param>
+        public GetTransactions_RPC(ulong wallet_id, ulong? start = null, ulong? end = null, ulong? sort_key = null, bool? reverse = null, string? to_address = null)
+        {
+            this.wallet_id = wallet_id;
+            this.start = start;
+            this.end = end;
+            this.sort_key = sort_key;
+            this.reverse = reverse;
+            this.to_address = to_address;
+        }
+
+        /// <summary>
         /// The Wallet ID of the wallet from which to obtain transactions.
         /// </summary>
+        /// <remarks>Mandatory</remarks>
         public ulong wallet_id { get; set; }
 
         /// <summary>
         /// The sequence number of the first transaction to show. Default: 0.
         /// </summary>
+        /// <remarks>Optional</remarks>
         public ulong? start { get; set; }
 
         /// <summary>
         /// The sequence number of the last transaction to show. Default: 50.
         /// </summary>
+        /// <remarks>Optional</remarks>
         public ulong? end { get; set; }
 
         /// <summary>
         /// The key for sorting. Default: None.
         /// </summary>
+        /// <remarks>Optional</remarks>
         public ulong? sort_key { get; set; }
 
         /// <summary>
         /// Set to true to sort the results in reverse order. Default: false.
         /// </summary>
+        /// <remarks>Optional</remarks>
         public bool? reverse { get; set; }
 
         /// <summary>
         /// Only include transactions with this to_address. Default: None.
         /// </summary>
+        /// <remarks>Optional</remarks>
         public string? to_address { get; set; }
     }
 }

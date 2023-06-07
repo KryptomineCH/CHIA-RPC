@@ -57,6 +57,21 @@ namespace CHIA_RPC.Wallet_NS.WalletManagement_NS
     public class GetWallets_RPC : RPCTemplate<GetWallets_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public GetWallets_RPC() { /* for Serialisation */ }
+        /// <summary>
+        /// Show all wallets associated with the current fingerprint, including (by default) coin information
+        /// </summary>
+        /// <param name="include_data">Set to true to include all coin info for this wallet [Default: true]</param>
+        /// <param name="type">The type of wallet to retrieve. If included, must be one of `cat_wallet`, `did_wallet`, `nft_wallet`, or `pool_wallet`</param>
+        public GetWallets_RPC(bool include_data, string? type = null)
+        {
+            this.include_data = include_data;
+            this.type = type;
+        }
+
+        /// <summary>
         /// Set to true to include all coin info for this wallet [Default: true]
         /// </summary>
         /// <remarks>optional</remarks>

@@ -32,8 +32,22 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     public class CatAssetIdToName_RPC : RPCTemplate<CatAssetIdToName_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public CatAssetIdToName_RPC() { /* for searialisation */ }
+        /// <summary>
+        /// Represents a request to retrieve a CAT's name from its ID.
+        /// </summary>
+        /// <param name="asset_id">The ID of the CAT whose name you would like to retrieve. This CAT must be listed in your DEFAULT_CATS, ie the CATs your wallet recognizes.</param>
+        public CatAssetIdToName_RPC(string asset_id)
+        {
+            this.asset_id = asset_id;
+        }
+
+        /// <summary>
         /// The ID of the CAT whose name you would like to retrieve. This CAT must be listed in your DEFAULT_CATS, ie the CATs your wallet recognizes.
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string asset_id { get; set; }
     }
 }

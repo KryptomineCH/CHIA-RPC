@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Wallet_NS.CATsAndTrading_NS;
 using System.Text;
 
 namespace CHIA_RPC.Objects_NS
@@ -23,6 +24,25 @@ namespace CHIA_RPC.Objects_NS
             Encoding utf8WithoutBom = new UTF8Encoding(false); // no bom
             File.WriteAllText(path, offer, utf8WithoutBom);
         }
+        /// <summary>
+        /// Implicitly converts a OfferFile object to a TakeCatOffer_RPC object.
+        /// </summary>
+        /// <param name="offer">The OfferFile object to convert.</param>
+        /// <returns>A new TakeCatOffer_RPC object initialized with the offer.</returns>
+        public static implicit operator TakeCatOffer_RPC(OfferFile offer)
+        {
+            return new TakeCatOffer_RPC(offer);
+        }
+        /// <summary>
+        /// Implicitly converts a OfferFile object to a CheckOfferValidity_RPC object.
+        /// </summary>
+        /// <param name="offer">The OfferFile object to convert.</param>
+        /// <returns>A new CheckOfferValidity_RPC object initialized with the offer.</returns>
+        public static implicit operator CheckOfferValidity_RPC(OfferFile offer)
+        {
+            return new CheckOfferValidity_RPC(offer);
+        }
+
     }
     public class OfferFiles : ObjectTemplate<OfferFiles>
     {

@@ -39,10 +39,24 @@ namespace CHIA_RPC.Wallet_NS.KeyManagement
     public class CheckDeleteKey_RPC : RPCTemplate<CheckDeleteKey_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public CheckDeleteKey_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Display whether a fingerprint has a balance, and whether it is used for farming or pool rewards. 
+        /// </summary>
+        /// <param name="fingerprint">The wallet's fingerprint, obtainable by running chia wallet show</param>
+        /// <param name="max_ph_to_search">The maximum number of puzzle hashes to search [Default: 100]</param>
+        public CheckDeleteKey_RPC(ulong fingerprint, ulong? max_ph_to_search)
+        {
+            this.fingerprint = fingerprint;
+            this.max_ph_to_search = max_ph_to_search;
+        }
+
+        /// <summary>
         /// The wallet's fingerprint, obtainable by running chia wallet show
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public ulong fingerprint { get; set; }
         /// <summary>
         /// The maximum number of puzzle hashes to search [Default: 100]

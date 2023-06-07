@@ -12,23 +12,36 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
     /// <returns><see cref="CreateNewWallet_Response"/></returns>
     public class CreateNewPoolWallet_RPC : RPCTemplate<CreateNewPoolWallet_RPC>
     {
-        public CreateNewPoolWallet_RPC()
+        /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public CreateNewPoolWallet_RPC() { /* for serialisation */ }
+
+        /// <summary>
+        /// Create a new wallet for pooling
+        /// </summary>
+        /// <param name="initial_target_state">This info should be sent from the daemon. </param>
+        /// <param name="p2_singleton_delayed_ph">This is the puzzle hash to which payouts will go</param>
+        /// <param name="p2_singleton_delay_time">The time (in seconds) to delay payments [Default: None ]</param>
+        /// <param name="fee">An optional blockchain fee, in mojos</param>
+        public CreateNewPoolWallet_RPC( string initial_target_state, string p2_singleton_delayed_ph, string p2_singleton_delay_time, ulong? fee = null)
         {
-            wallet_type = "pool_wallet";
-            mode = "new";
+            this.initial_target_state = initial_target_state;
+            this.p2_singleton_delayed_ph = p2_singleton_delayed_ph;
+            this.p2_singleton_delay_time = p2_singleton_delay_time;
+            this.fee = fee;
         }
+
         /// <summary>
         /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
-        public string wallet_type { get; set; }
+        public string wallet_type { get; set; } = "pool_wallet";
         /// <summary>
         /// Must be either new of recovery. However, recovery has not been implemented, so currently (version 1.6) it will automatically fail
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
-        public string mode { get; set; }
+        public string mode { get; set; } = "new";
         /// <summary>
         /// This info should be sent from the daemon. 
         /// <list type="bullet">
@@ -40,11 +53,11 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// </list>
         /// </summary>
         /// <remarks>mandatory</remarks>
-        [Required]
         public string initial_target_state { get; set; }
         /// <summary>
         /// *Required if mode is new. This is the puzzle hash to which payouts will go
         /// </summary>
+        /// <remarks>mandatory</remarks>
         public string p2_singleton_delayed_ph { get; set; }
         /// <summary>
         /// The time (in seconds) to delay payments [Default: None ]
@@ -55,6 +68,6 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// An optional blockchain fee, in mojos
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong fee { get; set; }
+        public ulong? fee { get; set; }
     }
 }

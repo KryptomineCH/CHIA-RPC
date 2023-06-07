@@ -23,6 +23,27 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     public class NftSetNftDID_RPC : RPCTemplate<NftSetNftDID_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public NftSetNftDID_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Set the DID for a specific NFT (the NFT must support DIDs)
+        /// </summary>
+        /// <param name="wallet_id">The Wallet ID that holds the NFT on which to set the DID</param>
+        /// <param name="nft_coin_id">The coin ID of the NFT on which to set the DID</param>
+        /// <param name="did_id">Optionally: DID to be associated with this NFT. </param>
+        /// <param name="fee">optional: The one-time blockchain fee (in mojos) to be used upon adding a URI</param>
+        /// <param name="reuse_puzhash">Optionally: If true, will not generate a new puzzle hash / address for this transaction only. </param>
+        public NftSetNftDID_RPC(ulong wallet_id, string nft_coin_id, string did_id, ulong? fee = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id;
+            this.nft_coin_id = nft_coin_id;
+            this.did_id = did_id;
+            this.fee = fee;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+
+        /// <summary>
         /// The Wallet ID that holds the NFT on which to set the DID
         /// </summary>
         /// <remarks>

@@ -38,6 +38,21 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     public class NftCalculateRoyalties_RPC : RPCTemplate<NftCalculateRoyalties_RPC>
     {
         /// <summary>
+        /// parameterless constructor, for serializer
+        /// </summary>
+        public NftCalculateRoyalties_RPC() { /* for serialisation */ }
+        /// <summary>
+        /// Calculates the correct royalty payments for given one or more NFTs to be exchanged for one or more fungible assets.
+        /// </summary>
+        /// <param name="royalty_assets">A list of NFTs for which to calculate royalties.</param>
+        /// <param name="fungible_assets">The assets against which to calculate royalties.</param>
+        public NftCalculateRoyalties_RPC(RoyaltyAsset[] royalty_assets, FungibleAsset[] fungible_assets)
+        {
+            this.royalty_assets = royalty_assets;
+            this.fungible_assets = fungible_assets;
+        }
+
+        /// <summary>
         /// A list of NFTs for which to calculate royalties.
         /// If this parameter is not included, then nothing will be returned.
         /// </summary>
