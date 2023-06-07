@@ -36,7 +36,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <remarks>mandatory</remarks>
         public string wallet_type { get; set; } = "cat_wallet";
         /// <summary>
-        /// Must be either new of existing
+        /// Must be either new or existing
         /// </summary>
         /// <remarks>mandatory</remarks>
         public string mode { get; set; } = "new";
