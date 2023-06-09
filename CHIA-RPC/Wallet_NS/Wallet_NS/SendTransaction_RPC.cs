@@ -19,8 +19,8 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// </summary>
         /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
         /// <param name="address">the receiving address to send the mojos to</param>
-        /// <param name="amount">the amount of mojos to send</param>
-        /// <param name="fee">the amount of mojos to set as fee</param>
+        /// <param name="amount_mojos">the amount of mojos to send</param>
+        /// <param name="fee_mojos">the amount of mojos to set as fee</param>
         /// <param name="memos">memos for self and recipient (publicly readable)</param>
         /// <param name="min_coin_amount">The minimum coin amount to send [Default: 0]</param>
         /// <param name="max_coin_amount">The maximum coin amount to send [Default: 0]</param>
@@ -28,15 +28,105 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="exclude_coin_ids">A list of coin IDs to exclude</param>
         /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
         public SendTransaction_RPC(
-            ulong wallet_id, string address, ulong amount, 
-            ulong? fee = null, string[]? memos = null, ulong? min_coin_amount = null, 
+            ulong wallet_id, string address, ulong amount_mojos, 
+            ulong? fee_mojos = null, string[]? memos = null, ulong? min_coin_amount = null, 
             ulong? max_coin_amount = null, ulong[]? exclude_coin_amounts = null, 
             string? exclude_coin_ids = null, bool? reuse_puzhash = null)
         {
             this.wallet_id = wallet_id;
             this.address = address;
+            this.amount = amount_mojos;
+            this.fee = fee_mojos;
+            this.memos = memos;
+            this.min_coin_amount = min_coin_amount;
+            this.max_coin_amount = max_coin_amount;
+            this.exclude_coin_amounts = exclude_coin_amounts;
+            this.exclude_coin_ids = exclude_coin_ids;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+        /// <summary>
+        /// used to send chia (XCH) to a specific target address
+        /// </summary>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="address">the receiving address to send the mojos to</param>
+        /// <param name="amount_mojos">the amount of mojos to send</param>
+        /// <param name="fee_xch">the amount of chia to set as fee</param>
+        /// <param name="memos">memos for self and recipient (publicly readable)</param>
+        /// <param name="min_coin_amount">The minimum coin amount to send [Default: 0]</param>
+        /// <param name="max_coin_amount">The maximum coin amount to send [Default: 0]</param>
+        /// <param name="exclude_coin_amounts">A list of coin amounts to exclude</param>
+        /// <param name="exclude_coin_ids">A list of coin IDs to exclude</param>
+        /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
+        public SendTransaction_RPC(
+            ulong wallet_id, string address, ulong amount_mojos,
+            double? fee_xch = null, string[]? memos = null, ulong? min_coin_amount = null,
+            ulong? max_coin_amount = null, ulong[]? exclude_coin_amounts = null,
+            string? exclude_coin_ids = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id;
+            this.address = address;
             this.amount = amount;
-            this.fee = fee;
+            this.fee = (ulong)((decimal)fee_xch/ General_NS.GlobalVar.OneChiaInMojos);
+            this.memos = memos;
+            this.min_coin_amount = min_coin_amount;
+            this.max_coin_amount = max_coin_amount;
+            this.exclude_coin_amounts = exclude_coin_amounts;
+            this.exclude_coin_ids = exclude_coin_ids;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+        /// <summary>
+        /// used to send chia (XCH) to a specific target address
+        /// </summary>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="address">the receiving address to send the mojos to</param>
+        /// <param name="amount_xch">the amount of chia to send</param>
+        /// <param name="fee_xch">the amount of chia to set as fee</param>
+        /// <param name="memos">memos for self and recipient (publicly readable)</param>
+        /// <param name="min_coin_amount">The minimum coin amount to send [Default: 0]</param>
+        /// <param name="max_coin_amount">The maximum coin amount to send [Default: 0]</param>
+        /// <param name="exclude_coin_amounts">A list of coin amounts to exclude</param>
+        /// <param name="exclude_coin_ids">A list of coin IDs to exclude</param>
+        /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
+        public SendTransaction_RPC(
+            ulong wallet_id, string address, double amount_xch,
+            double? fee_xch = null, string[]? memos = null, ulong? min_coin_amount = null,
+            ulong? max_coin_amount = null, ulong[]? exclude_coin_amounts = null,
+            string? exclude_coin_ids = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id;
+            this.address = address;
+            this.amount = (ulong)((decimal)amount_xch * General_NS.GlobalVar.OneChiaInMojos);
+            this.fee = (ulong)((decimal)fee_xch * General_NS.GlobalVar.OneChiaInMojos);
+            this.memos = memos;
+            this.min_coin_amount = min_coin_amount;
+            this.max_coin_amount = max_coin_amount;
+            this.exclude_coin_amounts = exclude_coin_amounts;
+            this.exclude_coin_ids = exclude_coin_ids;
+            this.reuse_puzhash = reuse_puzhash;
+        }
+        /// <summary>
+        /// used to send chia (XCH) to a specific target address
+        /// </summary>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="address">the receiving address to send the mojos to</param>
+        /// <param name="amount_xch">the amount of mojos to send</param>
+        /// <param name="fee_mojos">the amount of mojos to set as fee</param>
+        /// <param name="memos">memos for self and recipient (publicly readable)</param>
+        /// <param name="min_coin_amount">The minimum coin amount to send [Default: 0]</param>
+        /// <param name="max_coin_amount">The maximum coin amount to send [Default: 0]</param>
+        /// <param name="exclude_coin_amounts">A list of coin amounts to exclude</param>
+        /// <param name="exclude_coin_ids">A list of coin IDs to exclude</param>
+        /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
+        public SendTransaction_RPC(
+            ulong wallet_id, string address, double amount_xch,
+            ulong? fee_mojos = null, string[]? memos = null, ulong? min_coin_amount = null,
+            ulong? max_coin_amount = null, ulong[]? exclude_coin_amounts = null,
+            string? exclude_coin_ids = null, bool? reuse_puzhash = null)
+        {
+            this.wallet_id = wallet_id;
+            this.address = address;
+            this.amount = (ulong)((decimal)amount_xch * General_NS.GlobalVar.OneChiaInMojos);
+            this.fee = fee_mojos;
             this.memos = memos;
             this.min_coin_amount = min_coin_amount;
             this.max_coin_amount = max_coin_amount;
