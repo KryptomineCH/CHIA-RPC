@@ -29,9 +29,9 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
         public SendTransaction_RPC(
             ulong wallet_id, string address, ulong amount, 
-            ulong? fee, string[]? memos, ulong? min_coin_amount, 
-            ulong? max_coin_amount, ulong[]? exclude_coin_amounts, 
-            string? exclude_coin_ids, bool? reuse_puzhash)
+            ulong? fee = null, string[]? memos = null, ulong? min_coin_amount = null, 
+            ulong? max_coin_amount = null, ulong[]? exclude_coin_amounts = null, 
+            string? exclude_coin_ids = null, bool? reuse_puzhash = null)
         {
             this.wallet_id = wallet_id;
             this.address = address;

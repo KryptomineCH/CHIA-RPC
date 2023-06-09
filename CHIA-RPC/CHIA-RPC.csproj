@@ -16,7 +16,18 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>rpc;chia;blockchain;chia-blockchain;cli</PackageTags>
-    <PackageReleaseNotes>- major documentation update
+    <PackageReleaseNotes>1.8.1.3: Improve Constructor for SendTransaction_RPC
+- now has default null values which can be left blank
+
+1.8.1.2: Improvements to GetFeeEstimate
+- minor documentation typo fix
+- fix either/or condition in a class
+- major improvement for get fee estimates constructor now properly reflecting either spend or cost condition and adding standard chia transaction value hence making `GetStandardTransactionFeeEstimate` obsolete.
+- added property to `GetFeeEstimate_Response` which displays fee in full chia fraction rather than in Mojos.
+
+1.8.1.1: The updates are mostly in Chia-RPC. This update ensures the compatibility to Chia-RPC 1.8.1.1 and brings the following improvements:
+
+- major documentation update
 - added constructors to all rpc endpoints
 - a few minor bogfixes
 - added further implicit conversions</PackageReleaseNotes>
@@ -24,7 +35,7 @@
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.1.1</Version>
+    <Version>1.8.1.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
