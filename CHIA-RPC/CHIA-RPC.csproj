@@ -16,7 +16,13 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.1.4: improve SendTransaction_RPC
+    <PackageReleaseNotes>1.8.1.5: improve wait for transaction code:
+- renamed wallet api to confirm
+- created full node api to wait for coin creation (this should really await transaction completeness)
+- added an implecet conversion for the checkers
+- added timespan code for the awaital
+
+1.8.1.4: improve SendTransaction_RPC
 - added a global variable in General_NS.GlobalVar which specifies the amount of mojos which make up one chia
 - improved constructor of SendTransaction_RPC to allow for diferent combinations of ulong (mojos) and double (xch) for amount and fee
 
@@ -39,7 +45,7 @@
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.1.4</Version>
+    <Version>1.8.1.5</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>

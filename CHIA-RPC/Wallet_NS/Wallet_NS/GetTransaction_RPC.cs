@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
@@ -14,6 +15,14 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     {
         public Transaction_DictMemos transaction { get; set; }
         public string transaction_id { get; set; }
+        /// <summary>
+        /// converts this to a transaction id rpc which can be used to check the transaction status
+        /// </summary>
+        /// <param name="response"></param>
+        public static implicit operator TransactionID_RPC(GetTransaction_Response response)
+        {
+            return new TransactionID_RPC(response.transaction_id);
+        }
     }
     /// <summary>
     /// all transactions for a given wallet (filtered).

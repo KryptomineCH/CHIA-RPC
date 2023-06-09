@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using CHIA_RPC.Wallet_NS.Wallet_NS;
 
 namespace CHIA_RPC.General_NS
 {
@@ -59,6 +60,10 @@ namespace CHIA_RPC.General_NS
         public TransactionID_RPC(TxID_Response transaction_id)
         {
             this.transaction_id = transaction_id.tx_id;
+        }
+        public TransactionID_RPC(GetTransaction_Response transaction)
+        {
+            this.transaction_id = transaction.transaction_id;
         }
 
         /// <summary>

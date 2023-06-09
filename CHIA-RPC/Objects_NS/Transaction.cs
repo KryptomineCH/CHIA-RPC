@@ -1,4 +1,6 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
+using System.Transactions;
 
 namespace CHIA_RPC.Objects_NS
 {
@@ -29,6 +31,11 @@ namespace CHIA_RPC.Objects_NS
         public string trade_id { get; set; }
         public ulong type { get; set; }
         public ulong wallet_id { get; set; }
+
+        public static implicit operator TransactionID_RPC(Transaction_NoMemo response)
+        {
+            return new TransactionID_RPC(response.name);
+        }
     }
     public class Transaction_StringMemos : Transaction_NoMemo
     {
