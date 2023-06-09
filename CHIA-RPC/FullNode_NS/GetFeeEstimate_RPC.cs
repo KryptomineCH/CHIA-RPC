@@ -32,7 +32,7 @@ namespace CHIA_RPC.FullNode_NS
                 List<decimal> result = new List<decimal>();
                 foreach(decimal fee in estimates)
                 {
-                    result.Add(fee / OneChiaInMojos);
+                    result.Add(fee / General_NS.GlobalVar.OneChiaInMojos);
                 }
                 return result.ToArray();
             } 
