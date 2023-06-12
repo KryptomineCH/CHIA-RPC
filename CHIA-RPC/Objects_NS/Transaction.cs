@@ -36,6 +36,22 @@ namespace CHIA_RPC.Objects_NS
         {
             return new TransactionID_RPC(response.name);
         }
+        /// <summary>
+        /// identifies the primary coin which can be used to find a transaction on blockchain explorers
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="AggregateException">could not identify apropriate coin!</exception>
+        public Coin GetPrimaryCoin()
+        {
+            foreach(Coin addition in additions)
+            {
+                if (addition.amount == amount)
+                {
+                    return addition;
+                }
+            }
+            throw new AggregateException("could not identify apropriate coin!");
+        }
     }
     public class Transaction_StringMemos : Transaction_NoMemo
     {
