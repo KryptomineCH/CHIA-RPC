@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using System.Security.Cryptography;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
 {
@@ -23,6 +24,12 @@ namespace CHIA_RPC.Objects_NS
         /// </summary>
         /// <remarks>When in the Mempool and for creation, the own puzzhash can be unknown (since the coin is yet to be minted)</remarks>
         public string puzzle_hash { get; set; }
+        [JsonIgnore]
+        public string CoinName { get { return GetCoinID(); } }
+        /// <summary>
+        /// this is the id as found on explorers
+        /// </summary>
+        /// <returns></returns>
         public string GetCoinID()
         {
             // convert values to bytes
