@@ -16,7 +16,11 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.1.5: improve wait for transaction code:
+    <PackageReleaseNotes>1.8.1.6 improve Transaction and response classes:
+- added functionality to obtain primary coin from transaction (please test this!!!)
+- reworket objects and code to include the raw request answer data
+
+1.8.1.5: improve wait for transaction code:
 - renamed wallet api to confirm
 - created full node api to wait for coin creation (this should really await transaction completeness)
 - added an implecet conversion for the checkers
@@ -45,7 +49,7 @@
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.1.5</Version>
+    <Version>1.8.1.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
