@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.HelperFunctions_NS
 {
@@ -16,6 +17,8 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// </typeparam>
     public abstract class ObjectTemplate<T> where T : ObjectTemplate<T>, new()
     {
+        [JsonIgnore]
+        public string RawContent { get; set; }
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
@@ -49,7 +52,9 @@ namespace CHIA_RPC.HelperFunctions_NS
             options.AllowTrailingCommas = true;
             options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
             options.Converters.Add(new BigIntegerConverter());
-            return JsonSerializer.Deserialize<T>(inputString);
+            T result = JsonSerializer.Deserialize<T>(inputString);
+            result.RawContent = inputString;
+            return result;
         }
 
         /// <summary>

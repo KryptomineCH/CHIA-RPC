@@ -1,5 +1,6 @@
 ﻿
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.HelperFunctions_NS
 {
@@ -18,6 +19,8 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// </typeparam>
     public abstract class ResponseTemplate<T> where T : ResponseTemplate<T>, new()
     {
+        [JsonIgnore]
+        public string RawContent { get; set; }
         /// <summary>
         /// this boolean indicates whether the server accepted and processed the request or not.
         /// </summary>
@@ -58,7 +61,9 @@ namespace CHIA_RPC.HelperFunctions_NS
         public static T LoadResponseFromString(string inputString)
         {
             if (inputString == "") return (T)Activator.CreateInstance(typeof(T));
-            return JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            T result = JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            result.RawContent = inputString;
+            return result;
         }
 
         /// <summary>
