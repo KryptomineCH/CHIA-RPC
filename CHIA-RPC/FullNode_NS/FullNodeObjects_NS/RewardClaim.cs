@@ -1,4 +1,6 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
@@ -12,9 +14,19 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
     public class RewardClaim : ObjectTemplate<RewardClaim>
     {
         /// <summary>
-        /// The amount of the reward claim
+        /// The amount of the reward claim in mojos
         /// </summary>
         public ulong amount { get; set; }
+        /// <summary>
+        /// The amount of the reward claim in xch
+        /// </summary>
+        /// <remarks>This value is derived from the mojos amount</remarks>
+        [JsonIgnore]
+        public decimal amount_in_xch
+        {
+            get { return amount / GlobalVar.OneChiaInMojos; }
+            set { amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+        }
 
         /// <summary>
         /// The parent coin information

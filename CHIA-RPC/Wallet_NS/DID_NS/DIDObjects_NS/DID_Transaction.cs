@@ -1,5 +1,7 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.DID_NS.DIDObjects_NS
 {
@@ -13,10 +15,30 @@ namespace CHIA_RPC.Wallet_NS.DID_NS.DIDObjects_NS
     {
         public Coin[] additions { get; set; }
         public ulong amount { get; set; }
+        /// <summary>
+        /// the amount of xch to send
+        /// </summary>
+        /// <remarks>mandatory</remarks>
+        [JsonIgnore]
+        public decimal amount_in_xch
+        {
+            get { return amount / GlobalVar.OneChiaInMojos; }
+            set { amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+        }
         public bool confirmed { get; set; }
         public ulong confirmed_at_height { get; set; }
         public ulong created_at_time { get; set; }
         public ulong fee_amount { get; set; }
+        /// <summary>
+        /// the amount of xch to set as fee
+        /// </summary>
+        /// <remarks>optional</remarks>
+        [JsonIgnore]
+        public decimal fee_amount_in_xch
+        {
+            get { return fee_amount / GlobalVar.OneChiaInMojos; }
+            set { fee_amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+        }
         /// <summary>
         /// note: could not be validated yet
         /// </summary>

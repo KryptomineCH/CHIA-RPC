@@ -2,6 +2,6 @@
 {
     public static class GlobalVar
     {
-        public static ulong OneChiaInMojos = 1000000000000;
+        public static decimal OneChiaInMojos = 1000000000000;
     }
 }

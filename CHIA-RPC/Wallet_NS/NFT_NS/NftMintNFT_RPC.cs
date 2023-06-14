@@ -1,8 +1,10 @@
 ﻿using Chia_Metadata;
+using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 using NFT.Storage.Net;
 using NFT.Storage.Net.API;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.NFT_NS
 {
@@ -80,6 +82,123 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
             // generate sha256sums for validation
             hash = Sha256.ValidateChecksums(nftLinks);
             meta_hash =Sha256.ValidateChecksums(metadataLinks);
+            license_hash = Sha256.ValidateChecksums(licenseLinks);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="walletID">the wallet number with which the nft should be minted (select the correct nft did wallet)</param>
+        /// <param name="royaltyFee">(the fee to be payed on future transactiont. 1.9 == 1.9%)</param>
+        /// <param name="royaltyAddress">the address where future royaltyfees should be payed to</param>
+        /// <param name="targetAddress">the address where the nft should be minted to</param>
+        /// <param name="mintingFee_Mojos">the fee in mojos to be used for the minting transaction</param>
+        public NftMintNFT_RPC(
+            WalletID_RPC walletID,
+            string[] nftLinks, string[] metadataLinks, string[] licenseLinks = null,
+            ulong royaltyFee = 190, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string targetAddress = null,
+            ulong mintingFee_Mojos = 5000
+            )
+        {
+            uris = new List<string>();
+            meta_uris = new List<string>();
+            license_uris = new List<string>();
+            // payment data
+            wallet_id = walletID.wallet_id;
+            royalty_address = royaltyAddress;
+            royalty_percentage = royaltyFee;
+            target_address = targetAddress;
+            fee = mintingFee_Mojos;
+            // other information
+            Task<byte[]> metadata = Task.Run(() => DownloadClient.DownloadAsync(metadataLinks[0]));
+            metadata.Wait();
+            Chia_Metadata.Metadata meta = IO.LoadFromByteArray(metadata.Result);
+            edition_number = meta.series_number;
+            edition_total = meta.series_total;
+            // weblinks
+            uris = nftLinks.ToList();
+            meta_uris = metadataLinks.ToList();
+            license_uris = licenseLinks.ToList();
+            // generate sha256sums for validation
+            hash = Sha256.ValidateChecksums(nftLinks);
+            meta_hash = Sha256.ValidateChecksums(metadataLinks);
+            license_hash = Sha256.ValidateChecksums(licenseLinks);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="walletID">the wallet number with which the nft should be minted (select the correct nft did wallet)</param>
+        /// <param name="royaltyFee">(the fee to be payed on future transactiont. 1.9 == 1.9%)</param>
+        /// <param name="royaltyAddress">the address where future royaltyfees should be payed to</param>
+        /// <param name="targetAddress">the address where the nft should be minted to</param>
+        /// <param name="mintingFee_Mojos">the fee in mojos to be used for the minting transaction</param>
+        public NftMintNFT_RPC(
+            ulong walletID,
+            string[] nftLinks, string[] metadataLinks, string[] licenseLinks = null,
+            double royaltyFee = 1.9, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string targetAddress = null,
+            decimal mintingFee_xch = 0.0000005m
+            )
+        {
+            uris = new List<string>();
+            meta_uris = new List<string>();
+            license_uris = new List<string>();
+            // payment data
+            wallet_id = walletID;
+            royalty_address = royaltyAddress;
+            royalty_in_percent = royaltyFee;
+            target_address = targetAddress;
+            fee_in_xch = mintingFee_xch;
+            // other information
+            Task<byte[]> metadata = Task.Run(() => DownloadClient.DownloadAsync(metadataLinks[0]));
+            metadata.Wait();
+            Chia_Metadata.Metadata meta = IO.LoadFromByteArray(metadata.Result);
+            edition_number = meta.series_number;
+            edition_total = meta.series_total;
+            // weblinks
+            uris = nftLinks.ToList();
+            meta_uris = metadataLinks.ToList();
+            license_uris = licenseLinks.ToList();
+            // generate sha256sums for validation
+            hash = Sha256.ValidateChecksums(nftLinks);
+            meta_hash = Sha256.ValidateChecksums(metadataLinks);
+            license_hash = Sha256.ValidateChecksums(licenseLinks);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="walletID">the wallet number with which the nft should be minted (select the correct nft did wallet)</param>
+        /// <param name="royaltyFee">(the fee to be payed on future transactiont. 1.9 == 1.9%)</param>
+        /// <param name="royaltyAddress">the address where future royaltyfees should be payed to</param>
+        /// <param name="targetAddress">the address where the nft should be minted to</param>
+        /// <param name="mintingFee_Mojos">the fee in mojos to be used for the minting transaction</param>
+        public NftMintNFT_RPC(
+            WalletID_RPC walletID,
+            string[] nftLinks, string[] metadataLinks, string[] licenseLinks = null,
+            double royaltyFee = 1.9, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string targetAddress = null,
+            decimal mintingFee_xch = 0.0000005m
+            )
+        {
+            uris = new List<string>();
+            meta_uris = new List<string>();
+            license_uris = new List<string>();
+            // payment data
+            wallet_id = walletID.wallet_id;
+            royalty_address = royaltyAddress;
+            royalty_in_percent = royaltyFee;
+            target_address = targetAddress;
+            fee_in_xch = mintingFee_xch;
+            // other information
+            Task<byte[]> metadata = Task.Run(() => DownloadClient.DownloadAsync(metadataLinks[0]));
+            metadata.Wait();
+            Chia_Metadata.Metadata meta = IO.LoadFromByteArray(metadata.Result);
+            edition_number = meta.series_number;
+            edition_total = meta.series_total;
+            // weblinks
+            uris = nftLinks.ToList();
+            meta_uris = metadataLinks.ToList();
+            license_uris = licenseLinks.ToList();
+            // generate sha256sums for validation
+            hash = Sha256.ValidateChecksums(nftLinks);
+            meta_hash = Sha256.ValidateChecksums(metadataLinks);
             license_hash = Sha256.ValidateChecksums(licenseLinks);
         }
         public NftMintNFT_RPC()
@@ -166,6 +285,17 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// optional
         /// </remarks>
         public ulong? royalty_percentage { get; set; }
+        /// <summary>
+        /// the royalty amount in floating point format.
+        /// </summary>
+        /// <remarks>100 = 100%<br/>
+        /// 1.5 = 1.5%</remarks>
+        [JsonIgnore]
+        public double? royalty_in_percent
+        {
+            get { return royalty_percentage / 100.0; }
+            set { royalty_percentage = (ulong?)(value * 100); }
+        }
 
         /// <summary>
         /// The target address which will be the first owner of the nft
@@ -200,6 +330,16 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// optional
         /// </remarks>
         public ulong? fee { get; set; }
+        /// <summary>
+        /// the amount of xch to set as fee
+        /// </summary>
+        /// <remarks>optional</remarks>
+        [JsonIgnore]
+        public decimal? fee_in_xch
+        {
+            get { return fee / General_NS.GlobalVar.OneChiaInMojos; }
+            set { fee = (ulong?)(value * General_NS.GlobalVar.OneChiaInMojos); }
+        }
 
         /// <summary>
         /// Optionally: If true, will not generate a new puzzle hash / address for this transaction only. 

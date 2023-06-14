@@ -26,7 +26,13 @@ There are 3 types in this library:
 - `ObjectName` these classes represent objects in the chia space such as a `CoinRecord`, a `Transaction` and so on
 
 ### RPC Creation
-Most endpoints are still implemented without a constructor. This means you need to create the RPC and then set its properties:
+Most endpoints are implemented with a constructor:
+```C#
+// Create a new instance of the SendXCH_RPC class
+var rpc = new SendXCH_RPC(1234, "chia1q2jzm7eg5t2k8vnq3tkkf5l7zj9mfx9v7p9t5", 1000, 500, new string[] { "Transaction from Example program" })
+```
+
+If this is not the case or for whatever other reason, You can also creath them like so:
 ```C#
 // Create a new instance of the SendXCH_RPC class
 var rpc = new SendXCH_RPC

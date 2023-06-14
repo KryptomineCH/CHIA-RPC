@@ -25,15 +25,6 @@ namespace CHIA_RPC.Objects_NS
             File.WriteAllText(path, offer, utf8WithoutBom);
         }
         /// <summary>
-        /// Implicitly converts a OfferFile object to a TakeCatOffer_RPC object.
-        /// </summary>
-        /// <param name="offer">The OfferFile object to convert.</param>
-        /// <returns>A new TakeCatOffer_RPC object initialized with the offer.</returns>
-        public static implicit operator TakeCatOffer_RPC(OfferFile offer)
-        {
-            return new TakeCatOffer_RPC(offer);
-        }
-        /// <summary>
         /// Implicitly converts a OfferFile object to a CheckOfferValidity_RPC object.
         /// </summary>
         /// <param name="offer">The OfferFile object to convert.</param>

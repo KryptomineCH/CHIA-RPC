@@ -1,4 +1,6 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.DID_NS
 {
@@ -15,6 +17,16 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// DID amount
         /// </summary>
         public ulong did_amount { get; set; }
+        /// <summary>
+        /// the did amount in xch
+        /// </summary>
+        /// <remarks>This value is derived from the mojos amount</remarks>
+        [JsonIgnore]
+        public decimal did_amount_in_xch
+        {
+            get { return did_amount / GlobalVar.OneChiaInMojos; }
+            set { did_amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+        }
 
         /// <summary>
         /// DID inner puzzle hash

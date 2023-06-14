@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS
@@ -27,12 +28,12 @@ namespace CHIA_RPC.FullNode_NS
         /// </summary>
         /// <remarks>in mojos</remarks>
         [JsonIgnore]
-        public decimal[] estimates_in_chia { get
+        public decimal[] estimates_in_xch { get
             {
                 List<decimal> result = new List<decimal>();
                 foreach(decimal fee in estimates)
                 {
-                    result.Add(fee / General_NS.GlobalVar.OneChiaInMojos);
+                    result.Add(fee / GlobalVar.OneChiaInMojos);
                 }
                 return result.ToArray();
             } 
@@ -44,9 +45,18 @@ namespace CHIA_RPC.FullNode_NS
         public decimal fee_rate_last_block { get; set; }
 
         /// <summary>
-        /// The accumulated fees of the last block
+        /// The accumulated fees of the last block in mojos
         /// </summary>
         public ulong fees_last_block { get; set; }
+        /// <summary>
+        /// The accumulated fees of the last block in mojos
+        /// </summary>
+        [JsonIgnore]
+        public decimal fees_last_block_in_xch
+        {
+            get { return fees_last_block / GlobalVar.OneChiaInMojos; }
+            set { fees_last_block = (ulong)(value * GlobalVar.OneChiaInMojos); }
+        }
 
         /// <summary>
         /// Whether or not the full node is synced.
@@ -64,9 +74,18 @@ namespace CHIA_RPC.FullNode_NS
         public ulong last_peak_timestamp { get; set; }
 
         /// <summary>
-        /// the mempool fees
+        /// the mempool fees in mojos
         /// </summary>
         public ulong mempool_fees { get; set; }
+        /// <summary>
+        /// the mempool fees in xch
+        /// </summary>
+        [JsonIgnore]
+        public decimal mempool_fees_in_xch
+        {
+            get { return mempool_fees / GlobalVar.OneChiaInMojos; }
+            set { mempool_fees = (ulong)(value * GlobalVar.OneChiaInMojos); }
+        }
 
         /// <summary>
         /// the block height of the last block
