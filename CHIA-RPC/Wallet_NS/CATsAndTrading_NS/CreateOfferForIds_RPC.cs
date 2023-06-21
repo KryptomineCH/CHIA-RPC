@@ -15,7 +15,10 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// parameterless constructor, for serializer
         /// </summary>
-        public CreateOfferForIds_RPC() { /* for serialisation */ }
+        public CreateOfferForIds_RPC() {
+            /* for serialisation */
+            offer = new Dictionary<string, long>();
+        }
 
         /// <summary>
         /// Create a new offer
