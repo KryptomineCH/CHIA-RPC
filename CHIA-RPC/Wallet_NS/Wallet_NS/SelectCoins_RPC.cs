@@ -170,7 +170,11 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
             }
             set
             {
-                if (value == null) excluded_coin_amounts = null;
+                if (value == null)
+                {
+                    excluded_coin_amounts = null;
+                    return;
+                }
                 ulong[] ex = new ulong[value.Length];
                 for (int i = 0; i < value.Length; i++) ex[i] = (ulong)(value[i] * GlobalVar.OneChiaInMojos);
                 excluded_coin_amounts = ex;
