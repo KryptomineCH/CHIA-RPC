@@ -16,7 +16,10 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.1.7: Allow decimal
+    <PackageReleaseNotes>1.8.1.8: hotfix
+- hotfix for 1.8.1.7 null reference issue
+
+1.8.1.7: Allow decimal
 - this is a rather big update which adds decimal properties to many endpoints. these decimal properties allow to read/write amounts in xch rather than having to manually do dhe conversion to mojos
 
 1.8.1.6 improve Transaction and response classes:
@@ -52,7 +55,7 @@
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.1.7</Version>
+    <Version>1.8.1.8</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
