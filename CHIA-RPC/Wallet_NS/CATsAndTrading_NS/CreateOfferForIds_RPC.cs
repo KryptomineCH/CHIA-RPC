@@ -23,7 +23,13 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// Create a new offer
         /// </summary>
-        /// <param name="offer">The offer to create</param>
+        /// <param name="offer">
+        /// The offer (additions and removals) to create <br/>
+        /// string (key) is the asset ID and long (amount) the amount of mojos<br/>
+        /// the asset id 1 equals xch.<br/>
+        /// a negative mojo amount means you give something away<br/>
+        /// a positive mojo amount means you are asking for something
+        /// </param>
         /// <param name="driver_dict">A dictionary of keys and values associated with the offer</param>
         /// <param name="validate_only">Only validate the offer instead of creating it [Default: false]</param>
         /// <param name="min_coin_amount">The minimum coin amount to select for the offer [Default: none]</param>
@@ -47,7 +53,14 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// Create a new offer
         /// </summary>
-        /// <param name="offer_xch">The offer to create</param>
+        /// <param name="offer_xch">
+        /// The offer (additions and removals) to create <br/>
+        /// string (key) is the asset ID and decimal (amount) the amount in full xch<br/>
+        /// the asset id 1 equals xch.<br/>
+        /// a negative amount means you give something away<br/>
+        /// a positive amount means you are asking for something<br/>
+        /// note that for nfts and cats is recommended to use the long (mojo) entity since 1 nft = 1 mojo and 1 cat = 1000 mojo
+        /// </param>
         /// <param name="driver_dict">A dictionary of keys and values associated with the offer</param>
         /// <param name="validate_only">Only validate the offer instead of creating it [Default: false]</param>
         /// <param name="min_coin_amount_xch">The minimum coin amount to select for the offer [Default: none]</param>
@@ -70,10 +83,23 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         }
 
         /// <summary>
-        /// The offer to create
+        /// The offer (additions and removals) to create <br/>
+        /// string (key) is the asset ID and long (amount) the amount of mojos<br/>
+        /// the asset id 1 equals xch.<br/>
+        /// a negative mojo amount means you give something away<br/>
+        /// a positive mojo amount means you are asking for something
         /// </summary>
         /// <remarks>mandatory</remarks>
         public Dictionary<string,long> offer { get; set; }
+        /// <summary>
+        /// The offer (additions and removals) to create <br/>
+        /// string (key) is the asset ID and decimal (amount) the amount to trade<br/>
+        /// the asset id 1 equals xch.<br/>
+        /// a negative amount means you give something away<br/>
+        /// a positive amount means you are asking for something<br/>
+        /// note that for nfts and cats is recommended to use the long (mojo) entity since 1 nft = 1 mojo and 1 cat = 1000 mojo
+        /// </summary>
+        /// <remarks>mandatory</remarks>
         public Dictionary<string,decimal> offer_in_xch
         {
             get
