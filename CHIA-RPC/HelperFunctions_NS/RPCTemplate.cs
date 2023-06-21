@@ -17,25 +17,49 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// </typeparam>
     public abstract class RPCTemplate<T> where T : RPCTemplate<T>, new()
     {
+        /// <summary>
+        /// contains the raw sever response
+        /// </summary>
         [JsonIgnore]
-        public string RawContent { get; set; }
+        public string? RawContent { get; set; }
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
+        /// <remarks>assumes the extension and appends it always</remarks>
         /// <param name="filePath">The path to save the RPC request to.</param>
         public void SaveRpcToFile(string filePath)
         {
-            RpcFileManager.SaveObjectToFile(this as T, filePath);
+            FileManager.SaveObjectToFile(this as T, filePath);
+        }
+        /// <summary>
+        /// Saves the RPC to the specified file path with a ".rpc" file extension.
+        /// </summary>
+        /// <remarks>assumes the extension and appends it always</remarks>
+        /// <param name="file">The path to save the RPC request to.</param>
+        public void SaveRpcToFile(FileInfo file)
+        {
+            SaveRpcToFile(file.FullName);
         }
 
         /// <summary>
         /// Loads an RPC request from the specified file path.
         /// </summary>
+        /// <remarks>assumes the extension and appends it always</remarks>
         /// <param name="filePath">The path to load the RPC request from.</param>
         /// <returns>The loaded RPC request.</returns>
-        public static T LoadRpcFromFile(string filePath)
+        public static T? LoadRpcFromFile(string filePath)
         {
-            return RpcFileManager.LoadObjectFromFile<T>(filePath);
+            return FileManager.LoadObjectFromFile<T>(filePath);
+        }
+        /// <summary>
+        /// Loads an RPC request from the specified file path.
+        /// </summary>
+        /// <remarks>assumes the extension and appends it always</remarks>
+        /// <param name="file">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static T? LoadRpcFromFile(FileInfo file)
+        {
+            return FileManager.LoadObjectFromFile<T?>(file.FullName);
         }
 
         /// <summary>
@@ -43,11 +67,14 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="inputString">The json formatted string to load the RPC from.</param>
         /// <returns>The loaded RPC</returns>
-        public static T LoadRpcFromString(string inputString)
+        public static T? LoadRpcFromString(string inputString)
         {
-            if (inputString == "") return (T)Activator.CreateInstance(typeof(T));
-            T result = JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
-            result.RawContent = inputString;
+            if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
+            T? result = JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            if (result != null)
+            {
+                result.RawContent = inputString;
+            }
             return result;
         }
 

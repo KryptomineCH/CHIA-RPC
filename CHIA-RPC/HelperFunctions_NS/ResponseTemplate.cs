@@ -37,20 +37,49 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <summary>
         /// Saves the response to the specified file path with a ".response" file extension.
         /// </summary>
+        /// <remarks>
+        /// always assumes and appends the file type
+        /// </remarks>
         /// <param name="filePath">The path to save the response to.</param>
         public void SaveResponseToFile(string filePath)
         {
-            RpcFileManager.SaveObjectToFile(this as T, filePath, "response");
+            FileManager.SaveObjectToFile(this as T, filePath, "response");
+        }
+        /// <summary>
+        /// Saves the response to the specified file path with a ".response" file extension.
+        /// </summary>
+        /// <remarks>
+        /// always assumes and appends the file type
+        /// </remarks>
+        /// <param name="file">The path to save the response to.</param>
+        public void SaveResponseToFile(FileInfo file)
+        {
+            SaveResponseToFile(file.FullName);
         }
 
         /// <summary>
         /// Loads a response from the specified file path.
         /// </summary>
+        /// <remarks>
+        /// always assumes and appends the file type
+        /// </remarks>
         /// <param name="filePath">The path to load the response from.</param>
         /// <returns>The loaded response.</returns>
         public static T LoadResponseFromFile(string filePath)
         {
-            return RpcFileManager.LoadObjectFromFile<T>(filePath, "response");
+            return FileManager.LoadObjectFromFile<T>(filePath, "response");
+        }
+        /// <summary>
+        /// Loads a response from the specified file path.
+        /// </summary>
+        /// <remarks>
+        /// always assumes and appends the file type
+        /// </remarks>
+        /// <param name="file">The path to load the response from.</param>
+        /// <returns>The loaded response.</returns>
+        public static T LoadResponseFromFile(FileInfo file)
+        {
+            return LoadResponseFromFile(file);
         }
 
         /// <summary>

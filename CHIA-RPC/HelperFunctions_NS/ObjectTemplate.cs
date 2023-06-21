@@ -22,22 +22,51 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
+        /// <remarks>
+        /// always assumes and appends the filetype
+        /// </remarks>
         /// <param name="filePath">The path to save the RPC request to.</param>
         public void SaveObjectToFile(string filePath)
         {
             string extension = "."+typeof(T).Name.ToLower();
-            RpcFileManager.SaveObjectToFile(this as T, filePath, extension);
+            FileManager.SaveObjectToFile(this as T, filePath, extension);
+        }
+        /// <summary>
+        /// Saves the RPC to the specified file path with a ".rpc" file extension.
+        /// </summary>
+        /// <remarks>
+        /// always assumes and appends the filetype
+        /// </remarks>
+        /// <param name="file">The path to save the RPC request to.</param>
+        public void SaveObjectToFile(FileInfo file)
+        {
+            SaveObjectToFile(file.FullName);
         }
 
         /// <summary>
         /// Loads an RPC request from the specified file path.
         /// </summary>
+        /// <remarks>
+        /// always assumes the filetype
+        /// </remarks>
         /// <param name="filePath">The path to load the RPC request from.</param>
         /// <returns>The loaded RPC request.</returns>
         public static T LoadObjectFromFile(string filePath)
         {
             string extension = "." + typeof(T).Name.ToLower();
-            return RpcFileManager.LoadObjectFromFile<T>(filePath, extension);
+            return FileManager.LoadObjectFromFile<T>(filePath, extension);
+        }
+        /// <summary>
+        /// Loads an RPC request from the specified file path.
+        /// </summary>
+        /// <remarks>
+        /// always assumes the filetype
+        /// </remarks>
+        /// <param name="file">The path to load the RPC request from.</param>
+        /// <returns>The loaded RPC request.</returns>
+        public static T LoadObjectFromFile(FileInfo file)
+        {
+            return LoadObjectFromFile(file.FullName);
         }
 
         /// <summary>
