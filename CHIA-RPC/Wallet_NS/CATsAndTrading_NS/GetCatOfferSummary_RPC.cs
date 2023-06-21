@@ -62,5 +62,13 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// </summary>
         /// <remarks>optional</remarks>
         public bool? advanced { get; set; }
+        /// <summary>
+        /// automatically converts an offer file to this request
+        /// </summary>
+        /// <param name="offerFile"></param>
+        public static implicit operator GetCatOfferSummary_RPC(OfferFile offerFile)
+        {
+            return new GetCatOfferSummary_RPC(offerFile.offer);
+        }
     }
 }
