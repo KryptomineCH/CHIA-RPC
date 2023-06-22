@@ -123,8 +123,14 @@ namespace CHIA_RPC.FullNode_NS
         public ulong[] target_times { get; set; }
     }
     /// <summary>
-    /// Contains the request parameters for the get_fee_estimate RPC method. 
-    /// Used to obtain an estimated fee for one or more targeted times for a transaction to be included in the blockchain.
+    /// Contains the request parameters for the get_fee_estimate RPC method. <br/>
+    /// Used to obtain an estimated fee for one or more targeted times for a transaction to be included in the blockchain.<br/><br/>
+    /// Explicit conversions exist so you can call:<br/><br/>
+    /// <code>
+    /// GetFeeEstimate_RPC rpc = TimeSpan.FromMinutes(5);
+    /// GetFeeEstimate_RPC rpc = new TimeSpan[] {TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(15)};
+    /// GetFeeEstimate_Response fees = Client.GetFeeEstimate_Sync(TimeSpan.FromMinutes(5));
+    /// </code>
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/full-node-rpc#get_fee_estimate"/></remarks>
     /// <returns><see cref="GetFeeEstimate_Response"/></returns>
@@ -277,6 +283,5 @@ namespace CHIA_RPC.FullNode_NS
         {
             return new GetFeeEstimate_RPC(target_times);
         }
-
     }
 }
