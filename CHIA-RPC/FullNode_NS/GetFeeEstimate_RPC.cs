@@ -141,7 +141,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(ulong[] target_times, ulong cost = 10000000)
         {
-            this.spend_bundle = spend_bundle;
             this.cost = cost;
             this.target_times = target_times;
         }
@@ -153,7 +152,6 @@ namespace CHIA_RPC.FullNode_NS
         public GetFeeEstimate_RPC(ulong[] target_times, string spend_bundle)
         {
             this.spend_bundle = spend_bundle;
-            this.cost = cost;
             this.target_times = target_times;
         }
         /// <summary>
@@ -164,7 +162,6 @@ namespace CHIA_RPC.FullNode_NS
         public GetFeeEstimate_RPC(TimeSpan[] target_times, string spend_bundle)
         {
             this.spend_bundle = spend_bundle;
-            this.cost = cost;
             List<ulong> targets = new List<ulong>();
             foreach (TimeSpan targetTime in target_times)
             {
@@ -179,7 +176,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(TimeSpan[] target_times, ulong cost = 10000000)
         {
-            this.spend_bundle = spend_bundle;
             this.cost = cost;
             List<ulong> targets = new List<ulong>();
             foreach (TimeSpan targetTime in target_times)
@@ -191,12 +187,31 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <param name="target_time">the targeted time for transaction inclusion, in seconds.</param>
+        /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
+        public GetFeeEstimate_RPC(ulong target_time, ulong cost = 10000000)
+        {
+            this.cost = cost;
+            this.target_times = new ulong[] { target_time };
+        }
+        /// <summary>
+        /// Contains the request parameters for the get_fee_estimate RPC method. 
+        /// </summary>
+        /// <param name="target_time">the targeted time for transaction inclusion, in seconds.</param>
+        /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
+        public GetFeeEstimate_RPC(ulong target_time, string spend_bundle)
+        {
+            this.spend_bundle = spend_bundle;
+            this.target_times = new ulong[] { target_time };
+        }
+        /// <summary>
+        /// Contains the request parameters for the get_fee_estimate RPC method. 
+        /// </summary>
         /// <param name="target_time">the timespan in which the transaction should be executed</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         public GetFeeEstimate_RPC(TimeSpan target_time, string spend_bundle)
         {
             this.spend_bundle = spend_bundle;
-            this.cost = cost;
             List<ulong> targets = new List<ulong>();
             targets.Add((ulong)target_time.TotalSeconds);
             this.target_times = targets.ToArray();
@@ -208,7 +223,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(TimeSpan target_time, ulong cost = 10000000)
         {
-            this.spend_bundle = spend_bundle;
             this.cost = cost;
             List<ulong> targets = new List<ulong>();
             targets.Add((ulong)target_time.TotalSeconds);
