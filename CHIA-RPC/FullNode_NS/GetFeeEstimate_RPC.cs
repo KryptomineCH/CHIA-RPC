@@ -261,5 +261,22 @@ namespace CHIA_RPC.FullNode_NS
         /// Each targeted time must be at least 0.
         /// </summary>
         public ulong[] target_times { get; set; }
+        /// <summary>
+        /// automatically converts a targettime into the rpc
+        /// </summary>
+        /// <param name="target_time">the requested time</param>
+        public static explicit operator GetFeeEstimate_RPC(TimeSpan target_time)
+        {
+            return new GetFeeEstimate_RPC(target_time);
+        }
+        /// <summary>
+        /// automatically converts target times into the rpc
+        /// </summary>
+        /// <param name="target_times">the requested times</param>
+        public static explicit operator GetFeeEstimate_RPC(TimeSpan[] target_times)
+        {
+            return new GetFeeEstimate_RPC(target_times);
+        }
+
     }
 }
