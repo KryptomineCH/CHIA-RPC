@@ -99,7 +99,11 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// a positive amount means you are asking for something<br/>
         /// note that for nfts and cats is recommended to use the long (mojo) entity since 1 nft = 1 mojo and 1 cat = 1000 mojo
         /// </summary>
-        /// <remarks>mandatory</remarks>
+        /// <remarks>
+        /// DO NOT Modify directly offer_in_xch.Add(value)<br/>
+        /// use AddOfferPosition instead!
+        /// mandatory</remarks> 
+
         public Dictionary<string,decimal> offer_in_xch
         {
             get
@@ -114,6 +118,10 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
                 foreach (KeyValuePair<string, decimal> position in value) convertedOffers[position.Key] = (long)(position.Value * GlobalVar.OneChiaInMojos);
                 offer = convertedOffers;
             }
+        }
+        public void AddOfferPosition(string key, decimal value)
+        {
+            offer.Add(key, (long)(value * GlobalVar.OneChiaInMojos));
         }
 
         /// <summary>
