@@ -62,7 +62,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         internal static void SaveStringToFile(string content, string filePath, string fileExtension = "rpc")
         {
             // ensure no duplicate .
-            fileExtension.Trim('.');
+            fileExtension = fileExtension.Trim('.');
             // make sure no duplicate filename
             if (!filePath.EndsWith("." + fileExtension))
             {
@@ -91,7 +91,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         internal static string LoadStringFromFile(string filePath, string fileExtension = "rpc")
         {
             // ensure no duplicate .
-            fileExtension.Trim('.');
+            fileExtension = fileExtension.Trim('.');
             // make sure no duplicate filename
             if (!filePath.EndsWith("." + fileExtension))
             {
