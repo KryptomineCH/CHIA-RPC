@@ -133,10 +133,12 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// parameterless constructor, for serializer
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         public GetFeeEstimate_RPC() { /* for serialisation */ }
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(ulong[] target_times, ulong cost = 10000000)
@@ -147,6 +149,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         public GetFeeEstimate_RPC(ulong[] target_times, string spend_bundle)
@@ -157,6 +160,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         public GetFeeEstimate_RPC(TimeSpan[] target_times, string spend_bundle)
@@ -172,6 +176,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_times">an array of the targeted times for transaction inclusion, in seconds.</param>
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(TimeSpan[] target_times, ulong cost = 10000000)
@@ -187,6 +192,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_time">the targeted time for transaction inclusion, in seconds.</param>
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(ulong target_time, ulong cost = 10000000)
@@ -197,6 +203,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_time">the targeted time for transaction inclusion, in seconds.</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         public GetFeeEstimate_RPC(ulong target_time, string spend_bundle)
@@ -207,6 +214,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_time">the timespan in which the transaction should be executed</param>
         /// <param name="spend_bundle">The spend bundle file (in json format) for which to estimate the fee.</param>
         public GetFeeEstimate_RPC(TimeSpan target_time, string spend_bundle)
@@ -219,6 +227,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Contains the request parameters for the get_fee_estimate RPC method. 
         /// </summary>
+        /// <remarks><b><u>Minimum</u></b> target time is roughly <b><u>30 seconds</u></b></remarks>
         /// <param name="target_time">the timespan in which the transaction should be executed</param>
         /// <param name="cost">The CLVM cost for which to estimate the fee. (default transaction = 10000000)</param>
         public GetFeeEstimate_RPC(TimeSpan target_time, ulong cost = 10000000)
