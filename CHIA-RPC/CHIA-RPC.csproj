@@ -16,7 +16,13 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.1.10: Convenience upgrades
+    <PackageReleaseNotes>1.8.1.11: GetFeeEstimate improvements
+- improvements on xml documentation
+- added explicit conversion to that the api can be called directly with a dateTime
+- fixed a fee value which was displayed in decimal rather than ulong 
+- returned time array can now also be viewed in TimeSpan
+
+1.8.1.10: Convenience upgrades
 - added overloads so that files can now be loaded and exported with FileInfo
 - added an implicit conversion to GetCatOfferSummary
 - added constructor to GetFeeEnsimate which accepts a single Time rather than an array 
@@ -68,7 +74,7 @@
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.1.10</Version>
+    <Version>1.8.1.11</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
