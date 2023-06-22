@@ -22,7 +22,7 @@ namespace CHIA_RPC.FullNode_NS
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
         /// <remarks>in mojos</remarks>
-        public decimal[] estimates { get; set; }
+        public ulong[] estimates { get; set; }
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
@@ -42,7 +42,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the actual fee rate of the last block
         /// </summary>
-        public decimal fee_rate_last_block { get; set; }
+        public ulong fee_rate_last_block { get; set; }
 
         /// <summary>
         /// The accumulated fees of the last block in mojos
@@ -121,6 +121,21 @@ namespace CHIA_RPC.FullNode_NS
         /// Targeted times for transaction inclusion, in seconds.
         /// </summary>
         public ulong[] target_times { get; set; }
+        /// <summary>
+        /// Targeted times for transaction inclusion
+        /// </summary>
+        [JsonIgnore]
+        public TimeSpan[] target_times_converted {
+            get
+            {
+                TimeSpan[] targets = new TimeSpan[target_times.Length];
+                for (int i = 0; i < target_times.Length; i++)
+                {
+                    targets[i] = TimeSpan.FromSeconds(target_times[i]);
+                }
+                return targets;
+            }
+        }
     }
     /// <summary>
     /// Contains the request parameters for the get_fee_estimate RPC method. <br/>
