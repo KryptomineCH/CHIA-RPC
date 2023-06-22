@@ -42,7 +42,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the actual fee rate of the last block
         /// </summary>
-        public ulong fee_rate_last_block { get; set; }
+        public decimal fee_rate_last_block { get; set; }
 
         /// <summary>
         /// The accumulated fees of the last block in mojos
