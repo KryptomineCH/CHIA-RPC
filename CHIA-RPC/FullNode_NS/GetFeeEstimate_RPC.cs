@@ -21,8 +21,8 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
-        /// <remarks>in mojos</remarks>
-        public ulong[] estimates { get; set; }
+        /// <remarks>in mojos(!!!) You need to convert this to ulong!</remarks>
+        public decimal[] estimates { get; set; }
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
