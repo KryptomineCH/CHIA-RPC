@@ -286,7 +286,7 @@ namespace CHIA_RPC.FullNode_NS
         /// automatically converts a targettime into the rpc
         /// </summary>
         /// <param name="target_time">the requested time</param>
-        public static explicit operator GetFeeEstimate_RPC(TimeSpan target_time)
+        public static implicit operator GetFeeEstimate_RPC(TimeSpan target_time)
         {
             return new GetFeeEstimate_RPC(target_time);
         }
@@ -294,7 +294,7 @@ namespace CHIA_RPC.FullNode_NS
         /// automatically converts target times into the rpc
         /// </summary>
         /// <param name="target_times">the requested times</param>
-        public static explicit operator GetFeeEstimate_RPC(TimeSpan[] target_times)
+        public static implicit operator GetFeeEstimate_RPC(TimeSpan[] target_times)
         {
             return new GetFeeEstimate_RPC(target_times);
         }
