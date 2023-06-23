@@ -34,12 +34,17 @@ namespace CHIA_RPC_Tests.Testhelpers
                     T newRPC = ResponseTemplate<T>.LoadResponseFromFile(fileName);
                     Assert.Equal(originalRPC.ToString(), newRPC.ToString());
                 }
+                catch (Exception ex)
+                {
+                    // Handle the exception here if needed, for example by logging it.
+                    // Then rethrow the exception.
+                    throw;
+                }
                 finally
                 {
                     FileInfo fi = new FileInfo(fileName);
                     if (fi.Exists) fi.Delete();
                 }
-
             }
         }
     }

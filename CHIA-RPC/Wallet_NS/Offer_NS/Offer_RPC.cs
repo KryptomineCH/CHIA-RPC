@@ -69,7 +69,7 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// "1": 1000000000000 (offer for 1 xch) <br/>
         /// "cc4138f8debe4fbedf26ccae0f965be19c67a49d525f1416c0749c3c865dxxx", -1 (offer 1 nft)<br/> 
         /// </summary>
-        public Dictionary<string, long> offer { get; set; }
+        public Dictionary<string, long> offer { get; set; } = new Dictionary<string, long>();
         /// <summary>
         /// this dictionary contains your requested additions and substractions, in xch.<br/>
         /// if you want to offer an nft for example, use the launcher id such as <br/>
