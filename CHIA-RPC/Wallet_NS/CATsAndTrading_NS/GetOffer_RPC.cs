@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
@@ -25,6 +26,16 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             this.trade_id = trade_id;
             this.file_contents = file_contents;
         }
+        /// <summary>
+        /// Show the details of one offer
+        /// </summary>
+        /// <param name="trade_id">The offer's ID</param>
+        /// <param name="file_contents">The contents of the offer. Required if the offer's info is not stored in the database for this wallet</param>
+        public GetOffer_RPC(TradeRecord trade, string? file_contents = null)
+        {
+            this.trade_id = trade.trade_id;
+            this.file_contents = file_contents;
+        }
 
         /// <summary>
         /// The offer's ID
@@ -38,5 +49,22 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// </summary>
         /// <remarks>optional</remarks>
         public string? file_contents { get; set; }
+
+        /// <summary>
+        /// converts a TradeRecord into GetOffer_RPC
+        /// </summary>
+        /// <param name="tradeRecord"></param>
+        public static implicit operator GetOffer_RPC(TradeRecord tradeRecord)
+        {
+            return new GetOffer_RPC(tradeRecord);
+        }
+        /// <summary>
+        /// converts a TradeRecord into GetOffer_RPC
+        /// </summary>
+        /// <param name="tradeRecord"></param>
+        public static implicit operator GetOffer_RPC(TradeRecord_Response tradeRecord)
+        {
+            return new GetOffer_RPC(tradeRecord.trade_record);
+        }
     }
 }

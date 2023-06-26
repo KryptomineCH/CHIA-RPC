@@ -4,6 +4,14 @@ namespace CHIA_RPC.Objects_NS
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// a trade record is beeing generated when acceping a chia offer fron an offer file
+    /// </summary>
+    /// <remarks>
+    /// can be used with:<br/>
+    /// <see href="CHIA_RPC.Wallet_NS.CATsAndTrading_NS.GetOffer_RPC"/>
+    /// 
+    /// </remarks>
     public class TradeRecord : ObjectTemplate<TradeRecord>
     {
         /// <summary>
