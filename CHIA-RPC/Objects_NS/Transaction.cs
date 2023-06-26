@@ -94,6 +94,11 @@ namespace CHIA_RPC.Objects_NS
         /// <exception cref="AggregateException">could not identify apropriate coin!</exception>
         public Coin GetPrimaryCoin()
         {
+            if (amount == 0 && additions.Length>0)
+            {
+                // this is a workaround for the api returning an amount of 0 in unknown circumstances
+                return additions[0];
+            }
             foreach(Coin addition in additions)
             {
                 if (addition.amount == amount)
