@@ -32,7 +32,7 @@ namespace CHIA_RPC.FullNode_NS
         /// A list of parent IDs to examine.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] parent_ids { get; set; }
+        public string[]? parent_ids { get; set; }
 
         /// <summary>
         /// The block height at which to begin the search.

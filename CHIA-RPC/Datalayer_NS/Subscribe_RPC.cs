@@ -32,18 +32,31 @@ namespace CHIA_RPC.Datalayer_NS
         /// The hexadecimal store ID
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /// <summary>
         /// A list of URLs where the data store resides. This list can be left blank
         /// </summary>
         /// <remarks>mandatory but array can be empty</remarks>
-        public string[] urls { get; set; } = new string[] { };
+        public string[]? urls { get; set; } = new string[] { };
         
+        /// <summary>
+        /// Converts this to an ID_RPC
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
         public ID_RPC ToID_RPC()
         {
+            if (id == null)
+            {
+                throw new NullReferenceException(nameof(id));
+            }
             return new ID_RPC(id);
         }
+        /// <summary>
+        /// Implicitly Converts this to an ID_RPC
+        /// </summary>
+        /// <returns></returns>
         public static implicit operator ID_RPC(Subscribe_RPC subscribeRpc)
         {
             return subscribeRpc.ToID_RPC();

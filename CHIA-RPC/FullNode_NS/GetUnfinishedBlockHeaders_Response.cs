@@ -21,6 +21,6 @@ namespace CHIA_RPC.FullNode_NS
         /// Some of these blocks might not get confirmed, which will affect the blocks after it.
         /// The height and header hash of these blocks is unknown.
         /// </remarks>
-        public BlockHeader[] headers { get; set; }
+        public BlockHeader[]? headers { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// indicating whether the offer verification was successful or not.
         /// </summary>
-        public bool valid { get; set; }
+        public bool? valid { get; set; }
     }
     /// <summary>
     /// Represents the request of the 'verify_offer' function in the Chia Datalayer RPC API.
@@ -32,6 +32,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// the OfferString
         /// </summary>
-        public string offer { get; set; }
+        public string? offer { get; set; }
     }
 }

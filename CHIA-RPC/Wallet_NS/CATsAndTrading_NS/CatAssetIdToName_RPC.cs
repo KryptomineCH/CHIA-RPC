@@ -16,7 +16,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// The name of the retrieved CAT.
         /// </summary>
-        public string name { get; set; }
+        public string? name { get; set; }
 
         /// <summary>
         /// The ID of the wallet whose name was changed.
@@ -48,6 +48,6 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// The ID of the CAT whose name you would like to retrieve. This CAT must be listed in your DEFAULT_CATS, ie the CATs your wallet recognizes.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string asset_id { get; set; }
+        public string? asset_id { get; set; }
     }
 }

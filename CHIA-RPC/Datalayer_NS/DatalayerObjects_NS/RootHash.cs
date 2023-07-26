@@ -14,7 +14,7 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Whether or not the hash is confirmed
         /// </summary>
-        public bool confirmed { get; set; }
+        public bool? confirmed { get; set; }
 
         /// <summary>
         /// The root hash
@@ -28,11 +28,11 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// The store ID
         /// </summary>
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /// <summary>
         /// The timestamp
         /// </summary>
-        public ulong timestamp { get; set; }
+        public ulong? timestamp { get; set; }
     }
 }

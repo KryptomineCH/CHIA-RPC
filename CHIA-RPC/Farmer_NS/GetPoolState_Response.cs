@@ -15,7 +15,7 @@ namespace CHIA_RPC.Farmer_NS
         /// <summary>
         /// The state of the pool.
         /// </summary>
-        public PoolState[] pool_state { get; set; }
+        public PoolState[]? pool_state { get; set; }
     }
 
 }

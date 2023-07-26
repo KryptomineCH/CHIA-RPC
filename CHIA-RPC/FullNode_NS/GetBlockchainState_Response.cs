@@ -12,6 +12,12 @@ namespace CHIA_RPC.FullNode_NS
     /// </remarks>
     public class GetBlockchainState_Response : ResponseTemplate<GetBlockchainState_Response>
     {
-        public BlockchainState blockchain_state { get; set; }
+        /// <summary>
+        /// This is used to capture various attributes about the blockchain's state at any given moment.
+        /// It includes information such as the maximum cost of a block, difficulty, and the state of the mempool.
+        /// For more details about this information, refer to Chia's full node RPC documentation:<br/>
+        /// <see href="https://docs.chia.net/full-node-rpc#get_blockchain_state"/>
+        /// </summary>
+        public BlockchainState? blockchain_state { get; set; }
     }
 }

@@ -3,6 +3,9 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+/// <summary>
+/// provides a custom json converter to convert bigint values to ant from string
+/// </summary>
 public class BigIntegerConverter : JsonConverter<BigInteger>
 {
     /// <summary>

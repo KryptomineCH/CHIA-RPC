@@ -15,6 +15,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the block which is returned
         /// </summary>
-        public Block block { get; set; }
+        public Block? block { get; set; }
     }
 }

@@ -16,16 +16,16 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// Whether the root hash is confirmed
         /// </summary>
-        public bool confirmed { get; set; }
+        public bool? confirmed { get; set; }
 
         /// <summary>
         /// The hexadecimal root hash
         /// </summary>
-        public string hash { get; set; }
+        public string? hash { get; set; }
 
         /// <summary>
         /// The timestamp of the root hash
         /// </summary>
-        public ulong timestamp { get; set; }
+        public ulong? timestamp { get; set; }
     }
 }

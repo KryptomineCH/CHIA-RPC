@@ -19,6 +19,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <remarks>
         /// Keep in mind that most blocks do not cointain any transactions. These blocks will simply return "[]" for this request.
         /// </remarks>
-        public CoinSpend[] block_spends { get; set; }
+        public CoinSpend[]? block_spends { get; set; }
     }
 }

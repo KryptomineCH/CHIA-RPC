@@ -26,7 +26,7 @@ namespace CHIA_RPC.Wallet_NS.RoutesAndConnections_NS
         /// The hex ID of the node to close, obtainable from get_connections
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string node_id { get; set; }
+        public string? node_id { get; set; }
     }
 
 }

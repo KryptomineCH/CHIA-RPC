@@ -16,10 +16,10 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// eg mainnet or testnet
         /// </summary>
-        public string network_name { get; set; }
+        public string? network_name { get; set; }
         /// <summary>
         /// eg xch or txch
         /// </summary>
-        public string network_prefix { get; set; }
+        public string? network_prefix { get; set; }
     }
 }

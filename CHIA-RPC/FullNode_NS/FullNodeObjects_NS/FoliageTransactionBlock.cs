@@ -11,22 +11,22 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Gets or sets the additions root.
         /// </summary>
-        public string additions_root { get; set; }
+        public string? additions_root { get; set; }
 
         /// <summary>
         /// Gets or sets the filter hash.
         /// </summary>
-        public string filter_hash { get; set; }
+        public string? filter_hash { get; set; }
 
         /// <summary>
         /// Gets or sets the previous transaction block hash.
         /// </summary>
-        public string prev_transaction_block_hash { get; set; }
+        public string? prev_transaction_block_hash { get; set; }
 
         /// <summary>
         /// Gets or sets the removals root.
         /// </summary>
-        public string removals_root { get; set; }
+        public string? removals_root { get; set; }
 
         /// <summary>
         /// Gets or sets the timestamp.
@@ -36,6 +36,6 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Gets or sets the transactions info hash.
         /// </summary>
-        public string transactions_info_hash { get; set; }
+        public string? transactions_info_hash { get; set; }
     }
 }

@@ -15,6 +15,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// array of all transaction IDs in the mempool.
         /// </summary>
-        public string[] tx_ids { get; set; }
+        public string[]? tx_ids { get; set; }
     }
 }

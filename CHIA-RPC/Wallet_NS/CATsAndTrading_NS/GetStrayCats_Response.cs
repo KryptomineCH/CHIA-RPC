@@ -14,6 +14,6 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// The list of unacknowledged CATs.
         /// </summary>
-        public object[] stray_cats { get; set; }
+        public object[]? stray_cats { get; set; }
     }
 }

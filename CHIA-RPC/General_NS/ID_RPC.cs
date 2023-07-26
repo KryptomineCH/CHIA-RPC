@@ -25,7 +25,7 @@ namespace CHIA_RPC.General_NS
         /// the unique identifier
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
         /// <summary>
         /// note: this value may only be used for requests which trigger a transaction on the blockchain
         /// </summary>

@@ -14,7 +14,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The kv diff between two hashes within the same store ID
         /// </summary>
-        public Diff[] diff { get; set; }
+        public Diff[]? diff { get; set; }
     }
 
     /// <summary>
@@ -26,17 +26,17 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The key of the kv pair
         /// </summary>
-        public string key { get; set; }
+        public string? key { get; set; }
 
         /// <summary>
         /// The type of operation
         /// </summary>
-        public string type { get; set; }
+        public string? type { get; set; }
 
         /// <summary>
         /// The value of the kv pair
         /// </summary>
-        public string value { get; set; }
+        public string? value { get; set; }
     }
 
     /// <summary>
@@ -67,19 +67,19 @@ namespace CHIA_RPC.Datalayer_NS
         /// The hexadecimal store ID
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /// <summary>
         /// The first hash to compare
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string hash_1 { get; set; }
+        public string? hash_1 { get; set; }
 
         /// <summary>
         /// The second hash to compare
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string hash_2 { get; set; }
+        public string? hash_2 { get; set; }
     }
 
 }

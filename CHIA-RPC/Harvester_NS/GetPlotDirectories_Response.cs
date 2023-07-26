@@ -14,7 +14,7 @@ namespace CHIA_RPC.Harvester_NS
         /// <summary>
         /// Gets or sets the list of directories containing plots.
         /// </summary>
-        public string[] directories { get; set; }
+        public string[]? directories { get; set; }
     }
 
 }

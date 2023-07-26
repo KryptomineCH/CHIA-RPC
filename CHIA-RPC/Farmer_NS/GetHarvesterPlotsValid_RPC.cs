@@ -20,27 +20,27 @@ namespace CHIA_RPC.Farmer_NS
         /// <summary>
         /// Node ID of the harvester
         /// </summary>
-        public string node_id { get; set; }
+        public string? node_id { get; set; }
 
         /// <summary>
         /// Page number of the plots
         /// </summary>
-        public ulong page { get; set; }
+        public ulong? page { get; set; }
 
         /// <summary>
         /// Total number of pages of plots
         /// </summary>
-        public ulong page_count { get; set; }
+        public ulong? page_count { get; set; }
 
         /// <summary>
         /// List of valid plots in the harvester
         /// </summary>
-        public string[] plots { get; set; }
+        public string[]? plots { get; set; }
 
         /// <summary>
         /// Total number of plots
         /// </summary>
-        public ulong total_count { get; set; }
+        public ulong? total_count { get; set; }
     }
     /// <summary>
     /// List plots in your local network
@@ -58,27 +58,27 @@ namespace CHIA_RPC.Farmer_NS
         /// <summary>
         /// Node ID of the harvester
         /// </summary>
-        public string node_id { get; set; }
+        public string? node_id { get; set; }
 
         /// <summary>
         /// Page number of the plots
         /// </summary>
-        public ulong page { get; set; }
+        public ulong? page { get; set; }
 
         /// <summary>
         /// Total number of pages of plots
         /// </summary>
-        public ulong page_count { get; set; }
+        public ulong? page_count { get; set; }
 
         /// <summary>
         /// List of valid plots in the harvester
         /// </summary>
-        public HarvesterPlotInfo[] plots { get; set; }
+        public HarvesterPlotInfo[]? plots { get; set; }
 
         /// <summary>
         /// Total number of plots
         /// </summary>
-        public ulong total_count { get; set; }
+        public ulong? total_count { get; set; }
     }
 
     /// <summary>
@@ -115,18 +115,18 @@ namespace CHIA_RPC.Farmer_NS
         /// This node's node_id, obtainable from the <see cref="GetHarvesters_Response"/> RPC.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string node_id { get; set; }
+        public string? node_id { get; set; }
 
         /// <summary>
         /// The page in the results sequence to list (starts with 0).
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong page { get; set; }
+        public ulong? page { get; set; }
 
         /// <summary>
         /// The number of entries per page to list.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong page_size { get; set; }
+        public ulong? page_size { get; set; }
     }
 }

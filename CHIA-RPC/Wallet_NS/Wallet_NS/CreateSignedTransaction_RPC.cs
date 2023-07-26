@@ -144,7 +144,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// A list of puzzle hashes and amounts to be included.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] additions { get; set; }
+        public string[]? additions { get; set; }
 
         /// <summary>
         /// The minimum coin amount (mojos) to send (default: 0).
@@ -214,13 +214,13 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// A list of coins to include.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] coins { get; set; }
+        public string[]? coins { get; set; }
 
         /// <summary>
         /// A list of coins to exclude.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] exclude_coins { get; set; }
+        public string[]? exclude_coins { get; set; }
 
         /// <summary>
         /// A list of coin announcements, which includes coin_id, message, and morph_bytes.
@@ -246,7 +246,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         [JsonIgnore]
         public decimal? fee_in_xch { 
             get { return fee / GlobalVar.OneChiaInMojos; } 
-            set { fee = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { fee = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
 
     }

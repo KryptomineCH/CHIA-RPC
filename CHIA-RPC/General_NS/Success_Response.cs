@@ -7,6 +7,6 @@ namespace CHIA_RPC.General_NS
     /// </summary>
     public class Success_Response : ResponseTemplate<Success_Response>
     {
-        /// inherits all Properties and functions from the Response Template as the template is originally created from this class
+        // inherits all Properties and functions from the Response Template as the template is originally created from this class
     }
 }

@@ -19,15 +19,15 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// dhe did id of the created wallet
         /// </summary>
-        public string my_did { get; set; }
+        public string? my_did { get; set; }
         /// <summary>
         /// the type of the created wallet (did)
         /// </summary>
-        public WalletType type { get; set; }
+        public WalletType? type { get; set; }
         /// <summary>
         /// the wallet id identifier
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
     }
     /// <summary>
     /// Create a new DID wallet (From the Chia wallet RPC endpoint)
@@ -90,12 +90,12 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// </summary>
         /// <remarks>mandatory</remarks>
         [JsonConverter(typeof(StringToEnumConverter<WalletType>))]
-        public WalletType wallet_type { get; set; } = WalletType.did_wallet;
+        public WalletType? wallet_type { get; set; } = WalletType.DECENTRALIZED_ID;
         /// <summary>
         /// Must be either new or recovery. If recovery, then each of the following parameters will be ignored
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string did_type { get; set; } = "new";
+        public string? did_type { get; set; } = "new";
         /// <summary>
         /// The name of the DID wallet [Default: None]
         /// </summary>
@@ -105,27 +105,27 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// *Required if mode is new. Specify the value, in mojos, of this wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong amount { get; set; } = 1;
+        public ulong? amount { get; set; } = 1;
         /// <summary>
         /// the transaction amount in xch
         /// </summary>
         /// <remarks>mandatory</remarks>
         [JsonIgnore]
-        public decimal amount_in_xch
+        public decimal? amount_in_xch
         {
             get { return amount / GlobalVar.OneChiaInMojos; }
-            set { amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
         /// *Required if did_type is new. An array of backup DID IDs to be used for recovery. Must match actual DIDs
         /// </summary>
         /// <remarks>*conditional mandatory*</remarks>
-        public string[] backup_dids { get; set; }
+        public string[]? backup_dids { get; set; }
         /// <summary>
         /// *Required if did_type is new. The number of backup DIDs required for recovery. Minimum value is 1, maximum value is the number of DIDs in backup_dids
         /// </summary>
         /// <remarks>*conditional mandatory*</remarks>
-        public ulong num_of_backup_ids_needed { get; set; }
+        public ulong? num_of_backup_ids_needed { get; set; }
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>

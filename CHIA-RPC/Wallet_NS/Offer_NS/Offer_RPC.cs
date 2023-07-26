@@ -75,6 +75,7 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// if you want to offer an nft for example, use the launcher id such as <br/>
         /// "1": 1.0 (offer for 1 xch) <br/>
         /// "cc4138f8debe4fbedf26ccae0f965be19c67a49d525f1416c0749c3c865dxxx", -0.0000000000001 (offer one nft)<br/>
+        /// </summary>
         [JsonIgnore]
         public Dictionary<string, decimal> offer_in_xch 
         { 
@@ -152,17 +153,32 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// Default: None
         /// </summary>
         public List<KeyValuePair<string, object>>? solver { get; set; }
+        /// <summary>
+        /// Generates an offer from buy and sell proposals
+        /// </summary>
+        /// <param name="sells"></param>
+        /// <param name="buys"></param>
+        /// <param name="mojoValue"></param>
+        /// <returns></returns>
         public static Offer_RPC GenerateOffer_RPC(Nft[] sells, Nft[] buys, long mojoValue)
         {
 
             Offer_RPC offer_rpc = new Offer_RPC();
             foreach (Nft sell in sells)
             {
+                if (sell.launcher_id == null)
+                {
+                    throw new NullReferenceException(nameof(sell));
+                }
                 //offer_rpc.offer.Add(sell.launcher_id, -1);
                 offer_rpc.offer.Add(sell.launcher_id, -1);
             }
             foreach (Nft buy in buys)
             {
+                if (buy.launcher_id == null)
+                {
+                    throw new NullReferenceException(nameof(buy));
+                }
                 //offer_rpc.offer.Add(buy.launcher_id, 1);
                 offer_rpc.offer.Add(buy.launcher_id, 1);
             }

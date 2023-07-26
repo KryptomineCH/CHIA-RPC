@@ -30,14 +30,18 @@ namespace CHIA_RPC_Tests
                 mintingFee_Mojos: 2441556
                 );
             rpc.SaveRpcToFile("NftMintNft_SaveLoadRPC");
-            NftMintNFT_RPC loadedRpc = NftMintNFT_RPC.LoadRpcFromFile("NftMintNft_SaveLoadRPC");
+            NftMintNFT_RPC? loadedRpc = NftMintNFT_RPC.LoadRpcFromFile("NftMintNft_SaveLoadRPC");
+            Assert.NotNull( loadedRpc );
+            Assert.NotNull( loadedRpc.uris );
+            Assert.NotNull( loadedRpc.meta_uris);
+            Assert.NotNull( loadedRpc.license_uris);
             if (rpc.wallet_id != loadedRpc.wallet_id)
             {
                 throw new System.Exception("Wallet Ids do not match!");
             }
-            if (rpc.uris[0] != loadedRpc.uris[0] || rpc.uris[1] != loadedRpc.uris[1] ||
-                rpc.meta_uris[0] != loadedRpc.meta_uris[0] || rpc.meta_uris[1] != loadedRpc.meta_uris[1] ||
-                rpc.license_uris[0] != loadedRpc.license_uris[0] || rpc.license_uris[1] != loadedRpc.license_uris[1])
+            if (rpc.uris![0] != loadedRpc.uris[0] || rpc.uris[1] != loadedRpc.uris[1] ||
+                rpc.meta_uris![0] != loadedRpc.meta_uris[0] || rpc.meta_uris[1] != loadedRpc.meta_uris[1] ||
+                rpc.license_uris![0] != loadedRpc.license_uris[0] || rpc.license_uris[1] != loadedRpc.license_uris[1])
             {
                 throw new System.Exception("uris dont match!");
             }

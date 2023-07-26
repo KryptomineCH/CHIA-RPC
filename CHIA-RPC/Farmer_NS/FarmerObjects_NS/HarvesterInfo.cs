@@ -10,32 +10,32 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// Connection information for the harvester.
         /// </summary>
-        public HarvesterConnection connection { get; set; }
+        public HarvesterConnection? connection { get; set; }
 
         /// <summary>
         /// Number of duplicates on the harvester.
         /// </summary>
-        public ulong duplicates { get; set; }
+        public ulong? duplicates { get; set; }
 
         /// <summary>
         /// Number of filenames the harvester failed to open.
         /// </summary>
-        public ulong failed_to_open_filenames { get; set; }
+        public ulong? failed_to_open_filenames { get; set; }
 
         /// <summary>
         /// Time of the last successful sync on the harvester.
         /// </summary>
-        public double last_sync_time { get; set; }
+        public double? last_sync_time { get; set; }
 
         /// <summary>
         /// Number of filenames on the harvester that don't have keys.
         /// </summary>
-        public ulong no_key_filenames { get; set; }
+        public ulong? no_key_filenames { get; set; }
 
         /// <summary>
         /// Number of plots on the harvester.
         /// </summary>
-        public ulong plots { get; set; }
+        public ulong? plots { get; set; }
 
         /// <summary>
         /// Whether the harvester is currently syncing.
@@ -45,6 +45,6 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// Total size of plots on the harvester.
         /// </summary>
-        public ulong total_plot_size { get; set; }
+        public ulong? total_plot_size { get; set; }
     }
 }

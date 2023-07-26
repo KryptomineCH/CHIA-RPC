@@ -12,8 +12,9 @@ namespace CHIA_RPC_Tests.Testhelpers
                 // parse teststring into a dynamic type for comparison later
                 JsonElement inputParsed = JsonSerializer.Deserialize<JsonElement>(expectedResult, new JsonSerializerOptions { AllowTrailingCommas = true });
                 // parse teststring into class which is to be tested
-                T myResponse = ResponseTemplate<T>.LoadResponseFromString(expectedResult);
+                T? myResponse = ResponseTemplate<T>.LoadResponseFromString(expectedResult);
                 // parse object back into a json
+                if (myResponse == null) throw new InvalidOperationException("failed to load expectedResult!");
                 string myResponse_Json = myResponse.ToString();
                 // parse myObject output into a dynamic type for comparison with expectedResult
                 JsonElement myResponse_Result = JsonSerializer.Deserialize<JsonElement>(myResponse_Json, new JsonSerializerOptions { AllowTrailingCommas = true });
@@ -28,14 +29,17 @@ namespace CHIA_RPC_Tests.Testhelpers
                 string fileName = "";
                 try
                 {
-                    T originalRPC = ResponseTemplate<T>.LoadResponseFromString(expectedResult);
+                    T? originalRPC = ResponseTemplate<T>.LoadResponseFromString(expectedResult);
+                    if (originalRPC == null) throw new InvalidOperationException($"failed to load expectedResult!");
                     fileName = originalRPC.GetType().ToString() + "_Test_SavingResponse.response";
                     originalRPC.SaveResponseToFile(fileName);
-                    T newRPC = ResponseTemplate<T>.LoadResponseFromFile(fileName);
+                    T? newRPC = ResponseTemplate<T>.LoadResponseFromFile(fileName);
+                    if (newRPC == null) throw new InvalidOperationException($"failed to load newRPC!");
                     Assert.Equal(originalRPC.ToString(), newRPC.ToString());
                 }
                 catch (Exception ex)
                 {
+                    var _ = ex.Message;
                     // Handle the exception here if needed, for example by logging it.
                     // Then rethrow the exception.
                     throw;

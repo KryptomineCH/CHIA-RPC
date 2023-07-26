@@ -15,17 +15,17 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// End of slot data.
         /// </summary>
-        public Eos eos { get; set; }
+        public Eos? eos { get; set; }
 
         /// <summary>
         /// Indicates if the data has been reverted.
         /// </summary>
-        public bool reverted { get; set; }
+        public bool? reverted { get; set; }
 
         /// <summary>
         /// Time when the response was received.
         /// </summary>
-        public double time_received { get; set; }
+        public double? time_received { get; set; }
     }
     /// <summary>
     /// Retrieves a recent signage point or end of slot<br/>

@@ -75,7 +75,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// You can set more but the bulkmint will chunk. 
         /// It is recommended to supply only up to 25 nfts at a time
         /// </remarks>
-        public MintMetadata[] metadata_list { get; set; }
+        public MintMetadata[]? metadata_list { get; set; }
 
         /// <summary>
         /// The royalty that will go to the original artist each time the NFT is sold
@@ -177,34 +177,34 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <summary>
         /// uri set to the image/media/documents
         /// </summary>
-        public string[] uris { get; set; }
+        public string[]? uris { get; set; }
         /// <summary>
         /// uri set to the nft metadata
         /// </summary>
-        public string[] meta_uris { get; set; }
+        public string[]? meta_uris { get; set; }
         /// <summary>
         /// uri set to the nft license
         /// </summary>
-        public string[] license_uris { get; set; }
+        public string[]? license_uris { get; set; }
         /// <summary>
         /// valitadion hash from the image/media/document
         /// </summary>
-        public string hash { get; set; }
+        public string? hash { get; set; }
         /// <summary>
         /// valitadion hash from the nft metadata
         /// </summary>
-        public string meta_hash { get; set; }
+        public string? meta_hash { get; set; }
         /// <summary>
         /// valitadion hash from the nft license
         /// </summary>
-        public string license_hash { get; set; }
+        public string? license_hash { get; set; }
         /// <summary>
         /// which position does the nft have in the collection?
         /// </summary>
-        public ulong edition_number { get; set; }
+        public ulong? edition_number { get; set; }
         /// <summary>
         /// how many nfts does the collection have in total?
         /// </summary>
-        public ulong edition_total { get; set; }
+        public ulong? edition_total { get; set; }
     }
 }

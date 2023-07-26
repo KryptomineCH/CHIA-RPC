@@ -26,7 +26,7 @@ namespace CHIA_RPC.Wallet_NS.WalletNode_NS
         /// <summary>
         /// An array of SpendBundles (transactions) to push
         /// </summary>
-        public SpendBundle[] transactions { get; set; }
+        public SpendBundle[]? transactions { get; set; }
 
         /// <summary>
         /// Implicit conversion from SpendBundle[] to PushTransactions_RPC.

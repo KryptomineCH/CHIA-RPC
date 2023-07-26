@@ -10,8 +10,17 @@ namespace CHIA_RPC.General_NS
     /// </summary>
     public enum TransactionStatus
     {
+        /// <summary>
+        /// The transaction was successful and it complete
+        /// </summary>
         SUCCESS,
+        /// <summary>
+        /// The transaction is still waiting for confirmation on the Blockchain
+        /// </summary>
         PENDING,
+        /// <summary>
+        /// The Transaction got cancelled. It did not pass through
+        /// </summary>
         FAILED
     }
     /// <summary>
@@ -51,8 +60,8 @@ namespace CHIA_RPC.General_NS
 
         /// <summary>
         /// The SpendBundle to be included in the transaction.
-        /// </summary
-        public SpendBundle spend_bundle { get; set; }
+        /// </summary>
+        public SpendBundle? spend_bundle { get; set; }
         /// <summary>
         /// Implicit conversion from SpendBundle to PushTx_RPC.
         /// </summary>

@@ -34,6 +34,6 @@ namespace CHIA_RPC.Harvester_NS
         /// The file name of the plot to delete
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string filename { get; set; }
+        public string? filename { get; set; }
     }
 }

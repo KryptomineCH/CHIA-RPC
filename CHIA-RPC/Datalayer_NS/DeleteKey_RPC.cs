@@ -32,13 +32,13 @@ namespace CHIA_RPC.Datalayer_NS
         /// The hexadecimal store ID.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /// <summary>
         /// The hexadecimal key.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string key { get; set; }
+        public string? key { get; set; }
 
         /// <summary>
         /// Set the fee for the transaction, in mojos.

@@ -28,12 +28,12 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS.DLWalletObjects_NS
         /// <summary>
         /// The coin ID associated with the mirror.
         /// </summary>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// The launcher ID associated with the mirror.
         /// </summary>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// Indicates if the mirror is owned by us.
@@ -43,6 +43,6 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS.DLWalletObjects_NS
         /// <summary>
         /// An array of URLs associated with the mirror.
         /// </summary>
-        public string[] urls { get; set; }
+        public string[]? urls { get; set; }
     }
 }

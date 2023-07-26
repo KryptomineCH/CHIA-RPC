@@ -14,12 +14,12 @@ namespace CHIA_RPC.Farmer_NS
         /// <summary>
         /// Payout target for the farmer (1/8 of the reward)
         /// </summary>
-        public string farmer_target { get; set; }
+        public string? farmer_target { get; set; }
 
         /// <summary>
         /// Payout target for the pool (7/8 of the reward)
         /// </summary>
-        public string pool_target { get; set; }
+        public string? pool_target { get; set; }
     }
     /// <summary>
     /// List the payout targets for the farmer (1/8 of the reward) and pool (7/8)

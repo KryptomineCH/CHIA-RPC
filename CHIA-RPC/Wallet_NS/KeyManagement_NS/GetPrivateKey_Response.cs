@@ -16,6 +16,6 @@ namespace CHIA_RPC.Wallet_NS.KeyManagement
         /// Contains PRIVATE info about the currently logged in wallet. WARNING: This info is private!
         /// NEVER share it!
         /// </summary>
-        public PrivateKeyInfo private_key { get; set; }
+        public PrivateKeyInfo? private_key { get; set; }
     }
 }

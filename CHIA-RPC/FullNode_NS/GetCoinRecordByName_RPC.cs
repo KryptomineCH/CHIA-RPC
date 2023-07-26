@@ -15,7 +15,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// A CoinRecord object containing information about the retrieved coin.
         /// </summary>
-        public CoinRecord coin_record { get; set; }
+        public CoinRecord? coin_record { get; set; }
     }
 
     /// <summary>
@@ -49,6 +49,6 @@ namespace CHIA_RPC.FullNode_NS
         /// A string containing the name or ID of the coin to retrieve.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string name { get; set; }
+        public string? name { get; set; }
     }
 }

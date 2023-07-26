@@ -15,8 +15,19 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     /// </remarks>
     public class CatSpend_Response : ResponseTemplate<CatSpend_Response>
     {
-        public Transaction_DictMemos transaction { get; set; }
-        public string transaction_id { get; set; }
+        /// <summary>
+        /// The 'Transaction_DictMemos' object that contains the details of the transaction.
+        /// This includes information such as the inputs, outputs, and other details of the transaction.
+        /// 'Transaction_DictMemos' is a dictionary that maps transaction details to their respective memo data.
+        /// </summary>
+        public Transaction_DictMemos? transaction { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the transaction.
+        /// This is a string that is generated when the transaction is created and is used to uniquely identify the transaction in the Chia network.
+        /// It can be used to look up the transaction, verify its existence, and check its status.
+        /// </summary>
+        public string? transaction_id { get; set; }
     }
     /// <summary>
     /// Send CAT funds to another wallet.
@@ -146,7 +157,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// The destination address.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string inner_address { get; set; }
+        public string? inner_address { get; set; }
 
         /// <summary>
         /// An optional array of memos to be sent with the transaction.
@@ -196,7 +207,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// A list of coin amounts (in mojos) to exclude.
         /// </summary>
         /// <remarks>optional</remarks>
-        public ulong[] exclude_coin_amounts { get; set; }
+        public ulong[]? exclude_coin_amounts { get; set; }
         /// <summary>
         /// A list of coin amounts (in xch) to exclude
         /// </summary>
@@ -228,7 +239,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// A list of coin IDs to exclude.
         /// </summary>
         /// <remarks>optional</remarks>
-        public string[] exclude_coin_ids { get; set; }
+        public string[]? exclude_coin_ids { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos.

@@ -12,7 +12,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// The transaction ID
         /// </summary>
-        public string tx_id { get; set; }
+        public string? tx_id { get; set; }
     }
     /// <summary>
     /// response with a transaction id
@@ -26,7 +26,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// The ID of the transaction. This is listed as name in the output of the transactions RPC
         /// </summary>
-        public string transaction_id { get; set; }
+        public string? transaction_id { get; set; }
     }
     /// <summary>
     /// the transaction id is relevant for a variety of identifier tasks on the Blockchain
@@ -61,6 +61,10 @@ namespace CHIA_RPC.General_NS
         {
             this.transaction_id = transaction_id.tx_id;
         }
+        /// <summary>
+        /// the transaction id is relevant for a variety of identifier tasks on the Blockchain
+        /// </summary>
+        /// <param name="transaction">the transaction to obtain.</param>
         public TransactionID_RPC(GetTransaction_Response transaction)
         {
             this.transaction_id = transaction.transaction_id;
@@ -69,7 +73,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// The ID of the transaction to obtain. This is listed as name in the output of the transactions RPC
         /// </summary>
-        public string transaction_id { get; set; }
+        public string? transaction_id { get; set; }
         /// <summary>
         /// Implicit conversion from TransactionID_Response to TransactionID_RPC.
         /// </summary>

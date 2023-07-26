@@ -15,6 +15,6 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The data value
         /// </summary>
-        public string data { get; set; }
+        public string? data { get; set; }
     }
 }

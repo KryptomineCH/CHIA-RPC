@@ -42,19 +42,19 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// The coin ID of the NFT on which to add a URI
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string nft_coin_id { get; set; }
+        public string? nft_coin_id { get; set; }
 
         /// <summary>
         /// Key must be either "u" (data URI), "mu" (metadata URI), or "lu" (license URI)
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string key { get; set; }
+        public string? key { get; set; }
 
         /// <summary>
         /// The URI to add
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string uri { get; set; }
+        public string? uri { get; set; }
 
         /// <summary>
         /// The one-time blockchain fee (in mojos) to be used upon adding a URI

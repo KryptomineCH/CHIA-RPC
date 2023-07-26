@@ -12,19 +12,22 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// An abstract class is a class that cannot be instantiated on its own, but instead is meant to be used as a base class for other classes. 
     /// </remarks>
     /// <typeparam name="T">
-    /// this constraint ensures that the T type parameter represents a class that inherits from the ResponseTemplate<T> base class. 
+    /// this constraint ensures that the T type parameter represents a class that inherits from the ResponseTemplate T base class. 
     /// This is known as a recursive type constraint, because it constrains the type parameter to be related to the base class in a recursive way.
     /// By using this recursive type constraint, 
-    /// you can ensure that any derived classes of ResponseTemplate<T> can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
+    /// you can ensure that any derived classes of ResponseTemplate T can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
     public abstract class ResponseTemplate<T> where T : ResponseTemplate<T>, new()
     {
+        /// <summary>
+        /// the raw response of the server
+        /// </summary>
         [JsonIgnore]
-        public string RawContent { get; set; }
+        public string? RawContent { get; set; }
         /// <summary>
         /// this boolean indicates whether the server accepted and processed the request or not.
         /// </summary>
-        public bool success { get; set; }
+        public bool? success { get; set; }
 
         /// <summary>
         /// this string contains details about the error when the node refused the request or couldnt process it. 
@@ -65,9 +68,9 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </remarks>
         /// <param name="filePath">The path to load the response from.</param>
         /// <returns>The loaded response.</returns>
-        public static T LoadResponseFromFile(string filePath)
+        public static T? LoadResponseFromFile(string filePath)
         {
-            return FileManager.LoadObjectFromFile<T>(filePath, "response");
+            return FileManager.LoadObjectFromFile<T?>(filePath, "response");
         }
         /// <summary>
         /// Loads a response from the specified file path.
@@ -87,10 +90,11 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="inputString">The json payload to load the response from.</param>
         /// <returns>The loaded response.</returns>
-        public static T LoadResponseFromString(string inputString)
+        public static T? LoadResponseFromString(string inputString)
         {
-            if (inputString == "") return (T)Activator.CreateInstance(typeof(T));
-            T result = JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
+            T? result = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            if (result == null) result = new T();
             result.RawContent = inputString;
             return result;
         }

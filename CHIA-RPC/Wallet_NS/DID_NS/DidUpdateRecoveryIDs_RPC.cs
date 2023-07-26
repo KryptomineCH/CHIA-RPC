@@ -68,12 +68,12 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// the id of the wallet which should be updated
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// The new recovery ID list. Each item from this list will be appended to the existing list
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] new_list { get; set; }
+        public string[]? new_list { get; set; }
         /// <summary>
         /// Optionally set the number of IDs required for wallet recovery. If not set, then the entire updated list will be required by default
         /// </summary>

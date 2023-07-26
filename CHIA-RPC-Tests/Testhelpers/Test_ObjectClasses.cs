@@ -12,7 +12,8 @@ namespace CHIA_RPC_Tests.Testhelpers
                 // parse teststring into a dynamic type for comparison later
                 JsonElement inputParsed = JsonSerializer.Deserialize<JsonElement>(expectedResult, new JsonSerializerOptions { AllowTrailingCommas = true });
                 // parse teststring into class which is to be tested
-                T myObject = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
+                T? myObject = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
+                Assert.NotNull(myObject);
                 // parse object back into a json
                 string myObject_Json = myObject.ToString();
                 // parse myObject output into a dynamic type for comparison with expectedResult
@@ -28,10 +29,12 @@ namespace CHIA_RPC_Tests.Testhelpers
                 string fileName = "";
                 try
                 {
-                    T originalRPC = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
+                    T? originalRPC = ObjectTemplate<T>.LoadObjectFromString(expectedResult);
+                    Assert.NotNull(originalRPC);
                     fileName = "Test_SavingObject."+ originalRPC.GetType().ToString().ToLower();
                     originalRPC.SaveObjectToFile(fileName);
-                    T newRPC = ObjectTemplate<T>.LoadObjectFromFile(fileName);
+                    T? newRPC = ObjectTemplate<T>.LoadObjectFromFile(fileName);
+                    Assert.NotNull(newRPC);
                     Assert.Equal(originalRPC.ToString(), newRPC.ToString());
                 }
                 finally

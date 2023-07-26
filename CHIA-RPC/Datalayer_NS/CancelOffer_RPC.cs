@@ -1,6 +1,4 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
-using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -33,7 +31,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// The trade ID of the offer. This is displayed with the response of the make_offer RPC.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string trade_id { get; set; }
+        public string? trade_id { get; set; }
 
         /// <summary>
         /// If true, the offer will be canceled on the blockchain, making it impossible to be accepted later.

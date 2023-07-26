@@ -16,10 +16,10 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// the wallet ID which the request was for
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// The name of the did wallet
         /// </summary>
-        public string name { get; set; }
+        public string? name { get; set; }
     }
 }

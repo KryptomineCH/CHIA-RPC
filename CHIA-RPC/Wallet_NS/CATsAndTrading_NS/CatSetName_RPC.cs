@@ -51,12 +51,12 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// The ID of the wallet whose name you would like to change.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
 
         /// <summary>
         /// The new name for the wallet.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string name { get; set; }
+        public string? name { get; set; }
     }
 }

@@ -104,11 +104,11 @@ namespace CHIA_RPC.FullNode_NS
         /// the start header hash
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string older_block_header_hash { get; set; }
+        public string? older_block_header_hash { get; set; }
         /// <summary>
         /// the end header hash
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string newer_block_header_hash { get; set; }
+        public string? newer_block_header_hash { get; set; }
     }
 }

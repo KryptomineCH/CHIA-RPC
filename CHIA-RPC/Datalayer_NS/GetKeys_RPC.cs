@@ -14,7 +14,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// all available keys in the data store
         /// </summary>
-        public string[] keys { get; set; }
+        public string[]? keys { get; set; }
     }
     /// <summary>
     /// Get all keys associated with a store_id<br/>
@@ -43,7 +43,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// </summary>
         /// <remarks>encoded as hexadecimal string<br/>
         /// mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /// <summary>
         /// The root hash from which to obtain data

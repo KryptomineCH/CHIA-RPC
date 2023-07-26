@@ -4,79 +4,114 @@ using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
 {
+    /// <summary>
+    /// represents all blockchain stored data of an nft
+    /// </summary>
     public class Nft : ObjectTemplate<Nft>
     {
         /// <summary>
-        /// some non human readable data and a chain logo
+        /// Represents non-human readable data related to the chain and a logo associated with the chain.
+        /// Converted using the ChainInfoConverter.
         /// </summary>
         [JsonConverter(typeof(ChainInfoConverter))]
-        public string chain_info { get; set; }
+        public string? chain_info { get; set; }
+
         /// <summary>
-        /// a sha256sum to validate data from the nft data-uri
+        /// A SHA-256 hash used for validating the data fetched from the NFT's data URI.
         /// </summary>
-        public string data_hash { get; set; }
+        public string? data_hash { get; set; }
+
         /// <summary>
-        /// the nft data uris (eg, images)
+        /// A list of URIs that point to the NFT's data, typically images or other digital assets associated with the NFT.
         /// </summary>
-        public List<string> data_uris { get; set; }
-        public string launcher_id { get; set; }
-        public string launcher_puzhash { get; set; }
+        public List<string>? data_uris { get; set; }
+
         /// <summary>
-        /// the sha256 hash of the license file for validation
+        /// The launcher's identifier, unique to the entity that launched the NFT.
         /// </summary>
-        public string license_hash { get; set; }
+        public string? launcher_id { get; set; }
+
         /// <summary>
-        /// the license uris by which to find the license file
+        /// The launcher's puzzle hash, which is a unique representation of the puzzle (or program) that controls the NFT.
         /// </summary>
-        public List<string> license_uris { get; set; }
+        public string? launcher_puzhash { get; set; }
+
         /// <summary>
-        /// the sha256sum of the metadata jason files to validate them
+        /// A SHA-256 hash used for validating the license file associated with the NFT.
         /// </summary>
-        public string metadata_hash { get; set; }
+        public string? license_hash { get; set; }
+
         /// <summary>
-        /// uris to metadata json files (by chip-0007 std.) to describe the NFT
+        /// A list of URIs that point to the NFT's license file. The license file typically describes the rights and restrictions associated with the NFT.
         /// </summary>
-        public List<string> metadata_uris { get; set; }
+        public List<string>? license_uris { get; set; }
+
         /// <summary>
-        /// the block height at which the NFT was Minted
+        /// A SHA-256 hash used for validating the metadata JSON files associated with the NFT.
+        /// </summary>
+        public string? metadata_hash { get; set; }
+
+        /// <summary>
+        /// A list of URIs that point to the metadata JSON files associated with the NFT. These files describe the NFT in detail and are in line with the CHIP-0007 standard.
+        /// </summary>
+        public List<string>? metadata_uris { get; set; }
+
+        /// <summary>
+        /// The block height at which the NFT was minted. This represents the position of the block in the blockchain that recorded the minting of the NFT.
         /// </summary>
         public ulong mint_height { get; set; }
+
         /// <summary>
-        /// the sha256 unique coin id of the nft
+        /// The unique coin ID of the NFT represented as a SHA-256 hash. This is unique for each NFT and helps identify it on the blockchain.
         /// </summary>
-        public string nft_coin_id { get; set; }
+        public string? nft_coin_id { get; set; }
+
         /// <summary>
-        /// the digital identity of the minter
+        /// The Decentralized Identifier (DID) of the minter. This identifies the entity that minted the NFT.
         /// </summary>
-        public string minter_did { get; set; }
+        public string? minter_did { get; set; }
+
         /// <summary>
-        /// the digital identity of the owner
+        /// The Decentralized Identifier (DID) of the owner. This identifies the current owner of the NFT.
         /// </summary>
-        public string owner_did { get; set; }
+        public string? owner_did { get; set; }
+
         /// <summary>
-        /// is the transaction still pending
+        /// Indicates if a transaction involving the NFT is still pending.
         /// </summary>
         public bool pending_transaction { get; set; }
+
         /// <summary>
-        /// how much royalty should be payed
+        /// The royalty percentage to be paid when the NFT is sold. A royalty percentage of 1000 equals 1%.
         /// </summary>
         /// <remarks>
         /// a royalty percentage of 1000 = 1%
         /// </remarks>
         public ulong royalty_percentage { get; set; }
+
         /// <summary>
-        /// the puzzlehash (address?) which should receive the loyalties
+        /// The puzzle hash (similar to a blockchain address) that should receive the royalties when the NFT is sold.
         /// </summary>
-        public string royalty_puzzle_hash { get; set; }
+        public string? royalty_puzzle_hash { get; set; }
+
         /// <summary>
-        /// the number of the series which this nft has
+        /// The edition number of the NFT. This represents the position of the NFT in a series or collection.
         /// </summary>
         public ulong edition_number { get; set; }
+
         /// <summary>
-        /// how many nfts the series/collection has in total
+        /// The total number of NFTs in the series or collection to which this NFT belongs.
         /// </summary>
         public ulong edition_total { get; set; }
+
+        /// <summary>
+        /// Indicates if the NFT supports DIDs (Decentralized Identifiers) which provide a way to verify that a specific entity has control over the NFT.
+        /// </summary>
         public bool supports_did { get; set; }
-        public string updater_puzhash { get; set; }
+
+        /// <summary>
+        /// The puzzle hash of the updater. The updater is responsible for updating the state of the NFT.
+        /// </summary>
+        public string? updater_puzhash { get; set; }
     }
 }

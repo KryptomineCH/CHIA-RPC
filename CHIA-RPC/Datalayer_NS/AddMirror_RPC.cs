@@ -36,8 +36,8 @@ namespace CHIA_RPC.Datalayer_NS
         /// </summary>
         /// <param name="id">The hexadecimal ID of the store to mirror</param>
         /// <param name="urls">A list of URLs where the mirror will reside.</param>
-        /// <param name="amount">The number of mojos to spend to create the mirror. In theory, mirrors with a higher amount will be prioritized</param>
-        /// <param name="fee">Set the fee for the transaction, in mojos</param>
+        /// <param name="amount_xch">The number of mojos to spend to create the mirror. In theory, mirrors with a higher amount will be prioritized</param>
+        /// <param name="fee_xch">Set the fee for the transaction, in mojos</param>
         public AddMirror_RPC(string id, string[] urls, decimal amount_xch, decimal? fee_xch = null)
         {
             this.id = id;
@@ -50,13 +50,13 @@ namespace CHIA_RPC.Datalayer_NS
         /// The hexadecimal ID of the store to mirror
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
 
         /// <summary>
         /// A list of URLs where the mirror will reside.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] urls { get; set; }
+        public string[]? urls { get; set; }
 
         /// <summary>
         /// The number of mojos to spend to create the mirror. In theory, mirrors with a higher amount will be prioritized
@@ -86,7 +86,7 @@ namespace CHIA_RPC.Datalayer_NS
         public decimal? fee_in_xch
         {
             get { return fee / GlobalVar.OneChiaInMojos; }
-            set { fee = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { fee = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
     }
 }

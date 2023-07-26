@@ -18,7 +18,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// used to send chia (XCH) to a specific target address
         /// </summary>
-        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
         /// <param name="amount_mojos">the amount of mojos to send</param>
         /// <param name="fee_mojos">the amount of mojos to set as fee</param>
@@ -48,7 +48,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// used to send chia (XCH) to a specific target address
         /// </summary>
-        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
         /// <param name="amount_mojos">the amount of mojos to send</param>
         /// <param name="fee_mojos">the amount of mojos to set as fee</param>
@@ -79,7 +79,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// used to send chia (XCH) to a specific target address
         /// </summary>
-        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
         /// <param name="amount_xch">the amount of mojos to send</param>
         /// <param name="fee_xch">the amount of mojos to set as fee</param>
@@ -110,7 +110,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// used to send chia (XCH) to a specific target address
         /// </summary>
-        /// <param name="wallet_id">the wallet ID from which you want to send the transactionparam>
+        /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
         /// <param name="amount_xch">the amount of mojos to send</param>
         /// <param name="fee_xch">the amount of mojos to set as fee</param>
@@ -148,7 +148,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// the receiving address to send the mojos to
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string address { get; set; }
+        public string? address { get; set; }
         /// <summary>
         /// the amount of mojos to send
         /// </summary>

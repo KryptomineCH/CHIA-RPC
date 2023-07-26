@@ -10,17 +10,34 @@ namespace CHIA_RPC.Objects_NS
     [JsonConverter(typeof(MemoResponseConverter))]
     public class Memo_Response : ResponseTemplate<Memo_Response>
     {
-        public Dictionary<string, Dictionary<string, string[]>> data { get; set; }
+        /// <summary>
+        /// contains the data of the response
+        /// </summary>
+        public Dictionary<string, Dictionary<string, string[]>>? data { get; set; }
     }
     /// <summary>
-    /// a memo is of type string and might be attached to a <see cref="Transaction"/>
+    /// a memo is of type string and might be attached to a <see cref="Transaction_DictMemos"/>
     /// </summary>
     public class Memos : ObjectTemplate<Memos>
     {
-        public string memo { get; set; }
+        /// <summary>
+        /// the memo of the transaction
+        /// </summary>
+        public string? memo { get; set; }
     }
+    /// <summary>
+    /// contains functionality to convert between json string and memo_response
+    /// </summary>
     public class MemoResponseConverter : JsonConverter<Memo_Response>
     {
+        /// <summary>
+        /// converts a string to memo_response
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="typeToConvert"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="JsonException"></exception>
         public override Memo_Response Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartObject)
@@ -30,7 +47,7 @@ namespace CHIA_RPC.Objects_NS
 
             var data = new Dictionary<string, Dictionary<string, string[]>>();
             bool success = false;
-            string error = null;
+            string? error = null;
 
             while (reader.Read())
             {
@@ -44,7 +61,7 @@ namespace CHIA_RPC.Objects_NS
                     throw new JsonException();
                 }
 
-                string propertyName = reader.GetString();
+                string? propertyName = reader.GetString();
                 reader.Read();
 
                 if (propertyName == "success")
@@ -59,6 +76,14 @@ namespace CHIA_RPC.Objects_NS
                 {
                     // Deserialize the inner dictionary
                     var innerData = JsonSerializer.Deserialize<Dictionary<string, string[]>>(ref reader, options);
+                    if (propertyName == null)
+                    {
+                        throw new NullReferenceException(nameof(propertyName));
+                    }
+                    if (innerData == null)
+                    {
+                        throw new NullReferenceException(nameof(innerData));
+                    }
                     data.Add(propertyName, innerData);
                 }
             }
@@ -66,12 +91,22 @@ namespace CHIA_RPC.Objects_NS
             return new Memo_Response { data = data, success = success, error = error };
         }
 
+        /// <summary>
+        /// converts a memo_response object to string
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="value"></param>
+        /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Memo_Response value, JsonSerializerOptions options)
         {
+            if (value.data == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
             writer.WriteStartObject();
 
             writer.WritePropertyName("success");
-            writer.WriteBooleanValue(value.success);
+            writer.WriteBooleanValue(value.success ?? false);
 
             if (value.error != null)
             {

@@ -16,7 +16,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the block record which is returned
         /// </summary>
-        public BlockRecord block_record { get; set; }
+        public BlockRecord? block_record { get; set; }
     }
     /// <summary>
     ///  block records in a range.
@@ -29,6 +29,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the block records which are returned
         /// </summary>
-        public BlockRecord[] block_records { get; set; }
+        public BlockRecord[]? block_records { get; set; }
     }
 }

@@ -27,6 +27,6 @@ namespace CHIA_RPC.Farmer_NS
         /// The hash of a signage point, listed as pos_ss_cc_challenge_hash in the block details
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string sp_hash { get; set; }
+        public string? sp_hash { get; set; }
     }
 }

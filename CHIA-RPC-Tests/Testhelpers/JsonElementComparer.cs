@@ -24,8 +24,10 @@ public class JsonElementComparer
     {
         if (obj1.ValueKind == JsonValueKind.String && obj2.ValueKind == JsonValueKind.String)
         {
-            string string1 = obj1.GetString().Trim();
-            string string2 = obj2.GetString().Trim();
+            string? string1 = obj1.GetString();
+            string? string2 = obj2.GetString();
+            if (string.IsNullOrEmpty(string1) && string.IsNullOrEmpty(string2)) return true;
+            else if (string.IsNullOrEmpty(string1) || string.IsNullOrEmpty(string2)) return false;
             return string1.Equals(string2);
         }
         return false;

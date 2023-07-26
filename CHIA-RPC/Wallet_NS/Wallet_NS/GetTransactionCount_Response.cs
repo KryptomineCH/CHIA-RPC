@@ -11,7 +11,13 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class GetTransactionCount_Response : ResponseTemplate<GetTransactionCount_Response>
     {
-        public ulong count { get; set; }
-        public ulong wallet_id { get; set; }
+        /// <summary>
+        /// the count of transactions made
+        /// </summary>
+        public ulong? count { get; set; }
+        /// <summary>
+        /// the wallet for which the transactions count should be fetched
+        /// </summary>
+        public ulong? wallet_id { get; set; }
     }
 }

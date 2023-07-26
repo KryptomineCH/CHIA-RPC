@@ -17,6 +17,9 @@ namespace CHIA_RPC.General_NS
     /// </remarks>
     public class GetCoinRecords_Response : ResponseTemplate<GetCoinRecords_Response>
     {
-        public CoinRecord[] coin_records { get; set; }
+        /// <summary>
+        /// It provides key information about coins, including if it has been spent, when it was confirmed, and when it was spent.
+        /// </summary>
+        public CoinRecord[]? coin_records { get; set; }
     }
 }

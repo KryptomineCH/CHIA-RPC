@@ -15,11 +15,11 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Gets or sets the list of coin transactions that represent the additions in the block.
         /// </summary>
-        public CoinTransaction[] additions { get; set; }
+        public CoinTransaction[]? additions { get; set; }
 
         /// <summary>
         /// Gets or sets the list of coin transactions that represent the removals in the block.
         /// </summary>
-        public CoinTransaction[] removals { get; set; }
+        public CoinTransaction[]? removals { get; set; }
     }
 }

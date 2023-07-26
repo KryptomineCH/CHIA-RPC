@@ -10,10 +10,10 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// An abstract class is a class that cannot be instantiated on its own, but instead is meant to be used as a base class for other classes. 
     /// </remarks>
     /// <typeparam name="T"> 
-    /// this constraint ensures that the T type parameter represents a class that inherits from the RPCTemplate<T> base class. 
+    /// this constraint ensures that the T type parameter represents a class that inherits from the RPCTemplate T base class. 
     /// This is known as a recursive type constraint, because it constrains the type parameter to be related to the base class in a recursive way.
     /// By using this recursive type constraint, 
-    /// you can ensure that any derived classes of RPCTemplate<T> can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
+    /// you can ensure that any derived classes of RPCTemplate T can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
     public abstract class RPCTemplate<T> where T : RPCTemplate<T>, new()
     {
@@ -87,7 +87,8 @@ namespace CHIA_RPC.HelperFunctions_NS
             var options = new JsonSerializerOptions
             {
                 WriteIndented = false,
-                IgnoreNullValues = true
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+                //IgnoreNullValues = true
             };
 
             return JsonSerializer.Serialize(this as T, options);

@@ -16,7 +16,11 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The created Data Store ID
         /// </summary>
-        public string[] store_ids { get; set; }
+        public string[]? store_ids { get; set; }
+        /// <summary>
+        /// converts this response to a ID_RPC
+        /// </summary>
+        /// <returns></returns>
         public ID_RPC GetID_RPC (int index = 0)
         {
             if (store_ids == null) throw new NullReferenceException("the response contains no store ids!");
@@ -32,8 +36,17 @@ namespace CHIA_RPC.Datalayer_NS
         {
             return response.GetID_RPC();
         }
+        /// <summary>
+        /// converts this response to a GetRoots_RPC
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
         public GetRoots_RPC ToGetRoots_RPC()
         {
+            if (store_ids == null)
+            {
+                throw new NullReferenceException(nameof(store_ids));
+            }
             GetRoots_RPC rpc = new GetRoots_RPC()
             {
                 ids = (string[])store_ids.Clone()

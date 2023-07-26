@@ -20,7 +20,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// <param name="num_of_new_blocks">The number of blocks to add. Default is 1.</param>
         /// <param name="revert_all_blocks">Boolean, set to true to fork all blocks. Default is false.</param>
         /// <param name="random_seed">String used to randomize the seed, which will differentiate reorgs.</param>
-        public ReorgBlocks_RPC(ulong? num_of_blocks_to_rev = null, ulong? num_of_new_blocks = null, bool? revert_all_blocks = null, string random_seed = null)
+        public ReorgBlocks_RPC(ulong? num_of_blocks_to_rev = null, ulong? num_of_new_blocks = null, bool? revert_all_blocks = null, string? random_seed = null)
         {
             this.num_of_blocks_to_rev = num_of_blocks_to_rev;
             this.num_of_new_blocks = num_of_new_blocks;
@@ -50,6 +50,6 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// String used to randomize the seed, which will differentiate reorgs.
         /// </summary>
         /// <remarks>optional</remarks>
-        public string random_seed { get; set; }
+        public string? random_seed { get; set; }
     }
 }

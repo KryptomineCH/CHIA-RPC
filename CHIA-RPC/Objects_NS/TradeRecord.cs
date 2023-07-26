@@ -22,47 +22,47 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// An array of coins involved in the trade
         /// </summary>
-        public Coin[] coins_of_interest { get; set; }
+        public Coin[]? coins_of_interest { get; set; }
 
         /// <summary>
         /// The index at which the trade was confirmed
         /// </summary>
-        public ulong confirmed_at_index { get; set; }
+        public ulong? confirmed_at_index { get; set; }
 
         /// <summary>
         /// The time when the trade was created
         /// </summary>
-        public ulong created_at_time { get; set; }
+        public ulong? created_at_time { get; set; }
 
         /// <summary>
         /// Indicates whether the trade is the user's offer
         /// </summary>
-        public bool is_my_offer { get; set; }
+        public bool? is_my_offer { get; set; }
 
         /// <summary>
         /// A dictionary of pending offers
         /// </summary>
-        public Dictionary<string, long> pending { get; set; }
+        public Dictionary<string, long>? pending { get; set; }
 
         /// <summary>
         /// The amount sent in the trade
         /// </summary>
-        public ulong sent { get; set; }
+        public ulong? sent { get; set; }
 
         /// <summary>
         /// The list of addresses the trade was sent to
         /// </summary>
-        public string[] sent_to { get; set; }
+        public string[]? sent_to { get; set; }
 
         /// <summary>
         /// The current status of the trade
         /// </summary>
-        public string status { get; set; }
+        public string? status { get; set; }
 
         /// <summary>
         /// A summary of the trade
         /// </summary>
-        public dynamic summary { get; set; }
+        public dynamic? summary { get; set; }
 
         /// <summary>
         /// The taken offer for the trade (null if not taken)
@@ -72,7 +72,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The unique identifier of the trade
         /// </summary>
-        public string trade_id { get; set; }
+        public string? trade_id { get; set; }
     }
 
 }

@@ -18,7 +18,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// An array of transactions returned in the response.
         /// </summary>
-        public Transaction_DictMemos[] transactions { get; set; }
+        public Transaction_DictMemos[]? transactions { get; set; }
     }
     /// <summary>
     /// Add a new on chain message for a specific singleton
@@ -64,13 +64,13 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The launcher ID of the DataLayer wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// A list of URLs to be used for the mirror
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] urls { get; set; }
+        public string[]? urls { get; set; }
 
         /// <summary>
         /// The value of the mirror (in mojos) to spend to create the mirror. In theory, mirrors with a higher amount will be prioritized

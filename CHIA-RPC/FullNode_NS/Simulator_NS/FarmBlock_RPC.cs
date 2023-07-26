@@ -14,7 +14,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// <summary>
         /// The new peak height after farming.
         /// </summary>
-        public ulong new_peak_height { get; set; }
+        public ulong? new_peak_height { get; set; }
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// The address to use to farm the block.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string address { get; set; }
+        public string? address { get; set; }
 
         /// <summary>
         /// Set to True to farm a transaction block (i.e., farm new blocks until a tx block is farmed);

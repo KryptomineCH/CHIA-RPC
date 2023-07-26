@@ -16,11 +16,11 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// chia adress, eg <br/>
         /// xch1jxe8yfq8xem0e8ty5dq9hp86ududys96n6ugy2q4fextr0pplw9qwpfru9
         /// </summary>
-        public string address { get; set; }
+        public string? address { get; set; }
         /// <summary>
         /// the wallet number which this request was made for (eg. 2)
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
     }
     /// <summary>
     /// Get the next address in the HD tree, with the option to show the latest address
@@ -66,11 +66,11 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// the wallet number of the wallet in the chia client (eg. 2)
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// specifies if a new address should be generated or the last one used
         /// </summary>
-        public bool new_address { get; set; } = false;
+        public bool? new_address { get; set; } = false;
         /// <summary>
         /// Implicit conversion from WalletID_RPC to DidID_RPC.
         /// </summary>

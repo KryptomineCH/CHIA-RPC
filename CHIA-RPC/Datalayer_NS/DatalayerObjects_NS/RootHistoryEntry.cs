@@ -11,16 +11,16 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Confirmation status
         /// </summary>
-        public bool confirmed { get; set; }
+        public bool? confirmed { get; set; }
 
         /// <summary>
         /// Root hash value
         /// </summary>
-        public string root_hash { get; set; }
+        public string? root_hash { get; set; }
 
         /// <summary>
         /// Timestamp of root hash
         /// </summary>
-        public ulong timestamp { get; set; }
+        public ulong? timestamp { get; set; }
     }
 }

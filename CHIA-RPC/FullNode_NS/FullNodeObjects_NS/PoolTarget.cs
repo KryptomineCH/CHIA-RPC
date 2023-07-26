@@ -11,11 +11,11 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Gets or sets the maximum height.
         /// </summary>
-        public ulong max_height { get; set; }
+        public ulong? max_height { get; set; }
 
         /// <summary>
         /// Gets or sets the puzzle hash.
         /// </summary>
-        public string puzzle_hash { get; set; }
+        public string? puzzle_hash { get; set; }
     }
 }

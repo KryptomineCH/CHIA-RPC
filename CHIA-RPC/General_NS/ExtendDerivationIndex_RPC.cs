@@ -32,7 +32,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// used for a wide variety of lookup and selection operations
         /// </summary>
-        /// <param name="index">index is a common value used for data lookups</param>
+        /// <param name="response">index is a common value used for data lookups</param>
         public Index_RPC(Index_Response response)
         {
             this.index = response.index;

@@ -23,7 +23,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <summary>
         /// Dictionary to hold key-value pairs where key is the NFT coin id, and value is list of TradeData
         /// </summary>
-        public Dictionary<string, TradeData[]> NFTTrade { get; set; }
+        public Dictionary<string, TradeData[]>? NFTTrade { get; set; }
     }
     /// <summary>
     /// Calculates the correct royalty payments for given one or more NFTs to be exchanged for one or more fungible assets.<br/>
@@ -56,13 +56,13 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// A list of NFTs for which to calculate royalties.
         /// If this parameter is not included, then nothing will be returned.
         /// </summary>
-        public RoyaltyAsset[] royalty_assets { get; set; }
+        public RoyaltyAsset[]? royalty_assets { get; set; }
 
         /// <summary>
         /// The assets against which to calculate royalties.
         /// If this parameter is not included, no royalties will be returned.
         /// Note that no royalties are calculated for NFT:NFT trades, so NFT assets should not be included here.
         /// </summary>
-        public FungibleAsset[] fungible_assets { get; set; }
+        public FungibleAsset[]? fungible_assets { get; set; }
     }
 }

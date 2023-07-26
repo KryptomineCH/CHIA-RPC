@@ -26,6 +26,6 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// Set to delete notifications only from the specified IDs. [Default: delete from all IDs]
         /// </summary>
         /// <remarks>optional</remarks>
-        public string[] ids { get; set; }
+        public string[]? ids { get; set; }
     }
 }

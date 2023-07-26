@@ -50,11 +50,11 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// the id of the wallet which should be updated
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// The name which should be given to the did wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string name { get; set; }
+        public string? name { get; set; }
     }
 }

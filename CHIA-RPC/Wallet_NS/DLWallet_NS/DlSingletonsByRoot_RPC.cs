@@ -16,7 +16,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// List of singleton records that contain the specified root.
         /// </summary>
-        public Singleton[] singletons { get; set; }
+        public Singleton[]? singletons { get; set; }
     }
     /// <summary>
     /// Request to get the singleton records that contain the specified root.
@@ -44,12 +44,12 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// The root hash of an existing data store.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string root { get; set; }
+        public string? root { get; set; }
     }
 }

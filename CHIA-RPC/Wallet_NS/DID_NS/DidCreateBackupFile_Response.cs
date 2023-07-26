@@ -14,12 +14,12 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// Backup data of a DID wallet's metadata
         /// </summary>
-        public string backup_data { get; set; }
+        public string? backup_data { get; set; }
 
         /// <summary>
         /// Wallet ID
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
     }
 
 }

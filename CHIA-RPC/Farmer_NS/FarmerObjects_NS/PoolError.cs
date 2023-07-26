@@ -11,10 +11,10 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// The error code.
         /// </summary>
-        public uint error_code { get; set; }
+        public uint? error_code { get; set; }
         /// <summary>
         /// The error message.
         /// </summary>
-        public string error_message { get; set; }
+        public string? error_message { get; set; }
     }
 }

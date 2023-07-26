@@ -6,16 +6,27 @@ using System.Text.Json.Serialization;
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
     /// <summary>
-    /// a notification to a specified puzzle hash
+    /// Represents the response to a notification sent to a specified puzzle hash.
     /// </summary>
     /// <remarks>
-    /// <see href="https://docs.chia.net/wallet-rpc/#send_notification"/><br/><br/>
-    /// Uses:<br/><see cref="SendNotification_RPC"/>
+    /// This class is used to deserialize the response of the 'send_notification' RPC call.
+    /// It contains a property that represents a transaction with associated memos.
+    /// <see cref="SendNotification_RPC"/> is used to perform the RPC call.
+    /// For more information, see <see href="https://docs.chia.net/wallet-rpc/#send_notification"/>.
     /// </remarks>
     public class SendNotification_Response : ResponseTemplate<SendNotification_Response>
     {
-        public Transaction_DictMemos tx { get; set; }
+        /// <summary>
+        /// The transaction associated with the notification, including any memos.
+        /// </summary>
+        /// <remarks>
+        /// The 'tx' property in the JSON response corresponds to this property. If the transaction was successful, it 
+        /// will contain information about the transaction. If the transaction was unsuccessful or hasn't been completed, 
+        /// it may be null.
+        /// </remarks>
+        public Transaction_DictMemos? tx { get; set; }
     }
+
     /// <summary>
     /// Send a notification to a specified puzzle hash
     /// </summary>
@@ -60,12 +71,12 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The puzzle hash you would like to send a message to
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string target { get; set; }
+        public string? target { get; set; }
         /// <summary>
         /// The hex-encoded message you would like to send
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string message { get; set; }
+        public string? message { get; set; }
         /// <summary>
         /// The number of mojos to include with this message
         /// </summary>

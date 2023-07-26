@@ -62,12 +62,12 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// the id of the wallet which should be updated
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// The new metadata
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public Dictionary<string, object> metadata { get; set; }
+        public Dictionary<string, object>? metadata { get; set; }
         /// <summary>
         /// An optional blockchain fee, in mojos
         /// </summary>

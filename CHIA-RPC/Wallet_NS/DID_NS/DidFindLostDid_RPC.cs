@@ -14,7 +14,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The latest coin ID of the recovered DID wallet.
         /// </summary>
-        public string latest_coin_id { get; set; }
+        public string? latest_coin_id { get; set; }
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// The DID ID, launcher ID, or latest coin ID of the DID you want to recover. The most time-efficient of these is the latest coin ID.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// Override the recovery list hash of the DID. Only set this if your last DID spend updated the recovery list   

@@ -16,11 +16,11 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The transaction object.
         /// </summary>
-        public DID_Transaction transaction { get; set; }
+        public DID_Transaction? transaction { get; set; }
         /// <summary>
         /// the unique identifier of the transaction
         /// </summary>
-        public string transaction_id { get; set; }
+        public string? transaction_id { get; set; }
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// The address of the inner puzzle to which to transfer the DID
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string inner_address { get; set; }
+        public string? inner_address { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos

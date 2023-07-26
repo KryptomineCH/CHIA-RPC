@@ -15,7 +15,7 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The spend bundle to send a message.
         /// </summary>
-        public SpendBundle spend_bundle { get; set; }
+        public SpendBundle? spend_bundle { get; set; }
     }
     /// <summary>
     /// Represents the request for the `did_message_spend` RPC.

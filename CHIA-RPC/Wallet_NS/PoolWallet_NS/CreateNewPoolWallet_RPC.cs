@@ -36,12 +36,12 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// The type of wallet to create. Must be one of cat_wallet, did_wallet, nft_wallet, or pool_wallet
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string wallet_type { get; set; } = "pool_wallet";
+        public string? wallet_type { get; set; } = "pool_wallet";
         /// <summary>
         /// Must be either new of recovery. However, recovery has not been implemented, so currently (version 1.6) it will automatically fail
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string mode { get; set; } = "new";
+        public string? mode { get; set; } = "new";
         /// <summary>
         /// This info should be sent from the daemon. 
         /// <list type="bullet">
@@ -53,16 +53,16 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// </list>
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string initial_target_state { get; set; }
+        public string? initial_target_state { get; set; }
         /// <summary>
         /// *Required if mode is new. This is the puzzle hash to which payouts will go
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string p2_singleton_delayed_ph { get; set; }
+        public string? p2_singleton_delayed_ph { get; set; }
         /// <summary>
         /// The time (in seconds) to delay payments [Default: None ]
         /// </summary>
-        public string p2_singleton_delay_time { get; set; }
+        public string? p2_singleton_delay_time { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos

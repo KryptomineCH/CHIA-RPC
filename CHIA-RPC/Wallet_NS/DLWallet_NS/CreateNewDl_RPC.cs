@@ -15,12 +15,12 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// The launcher ID of the created wallet.
         /// </summary>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// The list of transactions associated with the wallet.
         /// </summary>
-        public Transaction_DictMemos[] transactions { get; set; }
+        public Transaction_DictMemos[]? transactions { get; set; }
     }
     /// <summary>
     /// Create a new DataLayer wallet
@@ -48,7 +48,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The root hash of an existing data store
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string root { get; set; }
+        public string? root { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos

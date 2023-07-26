@@ -15,7 +15,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// please refer to the original documentation at 
         /// </summary>
         /// <remarks>https://docs.chia.net/datalayer-rpc#get_ancestors</remarks>
-        public object[] ancestors { get; set; }
+        public object[]? ancestors { get; set; }
     }
     /// <summary>
     /// Create a data store. Triggers a Chia transaction
@@ -42,11 +42,11 @@ namespace CHIA_RPC.Datalayer_NS
         /// Return all ancestors of a given hash
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { set; get; }
+        public string? id { set; get; }
         /// <summary>
         /// The hash from which to display ancestors
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string hash { set; get; }
+        public string? hash { set; get; }
     }
 }

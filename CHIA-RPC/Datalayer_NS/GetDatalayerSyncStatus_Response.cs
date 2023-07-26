@@ -15,6 +15,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The current sync status
         /// </summary>
-        public DataStoreSyncStatus sync_status { get; set; }
+        public DataStoreSyncStatus? sync_status { get; set; }
     }
 }

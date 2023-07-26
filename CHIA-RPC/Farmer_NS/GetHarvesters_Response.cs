@@ -15,6 +15,6 @@ namespace CHIA_RPC.Farmer_NS
         /// <summary>
         /// An array of all harvesters in the owned network
         /// </summary>
-        public Harvester[] harvesters { get; set; }
+        public Harvester[]? harvesters { get; set; }
     }
 }

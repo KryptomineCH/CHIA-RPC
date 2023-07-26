@@ -12,11 +12,14 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     /// </remarks>
     public class NftGetNfts_Response : ResponseTemplate<NftGetNfts_Response>
     {
-        public Nft[] nft_list { get; set; }
+        /// <summary>
+        /// a list containing the nft informations according to the Filter
+        /// </summary>
+        public Nft[]? nft_list { get; set; }
         /// <summary>
         /// the wallet which this nft belongs to
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
     }
     /// <summary>
     /// Show all NFTs in a given wallet
@@ -48,7 +51,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// The Wallet ID from which to retrieve the NFTs
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
 
         /// <summary>
         /// The NFT index at which to start retrieving the NFTs [Default: 0]

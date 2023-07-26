@@ -16,7 +16,6 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// Cancel all offers, with the option to cancel only offers for a specific asset class
         /// </summary>
-        /// </summary>
         /// <param name="secure">Set to true to cancel on the blockchain by spending the coin(s) being offered; set to false to cancel in the wallet only. </param>
         /// <param name="batch_fee">The fee, in mojos, to add to each batch cancellation. [Default: 0]</param>
         /// <param name="batch_size">The number of offers to cancel in each batch. [Default: 5]</param>

@@ -29,7 +29,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// The offer, in JSON format (the output from the make_offer RPC). Includes Maker and Taker information
         /// </summary>
         /// <remarks>mandartory</remarks>
-        public string offer { get; set; }
+        public string? offer { get; set; }
 
         /// <summary>
         /// Set the fee for the offer, in mojos

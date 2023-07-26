@@ -15,7 +15,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// <summary>
         /// Represents a fee transaction.
         /// </summary>
-        public Transaction_StringMemos fee_transaction { get; set; }
+        public Transaction_StringMemos? fee_transaction { get; set; }
 
         /// <summary>
         /// Represents the total fee.
@@ -25,7 +25,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// <summary>
         /// Represents a transaction.
         /// </summary>
-        public Transaction_StringMemos transaction { get; set; }
+        public Transaction_StringMemos? transaction { get; set; }
     }
     /// <summary>
     /// Join a pool
@@ -64,12 +64,12 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// This is the target of where rewards will be sent to from the singleton. Controlled by the pool
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string target_puzzlehash { get; set; }
+        public string? target_puzzlehash { get; set; }
         /// <summary>
         /// The URL of the pool to join
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string pool_url { get; set; }
+        public string? pool_url { get; set; }
         /// <summary>
         /// The number of blocks required to wait when attempting to leave the pool
         /// </summary>

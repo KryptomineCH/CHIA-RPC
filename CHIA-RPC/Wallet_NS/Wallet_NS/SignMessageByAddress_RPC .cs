@@ -12,8 +12,22 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class SignMessage_Response : ResponseTemplate<SignMessage_Response>
     {
-        public string pubkey { get; set; }
-        public string signature { get; set; }
+        /// <summary>
+        /// The `pubkey` property refers to the public key associated with the XCH address used to sign the message. 
+        /// The public key is derived from the private key of the XCH address and it is used to verify the digital signature of a message. 
+        /// It does not reveal any sensitive information and can be safely shared with others. 
+        /// </summary>
+        public string? pubkey { get; set; }
+
+        /// <summary>
+        /// The `signature` property contains the digital signature of the message. The digital signature is created by 
+        /// using the private key associated with the XCH address. This process guarantees that the message was signed 
+        /// by the owner of the XCH address, as the signature can be verified using the associated public key. 
+        /// The digital signature is unique for every message, meaning that even a small change in the message will result in a different signature. 
+        /// It is safe to share the digital signature with others as it does not reveal any sensitive information. 
+        /// </summary>
+        public string? signature { get; set; }
+
     }
     /// <summary>
     /// The sign_message_by_address function is useful for creating a digital signature of a message using a specific XCH address, without having to create an on-chain transaction. <br/>
@@ -43,11 +57,11 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The address to use for signing.Must possess the key for this address
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string address { get; set; }
+        public string? address { get; set; }
         /// <summary>
         /// The message to include with the signature
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string message { get; set; }
+        public string? message { get; set; }
     }
 }

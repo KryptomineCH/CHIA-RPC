@@ -16,6 +16,6 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// An array of mirrors returned in the response.
         /// </summary>
-        public Mirror[] mirrors { get; set; }
+        public Mirror[]? mirrors { get; set; }
     }
 }

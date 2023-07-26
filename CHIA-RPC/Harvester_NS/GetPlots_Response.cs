@@ -16,16 +16,16 @@ namespace CHIA_RPC.Harvester_NS
         /// <summary>
         /// The list of filenames that failed to open.
         /// </summary>
-        public string[] failed_to_open_filenames { get; set; }
+        public string[]? failed_to_open_filenames { get; set; }
 
         /// <summary>
         /// The list of filenames that were not found.
         /// </summary>
-        public string[] not_found_filenames { get; set; }
+        public string[]? not_found_filenames { get; set; }
 
         /// <summary>
         /// the list of plots which are managed by the Harvester
         /// </summary>
-        public HarvesterPlotInfo[] plots { get; set; }
+        public HarvesterPlotInfo[]? plots { get; set; }
     }
 }

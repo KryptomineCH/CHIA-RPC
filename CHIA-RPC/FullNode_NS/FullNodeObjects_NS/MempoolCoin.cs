@@ -4,20 +4,32 @@ using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
 {
+    /// <summary>
+    /// Represents a coin in the memory pool (mempool) of a Chia blockchain network node.
+    /// </summary>
+    /// <remarks>
+    /// The memory pool (or mempool) is a collection of transactions that are waiting to be confirmed by the network.
+    /// This class encapsulates the necessary properties for a coin in the mempool, including its value, memo, and associated puzzle hash.
+    /// </remarks>
     public class MempoolCoin : ObjectTemplate<MempoolCoin>
     {
         /// <summary>
-        /// the coins value in mojos
+        /// The value of the coin in smallest units of the currency, i.e., mojos.
         /// </summary>
         /// <remarks>
-        /// used by full node and wallet node<br/>
+        /// This property is used by both full nodes and wallet nodes.
+        /// Refer to Chia's full node RPC documentation for more details:<br/>
         /// <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/>
         /// </remarks>
         public ulong amount { get; set; }
+
         /// <summary>
-        /// the coins value in xch
+        /// The value of the coin in the base units of the currency, i.e., XCH (Chia).
         /// </summary>
-        /// <remarks>This value is derived from the mojos amount</remarks>
+        /// <remarks>
+        /// This value is derived from the 'amount' property, which is expressed in mojos.
+        /// It provides a more user-friendly representation of the coin's value.
+        /// </remarks>
         [JsonIgnore]
         public decimal amount_in_xch
         {
@@ -26,15 +38,22 @@ namespace CHIA_RPC.Objects_NS
         }
 
         /// <summary>
-        /// The memos
+        /// The memo associated with the coin.
         /// </summary>
-        /// <remarks>if first value is a 32 bytes long, we treat it as a hint</remarks>
-        public string memos { get; set; }
+        /// <remarks>
+        /// Memos are optional metadata associated with a coin.
+        /// If the first value is a 32 bytes long, it is treated as a hint.
+        /// </remarks>
+        public string? memos { get; set; }
 
         /// <summary>
-        /// the puzzle hash of this coin
+        /// The puzzle hash of this coin.
         /// </summary>
-        /// <remarks>When in the Mempool and for creation, the own puzzhash can be unknown (since the coin is yet to be minted)</remarks>
-        public string puzzle_hash { get; set; }
+        /// <remarks>
+        /// Puzzle hashes are part of the Chia protocol and are associated with coin creation and spending.
+        /// When a coin is in the mempool or in the process of creation, its own puzzle hash can be unknown because the coin is yet to be minted.
+        /// </remarks>
+        public string? puzzle_hash { get; set; }
     }
+
 }

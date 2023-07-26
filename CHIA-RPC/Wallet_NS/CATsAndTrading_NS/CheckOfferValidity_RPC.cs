@@ -16,7 +16,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// the offer ID
         /// </summary>
-        public string id { get; set; }
+        public string? id { get; set; }
         /// <summary>
         /// Indicating whether the offer is valid.<br/><br/>
         /// The offer is considered valid if it is in any of the following states:<br/>
@@ -24,7 +24,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// The offer is no longer valid if it is in any of the following states:<br/>
         /// CANCELLED, CONFIRMED, FAILED.
         /// </summary>
-        public bool valid { get; set; }
+        public bool? valid { get; set; }
     }
 
 
@@ -59,7 +59,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// The contents of the offer to check.
         /// </summary>
-        public string offer { get; set; }
+        public string? offer { get; set; }
     }
 
 }

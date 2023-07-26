@@ -24,7 +24,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// height RPC containt a specific height in the blockchain (point in time) for lookups
         /// </summary>
-        /// <param name="height">The height.</param>
+        /// <param name="heightInfo">The height.</param>
         public Height_RPC(GetHeightInfo_Response heightInfo)
         {
             this.height = heightInfo.height;
@@ -32,7 +32,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// height RPC containt a specific height in the blockchain (point in time) for lookups
         /// </summary>
-        /// <param name="height">The height.</param>
+        /// <param name="heightInfo">The height.</param>
         public Height_RPC(NewPeakHeight_Response heightInfo)
         {
             if (heightInfo.new_peak_height == null) throw new InvalidOperationException("NewPeakHeight_Response.new_peak_height == null!");

@@ -13,13 +13,16 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
     /// </remarks>
     public class DlUpdateRoot_Response : ResponseTemplate<DlUpdateRoot_Response>
     {
-        public Transaction_DictMemos tx_record { get; set; }
+        /// <summary>
+        /// datastore transaction summary
+        /// </summary>
+        public Transaction_DictMemos? tx_record { get; set; }
     }
     /// <summary>
     /// Represents a JSON RPC request to update the root of a data store.
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc#dl_update_root"/></remarks>
-    /// <returns><see cref="General_NS.Tx"/></returns>
+    /// <returns><see cref="DlUpdateRoot_RPC"/></returns>
     public class DlUpdateRoot_RPC : RPCTemplate<DlUpdateRoot_RPC>
     {
         /// <summary>
@@ -43,13 +46,13 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// The new root hash of the data store.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string new_root { get; set; }
+        public string? new_root { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos.

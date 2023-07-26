@@ -15,27 +15,27 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// information about theharvester host (name, address, port)
         /// </summary>
-        public HarvesterConnection connection { get; set; }
+        public HarvesterConnection? connection { get; set; }
         /// <summary>
         /// a list with duplicate plots (delete duplicates please)
         /// </summary>
-        public object[] duplicates { get; set; }
+        public object[]? duplicates { get; set; }
         /// <summary>
         /// a list with plots which could not be read
         /// </summary>
-        public object[] failed_to_open_filenames { get; set; }
+        public object[]? failed_to_open_filenames { get; set; }
         /// <summary>
         /// the last time when the harvester node got synced
         /// </summary>
-        public double last_sync_time { get; set; }
+        public double? last_sync_time { get; set; }
         /// <summary>
         /// a list with plots without key
         /// </summary>
-        public object[] no_key_filenames { get; set; }
+        public object[]? no_key_filenames { get; set; }
         /// <summary>
         /// a list with proper, valid plots
         /// </summary>
-        public HarvesterPlotInfo[] plots { get; set; }
+        public HarvesterPlotInfo[]? plots { get; set; }
         /// <summary>
         /// bool identifying if the harvester node was synchronizing or not at the time of request
         /// </summary>
@@ -43,6 +43,6 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// the total size of plots on this harvester node
         /// </summary>
-        public ulong total_plot_size { get; set; }
+        public ulong? total_plot_size { get; set; }
     }
 }

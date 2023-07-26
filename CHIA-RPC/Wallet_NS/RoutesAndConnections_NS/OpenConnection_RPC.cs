@@ -27,12 +27,12 @@ namespace CHIA_RPC.Wallet_NS.RoutesAndConnections_NS
         /// <summary>
         /// The IP or URL of the node to connect to.
         /// </summary>
-        public string host { get; set; }
+        public string? host { get; set; }
 
         /// <summary>
         /// The port through which to connect to the remote node.
         /// </summary>
-        public ulong port { get; set; }
+        public ulong? port { get; set; }
     }
 
 }

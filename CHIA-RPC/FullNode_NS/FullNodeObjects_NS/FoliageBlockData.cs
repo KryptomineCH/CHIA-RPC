@@ -11,26 +11,26 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Gets or sets the extension data.
         /// </summary>
-        public string extension_data { get; set; }
+        public string? extension_data { get; set; }
 
         /// <summary>
         /// Gets or sets the farmer reward puzzle hash.
         /// </summary>
-        public string farmer_reward_puzzle_hash { get; set; }
+        public string? farmer_reward_puzzle_hash { get; set; }
 
         /// <summary>
         /// Gets or sets the pool signature.
         /// </summary>
-        public string pool_signature { get; set; }
+        public string? pool_signature { get; set; }
 
         /// <summary>
         /// Gets or sets the pool target.
         /// </summary>
-        public PoolTarget pool_target { get; set; }
+        public PoolTarget? pool_target { get; set; }
 
         /// <summary>
         /// Gets or sets the unfinished reward block hash.
         /// </summary>
-        public string unfinished_reward_block_hash { get; set; }
+        public string? unfinished_reward_block_hash { get; set; }
     }
 }

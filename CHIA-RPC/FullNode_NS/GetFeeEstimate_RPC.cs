@@ -16,20 +16,21 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Current fee rate in mojos per byte.
         /// </summary>
-        public decimal current_fee_rate { get; set; }
+        public decimal? current_fee_rate { get; set; }
 
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
         /// <remarks>in mojos(!!!) You need to convert this to ulong!</remarks>
-        public decimal[] estimates { get; set; }
+        public decimal[]? estimates { get; set; }
         /// <summary>
         /// Estimated fee for each targeted time in seconds.
         /// </summary>
         /// <remarks>in mojos</remarks>
         [JsonIgnore]
-        public decimal[] estimates_in_xch { get
+        public decimal[]? estimates_in_xch { get
             {
+                if (estimates == null) return null;
                 List<decimal> result = new List<decimal>();
                 foreach(decimal fee in estimates)
                 {
@@ -42,92 +43,93 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the actual fee rate of the last block
         /// </summary>
-        public decimal fee_rate_last_block { get; set; }
+        public decimal? fee_rate_last_block { get; set; }
 
         /// <summary>
         /// The accumulated fees of the last block in mojos
         /// </summary>
-        public ulong fees_last_block { get; set; }
+        public ulong? fees_last_block { get; set; }
         /// <summary>
         /// The accumulated fees of the last block in mojos
         /// </summary>
         [JsonIgnore]
-        public decimal fees_last_block_in_xch
+        public decimal? fees_last_block_in_xch
         {
             get { return fees_last_block / GlobalVar.OneChiaInMojos; }
-            set { fees_last_block = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { fees_last_block = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
 
         /// <summary>
         /// Whether or not the full node is synced.
         /// </summary>
-        public bool full_node_synced { get; set; }
+        public bool? full_node_synced { get; set; }
 
         /// <summary>
         /// the total cost of the last block
         /// </summary>
-        public ulong last_block_cost { get; set; }
+        public ulong? last_block_cost { get; set; }
 
         /// <summary>
         /// Timestamp in seconds of the last peak.
         /// </summary>
-        public ulong last_peak_timestamp { get; set; }
+        public ulong? last_peak_timestamp { get; set; }
 
         /// <summary>
         /// the mempool fees in mojos
         /// </summary>
-        public ulong mempool_fees { get; set; }
+        public ulong? mempool_fees { get; set; }
         /// <summary>
         /// the mempool fees in xch
         /// </summary>
         [JsonIgnore]
-        public decimal mempool_fees_in_xch
+        public decimal? mempool_fees_in_xch
         {
             get { return mempool_fees / GlobalVar.OneChiaInMojos; }
-            set { mempool_fees = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { mempool_fees = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
 
         /// <summary>
         /// the block height of the last block
         /// </summary>
-        public ulong last_tx_block_height { get; set; }
+        public ulong? last_tx_block_height { get; set; }
 
         /// <summary>
         /// Maximum size of the mempool in bytes.
         /// </summary>
-        public ulong mempool_max_size { get; set; }
+        public ulong? mempool_max_size { get; set; }
 
         /// <summary>
         /// Current size of the mempool in bytes.
         /// </summary>
-        public ulong mempool_size { get; set; }
+        public ulong? mempool_size { get; set; }
 
         /// <summary>
         /// The current UTC timestamp of the node.
         /// </summary>
-        public ulong node_time_utc { get; set; }
+        public ulong? node_time_utc { get; set; }
 
         /// <summary>
         /// the amount of block spends
         /// </summary>
-        public ulong num_spends { get; set; }
+        public ulong? num_spends { get; set; }
 
         /// <summary>
         /// The height of the last peak.
         /// </summary>
-        public ulong peak_height { get; set; }
+        public ulong? peak_height { get; set; }
 
         /// <summary>
         /// Targeted times for transaction inclusion, in seconds.
         /// </summary>
-        public ulong[] target_times { get; set; }
+        public ulong[]? target_times { get; set; }
         /// <summary>
         /// Targeted times for transaction inclusion
         /// </summary>
         [JsonIgnore]
-        public TimeSpan[] target_times_converted {
+        public TimeSpan[]? target_times_converted {
             get
             {
+                if (target_times == null) return null;
                 TimeSpan[] targets = new TimeSpan[target_times.Length];
                 for (int i = 0; i < target_times.Length; i++)
                 {
@@ -281,7 +283,7 @@ namespace CHIA_RPC.FullNode_NS
         /// An array of the targeted times for transaction inclusion, in seconds. 
         /// Each targeted time must be at least 0.
         /// </summary>
-        public ulong[] target_times { get; set; }
+        public ulong[]? target_times { get; set; }
         /// <summary>
         /// automatically converts a targettime into the rpc
         /// </summary>

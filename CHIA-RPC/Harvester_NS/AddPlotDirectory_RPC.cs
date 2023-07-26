@@ -33,6 +33,6 @@ namespace CHIA_RPC.Harvester_NS
         /// the directory which shold be added
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string dirname { get; set; }
+        public string? dirname { get; set; }
     }
 }

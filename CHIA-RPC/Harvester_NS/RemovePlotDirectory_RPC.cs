@@ -34,6 +34,6 @@ namespace CHIA_RPC.Harvester_NS
         /// The full path of the directory to remove
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string dirname { get; set; }
+        public string? dirname { get; set; }
     }
 }

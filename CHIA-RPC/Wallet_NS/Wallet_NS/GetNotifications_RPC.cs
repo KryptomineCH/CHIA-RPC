@@ -12,7 +12,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class GetNotifications_Response : ResponseTemplate<GetNotifications_Response>
     {
-        public Notification[] notifications { get; set; }
+        /// <summary>
+        /// contains infor about the notifications
+        /// </summary>
+        public Notification[]? notifications { get; set; }
     }
     /// <summary>
     /// Obtain current notifications

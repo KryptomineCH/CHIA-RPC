@@ -14,11 +14,10 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// all available keyvaluepairs
         /// </summary>
-        public DataStoreKeyValuePair[] keys_values { get; set; }
+        public DataStoreKeyValuePair[]? keys_values { get; set; }
         /// <summary>
         /// Converts the GetKeysValues_Response object to a Dictionary with hex-encoded keys and values.
         /// </summary>
-        /// <param name="response">The GetKeysValues_Response object to be converted.</param>
         /// <returns>A Dictionary with hex-encoded keys and values.</returns>
         public Dictionary<string, string> ToDictionary()
         {
@@ -28,7 +27,15 @@ namespace CHIA_RPC.Datalayer_NS
             {
                 foreach (DataStoreKeyValuePair kvp in keys_values)
                 {
-                    string key = kvp.key;
+                    if (kvp.value == null)
+                    {
+                        throw new NullReferenceException(nameof(kvp));
+                    }
+                    string? key = kvp.key;
+                    if (string.IsNullOrEmpty(key))
+                    {
+                        throw new NullReferenceException(nameof(key));
+                    }
                     if (key.StartsWith("0x")) key = key.Substring(2);
                     keyValuePairs.Add(key, kvp.value);
                 }
@@ -52,18 +59,24 @@ namespace CHIA_RPC.Datalayer_NS
     ///  <remarks><see href="https://docs.chia.net/datalayer-rpc/#get_keys_values"/></remarks>
     public class DataStoreKeyValuePair : ObjectTemplate<DataStoreKeyValuePair>
     {
-        public object atom { get; set; }
+        /// <summary>
+        /// Represents an 'atom' in the Chia space. This is a fundamental unit of data within a specific store, which can hold various types of data and participate in complex data structures.
+        /// </summary>
+        /// <value>
+        /// An object that can be of any data type, depending on the specific use-case in the Chia space.
+        /// </value>
+        public object? atom { get; set; }
         /// <summary>
         /// validation hash sum
         /// </summary>
-        public string hash { get; set; }
+        public string? hash { get; set; }
         /// <summary>
         /// the hex encoded key (unique identifier) of this keyvaluepair
         /// </summary>
-        public string key { get; set; }
+        public string? key { get; set; }
         /// <summary>
         /// the hex encoded value of this keyvaluepair
         /// </summary>
-        public string value { get; set; }
+        public string? value { get; set; }
     }
 }

@@ -32,21 +32,21 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The public key of the signature to verify
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string pubkey { get; set; }
+        public string? pubkey { get; set; }
         /// <summary>
         /// The message to verify
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string message { get; set; }
+        public string? message { get; set; }
         /// <summary>
         /// The signature to verify
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string signature { get; set; }
+        public string? signature { get; set; }
         /// <summary>
         /// The address, which must be derived from pubkey
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string address { get; set; }
+        public string? address { get; set; }
     }
 }

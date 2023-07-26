@@ -30,12 +30,12 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Gets or sets the coin ID.
         /// </summary>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// Gets or sets the launcher ID.
         /// </summary>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this mirror is ours.
@@ -45,6 +45,6 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Gets or sets the URLs.
         /// </summary>
-        public string[] urls { get; set; }
+        public string[]? urls { get; set; }
     }
 }

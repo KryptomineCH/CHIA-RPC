@@ -17,7 +17,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// A list of root hashes and timestamps
         /// </summary>
-        public RootHash[] root_hashes { get; set; }
+        public RootHash[]? root_hashes { get; set; }
     }
 
     /// <summary>
@@ -46,6 +46,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// A list of hexadecimal store IDs
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] ids { get; set; }
+        public string[]? ids { get; set; }
     }
 }

@@ -14,6 +14,6 @@ namespace CHIA_RPC.Wallet_NS.KeyManagement
         /// <summary>
         /// 24 word mnemonic passphrase for the wallet
         /// </summary>
-        public string[] mnemonic { get; set; }
+        public string[]? mnemonic { get; set; }
     }
 }

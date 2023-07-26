@@ -10,6 +10,6 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// The transaction ID
         /// </summary>
-        public string trade_id { get; set; }
+        public string? trade_id { get; set; }
     }
 }

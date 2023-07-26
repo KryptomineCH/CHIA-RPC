@@ -13,14 +13,29 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class GetTransaction_Response : ResponseTemplate<GetTransaction_Response>
     {
-        public Transaction_DictMemos transaction { get; set; }
-        public string transaction_id { get; set; }
+        /// <summary>
+        /// The 'Transaction_DictMemos' object that contains the details of the transaction.
+        /// This includes information such as the inputs, outputs, and other details of the transaction.
+        /// 'Transaction_DictMemos' is a dictionary that maps transaction details to their respective memo data.
+        /// </summary>
+        public Transaction_DictMemos? transaction { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the transaction.
+        /// This is a string that is generated when the transaction is created and is used to uniquely identify the transaction in the Chia network.
+        /// It can be used to look up the transaction, verify its existence, and check its status.
+        /// </summary>
+        public string? transaction_id { get; set; }
         /// <summary>
         /// converts this to a transaction id rpc which can be used to check the transaction status
         /// </summary>
         /// <param name="response"></param>
         public static implicit operator TransactionID_RPC(GetTransaction_Response response)
         {
+            if (response.transaction_id == null)
+            {
+                throw new NullReferenceException(nameof(response.transaction_id));
+            }
             return new TransactionID_RPC(response.transaction_id);
         }
     }
@@ -33,8 +48,14 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class GetTransactions_Response : ResponseTemplate<GetTransactions_Response>
     {
-        public Transaction_DictMemos[] transactions { get; set; }
-        public ulong wallet_id { get; set; }
+        /// <summary>
+        /// the transactions details
+        /// </summary>
+        public Transaction_DictMemos[]? transactions { get; set; }
+        /// <summary>
+        /// the wallet id where the transactions belong to
+        /// </summary>
+        public ulong? wallet_id { get; set; }
     }
     /// <summary>
     /// Represents a JSON RPC request for getting all transactions for a given wallet.
@@ -70,7 +91,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The Wallet ID of the wallet from which to obtain transactions.
         /// </summary>
         /// <remarks>Mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
 
         /// <summary>
         /// The sequence number of the first transaction to show. Default: 0.

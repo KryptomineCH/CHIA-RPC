@@ -15,7 +15,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// <summary>
         /// A list of coin records.
         /// </summary>
-        public CoinRecord[] coin_records { get; set; }
+        public CoinRecord[]? coin_records { get; set; }
     }
 
     /// <summary>

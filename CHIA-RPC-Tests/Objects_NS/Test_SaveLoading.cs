@@ -23,7 +23,8 @@ namespace CHIA_RPC_Tests.Objects_NS
             FileInfo file = new FileInfo("offerfileSaveLoadingTest.offerfile");
             if (file.Exists) file.Delete();
             offerFile.SaveObjectToFile(file);
-            OfferFile loadTest = OfferFile.LoadObjectFromFile(file);
+            OfferFile? loadTest = OfferFile.LoadObjectFromFile(file);
+            Assert.NotNull(loadTest);
             file.Delete();
             Assert.Equal(offerFile.offer, loadTest.offer);
             Assert.Equal(offerFile.error, loadTest.error);

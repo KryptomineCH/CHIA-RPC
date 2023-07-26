@@ -17,7 +17,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// Contains infomation about the wallet
         /// </summary>
-        public WalletBalanceInfo wallet_balance { get; set; }
+        public WalletBalanceInfo? wallet_balance { get; set; }
     }
     /// <summary>
     /// <see href="https://docs.chia.net/wallet-rpc#get_wallet_balance"/><br/><br/>

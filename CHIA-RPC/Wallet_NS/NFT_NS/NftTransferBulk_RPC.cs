@@ -33,13 +33,13 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// A list of coin IDs corresponding to the NFTs, along with the current wallet_ids. 
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public NftCoinIdAndWalletId[] nft_coin_list { get; set; }
+        public NftCoinIdAndWalletId[]? nft_coin_list { get; set; }
 
         /// <summary>
         /// The address to which to transfer the NFTs
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string target_address { get; set; }
+        public string? target_address { get; set; }
 
         /// <summary>
         /// An optional blockchain fee.

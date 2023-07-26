@@ -92,28 +92,28 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The wallet ID for the origin of the transaction.
         /// </summary>
         /// <remarks>mantatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
 
         /// <summary>
         /// The destination address.
         /// </summary>
         /// <remarks>mantatory</remarks>
-        public string address { get; set; }
+        public string? address { get; set; }
 
         /// <summary>
         /// The number of mojos to send.
         /// </summary>
         /// <remarks>mantatory</remarks>
-        public ulong amount { get; set; }
+        public ulong? amount { get; set; }
         /// <summary>
         /// The number of xch to send.
         /// </summary>
         /// <remarks>mantatory</remarks>
         [JsonIgnore]
-        public decimal amount_in_xch
+        public decimal? amount_in_xch
         {
             get { return amount / GlobalVar.OneChiaInMojos; }
-            set { amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
 
         /// <summary>
@@ -142,6 +142,6 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// A list of puzzle hashes and amounts to be included.
         /// </summary>
         /// <remarks>mantatory</remarks>
-        public string[] additions { get; set; }
+        public string[]? additions { get; set; }
     }
 }

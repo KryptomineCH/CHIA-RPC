@@ -10,12 +10,12 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS.DLWalletObjects_NS
         /// <summary>
         /// The coin ID.
         /// </summary>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// Whether the coin has been confirmed.
         /// </summary>
-        public bool confirmed { get; set; }
+        public bool? confirmed { get; set; }
 
         /// <summary>
         /// The height at which the coin was confirmed.
@@ -30,22 +30,22 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS.DLWalletObjects_NS
         /// <summary>
         /// The inner puzzle hash of the coin.
         /// </summary>
-        public string inner_puzzle_hash { get; set; }
+        public string? inner_puzzle_hash { get; set; }
 
         /// <summary>
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// The lineage proof of the coin.
         /// </summary>
-        public LineageProof lineage_proof { get; set; }
+        public LineageProof? lineage_proof { get; set; }
 
         /// <summary>
         /// The root of the data store.
         /// </summary>
-        public string root { get; set; }
+        public string? root { get; set; }
 
         /// <summary>
         /// The timestamp of the record.

@@ -29,7 +29,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The coin_id of the mirror to delete.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos.

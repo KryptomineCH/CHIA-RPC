@@ -20,7 +20,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// An array of the records returned.
         /// </summary>
-        public HistoryRecord[] history { get; set; }
+        public HistoryRecord[]? history { get; set; }
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// The first generation of singleton to show [Default: none].

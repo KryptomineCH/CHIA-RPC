@@ -10,15 +10,18 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// An abstract class is a class that cannot be instantiated on its own, but instead is meant to be used as a base class for other classes. 
     /// </remarks>
     /// <typeparam name="T"> 
-    /// this constraint ensures that the T type parameter represents a class that inherits from the ObjectTemplate<T> base class. 
+    /// This constraint ensures that the T type parameter represents a class that inherits from the ObjectTemplate&lt;T&gt; base class. 
     /// This is known as a recursive type constraint, because it constrains the type parameter to be related to the base class in a recursive way.
     /// By using this recursive type constraint, 
-    /// you can ensure that any derived classes of ObjectTemplate<T> can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
+    /// you can ensure that any derived classes of ObjectTemplate&lt;T&gt; can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
     public abstract class ObjectTemplate<T> where T : ObjectTemplate<T>, new()
     {
+        /// <summary>
+        /// The raw response of the server
+        /// </summary>
         [JsonIgnore]
-        public string RawContent { get; set; }
+        public string? RawContent { get; set; }
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
@@ -51,10 +54,10 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </remarks>
         /// <param name="filePath">The path to load the RPC request from.</param>
         /// <returns>The loaded RPC request.</returns>
-        public static T LoadObjectFromFile(string filePath)
+        public static T? LoadObjectFromFile(string filePath)
         {
             string extension = "." + typeof(T).Name.ToLower();
-            return FileManager.LoadObjectFromFile<T>(filePath, extension);
+            return FileManager.LoadObjectFromFile<T?>(filePath, extension);
         }
         /// <summary>
         /// Loads an RPC request from the specified file path.
@@ -64,7 +67,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </remarks>
         /// <param name="file">The path to load the RPC request from.</param>
         /// <returns>The loaded RPC request.</returns>
-        public static T LoadObjectFromFile(FileInfo file)
+        public static T? LoadObjectFromFile(FileInfo file)
         {
             return LoadObjectFromFile(file.FullName);
         }
@@ -74,14 +77,15 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="inputString">The json formatted string to load the RPC from.</param>
         /// <returns>The loaded RPC</returns>
-        public static T LoadObjectFromString(string inputString)
+        public static T? LoadObjectFromString(string inputString)
         {
-            if (inputString == "") return (T)Activator.CreateInstance(typeof(T));
+            if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
             var options = new JsonSerializerOptions();
             options.AllowTrailingCommas = true;
             options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
             options.Converters.Add(new BigIntegerConverter());
-            T result = JsonSerializer.Deserialize<T>(inputString);
+            T? result = JsonSerializer.Deserialize<T?>(inputString);
+            if (result == null) result = new T();
             result.RawContent = inputString;
             return result;
         }

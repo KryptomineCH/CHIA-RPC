@@ -15,6 +15,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// List of root hashes for the Store ID
         /// </summary>
-        public RootHash[] root_history { get; set; }
+        public RootHash[]? root_history { get; set; }
     }
 }

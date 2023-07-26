@@ -10,16 +10,38 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/wallet-rpc/#get_spendable_coins"/><br/><br/>
-    /// Uses:<br/><see cref="GetSpendableCoins_RPC"/>
+    /// Uses:<br/><see cref="GetSpendableCoins_RPC"/><br/><br/>
+    /// The 'GetSpendableCoins' method is used to retrieve the coins that are currently spendable by the wallet, both confirmed and unconfirmed.
+    /// The confirmed coins are ones that have been included in the blockchain and can be spent without any restrictions.
+    /// The unconfirmed coins are ones that have been recently received or sent but not yet included in the blockchain. 
+    /// Their spendability depends on the transaction they are a part of being confirmed.
     /// </remarks>
     public class GetSpendableCoins_Response : ResponseTemplate<GetSpendableCoins_Response>
     {
+        /// <summary>
+        /// An array of CoinRecord objects representing the confirmed coins.
+        /// These are coins that have been included in the blockchain and are spendable without any restrictions.
+        /// Each CoinRecord includes details such as the coin's parent coin info, puzzle hash, amount, and more.
+        /// </summary>
+        public CoinRecord[]? confirmed_records { get; set; }
 
-        public CoinRecord[] confirmed_records { get; set; }
-        
-        public Coin[] unconfirmed_additions { get; set; }
-        public CoinRecord[] unconfirmed_removals { get; set; }
+        /// <summary>
+        /// An array of Coin objects representing unconfirmed additions to the wallet.
+        /// These are coins that have been recently received but have not yet been included in the blockchain.
+        /// Their spendability depends on the transaction they are a part of being confirmed.
+        /// Each Coin includes details such as the coin's parent coin info, puzzle hash, and amount.
+        /// </summary>
+        public Coin[]? unconfirmed_additions { get; set; }
+
+        /// <summary>
+        /// An array of CoinRecord objects representing unconfirmed removals from the wallet.
+        /// These are coins that have been recently sent but the transaction has not yet been included in the blockchain.
+        /// If the transaction is not confirmed, these coins may still be spendable by the wallet.
+        /// Each CoinRecord includes details such as the coin's parent coin info, puzzle hash, amount, and more.
+        /// </summary>
+        public CoinRecord[]? unconfirmed_removals { get; set; }
     }
+
     /// <summary>
     /// Get all spendable coins, with various possible filters
     /// </summary>

@@ -70,12 +70,12 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// The Wallet ID of the DID wallet to recover
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// A list of attest files to be used for recovery
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] attest_data { get; set; }
+        public string[]? attest_data { get; set; }
         /// <summary>
         /// The public key of the wallet to recover. If this is not provided, a temporary public key will be used instead
         /// </summary>

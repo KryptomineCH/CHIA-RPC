@@ -14,6 +14,6 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// The public key of the requested wallet
         /// </summary>
-        public string pubkey { get; set; }
+        public string? pubkey { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace CHIA_RPC.Datalayer_NS
         public bool? override_files { get; set; }
 
         /// <summary>
-        /// The name of the folder where the files to be restored are located (default: ~/.chia/mainnet/data_layer/db/server_files_location_<network>)
+        /// The name of the folder where the files to be restored are located (default: ~/.chia/mainnet/data_layer/db/server_files_location_{network})
         /// </summary>
         /// <remarks>optional</remarks>
         public string? foldername { get; set; }

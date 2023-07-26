@@ -4,8 +4,20 @@ using System.Text.Json;
 
 namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 {
+    /// <summary>
+    /// converts a jsonstring to/from Dictionary{string, BigInteger[]}
+    /// </summary>
     public class BigIntegerArrayDictionaryConverter : JsonConverter<Dictionary<string, BigInteger[]>>
     {
+        /// <summary>
+        /// converts a jsonstring to Dictionary{string, BigInteger[]}
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="typeToConvert"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="JsonException"></exception>
+        /// <exception cref="NullReferenceException"></exception>
         public override Dictionary<string, BigInteger[]> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var result = new Dictionary<string, BigInteger[]>();
@@ -29,7 +41,11 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
                     throw new JsonException("Expected property name.");
                 }
 
-                string key = reader.GetString();
+                string? key = reader.GetString();
+                if (string.IsNullOrEmpty(key))
+                {
+                    throw new NullReferenceException(nameof(key));
+                }
                 reader.Read();
                 BigInteger[] values = new BigInteger[2];
 
@@ -55,7 +71,12 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 
             return result;
         }
-
+        /// <summary>
+        /// convert a Dictionary{string, BigInteger[]} to jsonstring
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="value"></param>
+        /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Dictionary<string, BigInteger[]> value, JsonSerializerOptions options)
         {
             writer.WriteStartObject();

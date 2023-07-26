@@ -12,6 +12,6 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// An array of strings representing the names of all the available RPC endpoints.
         /// </summary>
-        public string[] routes { get; set; }
+        public string[]? routes { get; set; }
     }
 }

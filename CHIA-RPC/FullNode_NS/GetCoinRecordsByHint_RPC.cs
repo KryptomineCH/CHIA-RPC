@@ -34,7 +34,7 @@ namespace CHIA_RPC.FullNode_NS
         /// </summary>
         /// <remarks>mandatory</remarks>
         [Required]
-        public string hint { get; set; }
+        public string? hint { get; set; }
         /// <summary>
         /// The block height at which to start the query
         /// </summary>

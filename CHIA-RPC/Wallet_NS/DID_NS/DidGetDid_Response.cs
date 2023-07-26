@@ -14,19 +14,32 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// the coin which is associated with the did wallet
         /// </summary>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
         /// <summary>
         /// the did_id of the wallet
         /// </summary>
-        public string my_did { get; set; }
+        public string? my_did { get; set; }
         /// <summary>
         /// The wallet id which the did was requested for
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
+        /// <summary>
+        /// converts this to DidGetInfo_RPC
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
         public DidGetInfo_RPC ToDidGetInfo_RPC()
         {
+            if (coin_id == null)
+            {
+                throw new NullReferenceException(nameof(coin_id));
+            }
             return new DidGetInfo_RPC(coin_id);
         }
+        /// <summary>
+        /// Implicitly converts this to DidGetInfo_RPC
+        /// </summary>
+        /// <returns></returns>
         public static implicit operator DidGetInfo_RPC(DidGetDid_Response response)
         {
             return response.ToDidGetInfo_RPC();

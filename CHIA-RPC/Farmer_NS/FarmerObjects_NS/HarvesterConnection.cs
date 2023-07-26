@@ -14,14 +14,14 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// the hostname or ip
         /// </summary>
-        public string host { get; set; }
+        public string? host { get; set; }
         /// <summary>
         /// the unique identifier of the node
         /// </summary>
-        public string node_id { get; set; }
+        public string? node_id { get; set; }
         /// <summary>
         /// the port which is used for communication
         /// </summary>
-        public ulong port { get; set; }
+        public ulong? port { get; set; }
     }
 }

@@ -14,6 +14,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The hexadecimal root hash
         /// </summary>
-        public string hash { get; set; }
+        public string? hash { get; set; }
     }
 }

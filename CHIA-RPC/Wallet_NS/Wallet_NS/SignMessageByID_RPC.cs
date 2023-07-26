@@ -31,11 +31,11 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The address to use for signing.Must possess the key for this address
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
         /// <summary>
         /// The message to include with the signature
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string message { get; set; }
+        public string? message { get; set; }
     }
 }

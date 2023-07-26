@@ -12,8 +12,15 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     /// </remarks>
     public class NftSetNftDID_Response : ResponseTemplate<NftSetNftDID_Response>
     {
-        public SpendBundle spend_bundle { get; set; }
-        public ulong wallet_id { get; set; }
+        /// <summary>
+        /// The SpendBundle object associated with this operation. A SpendBundle includes the information about a spend operation, including the CoinSpends and an aggregated signature. This could be null if the operation hasn't been completed successfully.
+        /// </summary>
+        public SpendBundle? spend_bundle { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the wallet involved in the operation. This could be null if the operation was not associated with a specific wallet.
+        /// </summary>
+        public ulong? wallet_id { get; set; }
     }
     /// <summary>
     /// Set the DID for a specific NFT (the NFT must support DIDs)
@@ -49,7 +56,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <remarks>
         /// mandatory
         /// </remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
 
         /// <summary>
         /// The coin ID of the NFT on which to set the DID
@@ -57,7 +64,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <remarks>
         /// mandatory
         /// </remarks>
-        public string nft_coin_id { get; set; }
+        public string? nft_coin_id { get; set; }
 
         /// <summary>
         /// Optionally: DID to be associated with this NFT. 
@@ -66,7 +73,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <remarks>
         /// optional
         /// </remarks>
-        public string did_id { get; set; }
+        public string? did_id { get; set; }
 
         /// <summary>
         /// optional: The one-time blockchain fee (in mojos) to be used upon adding a URI

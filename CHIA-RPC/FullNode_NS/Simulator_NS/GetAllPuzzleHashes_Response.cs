@@ -19,6 +19,6 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// and a two-element array with total unspent amount and count of unspent coins as values.
         /// </summary>
         [JsonConverter(typeof(BigIntegerArrayDictionaryConverter))]
-        public Dictionary<string, BigInteger[]> puzzle_hashes { get; init; }
+        public Dictionary<string, BigInteger[]>? puzzle_hashes { get; init; }
     }
 }

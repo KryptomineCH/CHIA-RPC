@@ -10,6 +10,15 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
     /// </summary>
     public class NftCalculateRoyaltiesResponseConverter : JsonConverter<NftCalculateRoyalties_Response>
     {
+        /// <summary>
+        /// converts a json string to a NftCalculateRoyalties_Response
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="typeToConvert"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        /// <exception cref="JsonException"></exception>
+        /// <exception cref="NullReferenceException"></exception>
         public override NftCalculateRoyalties_Response Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             // Expect a StartObject token at the beginning of the JSON
@@ -33,7 +42,7 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
                 // Process the property names
                 if (reader.TokenType == JsonTokenType.PropertyName)
                 {
-                    string propertyName = reader.GetString();
+                    string? propertyName = reader.GetString();
 
                     // If the property is 'success', read its value as a boolean
                     if (propertyName == "success")
@@ -45,6 +54,14 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
                     {
                         // For other properties, deserialize the value as an array of TradeData objects
                         var tradeDataArray = JsonSerializer.Deserialize<TradeData[]>(ref reader, options);
+                        if (propertyName == null)
+                        {
+                            throw new NullReferenceException(nameof(propertyName));
+                        }
+                        if (tradeDataArray == null)
+                        {
+                            throw new NullReferenceException(nameof(tradeDataArray));
+                        }
                         response.NFTTrade[propertyName] = tradeDataArray;
                     }
                 }
@@ -65,13 +82,16 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 
             // Write the 'success' property
             writer.WritePropertyName("success");
-            writer.WriteBooleanValue(value.success);
+            writer.WriteBooleanValue(value.success ?? false);
 
             // Iterate through the NFTTrade dictionary and write the key-value pairs
-            foreach (var kvp in value.NFTTrade)
+            if (value.NFTTrade != null)
             {
-                writer.WritePropertyName(kvp.Key);
-                JsonSerializer.Serialize(writer, kvp.Value, options);
+                foreach (var kvp in value.NFTTrade)
+                {
+                    writer.WritePropertyName(kvp.Key);
+                    JsonSerializer.Serialize(writer, kvp.Value, options);
+                }
             }
 
             writer.WriteEndObject();

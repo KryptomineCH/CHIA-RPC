@@ -17,11 +17,11 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
         /// <summary>
         /// The state of the pooling wallet
         /// </summary>
-        public State state { get; init; }
+        public State? state { get; init; }
         /// <summary>
         /// List of unconfirmed transactions
         /// </summary>
-        public object[] unconfirmed_transactions { get; init; }
+        public object[]? unconfirmed_transactions { get; init; }
 
         /// <summary>
         /// The state of the pooling wallet
@@ -31,23 +31,23 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
             /// <summary>
             /// The current state of the wallet
             /// </summary>
-            public CurrentState current { get; init; }
+            public CurrentState? current { get; init; }
             /// <summary>
             /// The current state of the inner wallet
             /// </summary>
-            public string current_inner { get; init; }
+            public string? current_inner { get; init; }
             /// <summary>
             /// The launcher coin
             /// </summary>
-            public Coin launcher_coin { get; init; }
+            public Coin? launcher_coin { get; init; }
             /// <summary>
             /// The launcher id
             /// </summary>
-            public string launcher_id { get; init; }
+            public string? launcher_id { get; init; }
             /// <summary>
             /// The puzzle hash of the singleton
             /// </summary>
-            public string p2_singleton_puzzle_hash { get; init; }
+            public string? p2_singleton_puzzle_hash { get; init; }
             /// <summary>
             /// The height of the singleton block
             /// </summary>
@@ -55,11 +55,11 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
             /// <summary>
             /// The target hash
             /// </summary>
-            public object target { get; init; }
+            public object? target { get; init; }
             /// <summary>
             /// The tip singleton coin id
             /// </summary>
-            public string tip_singleton_coin_id { get; init; }
+            public string? tip_singleton_coin_id { get; init; }
 
             /// <summary>
             /// The current state of the wallet
@@ -69,11 +69,11 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
                 /// <summary>
                 /// The public key of the owner
                 /// </summary>
-                public string owner_pubkey { get; init; }
+                public string? owner_pubkey { get; init; }
                 /// <summary>
                 /// The pool url
                 /// </summary>
-                public string pool_url { get; init; }
+                public string? pool_url { get; init; }
                 /// <summary>
                 /// The relative lock height
                 /// </summary>
@@ -85,7 +85,7 @@ namespace CHIA_RPC.Wallet_NS.PoolWallet_NS
                 /// <summary>
                 /// The target puzzle hash
                 /// </summary>
-                public string target_puzzle_hash { get; init; }
+                public string? target_puzzle_hash { get; init; }
                 /// <summary>
                 /// The version
                 /// </summary>

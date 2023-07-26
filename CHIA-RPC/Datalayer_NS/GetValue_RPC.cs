@@ -15,7 +15,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// The value for the requested datastore key
         /// </summary>
         /// <remarks>encoded as hexadecimal string</remarks>
-        public string value { get; set; }
+        public string? value { get; set; }
     }
     /// <summary>
     /// Given a key and the data store in which the key is located, return corresponding value
@@ -46,13 +46,13 @@ namespace CHIA_RPC.Datalayer_NS
         /// </summary>
         /// <remarks>encoded as hexadecimal string<br/>
         /// mandatory</remarks>
-        public string id { get; set; }
+        public string? id { get; set; }
         /// <summary>
         /// the hexadecimal key of the dictionary to look up
         /// </summary>
         /// <remarks>encoded as hexadecimal string<br/>
         /// mandatory</remarks>
-        public string key { get; set; }
+        public string? key { get; set; }
         /// <summary>
         /// The root hash from which to obtain data
         /// </summary>

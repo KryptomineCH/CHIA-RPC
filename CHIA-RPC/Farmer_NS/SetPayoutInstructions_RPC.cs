@@ -28,12 +28,12 @@ namespace CHIA_RPC.Farmer_NS
         /// The launcher_id from your pool, obtainable from the get_pool_state RPC.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// The puzzle hash to be used as the new payout_instructions.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string payout_instructions { get; set; }
+        public string? payout_instructions { get; set; }
     }
 }

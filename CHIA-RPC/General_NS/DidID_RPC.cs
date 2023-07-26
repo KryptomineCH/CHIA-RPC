@@ -11,7 +11,7 @@ namespace CHIA_RPC.General_NS
         /// eg:<br/>
         /// did:chia:1kzxqrt8f2h8psr8zuzen9dxgmxx5v35s0rj3jy637qjannu3zlesds0el5
         /// </summary>
-        public string did_id { get; set; }
+        public string? did_id { get; set; }
 
     }
     /// <summary>
@@ -46,14 +46,19 @@ namespace CHIA_RPC.General_NS
         /// <remarks>eg:<br/>
         /// did:chia:1kzxqrt8f2h8psr8zuzen9dxgmxx5v35s0rj3jy637qjannu3zlesds0el5
         /// </remarks>
-        public string did_id { get; set; }
+        public string? did_id { get; set; }
 
         /// <summary>
         /// Implicit conversion from DidID_Response to DidID_RPC.
         /// </summary>
         /// <param name="response">DidID_Response object</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static implicit operator DidID_RPC(DidID_Response response)
         {
+            if (response.did_id == null)
+            {
+                throw new ArgumentNullException(nameof(response.did_id));
+            }
             return new DidID_RPC(response.did_id);
         }
     }

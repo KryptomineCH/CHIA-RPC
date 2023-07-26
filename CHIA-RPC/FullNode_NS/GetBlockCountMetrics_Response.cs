@@ -18,6 +18,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// An object that contains the metric values
         /// </summary>
-        public BlockCountMetrics metrics { get; set; }
+        public BlockCountMetrics? metrics { get; set; }
     }
 }

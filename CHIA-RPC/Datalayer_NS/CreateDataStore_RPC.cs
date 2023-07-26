@@ -17,11 +17,11 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The created Data Store ID
         /// </summary>
-        public string id { get; set; }
+        public string? id { get; set; }
         /// <summary>
         /// the transactions for the datastore creation
         /// </summary>
-        public Datalayer_Transaction[] txs { get; set; }
+        public Datalayer_Transaction[]? txs { get; set; }
     }
     /// <summary>
     /// Create a data store. Triggers a Chia transaction

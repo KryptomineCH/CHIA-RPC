@@ -15,6 +15,6 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Array of mempool items.
         /// </summary>
-        public Dictionary<string, MempoolItem> mempool_items { get; set; }
+        public Dictionary<string, MempoolItem>? mempool_items { get; set; }
     }
 }

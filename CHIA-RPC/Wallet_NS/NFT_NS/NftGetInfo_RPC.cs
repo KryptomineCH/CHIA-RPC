@@ -12,7 +12,10 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
     /// </remarks>
     public class NftGetInfo_Response : ResponseTemplate<NftGetInfo_Response>
     {
-        public Nft nft_info { get; set; }
+        /// <summary>
+        /// contains all infos regarding the requested NFT
+        /// </summary>
+        public Nft? nft_info { get; set; }
     }
     /// <summary>
     /// Get info about an NFT
@@ -40,11 +43,11 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// The coin ID of the NFT about which to retrieve info
         /// </summary>
         /// <remarks>eg: 0x821fdd13fe209466f1c69d82eb951cf630d28e901c2e14285d8a574dbde034c4</remarks>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// The Wallet ID of the NFT from which to retrieve info
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
     }
 }

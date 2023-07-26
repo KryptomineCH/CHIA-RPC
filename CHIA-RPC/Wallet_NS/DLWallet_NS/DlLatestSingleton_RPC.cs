@@ -16,7 +16,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// Information about the latest singleton of the given launcher ID
         /// </summary>
-        public Singleton singleton { get; set; } 
+        public Singleton? singleton { get; set; } 
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// The launcher ID of the DataLayer wallet.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string launcher_id { get; set; }
+        public string? launcher_id { get; set; }
 
         /// <summary>
         /// Only show the latest confirmed record. [Default: false]

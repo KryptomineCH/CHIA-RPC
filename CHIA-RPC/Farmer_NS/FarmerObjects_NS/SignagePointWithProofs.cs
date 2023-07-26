@@ -11,11 +11,11 @@ namespace CHIA_RPC.Farmer_NS.FarmerObjects_NS
         /// <summary>
         /// Proof of space that is valid for this signage point
         /// </summary>
-        public string[] proofs { get; set; }
+        public string[]? proofs { get; set; }
 
         /// <summary>
         /// The signage point
         /// </summary>
-        public SignagePoint signage_point { get; set; }
+        public SignagePoint? signage_point { get; set; }
     }
 }

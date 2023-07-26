@@ -4,9 +4,15 @@ using CHIA_RPC.Objects_NS;
 
 namespace CHIA_RPC.Datalayer_NS
 {
+    /// <summary>
+    /// the server response to the request to make an offer
+    /// </summary>
     public class MakeOffer_Response : ResponseTemplate<MakeOffer_Response>
     {
-        public Datalayer_OfferFile offer { get; set; }
+        /// <summary>
+        /// the offer which has been created
+        /// </summary>
+        public Datalayer_OfferFile? offer { get; set; }
     }
     /// <summary>
     /// Make an offer to include one or more keys in exchange for a Taker including one or more keys
@@ -35,16 +41,16 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// The hexadecimal ID of the store for which to list mirrors
         /// </summary>
-        public DealParticipant[] maker { get; set; }
+        public DealParticipant[]? maker { get; set; }
 
         /// <summary>
         /// The hexadecimal ID of the store for which to list mirrors
         /// </summary>
-        public DealParticipant[] taker { get; set; }
+        public DealParticipant[]? taker { get; set; }
 
         /// <summary>
         /// Set the fee for the offer, in mojos
-        /// </summary
+        /// </summary>
         /// <remarks>optional</remarks>
         public ulong? fee { get; set; }
 
@@ -57,12 +63,12 @@ namespace CHIA_RPC.Datalayer_NS
             /// <summary>
             /// The hexadecimal store ID
             /// </summary>
-            public string store_id { get; set; }
+            public string? store_id { get; set; }
 
             /// <summary>
             /// The list of key-value pairs
             /// </summary>
-            public KeyValueString[] inclusions { get; set; }
+            public KeyValueString[]? inclusions { get; set; }
         }
     }
 }

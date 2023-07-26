@@ -14,7 +14,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// </remarks>
     public class SelectCoins_Response : ResponseTemplate<SelectCoins_Response>
     {
-        public Coin[] coins { get; set; }
+        /// <summary>
+        /// the coins that have been selected by the chia client according to the filters
+        /// </summary>
+        public Coin[]? coins { get; set; }
     }
     /// <summary>
     /// Select coins from a given wallet that add up to at least the specified amount
@@ -103,21 +106,21 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The ID of the wallet from which to select coins
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// The number of mojos to select
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong amount { get; set; }
+        public ulong? amount { get; set; }
         /// <summary>
         /// The amount of xch to select
         /// </summary>
         /// <remarks>mandatory</remarks>
         [JsonIgnore]
-        public decimal amount_in_xch
+        public decimal? amount_in_xch
         {
             get { return amount / GlobalVar.OneChiaInMojos; }
-            set { amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
         /// The smallest coin to be selected in this query [Default: No minimum]

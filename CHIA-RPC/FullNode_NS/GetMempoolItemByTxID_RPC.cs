@@ -16,7 +16,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// the mempool item retrieved by tx ID.
         /// </summary>
-        public MempoolItem mempool_item { get; set; }
+        public MempoolItem? mempool_item { get; set; }
     }
     /// <summary>
     /// Represents a request to retrieve a mempool item by tx ID.
@@ -32,15 +32,15 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Represents a request to retrieve a mempool item by tx ID.
         /// </summary>
-        /// <param name="tx_id">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
-        public GetMempoolItemByTxID_RPC(string tx_id)
+        /// <param name="txID">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
+        public GetMempoolItemByTxID_RPC(string txID)
         {
-            this.tx_id = tx_id;
+            this.tx_id = txID;
         }
         /// <summary>
         /// Represents a request to retrieve a mempool item by tx ID.
         /// </summary>
-        /// <param name="tx_id">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
+        /// <param name="txID">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
         public GetMempoolItemByTxID_RPC(TxID_Response txID)
         {
             this.tx_id = txID.tx_id;
@@ -48,7 +48,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Represents a request to retrieve a mempool item by tx ID.
         /// </summary>
-        /// <param name="tx_id">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
+        /// <param name="txID">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
         public GetMempoolItemByTxID_RPC(TransactionID_Response txID)
         {
             this.tx_id = txID.transaction_id;
@@ -56,7 +56,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// Represents a request to retrieve a mempool item by tx ID.
         /// </summary>
-        /// <param name="tx_id">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
+        /// <param name="txID">the spend bundle hash (tx ID) of the mempool item to retrieve.</param>
         public GetMempoolItemByTxID_RPC(Transaction_Response txID)
         {
             this.tx_id = txID.transaction_id;
@@ -66,6 +66,6 @@ namespace CHIA_RPC.FullNode_NS
         /// the spend bundle hash (tx ID) of the mempool item to retrieve.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string tx_id { get; set; }
+        public string? tx_id { get; set; }
     }
 }

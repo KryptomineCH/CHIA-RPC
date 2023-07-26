@@ -15,6 +15,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// Gets or sets the mirrors.
         /// </summary>
-        public Mirror[] mirrors { get; set; }  
+        public Mirror[]? mirrors { get; set; }  
     }
 }

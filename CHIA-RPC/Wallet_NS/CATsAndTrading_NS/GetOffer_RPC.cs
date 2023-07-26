@@ -29,7 +29,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <summary>
         /// Show the details of one offer
         /// </summary>
-        /// <param name="trade_id">The offer's ID</param>
+        /// <param name="trade">The offer's ID</param>
         /// <param name="file_contents">The contents of the offer. Required if the offer's info is not stored in the database for this wallet</param>
         public GetOffer_RPC(TradeRecord trade, string? file_contents = null)
         {
@@ -41,7 +41,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// The offer's ID
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string trade_id { get; set; }
+        public string? trade_id { get; set; }
 
         /// <summary>
         /// The contents of the offer. <br/>
@@ -64,6 +64,10 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <param name="tradeRecord"></param>
         public static implicit operator GetOffer_RPC(TradeRecord_Response tradeRecord)
         {
+            if (tradeRecord.trade_record == null)
+            {
+                throw new NullReferenceException(nameof(tradeRecord));
+            }
             return new GetOffer_RPC(tradeRecord.trade_record);
         }
     }

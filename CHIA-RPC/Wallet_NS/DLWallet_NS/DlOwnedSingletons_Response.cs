@@ -15,12 +15,12 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS
         /// <summary>
         /// The number of singleton records returned.
         /// </summary>
-        public ulong count { get; init; }
+        public ulong? count { get; init; }
 
         /// <summary>
         /// An array of singleton records.
         /// </summary>
-        public Singleton[] singletons { get; init; }
+        public Singleton[]? singletons { get; init; }
     }
 
 }

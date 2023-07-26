@@ -15,7 +15,7 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// List of active connections
         /// </summary>
-        public Datalayer_Connection[] connections { get; set; }
+        public Datalayer_Connection[]? connections { get; set; }
     }
 
 }

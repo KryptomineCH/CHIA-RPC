@@ -1,5 +1,4 @@
 ﻿using CHIA_RPC.Objects_NS;
-using System;
 
 namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
@@ -24,12 +23,12 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Challenge chain data.
         /// </summary>
-        public ChallengeChain challenge_chain { get; set; }
+        public ChallengeChain? challenge_chain { get; set; }
 
         /// <summary>
         /// Infused challenge chain data.
         /// </summary>
-        public InfusedChallengeChain infused_challenge_chain { get; set; }
+        public InfusedChallengeChain? infused_challenge_chain { get; set; }
 
         /// <summary>
         /// Dictionary containing proofs.
@@ -39,7 +38,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// Reward chain data.
         /// </summary>
-        public RewardChain reward_chain { get; set; }
+        public RewardChain? reward_chain { get; set; }
 
         /// <summary>
         /// Represents the challenge chain end of slot data.
@@ -49,12 +48,12 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
             /// <summary>
             /// VDF data for the challenge chain end of slot.
             /// </summary>
-            public Vdf challenge_chain_end_of_slot_vdf { get; set; }
+            public Vdf? challenge_chain_end_of_slot_vdf { get; set; }
 
             /// <summary>
             /// Infused challenge chain sub slot hash.
             /// </summary>
-            public string infused_challenge_chain_sub_slot_hash { get; set; }
+            public string? infused_challenge_chain_sub_slot_hash { get; set; }
 
             /// <summary>
             /// New difficulty value, if any.
@@ -69,7 +68,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
             /// <summary>
             /// Subepoch summary hash.
             /// </summary>
-            public string subepoch_summary_hash { get; set; }
+            public string? subepoch_summary_hash { get; set; }
         }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
             /// <summary>
             /// VDF data for the infused challenge chain end of slot.
             /// </summary>
-            public Vdf infused_challenge_chain_end_of_slot_vdf { get; set; }
+            public Vdf? infused_challenge_chain_end_of_slot_vdf { get; set; }
         }
 
         /// <summary>
@@ -91,22 +90,22 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
             /// <summary>
             /// The hash of the challenge chain sub-slot associated with the reward chain
             /// </summary>
-            public string challenge_chain_sub_slot_hash { get; set; }
+            public string? challenge_chain_sub_slot_hash { get; set; }
 
             /// <summary>
             /// The deficit value in the reward chain
             /// </summary>
-            public int deficit { get; set; }
+            public int? deficit { get; set; }
 
             /// <summary>
             /// The VDF (Verifiable Delay Function) object representing the end of the slot
             /// </summary>
-            public Vdf end_of_slot_vdf { get; set; }
+            public Vdf? end_of_slot_vdf { get; set; }
 
             /// <summary>
             /// The hash of the infused challenge chain sub-slot associated with the reward chain
             /// </summary>
-            public string infused_challenge_chain_sub_slot_hash { get; set; }
+            public string? infused_challenge_chain_sub_slot_hash { get; set; }
         }
     }
 }

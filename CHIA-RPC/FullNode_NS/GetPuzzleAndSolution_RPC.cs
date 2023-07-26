@@ -16,7 +16,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// The puzzle and solution are provided in CLVM format.
         /// </summary>
-        public CoinSolution coin_solution { get; set; }
+        public CoinSolution? coin_solution { get; set; }
     }
     /// <summary>
     /// Retrieves a coin's spend record by its coin id, sometimes referred to as coin name. 
@@ -55,12 +55,12 @@ namespace CHIA_RPC.FullNode_NS
         /// the coin id to look up
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// the height to search for
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong height { get; set; }
+        public ulong? height { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace CHIA_RPC.FullNode_NS
         /// Puzzle hash to search for.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string puzzle_hash { get; set; }
+        public string? puzzle_hash { get; set; }
 
         /// <summary>
         /// Confirmation start height for search. Optional parameter.

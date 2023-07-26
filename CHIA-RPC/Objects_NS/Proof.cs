@@ -25,7 +25,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The witness of the proof, which is a piece of data that can be used to verify the proof's validity
         /// </summary>
-        public string witness { get; set; }
+        public string? witness { get; set; }
 
         /// <summary>
         /// The witness type of the proof, which defines the specific verification method or algorithm use

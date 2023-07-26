@@ -22,22 +22,22 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Represents the maker details.
         /// </summary>
-        public OfferFile_Datalayer_Maker[] maker { get; set; }
+        public OfferFile_Datalayer_Maker[]? maker { get; set; }
 
         /// <summary>
         /// Represents the offer id.
         /// </summary>
-        public string offer { get; set; }
+        public string? offer { get; set; }
 
         /// <summary>
         /// Represents the taker details.
         /// </summary>
-        public OfferFile_Datalayer_Taker[] taker { get; set; }
+        public OfferFile_Datalayer_Taker[]? taker { get; set; }
 
         /// <summary>
         /// Represents the trade id.
         /// </summary>
-        public string trade_id { get; set; }
+        public string? trade_id { get; set; }
         /// <summary>
         /// exports the offer as offer file which can be uploaded to exchanges
         /// </summary>
@@ -83,7 +83,7 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// We recommend that you set this to true unless you are certain that the offer file has not left your computer</param>
         /// <param name="fee">an optional fee in order to speed up the transaction</param>
         /// <returns><see cref="CancelOffer_RPC"/></returns>
-        public CancelOffer_RPC ToTakeOffer_RPC(ulong? fee, bool secure = true)
+        public CancelOffer_RPC ToCancelOffer_RPC(ulong? fee, bool secure = true)
         {
             return new CancelOffer_RPC
             {
@@ -101,12 +101,12 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Represents the proofs details.
         /// </summary>
-        public Datalayer_Proof[] proofs { get; set; }
+        public Datalayer_Proof[]? proofs { get; set; }
 
         /// <summary>
         /// Represents the store id.
         /// </summary>
-        public string store_id { get; set; }
+        public string? store_id { get; set; }
     }
     /// <summary>
     /// Represents the details of a taker.
@@ -116,12 +116,12 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
         /// <summary>
         /// Represents the inclusions details.
         /// </summary>
-        public Inclusion[] inclusions { get; set; }
+        public Inclusion[]? inclusions { get; set; }
 
         /// <summary>
         /// Represents the store id.
         /// </summary>
-        public string store_id { get; set; }
+        public string? store_id { get; set; }
         /// <summary>
         /// Represents the details of an inclusion.
         /// </summary>
@@ -130,12 +130,12 @@ namespace CHIA_RPC.Datalayer_NS.DatalayerObjects_NS
             /// <summary>
             /// Represents the key.
             /// </summary>
-            public string key { get; set; }
+            public string? key { get; set; }
 
             /// <summary>
             /// Represents the value.
             /// </summary>
-            public string value { get; set; }
+            public string? value { get; set; }
         }
     }
 }

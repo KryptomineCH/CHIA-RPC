@@ -2,7 +2,6 @@
 using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
-using CHIA_RPC.Wallet_NS.Offer_NS.OfferObjects_NS;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
@@ -97,7 +96,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// the offer to take.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string offer { get; set; }
+        public string? offer { get; set; }
 
         /// <summary>
         /// the minimum coin amount (mojos) to select for taking the offer.<br/>

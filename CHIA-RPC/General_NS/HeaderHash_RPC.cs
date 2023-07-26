@@ -24,6 +24,6 @@ namespace CHIA_RPC.General_NS
         /// The header hash of the block to look up
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string header_hash { get; set; }
+        public string? header_hash { get; set; }
     }
 }

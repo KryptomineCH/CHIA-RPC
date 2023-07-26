@@ -90,7 +90,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// a positive mojo amount means you are asking for something
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public Dictionary<string,long> offer { get; set; }
+        public Dictionary<string, long> offer { get; set; } = new Dictionary<string, long>();
         /// <summary>
         /// The offer (additions and removals) to create <br/>
         /// string (key) is the asset ID and decimal (amount) the amount to trade<br/>
@@ -119,8 +119,14 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
                 offer = convertedOffers;
             }
         }
+        /// <summary>
+        /// adds a new element, buy or sell to the offer
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void AddOfferPosition(string key, decimal value)
         {
+            if (offer == null) offer = new Dictionary<string, long>();
             offer.Add(key, (long)(value * GlobalVar.OneChiaInMojos));
         }
 
@@ -134,7 +140,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// A dictionary of keys and values associated with the offer
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public Dictionary<string, object> driver_dict { get; set; }
+        public Dictionary<string, object>? driver_dict { get; set; }
 
         /// <summary>
         /// The minimum coin amount (mojos) to select for the offer [Default: none]

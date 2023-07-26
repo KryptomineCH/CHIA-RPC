@@ -62,7 +62,8 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         public CancelOffer_RPC(OfferFile offerInfo, bool secure = true, ulong? fee = null)
         {
             this.secure = secure;
-            this.trade_id = offerInfo.trade_record.trade_id;
+            if (offerInfo.trade_record == null) { this.trade_id = null; }
+            else { this.trade_id = offerInfo.trade_record.trade_id; }
             this.fee = fee;
         }
 
@@ -84,13 +85,13 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// set to false to cancel in the wallet only.<br/>
         /// If false, the offer could still be taken if it has been shared.
         /// </summary>
-        public bool secure { get; set; } = true;
+        public bool? secure { get; set; } = true;
 
         /// <summary>
         /// The ID of the offer to cancel.
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string trade_id { get; set; }
+        public string? trade_id { get; set; }
 
         /// <summary>
         /// An optional blockchain fee, in mojos.

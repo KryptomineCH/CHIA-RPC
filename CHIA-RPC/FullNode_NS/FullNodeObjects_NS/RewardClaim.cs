@@ -16,26 +16,26 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The amount of the reward claim in mojos
         /// </summary>
-        public ulong amount { get; set; }
+        public ulong? amount { get; set; }
         /// <summary>
         /// The amount of the reward claim in xch
         /// </summary>
         /// <remarks>This value is derived from the mojos amount</remarks>
         [JsonIgnore]
-        public decimal amount_in_xch
+        public decimal? amount_in_xch
         {
             get { return amount / GlobalVar.OneChiaInMojos; }
-            set { amount = (ulong)(value * GlobalVar.OneChiaInMojos); }
+            set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
 
         /// <summary>
         /// The parent coin information
         /// </summary>
-        public string parent_coin_info { get; set; }
+        public string? parent_coin_info { get; set; }
 
         /// <summary>
         /// The puzzle hash
         /// </summary>
-        public string puzzle_hash { get; set; }
+        public string? puzzle_hash { get; set; }
     }
 }

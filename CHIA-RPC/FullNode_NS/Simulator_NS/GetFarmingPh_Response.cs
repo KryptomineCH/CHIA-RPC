@@ -16,7 +16,7 @@ namespace CHIA_RPC.FullNode_NS.Simulator_NS
         /// <summary>
         /// The puzzle hash used by the farmer.
         /// </summary>
-        public string puzzle_hash { get; set; }
+        public string? puzzle_hash { get; set; }
     }
 
 }

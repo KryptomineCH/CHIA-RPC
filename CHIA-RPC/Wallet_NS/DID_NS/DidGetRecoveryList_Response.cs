@@ -14,18 +14,18 @@ namespace CHIA_RPC.Wallet_NS.DID_NS
         /// <summary>
         /// the amount of recovery dids required
         /// </summary>
-        public ulong num_required { get; set; }
+        public ulong? num_required { get; set; }
         /// <summary>
         /// the list of dids which can be used for recovery
         /// </summary>
-        public string[] recovery_list { get; set; }
+        public string[]? recovery_list { get; set; }
         /// <summary>
         /// the wallet ID which the request was for
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
         /// <summary>
         /// The name of the did wallet
         /// </summary>
-        public string name { get; set; }
+        public string? name { get; set; }
     }
 }

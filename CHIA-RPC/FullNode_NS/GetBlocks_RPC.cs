@@ -16,7 +16,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <summary>
         /// list of full blocks within the listed height range
         /// </summary>
-        public Block[] blocks { get; set; }
+        public Block[]? blocks { get; set; }
     }
     /// <summary>
     /// Gets a list of full blocks by height. 
@@ -49,12 +49,12 @@ namespace CHIA_RPC.FullNode_NS
         /// The start height.
         /// </summary>/
         /// <remarks>mandatory</remarks>
-        public ulong start { get; set; }
+        public ulong? start { get; set; }
         /// <summary>
         /// The end height(non-inclusive).
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public ulong end { get; set; }
+        public ulong? end { get; set; }
         /// <summary>
         /// whether to exclude the header hash in the response(default false)
         /// </summary>

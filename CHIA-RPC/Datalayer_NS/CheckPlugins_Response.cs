@@ -14,6 +14,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// unknown due to lacking documentation
         /// </summary>
-        public dynamic plugin_status { get; set; }
+        public dynamic? plugin_status { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <summary>
         /// The ID of an NFT wallet
         /// </summary>
-        public ulong wallet_id { get; set; }
+        public ulong? wallet_id { get; set; }
 
         /// <summary>
         /// The coin_id of the NFT on which to set the status
@@ -37,11 +37,11 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <remarks>
         /// eg: 
         /// </remarks>
-        public string coin_id { get; set; }
+        public string? coin_id { get; set; }
 
         /// <summary>
         /// A boolean to set the transaction status for the NFT
         /// </summary>
-        public bool in_transaction { get; set; }
+        public bool? in_transaction { get; set; }
     }
 }

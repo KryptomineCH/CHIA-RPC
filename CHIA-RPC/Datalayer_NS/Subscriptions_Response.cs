@@ -14,6 +14,6 @@ namespace CHIA_RPC.Datalayer_NS
         /// <summary>
         /// Gets or sets an array of store IDs for each current subscription.
         /// </summary>
-        public string[] store_ids { get; set; }
+        public string[]? store_ids { get; set; }
     }
 }

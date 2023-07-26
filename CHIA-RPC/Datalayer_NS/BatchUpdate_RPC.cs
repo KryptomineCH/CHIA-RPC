@@ -43,12 +43,12 @@ namespace CHIA_RPC.Datalayer_NS
         /// The hexadecimal store ID
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string id { set; get; }
+        public string? id { set; get; }
         /// <summary>
         /// the changes which should be applied to the datastore
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public DataStoreChange[] changelist { get; set; }
+        public DataStoreChange[]? changelist { get; set; }
         /// <summary>
         /// Set the fee for the transaction, in mojos
         /// </summary>

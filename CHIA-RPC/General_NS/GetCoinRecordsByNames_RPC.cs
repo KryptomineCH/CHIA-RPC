@@ -36,7 +36,7 @@ namespace CHIA_RPC.General_NS
         /// A list of coin names from which to retrieve records
         /// </summary>
         /// <remarks>mandatory</remarks>
-        public string[] names { get; set; }
+        public string[]? names { get; set; }
         /// <summary>
         /// The block height at which to start the query
         /// </summary>
