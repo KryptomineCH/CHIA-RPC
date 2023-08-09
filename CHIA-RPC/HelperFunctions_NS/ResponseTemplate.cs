@@ -93,7 +93,16 @@ namespace CHIA_RPC.HelperFunctions_NS
         public static T? LoadResponseFromString(string inputString)
         {
             if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
-            T? result = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            T? result;
+            try
+            {
+                result = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            }
+            catch (JsonException ex)
+            {
+                result = new T();
+                result.error = ex.Message;
+            }
             if (result == null) result = new T();
             result.RawContent = inputString;
             return result;

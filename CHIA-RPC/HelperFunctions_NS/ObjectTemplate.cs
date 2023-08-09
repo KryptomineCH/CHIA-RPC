@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.HelperFunctions_NS
@@ -22,6 +24,11 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         [JsonIgnore]
         public string? RawContent { get; set; }
+        /// <summary>
+        /// May contain error message from serialisation/deserialisation
+        /// </summary>
+        [JsonIgnore]
+        public string? error { get; set; }
         /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
@@ -82,9 +89,18 @@ namespace CHIA_RPC.HelperFunctions_NS
             if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
             var options = new JsonSerializerOptions();
             options.AllowTrailingCommas = true;
-            options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+            options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             options.Converters.Add(new BigIntegerConverter());
-            T? result = JsonSerializer.Deserialize<T?>(inputString);
+            T? result;
+            try
+            {
+                result = JsonSerializer.Deserialize<T?>(inputString, options);
+            }
+            catch (JsonException ex)
+            {
+                result = new T();
+                result.error = ex.Message;
+            }
             if (result == null) result = new T();
             result.RawContent = inputString;
             return result;

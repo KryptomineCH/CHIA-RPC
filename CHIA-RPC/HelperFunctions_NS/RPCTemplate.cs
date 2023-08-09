@@ -23,6 +23,11 @@ namespace CHIA_RPC.HelperFunctions_NS
         [JsonIgnore]
         public string? RawContent { get; set; }
         /// <summary>
+        /// may contain error messages from serialisation/deserialisation
+        /// </summary>
+        [JsonIgnore]
+        public string? error { get; set; }
+        /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
         /// <remarks>assumes the extension and appends it always</remarks>
@@ -70,7 +75,16 @@ namespace CHIA_RPC.HelperFunctions_NS
         public static T? LoadRpcFromString(string inputString)
         {
             if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
-            T? result = JsonSerializer.Deserialize<T>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            T? result;
+            try
+            {
+                result = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+            }
+            catch (JsonException ex)
+            {
+                result = new T();
+                result.error = ex.Message;
+            }
             if (result != null)
             {
                 result.RawContent = inputString;
