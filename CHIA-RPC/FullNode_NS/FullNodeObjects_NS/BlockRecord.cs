@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
@@ -121,9 +122,25 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         public ulong? sub_slot_iters { get; set; }
 
         /// <summary>
-        /// The timestamp, if the block is a transaction block
+        /// The timestamp as unix time, if the block is a transaction block
         /// </summary>
         public ulong? timestamp { get; set; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? timestamp_dateTime
+        {
+            get
+            {
+                if (timestamp.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)timestamp.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
 
         /// <summary>
         /// The total number of iterations

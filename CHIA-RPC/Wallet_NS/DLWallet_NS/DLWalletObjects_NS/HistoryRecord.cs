@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.DLWallet_NS.DLWalletObjects_NS
 {
@@ -48,8 +49,24 @@ namespace CHIA_RPC.Wallet_NS.DLWallet_NS.DLWalletObjects_NS
         public string? root { get; set; }
 
         /// <summary>
-        /// The timestamp of the record.
+        /// The timestamp of the record in unix time.
         /// </summary>
         public ulong? timestamp { get; set; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? timestamp_dateTime
+        {
+            get
+            {
+                if (timestamp.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)timestamp.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
     }
 }

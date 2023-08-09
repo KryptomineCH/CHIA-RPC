@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Harvester_NS.HarvesterObjects_NS
 {
@@ -36,8 +37,24 @@ namespace CHIA_RPC.Harvester_NS.HarvesterObjects_NS
         /// </summary>
         public ulong? size { get; set; }
         /// <summary>
-        /// the last time when this plot was modified
+        /// the last time when this plot was modified in unix time
         /// </summary>
         public ulong? time_modified { get; set; }
+        /// <summary>
+        /// The time_modified as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? time_modified_dateTime
+        {
+            get
+            {
+                if (time_modified.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)time_modified.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
     }
 }

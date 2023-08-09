@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Datalayer_NS
 {
@@ -24,8 +25,24 @@ namespace CHIA_RPC.Datalayer_NS
         public string? hash { get; set; }
 
         /// <summary>
-        /// The timestamp of the root hash
+        /// The timestamp of the root hash as unix time
         /// </summary>
         public ulong? timestamp { get; set; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? timestamp_dateTime
+        {
+            get
+            {
+                if (timestamp.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)timestamp.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
     }
 }

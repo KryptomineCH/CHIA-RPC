@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 using static System.Net.WebRequestMethods;
 
 namespace CHIA_RPC.Objects_NS
@@ -46,9 +47,25 @@ namespace CHIA_RPC.Objects_NS
         public ulong? spent_block_index { get; set; }
 
         /// <summary>
-        /// The timestamp when the coin was created or updated.
+        /// The timestamp when the coin was created or updated in unix time.
         /// </summary>
         public ulong? timestamp { get; set; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? timestamp_dateTime
+        {
+            get
+            {
+                if (timestamp.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)timestamp.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
     }
 
 }

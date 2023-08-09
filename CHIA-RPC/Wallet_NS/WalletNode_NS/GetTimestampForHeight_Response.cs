@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.WalletNode_NS
 {
@@ -15,5 +16,21 @@ namespace CHIA_RPC.Wallet_NS.WalletNode_NS
         /// Unix timestamp for the given block height.
         /// </summary>
         public ulong? timestamp { get; init; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? timestamp_dateTime
+        {
+            get
+            {
+                if (timestamp.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)timestamp.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
     }
 }
