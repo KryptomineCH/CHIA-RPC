@@ -1,8 +1,6 @@
 ﻿using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
-using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
 using System.Text.Json.Serialization;
-using System.Transactions;
 
 namespace CHIA_RPC.Objects_NS
 {
@@ -70,17 +68,14 @@ namespace CHIA_RPC.Objects_NS
         /// </summary>
         public Coin[]? removals { get; set; }
         /// <summary>
-        /// Represents the total value in mojos sent in this transaction.
+        /// Number of peers the tx was sent to.
         /// </summary>
         public ulong? sent { get; set; }
 
         /// <summary>
-        /// List of destination addresses to which the transaction amount was sent.
+        /// The peers the tx has been sent to.
         /// </summary>
-        /// <remarks>
-        /// This is typically used in multi-output transactions. Each address in the array represents a recipient of the transaction.
-        /// </remarks>
-        public dynamic[]? sent_to { get; set; }
+        public Peer[]? sent_to { get; set; }
 
         /// <summary>
         /// Represents the bundle of information required to spend Chia coins.
@@ -144,6 +139,11 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// identifies the primary coin which can be used to find a transaction on blockchain explorers
         /// </summary>
+        /// <remarks>
+        /// this is usually the first addition[] for<br/>
+        /// 
+        /// outgoing trades do not seem to have a Primary coin as they do not list the coin which is beeing created
+        /// </remarks>
         /// <returns></returns>
         /// <exception cref="AggregateException">could not identify apropriate coin!</exception>
         public Coin GetPrimaryCoin()
@@ -152,7 +152,7 @@ namespace CHIA_RPC.Objects_NS
             {
                 throw new NullReferenceException(nameof(additions));
             }
-                if (amount == 0 && additions.Length > 0)
+            if (amount == 0 && additions.Length > 0)
             {
                 // this is a workaround for the api returning an amount of 0 in unknown circumstances
                 return additions[0];
@@ -205,5 +205,4 @@ namespace CHIA_RPC.Objects_NS
         /// </remarks>
         public Dictionary<string, string>? memos { get; set; }
     }
-
 }
