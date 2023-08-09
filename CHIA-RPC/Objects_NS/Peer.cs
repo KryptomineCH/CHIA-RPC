@@ -1,4 +1,5 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
 {
@@ -8,6 +9,7 @@ namespace CHIA_RPC.Objects_NS
     /// <remarks>no official documentation available.<br/>
     /// check <see href="https://docs.chia.net/walletconnect-commands/?_highlight=sent#peer"/> for updates
     /// </remarks>
+    [JsonConverter(typeof(PeerConverter))]
     public class Peer : ObjectTemplate<Peer>
     {
         /// <summary>
