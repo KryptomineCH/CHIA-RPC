@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
 using System.Text.Json.Serialization;
 using System.Transactions;
 
@@ -116,7 +117,7 @@ namespace CHIA_RPC.Objects_NS
         /// <remarks>
         /// This could be used to differentiate between different kinds of transactions (e.g., regular transfer, trade, etc.)
         /// </remarks>
-        public ulong? type { get; set; }
+        public TransactionType? type { get; set; }
 
         /// <summary>
         /// Represents the unique identifier of the wallet from which this transaction was sent.
