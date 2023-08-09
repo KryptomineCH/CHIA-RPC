@@ -16,7 +16,7 @@
         /// <summary>
         /// Represents an unknown wallet type.
         /// </summary>
-        unknownType1,
+        RATE_LIMITED = 1,
 
         /// <summary>
         /// Represents an atomic swap wallet, used for cross-chain atomic swaps.
