@@ -51,6 +51,22 @@ namespace CHIA_RPC.DatalayerObjects_NS
         /// </summary>
         public ulong? created_at_time { get; set; }
         /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? created_at_time_dateTime
+        {
+            get
+            {
+                if (created_at_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)created_at_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
+        /// <summary>
         /// the fee amount in mojos
         /// </summary>
         public ulong? fee_amount { get; set; }

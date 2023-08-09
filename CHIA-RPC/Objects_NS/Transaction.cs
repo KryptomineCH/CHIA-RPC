@@ -45,6 +45,22 @@ namespace CHIA_RPC.Objects_NS
         /// </summary>
         public ulong? created_at_time { get; set; }
         /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? created_at_time_dateTime
+        {
+            get
+            {
+                if (created_at_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)created_at_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
+        /// <summary>
         /// the fee amount in mojos
         /// </summary>
         public ulong? fee_amount { get; set; }
@@ -80,6 +96,10 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// Specifies if a transaction is valid by checking properties such as sent_to replies.
         /// </summary>
+        /// <remarks>
+        /// this is just a preliminary check. There might be several reasons why a peer might refuse the transaction.<br/>
+        /// Please check the peer reasoning if !is_valid
+        /// </remarks>
         [JsonIgnore]
         public bool is_valid
         {

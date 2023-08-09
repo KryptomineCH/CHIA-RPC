@@ -52,6 +52,22 @@ namespace CHIA_RPC.Wallet_NS.DID_NS.DIDObjects_NS
         /// The timestamp when the transaction was created, likely represented as a Unix timestamp.
         /// </summary>
         public ulong? created_at_time { get; set; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? created_at_time_dateTime
+        {
+            get
+            {
+                if (created_at_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)created_at_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
 
         /// <summary>
         /// The fee amount for the transaction, in mojos.

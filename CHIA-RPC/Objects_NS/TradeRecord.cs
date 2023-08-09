@@ -3,6 +3,7 @@
 namespace CHIA_RPC.Objects_NS
 {
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// a trade record is beeing generated when acceping a chia offer fron an offer file
@@ -33,6 +34,22 @@ namespace CHIA_RPC.Objects_NS
         /// The time when the trade was created
         /// </summary>
         public ulong? created_at_time { get; set; }
+        /// <summary>
+        /// The timestamp as DateTime.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? created_at_time_dateTime
+        {
+            get
+            {
+                if (created_at_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)created_at_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
 
         /// <summary>
         /// Indicates whether the trade is the user's offer
