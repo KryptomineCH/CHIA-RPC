@@ -27,9 +27,9 @@ namespace CHIA_RPC.Objects_NS
         /// </summary>
         /// <remarks>This value is derived from the mojos amount</remarks>
         [JsonIgnore]
-        public decimal? amount_in_xch 
-        { 
-            get { return amount / GlobalVar.OneChiaInMojos; } 
+        public decimal? amount_in_xch
+        {
+            get { return amount / GlobalVar.OneChiaInMojos; }
             set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
@@ -53,9 +53,9 @@ namespace CHIA_RPC.Objects_NS
         /// </summary>
         /// <remarks>This value is derived from the mojos fee_amount</remarks>
         [JsonIgnore]
-        public decimal? fee_amount_in_xch 
-        { 
-            get { return fee_amount / GlobalVar.OneChiaInMojos; } 
+        public decimal? fee_amount_in_xch
+        {
+            get { return fee_amount / GlobalVar.OneChiaInMojos; }
             set { fee_amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
@@ -76,6 +76,25 @@ namespace CHIA_RPC.Objects_NS
         /// The peers the tx has been sent to.
         /// </summary>
         public Peer[]? sent_to { get; set; }
+
+        /// <summary>
+        /// Specifies if a transaction is valid by checking properties such as sent_to replies.
+        /// </summary>
+        [JsonIgnore]
+        public bool is_valid
+        {
+            get
+            {
+                foreach (Peer peer in sent_to)
+                {
+                    if (peer.inclusionStatus == InclusionStatus.FAILED)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
 
         /// <summary>
         /// Represents the bundle of information required to spend Chia coins.
