@@ -16,7 +16,13 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.2.1
+    <PackageReleaseNotes>1.8.2.2
+- Included Peer object
+- updated transaction documentationfor `sent_to` and `sent`
+- changed `sent_to`  from `dynamic?` to `Peer[]?`
+related documentation: https://docs.chia.net/walletconnect-commands?_highlight=sent#transactionrecord
+
+1.8.2.1
 This is a minor update that introduces changes to Transaction, Transaction Dict Memos, Transaction no memos, and GetTransaction:
 - Added the TransactionType enum, making it easier to identify the type of a transaction.
 - Added an unknown wallet type, "Ratelimited Wallet," to the WalletType enum.
@@ -37,7 +43,7 @@ Please refer to the documentation and the updated code comments for a deeper und
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.2.1</Version>
+    <Version>1.8.2.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
