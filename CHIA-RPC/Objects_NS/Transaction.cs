@@ -196,11 +196,28 @@ namespace CHIA_RPC.Objects_NS
                 // this is a workaround for the api returning an amount of 0 in unknown circumstances
                 return additions[0];
             }
+            if (amount == 0 && additions.Length == 0 && removals.Length > 0)
+            {
+                // this is a workaround for the api returning an amount of 0 in unknown circumstances
+                return removals[0];
+            }
+            // try to fetch the primary coin from additions, this is the default case
             foreach(Coin addition in additions)
             {
                 if (addition.amount == amount)
                 {
                     return addition;
+                }
+            }
+            if (additions.Length == 0)
+            {
+                // if no addition coin was found, try to fetch from removals. This is the case for certain offer actions
+                foreach (Coin removal in removals)
+                {
+                    if (removal.amount == amount)
+                    {
+                        return removal;
+                    }
                 }
             }
             throw new AggregateException("could not identify apropriate coin!");
