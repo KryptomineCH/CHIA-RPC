@@ -5,15 +5,15 @@
     <RootNamespace>CHIA_RPC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Platforms>AnyCPU;x64</Platforms>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>CHIA-RPC library</Title>
+	<Version>1.8.2.6</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
-    <Copyright>MIT License</Copyright>
+	<Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
+	<Copyright>KryptoMine.ch</Copyright>
     <PackageProjectUrl>https://github.com/KryptomineCH/CHIA-RPC</PackageProjectUrl>
-    <PackageIcon>icon.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
     <PackageReleaseNotes>
@@ -55,12 +55,15 @@ Enhanced features:
 - Compiler Warnings: Resolved all compiler warnings within the package.
 
 Please refer to the documentation and the updated code comments for a deeper understanding of these updates. As always, we welcome any issue reports or feedback on these modifications.</PackageReleaseNotes>
-    <AssemblyVersion>$(PackageVersion)</AssemblyVersion>
+	  <PackageIcon>icon.png</PackageIcon>
+	  <PackageLicenseExpression> MIT-Modern-Variant</PackageLicenseExpression>
+	  <IncludeSymbols>False</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <FileVersion>$(PackageVersion)</FileVersion>
-    <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
-    <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.2.6</Version>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    
+
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -98,7 +101,7 @@ Please refer to the documentation and the updated code comments for a deeper und
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chia-Metadata" Version="1.6.2.5" />
+    <PackageReference Include="Chia-Metadata" Version="1.8.2" />
     <PackageReference Include="NFT.Storage.Net" Version="1.0.1.2" />
   </ItemGroup>
 
