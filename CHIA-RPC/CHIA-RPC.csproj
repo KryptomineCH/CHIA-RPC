@@ -5,24 +5,21 @@
     <RootNamespace>CHIA_RPC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-	<Version>1.8.2.6</Version>
+    <Version>1.8.2.6</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
-	<Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-	<Copyright>KryptoMine.ch</Copyright>
+    <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
+    <Copyright>KryptoMine.ch</Copyright>
     <PackageProjectUrl>https://github.com/KryptomineCH/CHIA-RPC</PackageProjectUrl>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>
-		1.8.2.x
-- updated function to get primary coin from transaction to be more resilient
-
-1.8.2.5
-- added property `is_valid` to transaction. This value is beeing checked against the peer node responses to see if they returned an error
-- created_at_time can now be fetched as DateTime
+    <PackageReleaseNotes>This is a Major overhaul of the Package. 
+It implements nullable types for all endpoints. It is likely to require code changes or otherwise at least produces plentiful null value compiler warnings.
 
 1.8.2.4
 - hotfix for peer (has no attribute names)
@@ -55,25 +52,11 @@ Enhanced features:
 - Compiler Warnings: Resolved all compiler warnings within the package.
 
 Please refer to the documentation and the updated code comments for a deeper understanding of these updates. As always, we welcome any issue reports or feedback on these modifications.</PackageReleaseNotes>
-	  <PackageIcon>icon.png</PackageIcon>
-	  <PackageLicenseExpression> MIT-Modern-Variant</PackageLicenseExpression>
-	  <IncludeSymbols>False</IncludeSymbols>
-	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
-	  <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
-    <FileVersion>$(PackageVersion)</FileVersion>
-    
-
+    <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <IncludeSymbols>False</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>embedded</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
@@ -81,13 +64,13 @@ Please refer to the documentation and the updated code comments for a deeper und
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="favicon.ico" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\icon.png">
@@ -101,19 +84,9 @@ Please refer to the documentation and the updated code comments for a deeper und
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chia-Metadata" Version="1.8.2" />
-    <PackageReference Include="NFT.Storage.Net" Version="1.0.1.2" />
+	<PackageReference Include="Chia-Metadata" Version="1.6.2.5" />
+    <PackageReference Include="NFT.Storage.Net" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-	
-	<ItemGroup>
-		<AdditionalFiles Include="GlobalSuppressions.cs" />
-	</ItemGroup>
 
 </Project>
