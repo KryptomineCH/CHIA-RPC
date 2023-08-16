@@ -6,43 +6,58 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>CHIA-RPC library</Title>
+    <Version>1.8.2.6</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
-    <Copyright>MIT License</Copyright>
+    <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
+    <Copyright>KryptoMine.ch</Copyright>
     <PackageProjectUrl>https://github.com/KryptomineCH/CHIA-RPC</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>This is a Major overhaul of the Package. 
-It implements nullable types for all endpoints. It is likely to require code changes or otherwise at least produces plentiful null value compiler warnings.
+    <PackageReleaseNotes>1.8.2.5
+- added property `is_valid` to transaction. This value is beeing checked against the peer node responses to see if they returned an error
+- created_at_time can now be fetched as DateTime
+
+1.8.2.4
+- hotfix for peer (has no attribute names)
+- added unit test
+
+1.8.2.3
+- timestamps can now be read as DateTime
+- improved resiliense and error handling in case of serialisation failures
+
+1.8.2.2
+- Included Peer object
+- updated transaction documentationfor `sent_to` and `sent`
+- changed `sent_to`  from `dynamic?` to `Peer[]?`
+related documentation: https://docs.chia.net/walletconnect-commands?_highlight=sent#transactionrecord
+
+1.8.2.1
+This is a minor update that introduces changes to Transaction, Transaction Dict Memos, Transaction no memos, and GetTransaction:
+- Added the TransactionType enum, making it easier to identify the type of a transaction.
+- Added an unknown wallet type, "Ratelimited Wallet," to the WalletType enum.
+
+1.8.2
+This release presents a major overhaul of the package, implementing nullable types for all endpoints. It's likely that this will necessitate code changes, or at the very least, produce numerous null value compiler warnings.
 
 Enhanced features:
-- Improved handling of null parameters: The RPC interface now properly handles null input parameters. This ensures that the application does not crash or cause unintended behavior when null is passed.
-- RPC Parameter nullable: All RPC parameter objects are now nullable. This helps to prevent malformed requests and enhances the robustness of our API communication.
-- Added null checks in RPC methods: Methods like BatchUpdate_Async now check if their required parameters are null before executing. This allows us to fail early and return a useful error message instead of causing an unexpected exception at runtime.
-- Fixed potential NullReferenceExceptions
-- Expanded XML Comments: We have vastly added or expanded XML comments to several classes and methods. These comments serve as in-code documentation and provide useful context and explanations for developers.
-- All compiler warnings within the package have been resolved
-Please refer to the documentation and updated code comments for more detailed information about these updates. As always, feel free to report any issues or provide feedback on these changes.</PackageReleaseNotes>
-    <AssemblyVersion>$(PackageVersion)</AssemblyVersion>
-    <FileVersion>$(PackageVersion)</FileVersion>
+- Improved Null Parameter Handling: The RPC interface now accurately manages null input parameters. This ensures the application won't crash or exhibit unintended behavior when a null value is passed.
+- RPC Parameter Nullability: All RPC parameter objects are now nullable, enhancing request integrity and the stability of our API communication.
+- Null Checks in RPC Methods: Functions, such as BatchUpdate_Async, now ascertain if their essential parameters are null prior to execution. This preemptive action helps detect issues early, returning a helpful error message instead of triggering unexpected runtime exceptions.
+- Null Reference Exception Fixes: Addressed potential NullReferenceExceptions.
+- Expanded XML Comments: We have significantly added to or expanded the XML comments across numerous classes and methods. These annotations act as in-code documentation, offering valuable context and guidance for developers.
+- Compiler Warnings: Resolved all compiler warnings within the package.
+
+Please refer to the documentation and the updated code comments for a deeper understanding of these updates. As always, we welcome any issue reports or feedback on these modifications.</PackageReleaseNotes>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
-    <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.2</Version>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <IncludeSymbols>False</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>embedded</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
@@ -50,13 +65,13 @@ Please refer to the documentation and updated code comments for more detailed in
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="favicon.ico" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\icon.png">
@@ -70,19 +85,9 @@ Please refer to the documentation and updated code comments for more detailed in
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chia-Metadata" Version="1.6.2.5" />
-    <PackageReference Include="NFT.Storage.Net" Version="1.0.1.2" />
+	<PackageReference Include="Chia-Metadata" Version="1.6.2.5" />
+    <PackageReference Include="NFT.Storage.Net" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-	
-	<ItemGroup>
-		<AdditionalFiles Include="GlobalSuppressions.cs" />
-	</ItemGroup>
 
 </Project>
