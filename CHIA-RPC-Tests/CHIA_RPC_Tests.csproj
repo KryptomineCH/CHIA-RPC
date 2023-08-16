@@ -22,11 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CHIA-RPC\CHIA-RPC.csproj" />
+    <Folder Include="General\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="General\" />
+    <ProjectReference Include="..\CHIA-RPC\CHIA-RPC.csproj" />
   </ItemGroup>
 
 </Project>
