@@ -16,7 +16,19 @@
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.2.3
+    <PackageReleaseNotes>
+		1.8.2.x
+- updated function to get primary coin from transaction to be more resilient
+
+1.8.2.5
+- added property `is_valid` to transaction. This value is beeing checked against the peer node responses to see if they returned an error
+- created_at_time can now be fetched as DateTime
+
+1.8.2.4
+- hotfix for peer (has no attribute names)
+- added unit test
+
+1.8.2.3
 - timestamps can now be read as DateTime
 - improved resiliense and error handling in case of serialisation failures
 
@@ -47,7 +59,7 @@ Please refer to the documentation and the updated code comments for a deeper und
     <FileVersion>$(PackageVersion)</FileVersion>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
-    <Version>1.8.2.3</Version>
+    <Version>1.8.2.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>False</IncludeSymbols>
