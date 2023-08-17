@@ -33,6 +33,16 @@ namespace CHIA_RPC.Objects_NS
             set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
+        /// the transaction amount in cat token
+        /// </summary>
+        /// <remarks>This value is derived from the mojos amount</remarks>
+        [JsonIgnore]
+        public decimal? amount_in_cat
+        {
+            get { return amount / GlobalVar.OneCatInMojos; }
+            set { amount = (ulong?)(value * GlobalVar.OneCatInMojos); }
+        }
+        /// <summary>
         /// Indicates that a Transaction has been submitted and Processed by a Full Node
         /// </summary>
         public bool? confirmed { get; set; }
