@@ -59,6 +59,7 @@ Enhanced features:
 Please refer to the documentation and the updated code comments for a deeper understanding of these updates. As always, we welcome any issue reports or feedback on these modifications.</PackageReleaseNotes>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageOutputPath>Y:\Projects\Programmbibliotheken\LocalNugetPackages</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
