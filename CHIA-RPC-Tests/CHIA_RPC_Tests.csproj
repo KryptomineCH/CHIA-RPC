@@ -25,4 +25,14 @@
     <Folder Include="General\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CHIA-RPC\CHIA-RPC.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Update="testAssets\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
 </Project>
