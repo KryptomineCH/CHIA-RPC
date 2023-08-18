@@ -317,6 +317,11 @@ namespace CHIA_RPC.Objects_NS
         {
             get
             {
+                /// trepca (discord community) if this is from the wallet, then confirmed = true and confirmed_at_height = 0 means transaction has failed
+                if ((bool)confirmed && confirmed_at_height == 0)
+                {
+                    return false;
+                }
                 foreach (Peer peer in sent_to)
                 {
                     if (peer.inclusionStatus == InclusionStatus.FAILED)
@@ -376,6 +381,19 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// this is an experimental property in an attempt to make transactions more clear for humans
         /// </summary>
+        /// <remarks>
+        /// if a transaction is denominated in a cat token and fees are applied, the fees are beeing deducted from the xch wallet! 
+        /// this leads to the additions + fees > removals
+        /// </remarks>
+        [JsonIgnore]
+        public CustomTransactionType? customTransactionType { get { return GetCustomTransactionType(); } }
+        /// <summary>
+        /// this is an experimental property in an attempt to make transactions more clear for humans
+        /// </summary>
+        /// <remarks>
+        /// if a transaction is denominated in a cat token and fees are applied, the fees are beeing deducted from the xch wallet! 
+        /// this leads to the additions + fees > removals
+        /// </remarks>
         [Experimental("This function is still under testing and may change in future.")]
         public CustomTransactionType? GetCustomTransactionType()
         {
@@ -388,10 +406,11 @@ namespace CHIA_RPC.Objects_NS
             { // less cons are added than removed: the added amount is the change. RemovalsAmount - (AdditionsAmount + fee_amount) equals the sent amount
                 return CustomTransactionType.Outgoing;
             }
-            if (AdditionsAmount + fee_amount == RemovalsAmount)
+            if (AdditionsAmount + fee_amount == RemovalsAmount || AdditionsAmount == RemovalsAmount)
             {
                 return CustomTransactionType.Neutral;
             }
+
             return CustomTransactionType.Unknown;
         }
 
@@ -410,12 +429,11 @@ namespace CHIA_RPC.Objects_NS
         }
 
         /// <summary>
-        /// identifies the primary coin which can be used to find a transaction on blockchain explorers.
+        /// tries to identify the primary relevant coin(s) if theis transaction which can be used to find the transaction in the blockchain explorer
         /// </summary>
         /// <remarks>
-        /// this is usually the first addition[] for<br/>
-        /// 
-        /// outgoing trades do not seem to have a Primary coin as they do not list the coin which is beeing created
+        /// the logic how transactions are beeing calculated is very complex, since multiple coins and recipients can be involved<br/>
+        /// This function is still experimental.
         /// </remarks>
         /// <returns></returns>
         /// <exception cref="AggregateException">could not identify apropriate coin!</exception>
@@ -457,6 +475,11 @@ namespace CHIA_RPC.Objects_NS
             if (transactionType == CustomTransactionType.Incoming)
             {
                 return additions;
+            }
+            if (transactionType == CustomTransactionType.Neutral && additions.Length == removals.Length)
+            {
+                // this is likely a cancellation transaction
+                return removals;
             }
             throw new AggregateException("could not identify apropriate coin!");
         }
