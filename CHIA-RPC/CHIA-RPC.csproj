@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>1.8.2.6</Version>
+    <Version>1.8.2.7</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -18,9 +18,14 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>1.8.2.6
+    <PackageReleaseNotes>1.8.2.x
 - restore of chia-rpc project file which got corrupted for unknown reasons
 - updated the code to fetch the primary coin from a transaction
+- added amount in cat to transaction
+- made coin documentation clearer
+- Marked GetCoinID() as deprecated (use CoinName property instead)
+- implemented lazy loading and caching for CoinName
+- added amount in cat property to coin
 
 1.8.2.5
 This is a Major overhaul of the Package. 

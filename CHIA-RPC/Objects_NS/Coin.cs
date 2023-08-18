@@ -35,6 +35,16 @@ namespace CHIA_RPC.Objects_NS
             get { return amount / GlobalVar.OneChiaInMojos; }
             set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
+        /// <summary>
+        /// Represents the coin's value in a CAT token.
+        /// </summary>
+        /// <remarks>This value is derived from the mojos amount.</remarks>
+        [JsonIgnore]
+        public decimal? amount_in_cat
+        {
+            get { return amount / GlobalVar.OneCatInMojos; }
+            set { amount = (ulong?)(value * GlobalVar.OneCatInMojos); }
+        }
 
         /// <summary>
         /// The puzzlehash of the parent coin that was spent to create this coin.
