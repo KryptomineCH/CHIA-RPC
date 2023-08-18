@@ -52,10 +52,18 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The name of the coin which can be used to find the coin on blockchain explorers.
         /// </summary>
+        /// <remarks>
+        /// Calls GetCoinID(); in the background
+        /// </remarks>
         [JsonIgnore]
-        public string? CoinName { get { return GetCoinID(); } }
+        public string? CoinName {
+            get => _CoinName ??= GetCoinID(); // lazy load Coin ID
+        }
+        private string? _CoinName;
 
         /// <summary>
+        /// <b>Use the CoinName property instead.</b>
+        /// <br/><br/>
         /// Calculates the unique ID for the coin based on its properties.
         /// </summary>
         /// <remarks>
@@ -63,6 +71,7 @@ namespace CHIA_RPC.Objects_NS
         /// If any of these properties is null, the method returns null.
         /// </remarks>
         /// <returns>The unique ID of the coin as a string, or null if any of the properties required to calculate it is null.</returns>
+        [Obsolete("Use the CoinName property instead.")]
         public string? GetCoinID()
         {
             if (amount == null || parent_coin_info == null || puzzle_hash == null)
