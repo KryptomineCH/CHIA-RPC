@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.General_NS;
+﻿using CHIA_RPC.FullNode_NS;
+using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json.Serialization;
 
@@ -18,6 +19,107 @@ namespace CHIA_RPC.Objects_NS
         /// <remarks>For a standard chia transaction, these are 1-2 coins (1 to the recipient and 1 to yourself with the change if needed)<br/>
         /// The hash values in the Coins can be used to look the transactions up in Blockchain explorers</remarks>
         public Coin[]? additions { get; set; }
+        /// <summary>
+        /// Derived value from additions (in mojo)
+        /// </summary>
+        /// <remarks>
+        /// This value is cached. It will not be refreshed if you change the additions after calculating it.
+        /// </remarks>
+        [JsonIgnore]
+        public ulong? AdditionsAmount
+        {
+            get
+            {
+                if (_AdditionsAmount == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_AdditionsAmount == null)
+                        {
+                            ulong sum = 0;
+                            foreach (Coin addition in additions)
+                            {
+                                if (addition.amount.HasValue)
+                                {
+                                    sum += addition.amount.Value;
+                                }
+                            }
+                            _AdditionsAmount = sum;
+                        }
+                    }
+                }
+                return _AdditionsAmount;
+            }
+        }
+        private ulong? _AdditionsAmount;
+        private readonly object _lock = new object();
+        /// <summary>
+        /// Derived value from additions (in xch)
+        /// </summary>
+        /// <remarks>
+        /// This value is cached. It will not be refreshed if you change the additions after calculating it.
+        /// </remarks>
+        [JsonIgnore]
+        public decimal? AdditionsAmount_XCH
+        {
+            get
+            {
+                if (_AdditionsAmount_XCH == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_AdditionsAmount_XCH == null)
+                        {
+                            decimal sum = 0;
+                            foreach (Coin addition in additions)
+                            {
+                                if (addition.amount_in_xch.HasValue)
+                                {
+                                    sum += addition.amount_in_xch.Value;
+                                }
+                            }
+                            _AdditionsAmount_XCH = sum;
+                        }
+                    }
+                }
+                return _AdditionsAmount_XCH;
+            }
+        }
+        private decimal? _AdditionsAmount_XCH;
+        /// <summary>
+        /// Derived value from additions (in cat)
+        /// </summary>
+        /// <remarks>
+        /// This value is cached. It will not be refreshed if you change the additions after calculating it.
+        /// </remarks>
+        [JsonIgnore]
+        public decimal? AdditionsAmount_CAT
+        {
+            get
+            {
+                if (_AdditionsAmount_CAT == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_AdditionsAmount_CAT == null)
+                        {
+                            decimal sum = 0;
+                            foreach (Coin addition in additions)
+                            {
+                                if (addition.amount_in_cat.HasValue)
+                                {
+                                    sum += addition.amount_in_cat.Value;
+                                }
+                            }
+                            _AdditionsAmount_CAT = sum;
+                        }
+                    }
+                }
+                return _AdditionsAmount_CAT;
+            }
+        }
+        private decimal? _AdditionsAmount_CAT;
+
         /// <summary>
         /// the transaction amount in mojos
         /// </summary>
@@ -93,6 +195,106 @@ namespace CHIA_RPC.Objects_NS
         /// The Coins which are removed from your wallet to create the new coins
         /// </summary>
         public Coin[]? removals { get; set; }
+        /// <summary>
+        /// Derived value from removals (in mojo)
+        /// </summary>
+        /// <remarks>
+        /// This value is cached. It will not be refreshed if you change the removals after calculating it.
+        /// </remarks>
+        [JsonIgnore]
+        public ulong? RemovalsAmount
+        {
+            get
+            {
+                if (_RemovalsAmount == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_RemovalsAmount == null)
+                        {
+                            ulong sum = 0;
+                            foreach (Coin removal in removals)
+                            {
+                                if (removal.amount.HasValue)
+                                {
+                                    sum += removal.amount.Value;
+                                }
+                            }
+                            _RemovalsAmount = sum;
+                        }
+                    }
+                }
+                return _RemovalsAmount;
+            }
+        }
+        private ulong? _RemovalsAmount;
+
+        /// <summary>
+        /// Derived value from removals (in xch)
+        /// </summary>
+        /// <remarks>
+        /// This value is cached. It will not be refreshed if you change the removals after calculating it.
+        /// </remarks>
+        [JsonIgnore]
+        public decimal? RemovalsAmount_XCH
+        {
+            get
+            {
+                if (_RemovalsAmount_XCH == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_RemovalsAmount_XCH == null)
+                        {
+                            decimal sum = 0;
+                            foreach (Coin removal in removals)
+                            {
+                                if (removal.amount_in_xch.HasValue)
+                                {
+                                    sum += removal.amount_in_xch.Value;
+                                }
+                            }
+                            _RemovalsAmount_XCH = sum;
+                        }
+                    }
+                }
+                return _RemovalsAmount_XCH;
+            }
+        }
+        private decimal? _RemovalsAmount_XCH;
+        /// <summary>
+        /// Derived value from removals (in cat)
+        /// </summary>
+        /// <remarks>
+        /// This value is cached. It will not be refreshed if you change the removals after calculating it.
+        /// </remarks>
+        [JsonIgnore]
+        public decimal? RemovalsAmount_CAT
+        {
+            get
+            {
+                if (_RemovalsAmount_CAT == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_RemovalsAmount_CAT == null)
+                        {
+                            decimal sum = 0;
+                            foreach (Coin removal in removals)
+                            {
+                                if (removal.amount_in_cat.HasValue)
+                                {
+                                    sum += removal.amount_in_cat.Value;
+                                }
+                            }
+                            _RemovalsAmount_CAT = sum;
+                        }
+                    }
+                }
+                return _RemovalsAmount_CAT;
+            }
+        }
+        private decimal? _RemovalsAmount_CAT;
         /// <summary>
         /// Number of peers the tx was sent to.
         /// </summary>
@@ -172,6 +374,28 @@ namespace CHIA_RPC.Objects_NS
         public ulong? wallet_id { get; set; }
 
         /// <summary>
+        /// this is an experimental property in an attempt to make transactions more clear for humans
+        /// </summary>
+        [Experimental("This function is still under testing and may change in future.")]
+        public CustomTransactionType? GetCustomTransactionType()
+        {
+#warning This function is experimental and may change in the future
+            if (AdditionsAmount > 0 && RemovalsAmount == 0)
+            { // assumption: an incoming transaction (wallet balance increases) never consumes coins as this would be a creation out of thin air
+                return CustomTransactionType.Incoming;
+            }
+            if (AdditionsAmount + fee_amount < RemovalsAmount )
+            { // less cons are added than removed: the added amount is the change. RemovalsAmount - (AdditionsAmount + fee_amount) equals the sent amount
+                return CustomTransactionType.Outgoing;
+            }
+            if (AdditionsAmount + fee_amount == RemovalsAmount)
+            {
+                return CustomTransactionType.Neutral;
+            }
+            return CustomTransactionType.Unknown;
+        }
+
+        /// <summary>
         /// Implicitly converts a Transaction_NoMemo object to a TransactionID_RPC object.
         /// </summary>
         /// <param name="response">The Transaction_NoMemo object to convert.</param>
@@ -186,7 +410,7 @@ namespace CHIA_RPC.Objects_NS
         }
 
         /// <summary>
-        /// identifies the primary coin which can be used to find a transaction on blockchain explorers
+        /// identifies the primary coin which can be used to find a transaction on blockchain explorers.
         /// </summary>
         /// <remarks>
         /// this is usually the first addition[] for<br/>
@@ -195,40 +419,44 @@ namespace CHIA_RPC.Objects_NS
         /// </remarks>
         /// <returns></returns>
         /// <exception cref="AggregateException">could not identify apropriate coin!</exception>
-        public Coin GetPrimaryCoin()
+        [Experimental("This function is still under testing and may change in future.")]
+        public Coin[] GetPrimaryCoins()
         {
-            if (additions == null)
+#warning This function is experimental and may change in the future
+            // invalidity checks
+            if (additions == null && removals == null)
             {
                 throw new NullReferenceException(nameof(additions));
             }
-            if (amount == 0 && additions.Length > 0)
+            // fixes for single null value
+            if (additions == null) additions = new Coin[0];
+            if (removals == null) removals = new Coin[0];
+            if (additions.Length == 0 && removals.Length == null)
             {
-                // this is a workaround for the api returning an amount of 0 in unknown circumstances
-                return additions[0];
+                throw new InvalidOperationException("there are no additions & removals assigned to the transaction!");
             }
-            if (amount == 0 && additions.Length == 0 && removals.Length > 0)
+            
+            // Trivial transactions
+            if (additions.Length == 1 && removals.Length == 0)
             {
-                // this is a workaround for the api returning an amount of 0 in unknown circumstances
-                return removals[0];
+                return additions;
             }
-            // try to fetch the primary coin from additions, this is the default case
-            foreach(Coin addition in additions)
+            if (removals.Length == 1 && additions.Length == 0)
             {
-                if (addition.amount == amount)
-                {
-                    return addition;
-                }
+                return removals;
             }
-            if (additions.Length == 0)
+
+            // extended logic
+            /// Preparations
+            CustomTransactionType? transactionType = GetCustomTransactionType();
+            if (transactionType == CustomTransactionType.Outgoing)
             {
-                // if no addition coin was found, try to fetch from removals. This is the case for certain offer actions
-                foreach (Coin removal in removals)
-                {
-                    if (removal.amount == amount)
-                    {
-                        return removal;
-                    }
-                }
+                // in an outgoing transaction, the outgoing coin cannot be specied without queries against the node. This is why the largest removal coin is selected in order to find children
+                return removals;
+            }
+            if (transactionType == CustomTransactionType.Incoming)
+            {
+                return additions;
             }
             throw new AggregateException("could not identify apropriate coin!");
         }

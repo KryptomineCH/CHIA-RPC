@@ -15,7 +15,7 @@ namespace CHIA_RPC_Tests.Objects_NS
             foreach (FileInfo testFile in testFiles)
             {
                 Transaction_NoMemo transaction = Transaction_NoMemo.LoadObjectFromFile(testFile);
-                Coin primaryCoin = transaction.GetPrimaryCoin();
+                Coin[] primaryCoin = transaction.GetPrimaryCoins();
                 { }
             }
         }
