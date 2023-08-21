@@ -64,5 +64,14 @@ namespace CHIA_RPC.General_NS
         {
             return new WalletID_RPC(response.wallet_id);
         }
+        /// <summary>
+        /// Implicitly converts a WalletID_Response object to a numeric wallet id.
+        /// </summary>
+        /// <param name="response">The WalletID_Response object to convert.</param>
+        /// <returns>A ulong initialized with the wallet ID.</returns>
+        public static implicit operator ulong(WalletID_RPC response)
+        {
+            return response.wallet_id;
+        }
     }
 }
