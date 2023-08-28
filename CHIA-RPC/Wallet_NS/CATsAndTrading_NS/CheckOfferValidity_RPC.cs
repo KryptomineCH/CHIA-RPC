@@ -1,11 +1,10 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
-using System.Collections.Specialized;
 
 namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
 {
     /// <summary>
-    /// Class to represent a JSON RPC response for checking offer validity.
+    /// Class to represent a JSON RPC response for checking Offer validity.
     /// </summary>
     /// <remarks>
     /// <see href="https://docs.chia.net/wallet-rpc/#check_offer_validity"/><br/><br/>
@@ -14,14 +13,14 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
     public class CheckOfferValidity_Response : ResponseTemplate<CheckOfferValidity_Response>
     {
         /// <summary>
-        /// the offer ID
+        /// the Offer ID
         /// </summary>
         public string? id { get; set; }
         /// <summary>
         /// Indicating whether the offer is valid.<br/><br/>
-        /// The offer is considered valid if it is in any of the following states:<br/>
+        /// The Offer is considered valid if it is in any of the following states:<br/>
         /// PENDING_ACCEPT, PENDING_CONFIRM, PENDING_CANCEL.<br/><br/>
-        /// The offer is no longer valid if it is in any of the following states:<br/>
+        /// The Offer is no longer valid if it is in any of the following states:<br/>
         /// CANCELLED, CONFIRMED, FAILED.
         /// </summary>
         public bool? valid { get; set; }
@@ -29,7 +28,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
 
 
     /// <summary>
-    /// Check if an offer is valid
+    /// Check if an Offer is valid
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc/#check_offer_validity"/></remarks>
     /// <returns><see cref="CheckOfferValidity_Response"/></returns>
@@ -40,7 +39,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// </summary>
         public CheckOfferValidity_RPC() { /* for serialisation */ }
         /// <summary>
-        /// Check if an offer is valid
+        /// Check if an Offer is valid
         /// </summary>
         /// <param name="offer">The contents of the offer to check.</param>
         public CheckOfferValidity_RPC(string offer)
@@ -48,7 +47,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             this.offer = offer;
         }
         /// <summary>
-        /// Check if an offer is valid
+        /// Check if an Offer is valid
         /// </summary>
         /// <param name="offer">The contents of the offer to check.</param>
         public CheckOfferValidity_RPC(OfferFile offer)
@@ -57,7 +56,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         }
 
         /// <summary>
-        /// The contents of the offer to check.
+        /// The contents of the Offer to check.
         /// </summary>
         public string? offer { get; set; }
     }

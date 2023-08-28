@@ -3,7 +3,7 @@
 namespace CHIA_RPC.Datalayer_NS
 {
     /// <summary>
-    /// Represents a cancel_offer RPC request.
+    /// Cancel an Offer with a specific identifier
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/datalayer-rpc/#cancel_offer"/></remarks>
     /// <returns><see cref="General_NS.Success_Response"/></returns>
