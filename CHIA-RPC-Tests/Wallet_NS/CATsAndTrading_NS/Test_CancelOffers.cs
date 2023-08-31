@@ -5,8 +5,7 @@ using CHIA_RPC_Tests.Testhelpers;
 
 namespace CHIA_RPC_Tests.Wallet_NS.CATsAndTrading_NS
 {
-    public class Test_
-        s
+    public class Test_CancelOffers
     {
         private string[] ExpectedRPCResults = new string[]
         {
