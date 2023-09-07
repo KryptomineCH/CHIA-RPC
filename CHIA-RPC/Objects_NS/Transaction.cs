@@ -9,6 +9,8 @@ namespace CHIA_RPC.Objects_NS
     /// a general transaction
     /// </summary>
     /// <remarks>
+    /// <b>WARNING:</b> Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!
+    /// <br/><br/>
     /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/><br/>
     /// </remarks>
     public class Transaction_NoMemo : ObjectTemplate<Transaction_NoMemo>
@@ -151,14 +153,23 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The block in which the transaction was included
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> NOT deterministic. Information such WILL CHANGE when resynching the wallet!
+        /// </remarks>
         public ulong? confirmed_at_height { get; set; }
         /// <summary>
         /// probably a unix timestamp of the Block in which the transaction was included
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> NOT deterministic. Information such WILL CHANGE when resynching the wallet!
+        /// </remarks>
         public ulong? created_at_time { get; set; }
         /// <summary>
         /// The timestamp as DateTime.
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> NOT deterministic. Information such WILL CHANGE when resynching the wallet!
+        /// </remarks>
         [JsonIgnore]
         public DateTime? created_at_time_dateTime
         {

@@ -8,6 +8,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// Get a transaction's details from its ID
     /// </summary>
     /// <remarks>
+    /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
     /// <see href="https://docs.chia.net/wallet-rpc#get_transaction"/><br/><br/>
     /// Uses:<br/><see cref="General_NS.TransactionID_RPC"/>
     /// </remarks>
@@ -43,6 +44,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// all transactions for a given wallet (filtered).
     /// </summary>
     /// <remarks>
+    /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
     /// <see href="https://docs.chia.net/wallet-rpc#get_transactions"/><br/><br/>
     /// Uses:<br/><see cref="GetTransactions_RPC"/>
     /// </remarks>
@@ -51,6 +53,9 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// the transactions details
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
+        /// </remarks>
         public Transaction_DictMemos[]? transactions { get; set; }
         /// <summary>
         /// the wallet id where the transactions belong to
@@ -60,7 +65,9 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// <summary>
     /// Represents a JSON RPC request for getting all transactions for a given wallet.
     /// </summary>
-    /// <remarks><see href="https://docs.chia.net/wallet-rpc#get_transactions"/></remarks>
+    /// <remarks>
+    /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
+    /// <see href="https://docs.chia.net/wallet-rpc#get_transactions"/></remarks>
     /// <returns><see cref="GetTransactions_Response"/></returns>
     public class GetTransactions_RPC : RPCTemplate<GetTransactions_RPC>
     {

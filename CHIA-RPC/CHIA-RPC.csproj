@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>2.0.0</Version>
+    <Version>2.0.0.1</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -18,7 +18,12 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.0.0
+    <PackageReleaseNotes>2.0.0.1
+- Marked GetTransactions and corresponding classes/functions as obsolete due to official statement:
+"Transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain. the wallet does a best effort. we are trying to improve this going forward. for accurate records you should keep a local record of TXs made. If the balance is not the same (within a mojos because of dust filtering) please let us know."
+https://github.com/Chia-Network/chia-blockchain/issues/16180
+
+2.0.0
 - documentation updates according to official documentation
 - added signing_mode to verify_signature</PackageReleaseNotes>
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
