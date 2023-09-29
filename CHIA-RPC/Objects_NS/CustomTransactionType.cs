@@ -30,6 +30,9 @@
         /// - a transaction gets cancelled. This is done by spending the original transactions coin and creating a new coin of the same value
         /// </remarks>
         Neutral,
+        Outgoing_Trade,
+        Incoming_Trade,
+        Fee,
         /// <summary>
         /// Transaction type could not be identified
         /// </summary>

@@ -22,7 +22,9 @@ namespace CHIA_RPC.Objects_NS
         /// The hash values in the Coins can be used to look the transactions up in Blockchain explorers</remarks>
         public Coin[]? additions { get; set; }
         /// <summary>
-        /// Derived value from additions (in mojo)
+        /// Derived value from additions (in mojo)<br/>
+        /// WARNINGS:<br/>
+        /// - the transaction value CANNOT be determined by calculating removals-additions
         /// </summary>
         /// <remarks>
         /// This value is cached. It will not be refreshed if you change the additions after calculating it.
@@ -56,7 +58,9 @@ namespace CHIA_RPC.Objects_NS
         private ulong? _AdditionsAmount;
         private readonly object _lock = new object();
         /// <summary>
-        /// Derived value from additions (in xch)
+        /// Derived value from additions (in xch)<br/>
+        /// WARNINGS:<br/>
+        /// - the transaction value CANNOT be determined by calculating removals-additions use <see cref="amount_in_xch"/> instead!
         /// </summary>
         /// <remarks>
         /// This value is cached. It will not be refreshed if you change the additions after calculating it.
@@ -89,7 +93,9 @@ namespace CHIA_RPC.Objects_NS
         }
         private decimal? _AdditionsAmount_XCH;
         /// <summary>
-        /// Derived value from additions (in cat)
+        /// Derived value from additions (in cat)<br/>
+        /// WARNINGS:<br/>
+        /// - the transaction value CANNOT be determined by calculating removals-additions
         /// </summary>
         /// <remarks>
         /// This value is cached. It will not be refreshed if you change the additions after calculating it.
@@ -123,11 +129,11 @@ namespace CHIA_RPC.Objects_NS
         private decimal? _AdditionsAmount_CAT;
 
         /// <summary>
-        /// the transaction amount in mojos
+        /// the transaction amount in mojos<br/>
         /// </summary>
         public ulong? amount { get; set; }
         /// <summary>
-        /// the transaction amount in full chia
+        /// the transaction amount in full chia<br/>
         /// </summary>
         /// <remarks>This value is derived from the mojos amount</remarks>
         [JsonIgnore]
@@ -137,7 +143,7 @@ namespace CHIA_RPC.Objects_NS
             set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
-        /// the transaction amount in cat token
+        /// the transaction amount in cat token amount.<br/><br/>
         /// </summary>
         /// <remarks>This value is derived from the mojos amount</remarks>
         [JsonIgnore]
@@ -203,11 +209,15 @@ namespace CHIA_RPC.Objects_NS
         /// <remarks>This is NOT what you will find from Blockchain explorers. Get the Hashes from the Coins (additions) instead!</remarks>
         public string? name { get; set; }
         /// <summary>
-        /// The Coins which are removed from your wallet to create the new coins
+        /// The Coins which are removed from your wallet (destroyed) to create the new coins
         /// </summary>
         public Coin[]? removals { get; set; }
         /// <summary>
-        /// Derived value from removals (in mojo)
+        /// The sum of chia coins which get "destroyed". <br/>
+        /// Note, new coins with the same value are beeing created. <br/>
+        /// WARNINGS:<br/>
+        /// - The removals amount is usually not visible on incoming standard transactions<br/>
+        /// - the transaction value CANNOT be determined by calculating removals-additions
         /// </summary>
         /// <remarks>
         /// This value is cached. It will not be refreshed if you change the removals after calculating it.
@@ -241,7 +251,10 @@ namespace CHIA_RPC.Objects_NS
         private ulong? _RemovalsAmount;
 
         /// <summary>
-        /// Derived value from removals (in xch)
+        /// Derived value from removals (in xch)<br/>
+        /// WARNINGS:<br/>
+        /// - The removals amount is usually not visible on incoming standard transactions<br/>
+        /// - the transaction value CANNOT be determined by calculating removals-additions
         /// </summary>
         /// <remarks>
         /// This value is cached. It will not be refreshed if you change the removals after calculating it.
@@ -274,7 +287,10 @@ namespace CHIA_RPC.Objects_NS
         }
         private decimal? _RemovalsAmount_XCH;
         /// <summary>
-        /// Derived value from removals (in cat)
+        /// Derived value from removals (in cat)<br/>
+        /// WARNINGS:<br/>
+        /// - The removals amount is usually not visible on incoming standard transactions<br/>
+        /// - the transaction value CANNOT be determined by calculating removals-additions
         /// </summary>
         /// <remarks>
         /// This value is cached. It will not be refreshed if you change the removals after calculating it.
@@ -409,20 +425,21 @@ namespace CHIA_RPC.Objects_NS
         public CustomTransactionType? GetCustomTransactionType()
         {
 #warning This function is experimental and may change in the future
-            if (AdditionsAmount > 0 && RemovalsAmount == 0)
-            { // assumption: an incoming transaction (wallet balance increases) never consumes coins as this would be a creation out of thin air
-                return CustomTransactionType.Incoming;
-            }
-            if (AdditionsAmount + fee_amount < RemovalsAmount )
-            { // less cons are added than removed: the added amount is the change. RemovalsAmount - (AdditionsAmount + fee_amount) equals the sent amount
-                return CustomTransactionType.Outgoing;
-            }
-            if (AdditionsAmount + fee_amount == RemovalsAmount || AdditionsAmount == RemovalsAmount)
-            {
-                return CustomTransactionType.Neutral;
-            }
-
-            return CustomTransactionType.Unknown;
+            if ()
+            //if (AdditionsAmount > 0 && RemovalsAmount == 0)
+            //{ // assumption: an incoming transaction (wallet balance increases) never consumes coins as this would be a creation out of thin air
+            //    return CustomTransactionType.Incoming;
+            //}
+            //if (AdditionsAmount + fee_amount < RemovalsAmount )
+            //{ // less cons are added than removed: the added amount is the change. RemovalsAmount - (AdditionsAmount + fee_amount) equals the sent amount
+            //    return CustomTransactionType.Outgoing;
+            //}
+            //if (AdditionsAmount + fee_amount == RemovalsAmount || AdditionsAmount == RemovalsAmount)
+            //{
+            //    return CustomTransactionType.Neutral;
+            //}
+            //
+            //return CustomTransactionType.Unknown;
         }
 
         /// <summary>
