@@ -56,11 +56,5 @@ namespace CHIA_RPC_Tests
                 }
             }
         }
-        [Fact]
-        public void GenerateTestTransactionTypes()
-        {
-            SendTransaction_RPC defaultTransaction = new SendTransaction_RPC(0,);
-            defaultTransaction.amount = 1000;
-        }
     }
 }
