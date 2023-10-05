@@ -88,11 +88,24 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
             this.additions = additions;
         }
 
+        private ulong? _wallet_id;
         /// <summary>
         /// The wallet ID for the origin of the transaction.
         /// </summary>
         /// <remarks>mantatory</remarks>
-        public ulong? wallet_id { get; set; }
+        public ulong? wallet_id
+        {
+            get { return _wallet_id; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("wallet_id must be greater than 0");
+                }
+                _wallet_id = value;
+            }
+        }
+
 
         /// <summary>
         /// The destination address.
