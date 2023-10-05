@@ -425,7 +425,7 @@ namespace CHIA_RPC.Objects_NS
         public CustomTransactionType? GetCustomTransactionType()
         {
 #warning This function is experimental and may change in the future
-            if ()
+            //if ()
             //if (AdditionsAmount > 0 && RemovalsAmount == 0)
             //{ // assumption: an incoming transaction (wallet balance increases) never consumes coins as this would be a creation out of thin air
             //    return CustomTransactionType.Incoming;
@@ -439,7 +439,7 @@ namespace CHIA_RPC.Objects_NS
             //    return CustomTransactionType.Neutral;
             //}
             //
-            //return CustomTransactionType.Unknown;
+            return CustomTransactionType.Unknown;
         }
 
         /// <summary>
