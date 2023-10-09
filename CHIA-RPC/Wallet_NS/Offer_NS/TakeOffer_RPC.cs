@@ -47,5 +47,14 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// </summary>
         /// <remarks>optional</remarks>
         public ulong? fee { get; set; } = 0;
+
+        /// <summary>
+        /// Implicit conversion from OfferFile to TakeOffer_RPC
+        /// </summary>
+        /// <param name="offerFile">The OfferFile object to convert</param>
+        public static implicit operator TakeOffer_RPC(OfferFile offerFile)
+        {
+            return new TakeOffer_RPC(offerFile);
+        }
     }
 }
