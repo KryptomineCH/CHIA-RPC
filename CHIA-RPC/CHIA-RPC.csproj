@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>2.0.1</Version>
+    <Version>2.1.0.1</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -18,7 +18,13 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.0.1
+    <PackageReleaseNotes>2.1.0
+- Improved nft documentation
+- Added functionality to await until an offer is executed or cancalled/invaild
+- Added implicit conversion for takeOffer RPC
+- Update AddOfferPosition (now supports cat and updated documentation)
+
+2.0.1
 - Update README
 - fix recursive call stackoverflow exception on AwaitTransactionToConfirm_Sync
 - add validation for wallet id
