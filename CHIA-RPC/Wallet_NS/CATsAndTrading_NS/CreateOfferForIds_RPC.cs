@@ -1,6 +1,7 @@
 ﻿
 using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Objects_NS;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
@@ -120,11 +121,12 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             }
         }
         /// <summary>
-        /// adds a new element (xch or cat), buy or sell to the offer
+        /// adds a new element (xch or cat), buy or sell to the offer.<br/>
+        /// This function is generic for xch and chia, for nfts or specific cat files, use the specific parameters
         /// </summary>
-        /// <remarks>WARNING: NOT Suitable for NFTs!</remarks>
-        /// <param name="assetId">represents the asset ID (1 for chia)</param>
-        /// <param name="value">represents the total amount (automatically converted to mojos)</param>
+        /// <remarks>WARNING: NOT Suitable for NFTs! Use the extensionmethod which takes an NFT instead!</remarks>
+        /// <param name="assetId">the ID of the asset to offer (1 for chia)</param>
+        /// <param name="value">represents the total decimal amount (automatically converted to mojos)</param>
         public void AddOfferPosition(string assetId, decimal value)
         {
             if (offer == null) offer = new Dictionary<string, long>();
@@ -136,6 +138,45 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             {
                 offer.Add(assetId, (long)(value * GlobalVar.OneCatInMojos));
             }
+        }
+        /// <summary>
+        /// add chia value to the offer
+        /// </summary>
+        /// <param name="value">the amount of chia to offer (decimal)</param>
+        public void AddOfferPosition(decimal value)
+        {
+            if (offer == null) offer = new Dictionary<string, long>();
+            offer.Add("1", (long)(value * GlobalVar.OneChiaInMojos));
+        }
+        /// <summary>
+        /// add cat to the offer
+        /// </summary>
+        /// <param name="cat">the cat to offer</param>
+        /// <param name="value">the value of the cat to offer (decimal)</param>
+        public void AddOfferPosition(GetCatList_Response.CatItem cat,decimal value)
+        {
+            if (offer == null) offer = new Dictionary<string, long>();
+            offer.Add(cat.asset_id, (long)(value * GlobalVar.OneCatInMojos));
+        }
+        /// <summary>
+        /// add cat to the offer
+        /// </summary>
+        /// <param name="cat">the cat to offer</param>
+        /// <param name="value">the value of the cat to offer (decimal)</param>
+        public void AddOfferPosition(CatGetAssetId_Response cat, decimal value)
+        {
+            if (offer == null) offer = new Dictionary<string, long>();
+            offer.Add(cat.asset_id, (long)(value * GlobalVar.OneCatInMojos));
+        }
+        /// <summary>
+        /// add cat to the offer
+        /// </summary>
+        /// <param name="nft">the nft to add to the offer</param>
+        /// <param name="amount">the count of this nft to offer (usually -1 or 1)</param>
+        public void AddOfferPosition(Nft nft, long amount = 1)
+        {
+            if (offer == null) offer = new Dictionary<string, long>();
+            offer.Add(nft.launcher_id, amount);
         }
 
         /// <summary>
