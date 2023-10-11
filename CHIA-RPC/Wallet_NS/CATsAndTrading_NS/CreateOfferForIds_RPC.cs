@@ -120,14 +120,22 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             }
         }
         /// <summary>
-        /// adds a new element, buy or sell to the offer
+        /// adds a new element (xch or cat), buy or sell to the offer
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void AddOfferPosition(string key, decimal value)
+        /// <remarks>WARNING: NOT Suitable for NFTs!</remarks>
+        /// <param name="assetId">represents the asset ID (1 for chia)</param>
+        /// <param name="value">represents the total amount (automatically converted to mojos)</param>
+        public void AddOfferPosition(string assetId, decimal value)
         {
             if (offer == null) offer = new Dictionary<string, long>();
-            offer.Add(key, (long)(value * GlobalVar.OneChiaInMojos));
+            if (assetId == "1")
+            {
+                offer.Add(assetId, (long)(value * GlobalVar.OneChiaInMojos));
+            }
+            else
+            {
+                offer.Add(assetId, (long)(value * GlobalVar.OneCatInMojos));
+            }
         }
 
         /// <summary>
