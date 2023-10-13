@@ -37,10 +37,15 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <param name="max_coin_amount">The maximum coin amount to select for the offer [Default: none]</param>
         /// <param name="solver">A marshalled solver</param>
         /// <param name="fee">An optional blockchain fee, in mojos</param>
-        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only. </param>
+        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only.</param>
+        /// <param name="min_height">The height at which the offer becomes valid</param>
+        /// <param name="max_height">The height at which the offer becomes invalid</param>
+        /// <param name="min_time_dateTime">The rough time at which the offer becomes valid</param>
+        /// <param name="max_time_dateTime">The rough time at which the offer becomes invalid</param>
         public CreateOfferForIds_RPC(
             Dictionary<string, long> offer, Dictionary<string, object> driver_dict, 
-            bool? validate_only = null, ulong? min_coin_amount = null, ulong? max_coin_amount = null, string? solver = null, ulong? fee = null, bool? reuse_puzhash = null)
+            bool? validate_only = null, ulong? min_coin_amount = null, ulong? max_coin_amount = null, string? solver = null, ulong? fee = null, bool? reuse_puzhash = null,
+            ulong? min_height = null, ulong? max_height = null, DateTime? min_time_dateTime = null, DateTime? max_time_dateTime = null)
         {
             this.offer = offer;
             this.validate_only = validate_only;
@@ -50,6 +55,10 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             this.solver = solver;
             this.fee = fee;
             this.reuse_puzhash = reuse_puzhash;
+            this.min_height = min_height;
+            this.max_height = max_height;
+            this.min_time_DateTime = min_time_dateTime;
+            this.max_time_DateTime = max_time_dateTime;
         }
         /// <summary>
         /// Create a new offer
@@ -68,10 +77,15 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// <param name="max_coin_amount_xch">The maximum coin amount to select for the offer [Default: none]</param>
         /// <param name="solver">A marshalled solver</param>
         /// <param name="fee_xch">An optional blockchain fee, in mojos</param>
-        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only. </param>
+        /// <param name="reuse_puzhash">If `true`, will not generate a new puzzle hash / address for this transaction only.</param>
+        /// <param name="min_height">The height at which the offer becomes valid</param>
+        /// <param name="max_height">The height at which the offer becomes invalid</param>
+        /// <param name="min_time_dateTime">The rough time at which the offer becomes valid</param>
+        /// <param name="max_time_dateTime">The rough time at which the offer becomes invalid</param>
         public CreateOfferForIds_RPC(
             Dictionary<string, decimal> offer_xch, Dictionary<string, object> driver_dict,
-            bool? validate_only = null, decimal? min_coin_amount_xch = null, decimal? max_coin_amount_xch = null, string? solver = null, decimal? fee_xch = null, bool? reuse_puzhash = null)
+            bool? validate_only = null, decimal? min_coin_amount_xch = null, decimal? max_coin_amount_xch = null, string? solver = null, decimal? fee_xch = null, bool? reuse_puzhash = null,
+            ulong? min_height = null, ulong? max_height = null, DateTime? min_time_dateTime = null, DateTime? max_time_dateTime = null)
         {
             this.offer_in_xch = offer_xch;
             this.validate_only = validate_only;
@@ -81,6 +95,10 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
             this.solver = solver;
             fee_in_xch = fee_xch;
             this.reuse_puzhash = reuse_puzhash;
+            this.min_height = min_height;
+            this.max_height = max_height;
+            this.min_time_DateTime = min_time_dateTime;
+            this.max_time_DateTime= max_time_dateTime;
         }
 
         /// <summary>
@@ -227,6 +245,73 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// </summary>
         /// <remarks>optional</remarks>
         public string? solver { get; set; }
+
+        /// <summary>
+        /// The minimum block height that must be reached before this Offer becomes valid [Default: `null` (not used)]
+        /// </summary>
+        public ulong? min_height { get; set; }
+        /// <summary>
+        /// The minimum UNIX timestamp that must be reached before this Offer becomes valid [Default: `null` (not used)]
+        /// </summary>
+        public ulong? min_time { get; set; }
+        /// <summary>
+        /// The maximum block height where this Offer is still considered valid, aka the expiry height [Default: `null` (not used)]
+        /// </summary>
+        /// // DateTime getters & setters for min_time and max_time
+        [JsonIgnore]
+        public DateTime? min_time_DateTime
+        {
+            get
+            {
+                if (min_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)min_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+            set {
+                if (value.HasValue)
+                {
+                    
+                    min_time = (ulong?)new DateTimeOffset((DateTime)value).ToUnixTimeSeconds();
+                }
+                else
+                {
+                    min_time = null;
+                }
+            }
+        }
+        public ulong? max_height { get; set; }
+        /// <summary>
+        /// The maximum UNIX timestamp where this Offer is stil considered valid, aka the expiry timestamp [Default: `null` (not used)] 
+        /// </summary>
+        public ulong? max_time { get; set; }
+        [JsonIgnore]
+        public DateTime? max_time_DateTime
+        {
+            get
+            {
+                if (max_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)max_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+            set
+            {
+                if (value.HasValue)
+                {
+
+                    max_time = (ulong?)new DateTimeOffset((DateTime)value).ToUnixTimeSeconds();
+                }
+                else
+                {
+                    max_time = null;
+                }
+            }
+        }
 
         /// <summary>
         /// An optional blockchain fee, in mojos

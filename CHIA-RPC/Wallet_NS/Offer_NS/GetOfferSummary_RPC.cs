@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using CHIA_RPC.Wallet_NS.Offer_NS.OfferObjects_NS;
 using static CHIA_RPC.Wallet_NS.Offer_NS.GetOfferSummary_Response.Summary.Info;
 
 namespace CHIA_RPC.Wallet_NS.Offer_NS
@@ -47,6 +48,11 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
             /// Represents what is requested.
             /// </summary>
             public Requested? requested { get; set; }
+
+            /// <summary>
+            /// the time constraints under which the offer is Valid
+            /// </summary>
+            public ValidTimes? valid_times { get; set; }
 
             /// <summary>
             /// info about the nft
@@ -202,6 +208,10 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// </summary>
         /// <remarks>mandatory</remarks>
         public string? offer { get; set; }
+        /// <summary>
+        /// specifies if the offer time constraints should be loaded or not
+        /// </summary>
+        public bool? advanced {get; set;}
     }
 
 }
