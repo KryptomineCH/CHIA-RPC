@@ -22,7 +22,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <param name="metadata_list">A list of dicts containing the metadata for each NFT to be minted</param>
         /// <param name="royalty_percentage">The royalty that will go to the original artist each time the NFT is sold</param>
         /// <param name="royalty_address">The wallet address of the NFT's artist. This is where royalties will be sent. It could be either an XCH address or a DID address</param>
-        /// <param name="target_address_list">A list of wallet addresses where the NFTs will be sent upon minting</param>
+        /// <param name="target_list">A list of wallet addresses where the NFTs will be sent upon minting</param>
         /// <param name="mint_number_start">The starting point for mint number used in intermediate launcher puzzle</param>
         /// <param name="mint_total">The total number of NFTs in the collection. </param>
         /// <param name="xch_coin_list">A list of coins to be used for funding the minting spend</param>
@@ -37,7 +37,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         public NftMintBulk_RPC(
             ulong wallet_id, MintMetadata[] metadata_list, 
             ulong? royalty_percentage = null, string? royalty_address = null, 
-            string[]? target_address_list = null, ulong? mint_number_start = null, 
+            string[]? target_list = null, ulong? mint_number_start = null, 
             ulong? mint_total = null, string[]? xch_coin_list = null, 
             string? xch_change_target = null, string? new_innerpuzhash = null, 
             string? new_p2_puzhash = null, object? did_coin_dict = null, 
@@ -48,7 +48,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
             this.metadata_list = metadata_list;
             this.royalty_percentage = royalty_percentage;
             this.royalty_address = royalty_address;
-            this.target_address_list = target_address_list;
+            this.target_list = target_list;
             this.mint_number_start = mint_number_start;
             this.mint_total = mint_total;
             this.xch_coin_list = xch_coin_list;
