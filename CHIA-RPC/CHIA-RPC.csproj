@@ -28,6 +28,7 @@
 - implemented daemon rpc endpoints
 - Implemented Verifiable Credentials endpoints
 - update NftMintBulk according to documentation
+- add clear_pending_roots endpoint according to documentation
 
 2.0.1
 - Update README
