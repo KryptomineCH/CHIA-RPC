@@ -21,7 +21,7 @@ namespace CHIA_RPC.Daemon_NS.Server_NS
     ///
     /// <returns><see cref="Success_Response"/></returns>
 
-    public class UnlockKeyring_RPC : RPCTemplate<UnlockKeyring_RPC>
+    public class Key_RPC : RPCTemplate<Key_RPC>
     {
         /// <summary>
         /// The key to unlock. Default is None.

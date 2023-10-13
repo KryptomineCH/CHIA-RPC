@@ -1,6 +1,6 @@
 ﻿using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
-namespace CHIA_RPC.Daemon_NS.KeychainServer_NS.KeychainServer_NS
+namespace CHIA_RPC.Daemon_NS.KeychainServer_NS.KeychainServerObjects_NS
 {
     /// <summary>
     /// represents a fingerprint
