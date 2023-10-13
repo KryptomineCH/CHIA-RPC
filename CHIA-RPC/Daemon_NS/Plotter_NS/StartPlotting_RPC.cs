@@ -53,7 +53,9 @@ namespace CHIA_RPC.Daemon_NS.Plotter_NS
         /// <param name="x">Set to true to skip moving the plot after it has been created. Type: <see cref="bool"/>.</param>
         /// <param name="n">The number of plots to create. Default is 1. Type: <see cref="int?"/>.</param>
         /// <param name="queue">The type of plotting queue. Default is "default". Type: <see cref="string"/>.</param>
-        public StartPlotting_RPC(string service, string plotter, int? delay, bool? parallel, int k, bool overrideK, int r, int b, int u, bool e, string t, string d, bool x, int? n, string queue)
+        public StartPlotting_RPC(
+            string service, string plotter, ulong? delay, bool? parallel, ulong k, bool overrideK,
+            ulong r, ulong b, ulong u, bool e, string t, string d, bool x, ulong? n, string queue)
         {
             this.service = service;
             this.plotter = plotter;
@@ -84,7 +86,7 @@ namespace CHIA_RPC.Daemon_NS.Plotter_NS
         /// <summary>
         /// The number of seconds to delay before starting to plot. Default is 0.
         /// </summary>
-        public int? delay { get; set; }
+        public ulong? delay { get; set; }
 
         /// <summary>
         /// Set to create multiple plots in parallel. Default is false.
@@ -94,7 +96,7 @@ namespace CHIA_RPC.Daemon_NS.Plotter_NS
         /// <summary>
         /// The k-size of the plot to create.
         /// </summary>
-        public int k { get; set; }
+        public ulong k { get; set; }
 
         /// <summary>
         /// Set to true to create a plot smaller than k-32.
@@ -104,17 +106,17 @@ namespace CHIA_RPC.Daemon_NS.Plotter_NS
         /// <summary>
         /// The number of threads to use for creating the plot(s).
         /// </summary>
-        public int r { get; set; }
+        public ulong r { get; set; }
 
         /// <summary>
         /// Size of the buffer, in MB.
         /// </summary>
-        public int b { get; set; }
+        public ulong b { get; set; }
 
         /// <summary>
         /// Number of buckets.
         /// </summary>
-        public int u { get; set; }
+        public ulong u { get; set; }
 
         /// <summary>
         /// Set to true to disable bitfield.
@@ -139,7 +141,7 @@ namespace CHIA_RPC.Daemon_NS.Plotter_NS
         /// <summary>
         /// The number of plots to create. Default is 1.
         /// </summary>
-        public int? n { get; set; }
+        public ulong? n { get; set; }
 
         /// <summary>
         /// The type of plotting queue. Default is "default".
