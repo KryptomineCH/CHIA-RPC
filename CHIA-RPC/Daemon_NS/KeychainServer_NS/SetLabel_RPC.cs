@@ -1,4 +1,4 @@
-﻿using CHIA_RPC.Daemon_NS.KeychainServer_NS.KeychainServer_NS;
+﻿using CHIA_RPC.Daemon_NS.KeychainServer_NS.KeychainServerObjects_NS;
 using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 
