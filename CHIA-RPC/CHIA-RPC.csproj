@@ -23,6 +23,8 @@
 - Added functionality to await until an offer is executed or cancalled/invaild
 - Added implicit conversion for takeOffer RPC
 - Update AddOfferPosition (now supports cat and updated documentation)
+- added daemon endpoints
+- added implicit conversions for fingerprint rpc
 
 2.0.1
 - Update README
