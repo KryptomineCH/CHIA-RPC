@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.1.0
+    <PackageReleaseNotes>2.1.1
 - Improved nft documentation
 - Added functionality to await until an offer is executed or cancalled/invaild
 - Added implicit conversion for takeOffer RPC
@@ -27,6 +27,7 @@
 - added implicit conversions for fingerprint rpc
 - implemented daemon rpc endpoints
 - Implemented Verifiable Credentials endpoints
+- update NftMintBulk according to documentation
 
 2.0.1
 - Update README

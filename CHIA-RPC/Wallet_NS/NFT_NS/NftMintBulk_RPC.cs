@@ -91,7 +91,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <summary>
         /// A list of wallet addresses where the NFTs will be sent upon minting
         /// </summary>
-        public string[]? target_address_list { get; set; }
+        public string[]? target_list { get; set; }
 
         /// <summary>
         /// The starting point for mint number used in intermediate launcher puzzle
