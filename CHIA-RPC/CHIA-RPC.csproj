@@ -26,6 +26,7 @@
 - added daemon endpoints
 - added implicit conversions for fingerprint rpc
 - implemented daemon rpc endpoints
+- Implemented Verifiable Credentials endpoints
 
 2.0.1
 - Update README
