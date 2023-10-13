@@ -32,6 +32,6 @@ namespace CHIA_RPC.Objects_NS
         /// The private key associated with this wallet.
         /// This is highly sensitive data - if someone else gains access to this, they have full control over the wallet.
         /// </summary>
-        public string? sk { get; set; }
+        public string? sk { get; set; }      
     }
 }
