@@ -4,6 +4,13 @@ using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.HelperFunctions_NS
 {
+    public interface IResponseTemplate
+    {
+        // Properties that are common to all ResponseTemplates
+        string? error { get; set; }
+        string? RawContent { get; set; }
+        // ... other common properties and methods
+    }
     /// <summary>
     /// this class is the base class for Response classes. It contains some functions for IO and Serialisation/Deserialisation.
     /// It also contains the base properties success and error which are part of every node response.
@@ -17,7 +24,7 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// By using this recursive type constraint, 
     /// you can ensure that any derived classes of ResponseTemplate T can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
-    public abstract class ResponseTemplate<T> where T : ResponseTemplate<T>, new()
+    public abstract class ResponseTemplate<T> : IResponseTemplate where T : ResponseTemplate<T>, new()
     {
         /// <summary>
         /// the raw response of the server
@@ -101,6 +108,7 @@ namespace CHIA_RPC.HelperFunctions_NS
             catch (JsonException ex)
             {
                 result = new T();
+                result.success = false;
                 result.error = ex.Message;
             }
             if (result == null) result = new T();
