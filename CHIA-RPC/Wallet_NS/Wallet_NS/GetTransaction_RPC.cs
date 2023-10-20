@@ -82,7 +82,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="start">The sequence number of the first transaction to show. Default: 0.</param>
         /// <param name="end">The sequence number of the last transaction to show. Default: 50.</param>
         /// <param name="sort_key">The key for sorting. Default: None.</param>
-        /// <param name="reverse">Set to true to sort the results in reverse order. Default: false.</param>
+        /// <param name="reverse">Set to true to list newest results first. Default: false (oldest first (better for history building due to pagination).</param>
         /// <param name="to_address">Only include transactions with this to_address. Default: None.</param>
         public GetTransactions_RPC(ulong wallet_id, ulong? start = null, ulong? end = null, ulong? sort_key = null, bool? reverse = null, string? to_address = null)
         {
@@ -121,7 +121,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// Set to true to sort the results in reverse order. Default: false.
         /// </summary>
-        /// <remarks>Optional</remarks>
+        /// <remarks>Set to true to list newest results first. Default: false (oldest first (better for history building due to pagination).</remarks>
         public bool? reverse { get; set; }
 
         /// <summary>

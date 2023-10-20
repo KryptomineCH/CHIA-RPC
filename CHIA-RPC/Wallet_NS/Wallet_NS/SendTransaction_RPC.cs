@@ -20,7 +20,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// </summary>
         /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
-        /// <param name="amount_mojos">the amount of mojos to send</param>
+        /// <param name="amount_mojos">the amount of mojos to send (max: 1867747965986)</param>
         /// <param name="fee_mojos">the amount of mojos to set as fee</param>
         /// <param name="memos">memos for self and recipient (publicly readable)</param>
         /// <param name="min_coin_amount">The minimum coin amount to send [Default: 0]</param>
