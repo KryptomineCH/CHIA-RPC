@@ -122,7 +122,7 @@ namespace CHIA_RPC.Wallet_NS.CATsAndTrading_NS
         /// DO NOT Modify directly offer_in_xch.Add(value)<br/>
         /// use AddOfferPosition instead!
         /// mandatory</remarks> 
-
+        [JsonIgnore]
         public Dictionary<string,decimal> offer_in_xch
         {
             get

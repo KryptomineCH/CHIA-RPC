@@ -425,6 +425,16 @@ namespace CHIA_RPC.Objects_NS
         public CustomTransactionType? GetCustomTransactionType()
         {
 #warning This function is experimental and may change in the future
+            if (amount == 0)
+            {
+                // assuming this is a null value transaction, (excluding fee? cancellation transaction?)
+
+            }
+            else
+            {
+                // the transaction has an amount, it could be a standard transfer, or an offer
+
+            }
             //if ()
             //if (AdditionsAmount > 0 && RemovalsAmount == 0)
             //{ // assumption: an incoming transaction (wallet balance increases) never consumes coins as this would be a creation out of thin air
