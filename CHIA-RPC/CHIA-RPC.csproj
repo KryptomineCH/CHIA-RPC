@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>2.1.1.2</Version>
+    <Version>2.1.1.3</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -19,7 +19,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
     <PackageReleaseNotes>2.1.1.3
-- improved Documentation for GetTransactions_RPC
+- Improved Documentation for GetTransactions_RPC
+- Added jsonignore for offer_in_xch (because its a custom property)
+- Updated GetTransactions Documentation
+- Updated Transaction Documentation
 
 2.1.1.1
 - Fixed an error where AwaitOfferToExecuteOrCancel gets stuck when called with an invalid offer
