@@ -8,7 +8,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// Get a transaction's details from its ID
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
+    /// <b>WARNING:</b> <br/>
+    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// <br/><br/> 
     /// <see href="https://docs.chia.net/wallet-rpc#get_transaction"/><br/><br/>
     /// Uses:<br/><see cref="General_NS.TransactionID_RPC"/>
     /// </remarks>
@@ -19,6 +22,12 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// This includes information such as the inputs, outputs, and other details of the transaction.
         /// 'Transaction_DictMemos' is a dictionary that maps transaction details to their respective memo data.
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> <br/>
+        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// <br/><br/> 
+        /// </remarks>
         public Transaction_DictMemos? transaction { get; set; }
 
         /// <summary>
@@ -44,7 +53,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// all transactions for a given wallet (filtered).
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
+    /// <b>WARNING:</b> <br/>
+    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// <br/><br/> 
     /// <see href="https://docs.chia.net/wallet-rpc#get_transactions"/><br/><br/>
     /// Uses:<br/><see cref="GetTransactions_RPC"/>
     /// </remarks>
@@ -54,7 +66,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// the transactions details
         /// </summary>
         /// <remarks>
-        /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
+        /// <b>WARNING:</b> <br/>
+        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// <br/><br/> 
         /// </remarks>
         public Transaction_DictMemos[]? transactions { get; set; }
         /// <summary>
@@ -66,7 +81,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// Represents a JSON RPC request for getting all transactions for a given wallet.
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> Not Deterministic! Information can and will change when resynchronizing or accessing from a different Machine!<br/><br/>
+    /// <b>WARNING:</b> <br/>
+    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// <br/><br/> 
     /// <see href="https://docs.chia.net/wallet-rpc#get_transactions"/></remarks>
     /// <returns><see cref="GetTransactions_Response"/></returns>
     public class GetTransactions_RPC : RPCTemplate<GetTransactions_RPC>
@@ -74,10 +92,20 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <summary>
         /// parameterless constructor, for serialisation
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> <br/>
+        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// </remarks>
         public GetTransactions_RPC() { /* for serialisation */ }
         /// <summary>
         /// Represents a JSON RPC request for getting all transactions for a given wallet.
         /// </summary>
+        /// <remarks>
+        /// <b>WARNING:</b> <br/>
+        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// </remarks>
         /// <param name="wallet_id">The Wallet ID of the wallet from which to obtain transactions.</param>
         /// <param name="start">The sequence number of the first transaction to show. Default: 0.</param>
         /// <param name="end">The sequence number of the last transaction to show. Default: 50.</param>
