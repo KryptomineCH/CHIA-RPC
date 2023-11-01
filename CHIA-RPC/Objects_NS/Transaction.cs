@@ -9,8 +9,10 @@ namespace CHIA_RPC.Objects_NS
     /// a general transaction
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!
-    /// <br/><br/>
+    /// <b>WARNING:</b> <br/>
+    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// <br/><br/> 
     /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/><br/>
     /// </remarks>
     public class Transaction_NoMemo : ObjectTemplate<Transaction_NoMemo>
@@ -393,7 +395,9 @@ namespace CHIA_RPC.Objects_NS
         /// Represents the type of the transaction.
         /// </summary>
         /// <remarks>
-        /// This could be used to differentiate between different kinds of transactions (e.g., regular transfer, trade, etc.)
+        /// <b>WARNING:</b> <br/>
+        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// <br/><br/> 
         /// </remarks>
         public TransactionType? type { get; set; }
 
@@ -546,7 +550,11 @@ namespace CHIA_RPC.Objects_NS
     /// </summary>
     /// <remarks>
     /// This class extends Transaction_NoMemo by adding a dictionary of memos. 
-    /// This allows for more structured data to be included with a transaction compared to the array of strings in Transaction_StringMemos.
+    /// This allows for more structured data to be included with a transaction compared to the array of strings in Transaction_StringMemos.<br/>
+    /// <b>WARNING:</b> <br/>
+    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
+    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// <br/><br/> 
     /// </remarks>
     public class Transaction_DictMemos : Transaction_NoMemo
     {
