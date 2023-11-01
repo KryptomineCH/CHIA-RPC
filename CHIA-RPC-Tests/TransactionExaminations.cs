@@ -9,7 +9,7 @@ namespace CHIA_RPC_Tests
         [Fact]
         public void ExamineCustomTransactionType()
         {
-            DirectoryInfo baseFolder = new DirectoryInfo("TestAssets\\Transaction_NoMemo\\Sorted_Transactions");
+            DirectoryInfo baseFolder = new DirectoryInfo("TestAssets\\transactions");
             foreach (DirectoryInfo tokenType in baseFolder.EnumerateDirectories())
             {
                 foreach (DirectoryInfo transactionType in tokenType.EnumerateDirectories())
