@@ -37,29 +37,29 @@ namespace CHIA_RPC_Tests
             Assert.NotNull( loadedRpc.license_uris);
             if (rpc.wallet_id != loadedRpc.wallet_id)
             {
-                throw new System.Exception("Wallet Ids do not match!");
+                throw new Exception("Wallet Ids do not match!");
             }
             if (rpc.uris![0] != loadedRpc.uris[0] || rpc.uris[1] != loadedRpc.uris[1] ||
                 rpc.meta_uris![0] != loadedRpc.meta_uris[0] || rpc.meta_uris[1] != loadedRpc.meta_uris[1] ||
                 rpc.license_uris![0] != loadedRpc.license_uris[0] || rpc.license_uris[1] != loadedRpc.license_uris[1])
             {
-                throw new System.Exception("uris dont match!");
+                throw new Exception("uris dont match!");
             }
             if (rpc.hash != loadedRpc.hash || rpc.meta_hash != loadedRpc.meta_hash || rpc.license_hash != loadedRpc.license_hash)
             {
-                throw new System.Exception("uris dont match!");
+                throw new Exception("uris dont match!");
             }
             if (rpc.royalty_address != loadedRpc.royalty_address || rpc.target_address != loadedRpc.target_address)
             {
-                throw new System.Exception("addresses dont match!");
+                throw new Exception("addresses dont match!");
             }
             if (rpc.edition_number != loadedRpc.edition_number || rpc.edition_total != loadedRpc.edition_total)
             {
-                throw new System.Exception("edition numbers do not match!");
+                throw new Exception("edition numbers do not match!");
             }
             if (rpc.fee != loadedRpc.fee || rpc.royalty_percentage != loadedRpc.royalty_percentage)
             {
-                throw new System.Exception("fees dont match!");
+                throw new Exception("fees dont match!");
             }
         }
     }
