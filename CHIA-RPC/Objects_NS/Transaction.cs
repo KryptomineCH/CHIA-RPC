@@ -9,9 +9,16 @@ namespace CHIA_RPC.Objects_NS
     /// a general transaction
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> <br/>
-    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+    /// this means, a couple of details cannot be fetched fully:<br/>
+    /// - The transaction IDs can and will change if you resync the wallet<br/>
+    /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+    /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+    /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+    /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+    /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+    /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+    /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
     /// <br/><br/> 
     /// <see href="https://docs.chia.net/datalayer-rpc/#create_data_store"/><br/>
     /// </remarks>
@@ -530,8 +537,18 @@ namespace CHIA_RPC.Objects_NS
     /// Represents a transaction that includes an array of memos.
     /// </summary>
     /// <remarks>
-    /// A memo is an optional data field that can be included in a Chia transaction. 
-    /// This class extends Transaction_NoMemo, which represents a basic transaction, by adding an array of string memos.
+    /// A memo is an optional data field that can be included in a Chia transaction. <br/>
+    /// This class extends Transaction_NoMemo, which represents a basic transaction, by adding an array of string memos.<br/><br/>
+    /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+    /// this means, a couple of details cannot be fetched fully:<br/>
+    /// - The transaction IDs can and will change if you resync the wallet<br/>
+    /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+    /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+    /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+    /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+    /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+    /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+    /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
     /// </remarks>
     public class Transaction_StringMemos : Transaction_NoMemo
     {
@@ -549,11 +566,18 @@ namespace CHIA_RPC.Objects_NS
     /// Represents a transaction that includes a dictionary of memos.
     /// </summary>
     /// <remarks>
-    /// This class extends Transaction_NoMemo by adding a dictionary of memos. 
-    /// This allows for more structured data to be included with a transaction compared to the array of strings in Transaction_StringMemos.<br/>
-    /// <b>WARNING:</b> <br/>
-    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+    /// This class extends Transaction_NoMemo by adding a dictionary of memos. <br/>
+    /// This allows for more structured data to be included with a transaction compared to the array of strings in Transaction_StringMemos.<br/><br/>
+    /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+    /// this means, a couple of details cannot be fetched fully:<br/>
+    /// - The transaction IDs can and will change if you resync the wallet<br/>
+    /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+    /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+    /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+    /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+    /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+    /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+    /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
     /// <br/><br/> 
     /// </remarks>
     public class Transaction_DictMemos : Transaction_NoMemo

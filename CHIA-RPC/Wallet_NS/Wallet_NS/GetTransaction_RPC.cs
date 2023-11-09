@@ -8,10 +8,17 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// Get a transaction's details from its ID
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> <br/>
-    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
-    /// <br/><br/> 
+    /// <b>
+    /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+    /// this means, a couple of details cannot be fetched fully:<br/>
+    /// - The transaction IDs can and will change if you resync the wallet<br/>
+    /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+    /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+    /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+    /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+    /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+    /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+    /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
     /// <see href="https://docs.chia.net/wallet-rpc#get_transaction"/><br/><br/>
     /// Uses:<br/><see cref="General_NS.TransactionID_RPC"/>
     /// </remarks>
@@ -53,10 +60,17 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// all transactions for a given wallet (filtered).
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> <br/>
-    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
-    /// <br/><br/> 
+    /// <b>
+    /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+    /// this means, a couple of details cannot be fetched fully:<br/>
+    /// - The transaction IDs can and will change if you resync the wallet<br/>
+    /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+    /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+    /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+    /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+    /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+    /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+    /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
     /// <see href="https://docs.chia.net/wallet-rpc#get_transactions"/><br/><br/>
     /// Uses:<br/><see cref="GetTransactions_RPC"/>
     /// </remarks>
@@ -66,10 +80,16 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// the transactions details
         /// </summary>
         /// <remarks>
-        /// <b>WARNING:</b> <br/>
-        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
-        /// <br/><br/> 
+        /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+        /// this means, a couple of details cannot be fetched fully:<br/>
+        /// - The transaction IDs can and will change if you resync the wallet<br/>
+        /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+        /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+        /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+        /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+        /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+        /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+        /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
         /// </remarks>
         public Transaction_DictMemos[]? transactions { get; set; }
         /// <summary>
@@ -81,10 +101,16 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
     /// Represents a JSON RPC request for getting all transactions for a given wallet.
     /// </summary>
     /// <remarks>
-    /// <b>WARNING:</b> <br/>
-    /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-    /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
-    /// <br/><br/> 
+    /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+    /// this means, a couple of details cannot be fetched fully:<br/>
+    /// - The transaction IDs can and will change if you resync the wallet<br/>
+    /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+    /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+    /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+    /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+    /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+    /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+    /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
     /// <see href="https://docs.chia.net/wallet-rpc#get_transactions"/></remarks>
     /// <returns><see cref="GetTransactions_Response"/></returns>
     public class GetTransactions_RPC : RPCTemplate<GetTransactions_RPC>
@@ -93,18 +119,32 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// parameterless constructor, for serialisation
         /// </summary>
         /// <remarks>
-        /// <b>WARNING:</b> <br/>
-        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+        /// this means, a couple of details cannot be fetched fully:<br/>
+        /// - The transaction IDs can and will change if you resync the wallet<br/>
+        /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+        /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+        /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+        /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+        /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+        /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+        /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
         /// </remarks>
         public GetTransactions_RPC() { /* for serialisation */ }
         /// <summary>
         /// Represents a JSON RPC request for getting all transactions for a given wallet.
         /// </summary>
         /// <remarks>
-        /// <b>WARNING:</b> <br/>
-        /// - Transactions are not deterministic. Information such as "confirmed_at_height" "created_at_time" and Name WILL CHANGE when resynching the wallet!<br/>
-        /// - The transaction types are not fully functional. Specifically `INCOMING_TRADE` cannot be matched up on an offer you created and someone else accepted!
+        /// <b>WARNING:</b> The transaction history is not deterministic due to heuristics we use to counter privacy features of the blockchain.<br/>
+        /// this means, a couple of details cannot be fetched fully:<br/>
+        /// - The transaction IDs can and will change if you resync the wallet<br/>
+        /// - The transaction time is a <b>rough</b> estimate. When an offer is accepted, the individual offer transactions have different created times
+        /// - For your offers that a 3rd Party accepted, the incoming coins are beeing marked as incoming transaction, not as incoming coin<br/>
+        /// - When cancelling offers, the cancellation Transactions are beeing shown as transaction, not as trade<br/>
+        /// - Offers are split into multiple transactions on the corresponding wallets.<br/>
+        /// - Offer Transactions do not share the same ids. To match them up, it is best to keep the offer files.<br/>
+        /// - Transactions which are not kept in XCH and have a fee will cause a second Transaction in the XCH Wallet<br/>
+        /// For accurate records, you should keep a local record of transactions (TXs) and the Offer files made. <br/><br/>
         /// </remarks>
         /// <param name="wallet_id">The Wallet ID of the wallet from which to obtain transactions.</param>
         /// <param name="start">The sequence number of the first transaction to show. Default: 0.</param>
