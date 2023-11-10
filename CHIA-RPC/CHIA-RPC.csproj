@@ -18,7 +18,10 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.1.1.4
+    <PackageReleaseNotes>- Updated GetAllOffers_RPC Documentation (Max Values, reverse)
+- updated get_all_offers sort_key type (string)
+
+2.1.1.4
 - Updated Transactions documentation with its caviats
 
 2.1.1.3
