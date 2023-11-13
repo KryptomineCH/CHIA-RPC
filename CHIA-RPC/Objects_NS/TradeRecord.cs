@@ -9,6 +9,9 @@ namespace CHIA_RPC.Objects_NS
     /// a trade record is beeing generated when acceping a chia offer fron an offer file
     /// </summary>
     /// <remarks>
+    /// Technical Limitations:<br/>
+    /// - accepted_at_time can only be filled if you accepted the offer<br/>
+    /// - accepted_at_index cannot be filled at all currently<br/>
     /// can be used with:<br/>
     /// <see href="CHIA_RPC.Wallet_NS.CATsAndTrading_NS.GetOffer_RPC"/>
     /// 
@@ -18,7 +21,30 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The time when the trade was accepted (null if not accepted yet)
         /// </summary>
+        /// <remarks>
+        /// WARNING: As of right now, can only be filled when you filled the offer
+        /// </remarks>
         public ulong? accepted_at_time { get; set; }
+
+        /// <summary>
+        /// The time when the trade was accepted (null if not accepted yet)
+        /// </summary>
+        /// <remarks>
+        /// WARNING: As of right now, can only be filled when you filled the offer
+        /// </remarks>
+        [JsonIgnore]
+        public DateTime? accepted_at_time_dateTime
+        {
+            get
+            {
+                if (accepted_at_time.HasValue)
+                {
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)accepted_at_time.Value);
+                    return dateTimeOffset.DateTime;
+                }
+                return null;
+            }
+        }
 
         /// <summary>
         /// An array of coins involved in the trade
@@ -28,6 +54,9 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The index at which the trade was confirmed
         /// </summary>
+        /// <remarks>
+        /// WARNING: As of right now is ALWAYS 0
+        /// </remarks>
         public ulong? confirmed_at_index { get; set; }
 
         /// <summary>
@@ -35,7 +64,7 @@ namespace CHIA_RPC.Objects_NS
         /// </summary>
         public ulong? created_at_time { get; set; }
         /// <summary>
-        /// The timestamp as DateTime.
+        /// The timestamp of creation as DateTime.
         /// </summary>
         [JsonIgnore]
         public DateTime? created_at_time_dateTime
