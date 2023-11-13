@@ -6,7 +6,12 @@ namespace CHIA_RPC.General_NS
     /// <summary>
     /// Class to represent the request for the "get_all_offers" RPC method.
     /// </summary>
-    /// <remarks><see href="https://docs.chia.net/wallet-rpc/#get_all_offers"/></remarks>
+    /// <remarks>
+    /// Technical Limitations:<br/>
+    /// - accepted_at_time can only be filled if you accepted the offer<br/>
+    /// - accepted_at_index cannot be filled at all currently<br/>
+    /// <see href="https://docs.chia.net/wallet-rpc/#get_all_offers"/>
+    /// </remarks>
     /// <returns><see cref="OfferFiles"/></returns>
     public class GetAllOffers_RPC : RPCTemplate<GetAllOffers_RPC>
     {
