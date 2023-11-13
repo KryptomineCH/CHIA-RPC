@@ -1,9 +1,11 @@
-﻿namespace CHIA_RPC.Objects_NS
+﻿using CHIA_RPC.HelperFunctions_NS;
+
+namespace CHIA_RPC.Objects_NS
 {
     /// <summary>
     /// The nft_coin_id and wallet_id of an NFT
     /// </summary>
-    public class NftCoinIdAndWalletId
+    public class NftCoinIdAndWalletId : ObjectTemplate<NftCoinIdAndWalletId>
     {
         /// <summary>
         /// The ID of the NFT coin.

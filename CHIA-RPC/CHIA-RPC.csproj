@@ -18,8 +18,10 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>- Updated GetAllOffers_RPC Documentation (Max Values, reverse)
-- updated get_all_offers sort_key type (string)
+    <PackageReleaseNotes>- Updated GetAllOffers_RPC Documentation
+- Updated get_all_offers sort_key type (string)
+- Updated TradeRecord documentation with findings from offers
+- Trade recod accepted_at_time can now be accessed through DateTime with accepted_at_time_dateTime
 
 2.1.1.4
 - Updated Transactions documentation with its caviats
