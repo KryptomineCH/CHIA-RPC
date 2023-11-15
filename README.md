@@ -55,11 +55,6 @@ var rpc = new SendXCH_RPC
 };
 ```
 
-Some endpoints already implement Constructors which make things a litte easier:
-```C#
-GetNextAddress_RPC rpc = new GetNextAddress_RPC(1, false);
-```
-
 Some endpoins already have implicit conversions which make working a lot easier. The support is quite sparse still:
 ```
 WalletID_Response walletID = WalletID_Response.LoadResponseFromString(serverResponse);
