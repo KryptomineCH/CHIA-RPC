@@ -1,4 +1,5 @@
-﻿using CHIA_RPC.FullNode_NS;
+﻿using CHIA_RPC.ErrorInterface_NS;
+using CHIA_RPC.FullNode_NS;
 using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json.Serialization;
@@ -529,6 +530,15 @@ namespace CHIA_RPC.Objects_NS
             {
                 // this is likely a cancellation transaction
                 return removals;
+            }
+            if (Settings.ReportErrors)
+            {
+                Error error = new Error(
+                    objectJson: this.ToString(),
+                    objectName: "Transaction_DictMemos",
+                    errorDescription: "could not identify apropriate coin!",
+                    function: "GetPrimaryCoins()");
+                ReportError.UploadFileAsync(error);
             }
             throw new AggregateException("could not identify apropriate coin!");
         }

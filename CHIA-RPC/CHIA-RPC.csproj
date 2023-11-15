@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>2.1.1.4</Version>
+    <Version>2.1.1.5</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -18,12 +18,16 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>- Updated GetAllOffers_RPC Documentation
+    <PackageReleaseNotes>2.1.1.5
+- Updated GetAllOffers_RPC Documentation
 - Updated get_all_offers sort_key type (string)
 - Updated TradeRecord documentation with findings from offers
 - Trade recod accepted_at_time can now be accessed through DateTime with accepted_at_time_dateTime
 - NftCoinIdAndWalletId is noww a serializable object
 - Format fix GetCoinRecords_Response documentation
+- added opt in error reporting (must set CHIA_RPC.General_NS.Settings.ReportErrors = true )
+- updated readme
+- added offer summary and Asset info to offers (was dynamic object before)
 
 2.1.1.4
 - Updated Transactions documentation with its caviats
@@ -77,6 +81,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="encrypt.xml" />
+    <None Remove="errorlog" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="encrypt.xml" />
+    <EmbeddedResource Include="errorlog" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -90,6 +104,7 @@
   <ItemGroup>
 	<PackageReference Include="Chia-Metadata" Version="1.8.2" />
     <PackageReference Include="NFT.Storage.Net" Version="1.0.1.2" />
+    <PackageReference Include="SSH.NET" Version="2023.0.0" />
   </ItemGroup>
 
 
