@@ -12,12 +12,22 @@ The wrapper allows you to easily create the appropriate RPC object for all walle
 - chia-client-api for communication with the chia client: https://www.nuget.org/packages/Chia-Client-API/
 
 ## Usage
+### Settings
+Settings are beeing stored in `CHIA_RPC.General_NS.Settings`
+- `ReportErrors` (default: false) opt in, to send error reports anonymously to kryptomine.ch to improve the library
+
 ### General functions
 All classes support the following base functions:
 - `SaveToFile(string path)`: saves the rpc as a json-formatted file to the specified path on disk.
 - `LoadFromFile(string path)`: loads an rpc file from the specified path from disk.
 - `ToString()`: returns a json-formatted string representation of the class.
 - `LoadObjectFromString(string json)`: converts a json string (eg. response) into a given object.
+
+### Helper Variables
+You can find some helper variables in `CHIA_RPC.General_NS.GlobalVar`:
+- `OneChiaInMojos` (1000000000000)
+- `OneCatInMojos` (1000)
+- `PackageVersion`
 
 ### Types
 There are 3 types in this library:
