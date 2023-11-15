@@ -108,7 +108,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// A summary of the trade
         /// </summary>
-        public dynamic? summary { get; set; }
+        public OfferSummary? summary { get; set; }
 
         /// <summary>
         /// The taken offer for the trade (null if not taken)
