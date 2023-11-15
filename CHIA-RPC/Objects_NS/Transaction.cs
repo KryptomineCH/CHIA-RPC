@@ -479,7 +479,7 @@ namespace CHIA_RPC.Objects_NS
         }
 
         /// <summary>
-        /// tries to identify the primary relevant coin(s) if theis transaction which can be used to find the transaction in the blockchain explorer
+        /// tries to identify the primary relevant coin(s) if this transaction which can be used to find the transaction in the blockchain explorer
         /// </summary>
         /// <remarks>
         /// the logic how transactions are beeing calculated is very complex, since multiple coins and recipients can be involved<br/>
@@ -517,12 +517,27 @@ namespace CHIA_RPC.Objects_NS
             // extended logic
             /// Preparations
             CustomTransactionType? transactionType = GetCustomTransactionType();
-            if (transactionType == CustomTransactionType.Outgoing)
+            if (this.type == TransactionType.OUTGOING)
             {
-                // in an outgoing transaction, the outgoing coin cannot be specied without queries against the node. This is why the largest removal coin is selected in order to find children
-                return removals;
+                // in an outgoing transaction, the coin beeing created at the recipient is in the additions.
+                // HOWEVER:
+                // TODO: in a cancellation transaction (outgoing) the primary coins are in the removals (identifier)
+                Coin? primaryCoin = null;
+                foreach (Coin coin in additions)
+                {
+                    if (coin.amount == this.amount)
+                    {
+                        primaryCoin = coin;
+                        break;
+                    }
+                }
+                if (primaryCoin != null)
+                {
+                    return new[] { primaryCoin }; 
+                }
+                return additions;
             }
-            if (transactionType == CustomTransactionType.Incoming)
+            if (this.type == TransactionType.INCOMING)
             {
                 return additions;
             }
