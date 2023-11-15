@@ -22,6 +22,10 @@
 - improved internal debug capabiolities
 - worked on get primary coins
 
+(!) added a critical workaround for chia &lt;= 2.1.1 reporting incorrect amount in OUTGOING_TRADE transactions
+use amount_correct_custom for now
+see https://github.com/Chia-Network/chia-blockchain/issues/16842 for more details
+
 2.1.1.5
 - Updated GetAllOffers_RPC Documentation
 - Updated get_all_offers sort_key type (string)
