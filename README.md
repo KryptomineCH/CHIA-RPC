@@ -42,7 +42,7 @@ Most endpoints are implemented with a constructor:
 var rpc = new SendXCH_RPC(1234, "chia1q2jzm7eg5t2k8vnq3tkkf5l7zj9mfx9v7p9t5", 1000, 500, new string[] { "Transaction from Example program" })
 ```
 
-If this is not the case or for whatever other reason, You can also creath them like so:
+If this is not the case or for whatever other reason, You can also create them like so:
 ```C#
 // Create a new instance of the SendXCH_RPC class
 var rpc = new SendXCH_RPC
@@ -53,11 +53,6 @@ var rpc = new SendXCH_RPC
     fee = 500,
     memos = new string[] { "Transaction from Example program" }
 };
-```
-
-Some endpoints already implement Constructors which make things a litte easier:
-```C#
-GetNextAddress_RPC rpc = new GetNextAddress_RPC(1, false);
 ```
 
 Some endpoins already have implicit conversions which make working a lot easier. The support is quite sparse still:
