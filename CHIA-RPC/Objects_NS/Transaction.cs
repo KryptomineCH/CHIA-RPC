@@ -198,8 +198,8 @@ namespace CHIA_RPC.Objects_NS
         [JsonIgnore]
         public decimal? amount_in_cat
         {
-            get { return amount / GlobalVar.OneCatInMojos; }
-            set { amount = (ulong?)(value * GlobalVar.OneCatInMojos); }
+            get { return amount_correct_custom / GlobalVar.OneCatInMojos; }
+            set { amount_correct_custom = (ulong?)(value * GlobalVar.OneCatInMojos); }
         }
         /// <summary>
         /// Indicates that a Transaction has been submitted and Processed by a Full Node
