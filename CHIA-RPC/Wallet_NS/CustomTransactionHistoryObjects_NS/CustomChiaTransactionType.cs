@@ -3,9 +3,13 @@
     public enum CustomChiaTransactionType
     {
         /// <summary>
-        /// defines a standard xch stransfer
+        /// defines a standard xch stransfer (incoming funds)
         /// </summary>
-        Standard,
+        StandardIncoming,
+        /// <summary>
+        /// defines a standard xch stransfer  (outgoing funds)
+        /// </summary>
+        StandardOutgoing,
         /// <summary>
         /// Defines a Cat Transfer
         /// </summary>
