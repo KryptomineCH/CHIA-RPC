@@ -18,7 +18,10 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.1.1.6 
+    <PackageReleaseNotes>2.1.1.7
+- added workaround for amount in cat
+
+2.1.1.6 
 - improved internal debug capabiolities
 - worked on get primary coins
 
