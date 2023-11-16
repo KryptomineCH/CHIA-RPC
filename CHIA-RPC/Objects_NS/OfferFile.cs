@@ -32,6 +32,8 @@ namespace CHIA_RPC.Objects_NS
         /// Contains error message if the offer creation failed. This string will contain detailed error information if the offer creation process encountered any errors.
         /// </summary>
         public string? error { get; set; }
+
+        
         /// <summary>
         /// exports the offer as offer file which can be uploaded to exchanges
         /// </summary>

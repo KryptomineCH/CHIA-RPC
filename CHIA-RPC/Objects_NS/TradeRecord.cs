@@ -119,6 +119,22 @@ namespace CHIA_RPC.Objects_NS
         /// The unique identifier of the trade
         /// </summary>
         public string? trade_id { get; set; }
+
+        /// <summary>
+        /// contains information if this offer generates a separate fee transaction for you
+        /// </summary>
+        [JsonIgnore]
+        public bool contains_additional_fee_transaction
+        {
+            get
+            {
+                if ((bool)is_my_offer)
+                {
+                    return false;
+                }
+                return summary.contains_separate_fee_trasaction;
+            }
+        }
     }
 
 }

@@ -1,4 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
+using System.Text.Json.Serialization;
+
 namespace CHIA_RPC.Objects_NS
 {
     public class OfferSummary : ObjectTemplate<OfferSummary>
@@ -25,6 +27,22 @@ namespace CHIA_RPC.Objects_NS
         /// Key represents the unique identifier of the item, and the value is the amount requested.
         /// </summary>
         public Dictionary<string, ulong> requested { get; set; }
+
+        /// <summary>
+        /// custom function checking if this offer will generate a separate fee transaction for the person accepting the offer
+        /// </summary>
+        /// <remarks>
+        /// unknown behaviour, when you create the offer with an attached fee.
+        /// </remarks>
+        [JsonIgnore]
+        public bool contains_separate_fee_trasaction 
+        { 
+            get
+            {
+                if (fees == null || fees == 0 || !requested.ContainsKey("1")) return false;
+                return true;
+            }
+        }
 
         /// <summary>
         /// Represents the information of a single item in the transaction.
