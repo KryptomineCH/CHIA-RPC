@@ -103,7 +103,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The current status of the trade
         /// </summary>
-        public string? status { get; set; }
+        public TradeStatus? status { get; set; }
 
         /// <summary>
         /// A summary of the trade
