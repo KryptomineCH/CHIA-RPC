@@ -2,6 +2,7 @@
 
 namespace CHIA_RPC.Objects_NS
 {
+    using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
@@ -103,6 +104,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The current status of the trade
         /// </summary>
+        [JsonConverter(typeof(NullableTradeStatusConverter))]
         public TradeStatus? status { get; set; }
 
         /// <summary>
