@@ -39,7 +39,7 @@ namespace CHIA_RPC.Objects_NS
         { 
             get
             {
-                if (fees == null || fees == 0 || !requested.ContainsKey("1")) return false;
+                if (fees == 0 || !requested.ContainsKey("xch")) return false;
                 return true;
             }
         }
