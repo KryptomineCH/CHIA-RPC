@@ -1,5 +1,4 @@
 ﻿using CHIA_RPC.ErrorInterface_NS;
-using CHIA_RPC.FullNode_NS;
 using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json.Serialization;
@@ -516,6 +515,19 @@ namespace CHIA_RPC.Objects_NS
             }
             return new TransactionID_RPC(response.name);
         }
+        /// <summary>
+        /// Implicitly converts a Transaction_NoMemo object to a TransactionID_RPC object.
+        /// </summary>
+        /// <param name="response">The Transaction_NoMemo object to convert.</param>
+        /// <returns>A new TransactionID_RPC object initialized with the name of the Transaction_NoMemo object.</returns>
+        public static implicit operator WalletID_RPC(Transaction_NoMemo response)
+        {
+            if (string.IsNullOrEmpty(response.name))
+            {
+                throw new NullReferenceException(nameof(response.name));
+            }
+            return new WalletID_RPC(response.wallet_id.Value);
+        }
 
         /// <summary>
         /// tries to identify the primary relevant coin(s) if this transaction which can be used to find the transaction in the blockchain explorer
@@ -624,6 +636,19 @@ namespace CHIA_RPC.Objects_NS
         /// Each string in the array is a separate memo.
         /// </remarks>
         public string[]? memos { get; set; }
+        /// <summary>
+        /// Implicitly converts a Transaction_StringMemos object to a WalletID_RPC object.
+        /// </summary>
+        /// <param name="response">The Transaction_StringMemos object to convert.</param>
+        /// <returns>A new WalletID_RPC object initialized with the name of the Transaction_NoMemo object.</returns>
+        public static implicit operator WalletID_RPC(Transaction_StringMemos response)
+        {
+            if (string.IsNullOrEmpty(response.name))
+            {
+                throw new NullReferenceException(nameof(response.name));
+            }
+            return new WalletID_RPC(response.wallet_id.Value);
+        }
     }
 
     /// <summary>
@@ -655,5 +680,18 @@ namespace CHIA_RPC.Objects_NS
         /// Please note that this field could not be validated yet.
         /// </remarks>
         public Dictionary<string, string>? memos { get; set; }
+        /// <summary>
+        /// Implicitly converts a Transaction_DictMemos object to a WalletID_RPC object.
+        /// </summary>
+        /// <param name="response">The Transaction_DictMemos object to convert.</param>
+        /// <returns>A new WalletID_RPC object initialized with the name of the Transaction_NoMemo object.</returns>
+        public static implicit operator WalletID_RPC(Transaction_DictMemos response)
+        {
+            if (string.IsNullOrEmpty(response.name))
+            {
+                throw new NullReferenceException(nameof(response.name));
+            }
+            return new WalletID_RPC(response.wallet_id.Value);
+        }
     }
 }
