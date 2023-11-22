@@ -28,6 +28,25 @@ namespace CHIA_RPC.HelperFunctions_NS
         [JsonIgnore]
         public string? error { get; set; }
         /// <summary>
+        /// checks if the file exists on disk
+        /// </summary>
+        /// <param name="filePath">the path of the file (preferrably without extension)</param>
+        /// <returns></returns>
+        public static bool FileExists(string filePath)
+        {
+            string extension = ".rpc";
+            return File.Exists(filePath);
+        }
+        /// <summary>
+        /// checks if the file exists on disk
+        /// </summary>
+        /// <param name="file">the file (preferrably without extension)</param>
+        /// <returns></returns>
+        public static bool FileExists(FileInfo file)
+        {
+            return FileExists(file.FullName);
+        }
+        /// <summary>
         /// Saves the RPC to the specified file path with a ".rpc" file extension.
         /// </summary>
         /// <remarks>assumes the extension and appends it always</remarks>

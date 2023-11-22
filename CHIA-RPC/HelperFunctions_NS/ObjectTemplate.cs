@@ -52,7 +52,25 @@ namespace CHIA_RPC.HelperFunctions_NS
         {
             SaveObjectToFile(file.FullName);
         }
-
+        /// <summary>
+        /// checks if the file exists on disk
+        /// </summary>
+        /// <param name="filePath">the path of the file (preferrably without extension)</param>
+        /// <returns></returns>
+        public static bool FileExists(string filePath)
+        {
+            string extension = "." + typeof(T).Name.ToLower();
+            return File.Exists(filePath);
+        }
+        /// <summary>
+        /// checks if the file exists on disk
+        /// </summary>
+        /// <param name="file">the file (preferrably without extension)</param>
+        /// <returns></returns>
+        public static bool FileExists(FileInfo file)
+        {
+            return FileExists(file.FullName);
+        }
         /// <summary>
         /// Loads an RPC request from the specified file path.
         /// </summary>

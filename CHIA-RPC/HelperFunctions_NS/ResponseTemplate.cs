@@ -43,7 +43,25 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// This will only contain a value when the node actually received the request and actively refused it.
         /// </remarks>
         public string? error { get; set; }
-
+        /// <summary>
+        /// checks if the file exists on disk
+        /// </summary>
+        /// <param name="filePath">the path of the file (preferrably without extension)</param>
+        /// <returns></returns>
+        public static bool FileExists(string filePath)
+        {
+            string extension = ".response";
+            return File.Exists(filePath);
+        }
+        /// <summary>
+        /// checks if the file exists on disk
+        /// </summary>
+        /// <param name="file">the file (preferrably without extension)</param>
+        /// <returns></returns>
+        public static bool FileExists(FileInfo file)
+        {
+            return FileExists(file.FullName);
+        }
         /// <summary>
         /// Saves the response to the specified file path with a ".response" file extension.
         /// </summary>
