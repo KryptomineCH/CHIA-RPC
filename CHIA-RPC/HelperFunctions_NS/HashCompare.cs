@@ -18,7 +18,7 @@
         /// <param name="str1"></param>
         /// <param name="str2"></param>
         /// <returns></returns>
-        private static bool AreHashesEqual(string? str1, string? str2)
+        public static bool AreHashesEqual(string? str1, string? str2)
         {
             // check if both strings are null or empty or if the content needs to be compared
             bool isNullOrEmpty = string.IsNullOrEmpty(str1);
