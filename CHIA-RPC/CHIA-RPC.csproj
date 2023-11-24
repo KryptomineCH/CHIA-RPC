@@ -26,6 +26,7 @@
 - added implicit conversion from TransactionDict to WalletID_RPC
 - added functionality to check if the file exists on disk due to extension
 - added efficient hash comparing function to CHIA_RPC.HelperFunctions_NS.HashCompare
+- added utility comparing operations to coin. ==, != and .Equals()
 
 2.1.1.6 
 - improved internal debug capabiolities

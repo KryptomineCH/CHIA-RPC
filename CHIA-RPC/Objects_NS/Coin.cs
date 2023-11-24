@@ -102,6 +102,94 @@ namespace CHIA_RPC.Objects_NS
             string coin_id = "0x" + Convert.ToHexString(coin_id_bytes).ToLower();
             return coin_id;
         }
-    }
 
+        // ============================
+        // ############################
+        //
+        // Public utility functions
+        // 
+        // ############################
+        // ============================
+
+        /// <summary>
+        /// Determines whether two specified Coin instances are equal.
+        /// </summary>
+        /// <remarks>
+        /// WARNING: 0xhash != hash<br/>
+        /// </remarks>
+        /// <param name="coin1">The first Coin to compare.</param>
+        /// <param name="coin2">The second Coin to compare.</param>
+        /// <returns>true if coin1 and coin2 represent the same  amount, parent coin and puzzhash; otherwise, false.</returns>
+        public static bool operator ==(Coin? coin1, Coin? coin2)
+        {
+            // Handle null on either side
+            if (ReferenceEquals(coin1, null))
+                return ReferenceEquals(coin2, null);
+
+            return coin1.Equals(coin2);
+        }
+
+        /// <summary>
+        /// Determines whether two specified Coin instances are not equal.
+        /// </summary>
+        /// <remarks>
+        /// WARNING: 0xhash != hash<br/>
+        /// </remarks>
+        /// <param name="coin1">The first Coin to compare.</param>
+        /// <param name="coin2">The second Coin to compare.</param>
+        /// <returns>true if coin1 and coin2 do not represent the same amount, parent coin or puzzhash; otherwise, false.</returns>
+        public static bool operator !=(Coin? coin1, Coin? coin2)
+        {
+            return !(coin1 == coin2);
+        }
+
+        /// <summary>
+        /// Determines whether the specified object is equal to the current Coin.
+        /// </summary>
+        /// <remarks>
+        /// WARNING: 0xhash != hash<br/>
+        /// </remarks>
+        /// <param name="obj">The object to compare with the current Coin.</param>
+        /// <returns>true if the specified object represent the same amount, parent coin and puzzhash; otherwise, false.</returns>
+        public override bool Equals(object? obj)
+        {
+            // Return false if the passed object is null or isn't a Coin
+            if (obj is not Coin otherCoin)
+                return false;
+
+            // Use your existing AreCoinsEqual method for comparison
+            return AreCoinsEqual(this, otherCoin);
+        }
+
+        // ============================
+        // ############################
+        //
+        // Private Utility Functions
+        //
+        // ############################
+        // ============================
+
+        /// <summary>
+        /// checks if two coins are equal in an efficient manner
+        /// </summary>
+        /// <param name="coin1">the first coin to compare</param>
+        /// <param name="coin2">the second coin to compare</param>
+        /// <returns></returns>
+        private static bool AreCoinsEqual(Coin coin1, Coin coin2)
+        {
+            // Compare amounts
+            if (coin1.amount != coin2.amount)
+            {
+                return false;
+            }
+            // Compare parent_coin_info
+            if (!HashCompare.AreHashesEqual(coin1.parent_coin_info, coin2.parent_coin_info))
+            {
+                return false;
+            }
+
+            // Compare puzzle_hash
+            return HashCompare.AreHashesEqual(coin1.puzzle_hash, coin2.puzzle_hash);
+        }
+    }
 }
