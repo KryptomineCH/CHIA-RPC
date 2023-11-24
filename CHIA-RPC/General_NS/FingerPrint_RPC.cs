@@ -1,6 +1,7 @@
 ﻿using CHIA_RPC.Daemon_NS.KeychainServer_NS;
 using CHIA_RPC.Daemon_NS.KeychainServer_NS.KeychainServerObjects_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using System.Diagnostics;
 
 namespace CHIA_RPC.General_NS
 {
@@ -68,13 +69,29 @@ namespace CHIA_RPC.General_NS
         {
             return new FingerPrint_RPC(response);
         }
+        /// <summary>
+        /// converts a key response to a fingerprint explicitly
+        /// </summary>
+        /// <param name="response"></param>
         public static implicit operator FingerPrint_RPC(Key response)
         {
             return new FingerPrint_RPC(response);
         }
+        /// <summary>
+        /// converts a GetKey rpc to a fingerprint explicitly
+        /// </summary>
+        /// <param name="response"></param>
         public static implicit operator FingerPrint_RPC(GetKey_Response response)
         {
             return new FingerPrint_RPC(response);
+        }
+        /// <summary>
+        /// converts an ulong to Fingerprint_RPC implicitly
+        /// </summary>
+        /// <param name="fingerprint"></param>
+        public static implicit operator FingerPrint_RPC(ulong fingerprint)
+        {
+            return new FingerPrint_RPC(fingerprint);
         }
     }
     /// <summary>

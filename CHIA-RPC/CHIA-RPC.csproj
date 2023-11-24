@@ -30,6 +30,7 @@
 - GetCoinID() is now deprecated. Please use the property CoinName
 - added comparison function for two coin arrays
 - added transaction comparison 
+- added implicit conversion from ulong to fingerprint_rpc
 
 2.1.1.6 
 - improved internal debug capabiolities
