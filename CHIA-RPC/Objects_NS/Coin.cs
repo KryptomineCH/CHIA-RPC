@@ -23,7 +23,14 @@ namespace CHIA_RPC.Objects_NS
         /// This property is used by both full node and wallet node in the Chia network.
         /// For more details, see: <see href="https://docs.chia.net/full-node-rpc#get_coin_record_by_name"/>
         /// </remarks>
-        public ulong? amount { get; set; }
+        public ulong? amount { get { return _amount; }
+            set
+            {
+                _CoinName = null; // invalidate coin name as amount was changed
+                _amount = value;
+            }
+        }
+        private ulong? _amount; // Backing field
 
         /// <summary>
         /// Represents the coin's value in Chia (XCH).
@@ -49,7 +56,14 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The puzzlehash of the parent coin that was spent to create this coin.
         /// </summary>
-        public string? parent_coin_info { get; set; }
+        public string? parent_coin_info { get { return _parent_coin_info; } 
+            set
+            {
+                _CoinName = null; // invalidate CoinName since parent coin info changed
+                _parent_coin_info = value;
+            }
+        }
+        private string? _parent_coin_info;
 
         /// <summary>
         /// The puzzle hash of this coin.
@@ -57,7 +71,13 @@ namespace CHIA_RPC.Objects_NS
         /// <remarks>
         /// When in the Mempool and for creation, the own puzzle hash can be unknown as the coin is yet to be minted.
         /// </remarks>
-        public string? puzzle_hash { get; set; }
+        public string? puzzle_hash { get { return _puzzle_hash; } set
+            {
+                _CoinName = null; // invalidate coin name since puzzhash changed
+                _puzzle_hash = value;
+            }
+        }
+        private string? _puzzle_hash;
 
         /// <summary>
         /// The name of the coin which can be used to find the coin on blockchain explorers.
@@ -70,38 +90,6 @@ namespace CHIA_RPC.Objects_NS
             get => _CoinName ??= GetCoinID(); // lazy load Coin ID
         }
         private string? _CoinName;
-
-        /// <summary>
-        /// <b>Use the CoinName property instead.</b>
-        /// <br/><br/>
-        /// Calculates the unique ID for the coin based on its properties.
-        /// </summary>
-        /// <remarks>
-        /// This ID corresponds to the one found on blockchain explorers and is calculated by hashing the parent coin info, the puzzle hash and the amount.
-        /// If any of these properties is null, the method returns null.
-        /// </remarks>
-        /// <returns>The unique ID of the coin as a string, or null if any of the properties required to calculate it is null.</returns>
-        [Obsolete("Use the CoinName property instead.")]
-        public string? GetCoinID()
-        {
-            if (amount == null || parent_coin_info == null || puzzle_hash == null)
-            {
-                return null;
-            }
-
-            byte[] parent_id_bytes = Convert.FromHexString(parent_coin_info![2..]);
-            byte[] puzzle_hash_bytes = Convert.FromHexString(puzzle_hash![2..]);
-            var amount_hex_string = ((ulong)amount).ToString("X");
-            amount_hex_string = (amount_hex_string.Length % 2 == 0 ? "" : "0") + amount_hex_string;
-            byte[] amount_bytes = Convert.FromHexString(amount_hex_string);
-
-            byte[] bytes = parent_id_bytes.Concat(puzzle_hash_bytes).Concat(amount_bytes).ToArray();
-
-            var hash = SHA256.Create();
-            byte[] coin_id_bytes = hash.ComputeHash(bytes);
-            string coin_id = "0x" + Convert.ToHexString(coin_id_bytes).ToLower();
-            return coin_id;
-        }
 
         // ============================
         // ############################
@@ -190,6 +178,37 @@ namespace CHIA_RPC.Objects_NS
 
             // Compare puzzle_hash
             return HashCompare.AreHashesEqual(coin1.puzzle_hash, coin2.puzzle_hash);
+        }
+
+        /// <summary>
+        /// <b>Use the CoinName property instead.</b>
+        /// <br/><br/>
+        /// Calculates the unique ID for the coin based on its properties.
+        /// </summary>
+        /// <remarks>
+        /// This ID corresponds to the one found on blockchain explorers and is calculated by hashing the parent coin info, the puzzle hash and the amount.
+        /// If any of these properties is null, the method returns null.
+        /// </remarks>
+        /// <returns>The unique ID of the coin as a string, or null if any of the properties required to calculate it is null.</returns>
+        private string? GetCoinID()
+        {
+            if (amount == null || parent_coin_info == null || puzzle_hash == null)
+            {
+                return null;
+            }
+
+            byte[] parent_id_bytes = Convert.FromHexString(parent_coin_info![2..]);
+            byte[] puzzle_hash_bytes = Convert.FromHexString(puzzle_hash![2..]);
+            var amount_hex_string = ((ulong)amount).ToString("X");
+            amount_hex_string = (amount_hex_string.Length % 2 == 0 ? "" : "0") + amount_hex_string;
+            byte[] amount_bytes = Convert.FromHexString(amount_hex_string);
+
+            byte[] bytes = parent_id_bytes.Concat(puzzle_hash_bytes).Concat(amount_bytes).ToArray();
+
+            var hash = SHA256.Create();
+            byte[] coin_id_bytes = hash.ComputeHash(bytes);
+            string coin_id = "0x" + Convert.ToHexString(coin_id_bytes).ToLower();
+            return coin_id;
         }
     }
 }
