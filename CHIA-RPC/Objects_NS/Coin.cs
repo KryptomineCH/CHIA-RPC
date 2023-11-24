@@ -248,6 +248,5 @@ namespace CHIA_RPC.Objects_NS
             string coin_id = "0x" + Convert.ToHexString(coin_id_bytes).ToLower();
             return coin_id;
         }
-
     }
 }
