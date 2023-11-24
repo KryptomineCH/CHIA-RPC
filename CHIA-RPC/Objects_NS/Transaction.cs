@@ -608,6 +608,60 @@ namespace CHIA_RPC.Objects_NS
             }
             throw new AggregateException("could not identify apropriate coin!");
         }
+
+        /// <summary>
+        /// Determines whether the two transactions are equal
+        /// </summary>
+        /// <param name="transaction1">The first transaction to compare.</param>
+        /// <param name="transaction2">The second transaction to compare.</param>
+        /// <returns>true if the specified object has the same additions</returns>
+        public static bool operator ==(Transaction_NoMemo? transaction1, Transaction_NoMemo? transaction2)
+        {
+            // Handle null on either side
+            if (ReferenceEquals(transaction1, null))
+                return ReferenceEquals(transaction2, null);
+
+            return transaction1.Equals(transaction2);
+        }
+
+        /// <summary>
+        /// Determines whether the two transactions are unequal
+        /// </summary>
+        /// <param name="transaction1">The first transaction to compare.</param>
+        /// <param name="transaction2">The second transaction to compare.</param>
+        /// <returns>false if the specified object has the same additions</returns>
+        public static bool operator !=(Transaction_NoMemo? transaction1, Transaction_NoMemo? transaction2)
+        {
+            return !(transaction1 == transaction2);
+        }
+
+        /// <summary>
+        /// Determines whether the specified object is equal to the current transaction.
+        /// </summary>
+        /// <param name="obj">The object to compare with the current transaction.</param>
+        /// <returns>true if the specified object has the same additions</returns>
+        public override bool Equals(object? obj)
+        {
+            // Return false if the passed object is null or isn't a Coin
+            if (obj is not Transaction_NoMemo otherTransaction)
+                return false;
+
+            // Use your existing AreCoinsEqual method for comparison
+            return AreTransactionsEqual(this, otherTransaction);
+        }
+        /// <summary>
+        /// checks if both transactions consume ant produce the same coins, meaning its the same transaction
+        /// </summary>
+        /// <param name="transaction1"></param>
+        /// <param name="Transaction2"></param>
+        /// <returns></returns>
+        private static bool AreTransactionsEqual(Transaction_NoMemo transaction1, Transaction_NoMemo Transaction2)
+        {
+            // need to compare removals as well. Some edgecases might not have additions logged (fee transaction)
+            // Compare puzzle_hash
+            return Coin.AreCoinArraysEqual(transaction1.additions, Transaction2.additions) 
+                && Coin.AreCoinArraysEqual(transaction1.removals, Transaction2.removals); 
+        }
     }
     /// <summary>
     /// Represents a transaction that includes an array of memos.
