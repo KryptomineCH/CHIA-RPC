@@ -148,6 +148,44 @@ namespace CHIA_RPC.Objects_NS
             // Use your existing AreCoinsEqual method for comparison
             return AreCoinsEqual(this, otherCoin);
         }
+        /// <summary>
+        /// generate the hash code for hashsets with only the nessesary information
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(amount, parent_coin_info, puzzle_hash);
+        }
+
+        /// <summary>
+        /// compares if two coin arrays have the same coins inside, ignoring the order of them
+        /// </summary>
+        /// <param name="coins1"></param>
+        /// <param name="coins2"></param>
+        /// <returns></returns>
+        public static bool AreCoinArraysEqual(Coin[]? coins1, Coin[]? coins2)
+        {
+            if (coins1 == null && coins2 == null)
+                return true;
+
+            if (coins1 == null || coins2 == null || coins1.Length != coins2.Length)
+                return false;
+
+            var combinedSet = new HashSet<Coin>(coins1);
+
+            foreach (var coin in coins2)
+            {
+                // If a coin in coins2 is not in the set, it means the arrays are not equal
+                if (!combinedSet.Add(coin))
+                    return false;
+            }
+
+            // Check if the combined set has the same count as either of the arrays
+            var hashes1 = new HashSet<string>(coins1.Select(c => c.GetCoinID()));
+            var hashes2 = new HashSet<string>(coins2.Select(c => c.GetCoinID()));
+
+            return hashes1.SetEquals(hashes2);
+        }
 
         // ============================
         // ############################
@@ -210,5 +248,6 @@ namespace CHIA_RPC.Objects_NS
             string coin_id = "0x" + Convert.ToHexString(coin_id_bytes).ToLower();
             return coin_id;
         }
+
     }
 }
