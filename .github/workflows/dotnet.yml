@@ -26,7 +26,7 @@ jobs:
       run: dotnet restore "CHIA-RPC/CHIA-RPC.csproj"
 
     - name: Build
-      run: dotnet build "CHIA-RPC.sln" --no-restore -c Release # Specify the path to your solution file
+      run: dotnet build --no-restore "CHIA-RPC/CHIA-RPC.csproj"
 
     #- name: Test
       #run: dotnet test "path/to/YourTestProject.csproj" --no-build --verbosity normal # Specify the path to your test project file
