@@ -23,7 +23,7 @@ jobs:
       run: dotnet nuget locals all --clear
 
     - name: Restore dependencies
-      run: dotnet restore "path/to/YourMainProject.csproj" # Specify the path to your main project file
+      run: dotnet restore
 
     - name: Build
       run: dotnet build "path/to/YourSolutionFile.sln" --no-restore -c Release # Specify the path to your solution file
