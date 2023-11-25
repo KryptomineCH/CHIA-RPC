@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Wallet_NS.Wallet_NS;
+using NFT.Storage.Net.ClientResponse;
 
 namespace CHIA_RPC.General_NS
 {
@@ -72,6 +73,15 @@ namespace CHIA_RPC.General_NS
         public static implicit operator ulong(WalletID_RPC response)
         {
             return response.wallet_id;
+        }
+        /// <summary>
+        /// Implicitly converts a numeric wallet id to WalletID_Response
+        /// </summary>
+        /// <param name="walletID">The WalletID to convert.</param>
+        /// <returns>A WalletID_RPC initialized with the wallet ID.</returns>
+        public static implicit operator WalletID_RPC(ulong walletID)
+        {
+            return new WalletID_RPC(walletID);
         }
     }
 }
