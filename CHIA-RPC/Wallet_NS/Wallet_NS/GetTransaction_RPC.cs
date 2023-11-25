@@ -1,6 +1,7 @@
 ﻿using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using System.Diagnostics;
 
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
@@ -197,5 +198,13 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// </summary>
         /// <remarks>Optional</remarks>
         public string? to_address { get; set; }
+        /// <summary>
+        /// implicit operator for converting a wallet id rpc or ulong wallet id into a Gettransactions_RPC with default values
+        /// </summary>
+        /// <param name="wallet_id"></param>
+        public static implicit operator GetTransactions_RPC(WalletID_RPC wallet_id)
+        {
+            return new GetTransactions_RPC(wallet_id);
+        }
     }
 }

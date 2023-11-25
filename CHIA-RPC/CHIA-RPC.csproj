@@ -32,6 +32,7 @@
 - added transaction comparison 
 - added implicit conversion from ulong to fingerprint_rpc
 - added implicit operator for WalletID_RPC (ulong)
+- added implicit operator for GetTransactions_RPC (walletID_RPC &amp; ulong)
 
 2.1.1.6 
 - improved internal debug capabiolities
