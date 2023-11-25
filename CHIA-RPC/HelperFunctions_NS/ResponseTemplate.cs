@@ -93,7 +93,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </remarks>
         /// <param name="filePath">The path to load the response from.</param>
         /// <returns>The loaded response.</returns>
-        public static T? LoadResponseFromFile(string filePath)
+        public static T LoadResponseFromFile(string filePath)
         {
             return FileManager.LoadObjectFromFile<T?>(filePath, "response");
         }
@@ -115,22 +115,36 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="inputString">The json payload to load the response from.</param>
         /// <returns>The loaded response.</returns>
-        public static T? LoadResponseFromString(string inputString)
+        public static ActionResult<T> LoadResponseFromString(string inputString)
         {
-            if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
-            T? result;
+            ActionResult<T> result = new ActionResult<T>(inputString);
+            result.RawJson = inputString;
+            if (string.IsNullOrEmpty(inputString))
+            {
+                result.Success = false;
+                if (inputString == "") result.Error = "Could not convert Response from empty string!";
+                else result.Error = "Could not convert Response from null string!";
+                return result;
+            }
             try
             {
-                result = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+                result.Data = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+                if (result.Data == null)
+                {
+                    result.Success = false;
+                    result.Error = "Json Deserialisation resulted in null!";
+                }
+                else
+                {
+                    result.Success = (bool)result.Data.success!;
+                    result.Error = result.Data.error;
+                }
             }
             catch (JsonException ex)
             {
-                result = new T();
-                result.success = false;
-                result.error = ex.Message;
+                result.Success = false;
+                result.Error = ex.Message;
             }
-            if (result == null) result = new T();
-            result.RawContent = inputString;
             return result;
         }
 

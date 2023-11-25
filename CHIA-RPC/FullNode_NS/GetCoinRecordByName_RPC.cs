@@ -43,7 +43,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="coin">the coin which to obtain the coin id from</param>
         public GetCoinRecordByName_RPC(Coin coin)
         {
-            this.name = coin.GetCoinID();
+            this.name = coin.CoinName;
         }
         /// <summary>
         /// A string containing the name or ID of the coin to retrieve.

@@ -62,7 +62,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
             {
                 throw new NullReferenceException("spend_bundle.coin_solutions.coin is null!");
             }
-            string? coinID = spend_bundle.coin_solutions[0].coin!.GetCoinID();
+            string? coinID = spend_bundle.coin_solutions[0].coin!.CoinName;
             if (string.IsNullOrEmpty(coinID))
             {
                 throw new InvalidDataException("coin id could not be fetched!");
@@ -155,7 +155,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <param name="targetAddress">The optional address where the NFT will be sent after it is minted. If no address is specified, the NFT will remain in the wallet that minted it.</param>
         /// <param name="mintingFee_Mojos">The fee for minting the NFT, expressed in mojos. The default fee is 5000 mojos.</param>
         public NftMintNFT_RPC(
-            WalletID_RPC walletID,
+            WalletID_RPC walletID_RPC,
             string[] nftLinks, string[] metadataLinks, string[]? licenseLinks = null,
             ulong royaltyFee = 190, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string? targetAddress = null,
             ulong mintingFee_Mojos = 5000
@@ -165,7 +165,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
             meta_uris = new List<string>();
             license_uris = new List<string>();
             // payment data
-            wallet_id = walletID.wallet_id;
+            wallet_id = walletID_RPC.wallet_id;
             royalty_address = royaltyAddress;
             royalty_percentage = royaltyFee;
             target_address = targetAddress;
@@ -245,7 +245,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
         /// <param name="targetAddress">The optional address where the NFT will be sent after it is minted. If no address is specified, the NFT will remain in the wallet that minted it.</param>
         /// <param name="mintingFee_xch">The fee for minting the NFT, expressed in xch. The default fee is 0.0000005m xch.</param>
         public NftMintNFT_RPC(
-            WalletID_RPC walletID,
+            WalletID_RPC walletID_RPC,
             string[] nftLinks, string[] metadataLinks, string[]? licenseLinks = null,
             double royaltyFee = 1.9, string royaltyAddress = "xch1548hhy66czjf026cc9a3efsu2mrjh9he3w5rna3rsrenlyhpe9dq5u7f4g", string? targetAddress = null,
             decimal mintingFee_xch = 0.0000005m
@@ -255,7 +255,7 @@ namespace CHIA_RPC.Wallet_NS.NFT_NS
             meta_uris = new List<string>();
             license_uris = new List<string>();
             // payment data
-            wallet_id = walletID.wallet_id;
+            wallet_id = walletID_RPC.wallet_id;
             royalty_address = royaltyAddress;
             royalty_in_percent = royaltyFee;
             target_address = targetAddress;

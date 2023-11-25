@@ -1,7 +1,6 @@
 ﻿using CHIA_RPC.Daemon_NS.KeychainServer_NS;
 using CHIA_RPC.Daemon_NS.KeychainServer_NS.KeychainServerObjects_NS;
 using CHIA_RPC.HelperFunctions_NS;
-using System.Diagnostics;
 
 namespace CHIA_RPC.General_NS
 {
@@ -139,7 +138,7 @@ namespace CHIA_RPC.General_NS
         /// <param name="fingerprint">The wallet's fingerprint, obtainable by running chia wallet show</param>
         public FingerPrints_RPC(FingerPrint_Response[] fingerprints)
         {
-            List<ulong> ulongs = new List<ulong>();
+            List<ulong> ulongs = new();
             foreach(FingerPrint_Response print in fingerprints) ulongs.Add(print.fingerprint);
             this.fingerprints = ulongs.ToArray();
         }
@@ -149,17 +148,25 @@ namespace CHIA_RPC.General_NS
         /// </summary>
         public ulong[] fingerprints { get; set; }
         /// <summary>
-        /// Implicit conversion from FingerPrint_Response to DidIFingerPrint_RPCD_RPC.
+        /// Implicit conversion from FingerPrint_Response to FingerPrint_RPC.
         /// </summary>
         /// <param name="response">FingerPrint_RPC object</param>
         public static implicit operator FingerPrints_RPC(FingerPrint_Response[] response)
         {
             return new FingerPrints_RPC(response);
         }
+        /// <summary>
+        /// Implicit conversion from Keyresponse to FingerPrint_RPC.
+        /// </summary>
+        /// <param name="response">FingerPrint_RPC object</param>
         public static implicit operator FingerPrints_RPC(Key[] response)
         {
             return new FingerPrints_RPC(response);
         }
+        /// <summary>
+        /// Implicit conversion from GetKeys_Response to FingerPrint_RPC.
+        /// </summary>
+        /// <param name="response">FingerPrint_RPC object</param>
         public static implicit operator FingerPrints_RPC(GetKeys_Response response)
         {
             return new FingerPrints_RPC(response);

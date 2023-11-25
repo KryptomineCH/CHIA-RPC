@@ -47,7 +47,7 @@ namespace CHIA_RPC.FullNode_NS
         /// <param name="height">the height to search for</param>
         public GetPuzzleAndSolution_RPC(Coin coin, ulong height)
         {
-            this.coin_id = coin.GetCoinID();
+            this.coin_id = coin.CoinName;
             this.height = height;
         }
 

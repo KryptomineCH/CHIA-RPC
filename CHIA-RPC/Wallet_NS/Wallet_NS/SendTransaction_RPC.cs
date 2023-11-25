@@ -59,12 +59,12 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="exclude_coin_ids">A list of coin IDs to exclude</param>
         /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
         public SendTransaction_RPC(
-            WalletID_RPC wallet_id, string address, ulong amount_mojos,
+            WalletID_RPC walletID_RPC, string address, ulong amount_mojos,
             ulong? fee_mojos = null, string[]? memos = null, ulong? min_coin_amount = null,
             ulong? max_coin_amount = null, ulong[]? exclude_coin_amounts = null,
             string? exclude_coin_ids = null, bool? reuse_puzhash = null)
         {
-            this.wallet_id = wallet_id.wallet_id;
+            this.wallet_id = walletID_RPC.wallet_id;
             this.address = address;
             this.amount = amount_mojos;
             this.fee = fee_mojos;
@@ -121,12 +121,12 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="exclude_coin_ids">A list of coin IDs to exclude</param>
         /// <param name="reuse_puzhash">If true, will not generate a new puzzle hash / address for this transaction only</param>
         public SendTransaction_RPC(
-            WalletID_RPC wallet_id, string address, decimal amount_xch,
+            WalletID_RPC walletID_RPC, string address, decimal amount_xch,
             decimal? fee_xch = null, string[]? memos = null, decimal? min_coin_amount_xch = null,
             decimal? max_coin_amount_xch = null, decimal[]? exclude_coin_amounts_xch = null,
             string? exclude_coin_ids = null, bool? reuse_puzhash = null)
         {
-            this.wallet_id = wallet_id.wallet_id;
+            this.wallet_id = walletID_RPC.wallet_id;
             this.address = address;
             this.amount_in_xch = amount_xch;
             this.fee_in_xch = fee_xch;

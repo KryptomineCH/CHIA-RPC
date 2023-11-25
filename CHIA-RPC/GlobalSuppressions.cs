@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<JsonApiConvention>", Scope = "member", Target = "~M:*")]
+[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~P:CHIA_RPC.FullNode_NS.GetCoinRecordByName_Response.coin_record")]

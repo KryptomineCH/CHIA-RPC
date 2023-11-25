@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.HelperFunctions_NS
@@ -17,7 +15,7 @@ namespace CHIA_RPC.HelperFunctions_NS
     /// By using this recursive type constraint, 
     /// you can ensure that any derived classes of ObjectTemplate&lt;T&gt; can use this as T to cast the base class to the derived class in order to properly serialize it using the JsonSerializer.
     /// </typeparam>
-    public abstract class ObjectTemplate<T> where T : ObjectTemplate<T>, new()
+    public abstract class ObjectTemplate<T> where T : ObjectTemplate<T>
     {
         /// <summary>
         /// The raw response of the server
@@ -79,7 +77,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </remarks>
         /// <param name="filePath">The path to load the RPC request from.</param>
         /// <returns>The loaded RPC request.</returns>
-        public static T? LoadObjectFromFile(string filePath)
+        public static T LoadObjectFromFile(string filePath)
         {
             string extension = "." + typeof(T).Name.ToLower();
             return FileManager.LoadObjectFromFile<T?>(filePath, extension);
@@ -92,7 +90,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </remarks>
         /// <param name="file">The path to load the RPC request from.</param>
         /// <returns>The loaded RPC request.</returns>
-        public static T? LoadObjectFromFile(FileInfo file)
+        public static T LoadObjectFromFile(FileInfo file)
         {
             return LoadObjectFromFile(file.FullName);
         }
@@ -102,25 +100,40 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="inputString">The json formatted string to load the RPC from.</param>
         /// <returns>The loaded RPC</returns>
-        public static T? LoadObjectFromString(string inputString)
+        public static ActionResult<T> LoadObjectFromString(string inputString)
         {
-            if (inputString == "") return (T?)Activator.CreateInstance(typeof(T));
+            ActionResult<T> result = new ActionResult<T>(inputString);
+            result.RawJson = inputString;
+            if (string.IsNullOrEmpty(inputString))
+            {
+                result.Success = false;
+                if (inputString == "") result.Error = "Could not convert Response from empty string!";
+                else result.Error = "Could not convert Response from null string!";
+                return result;
+            }
             var options = new JsonSerializerOptions();
             options.AllowTrailingCommas = true;
             options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             options.Converters.Add(new BigIntegerConverter());
-            T? result;
             try
             {
-                result = JsonSerializer.Deserialize<T?>(inputString, options);
+                result.Data = JsonSerializer.Deserialize<T?>(inputString, options);
+                if (result.Data == null)
+                {
+                    result.Success = false;
+                    result.Error = "Json Deserialisation resulted in null!";
+                }
+                else
+                {
+                    result.Success = true;
+                    result.Error = result.Data.error;
+                }
             }
             catch (JsonException ex)
             {
-                result = new T();
-                result.error = ex.Message;
+                result.Success = false;
+                result.Error = ex.Message;
             }
-            if (result == null) result = new T();
-            result.RawContent = inputString;
             return result;
         }
 
