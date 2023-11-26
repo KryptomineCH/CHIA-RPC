@@ -34,6 +34,7 @@
 - added implicit operator for WalletID_RPC (ulong)
 - added implicit operator for GetTransactions_RPC (walletID_RPC &amp; ulong)
 - improved deserializer error handling. They will no longer return a null value. Please check if bool success and string error
+- Fixed Paths for Cross Plattform compatibility
 
 2.1.1.6 
 - improved internal debug capabiolities

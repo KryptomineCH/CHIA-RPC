@@ -6,7 +6,7 @@ namespace CHIA_RPC_Tests.Objects_NS
 {
     public class Test_Transaction_NoMemo_GetPrimaryCoin
     {
-        private DirectoryInfo TestFolder = new DirectoryInfo(@"TestAssets\Transaction_NoMemo\Get_PrimaryCoin");
+        private DirectoryInfo TestFolder = new DirectoryInfo(Path.Combine("TestAssets","Transaction_NoMemo","Get_PrimaryCoin"));
 
         [Fact]
         public void Test_CoinSerialisation()
