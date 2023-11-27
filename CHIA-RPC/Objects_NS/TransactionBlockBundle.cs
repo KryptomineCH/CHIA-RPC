@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using System.Collections.Concurrent;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
@@ -34,6 +35,24 @@ namespace CHIA_RPC.Objects_NS
         /// The amount of Blocks this chunk file can hold at maximum
         /// </summary>
         public ulong ChunkSize { get; set; } = 1000;
+
+        /// <summary>
+        /// calculates the height of the latest transaction in this Blockfile
+        /// </summary>
+        [JsonIgnore]
+        public ulong LastTransactionBlock
+        {
+            get
+            {
+                ulong height = 0;
+                foreach (ulong blockHeight in TransactionsByBlock.Keys)
+                {
+                    if (blockHeight > height)
+                        height = blockHeight;
+                }
+                return height;
+            }
+        }
 
         /// <summary>
         /// specifies if the chunk file has been edited. This is useful to save changes to disk when removed from a cache
