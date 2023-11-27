@@ -4,6 +4,13 @@ using CHIA_RPC.Objects_NS;
 namespace CHIA_RPC.General_NS
 {
     /// <summary>
+    /// this iss unfortunately still unknown
+    /// </summary>
+    public enum GetAllOffersSortKey
+    {
+        
+    }
+    /// <summary>
     /// Class to represent the request for the "get_all_offers" RPC method.
     /// </summary>
     /// <remarks>
@@ -32,7 +39,7 @@ namespace CHIA_RPC.General_NS
         /// true sets the default sorting key from oldest to newest, ideal to build a history.<br/>
         /// false lists from new to old, perfect to list the last X offers</param>
         /// <param name="file_contents">Set to true to display the contents of each offer. Default: false</param>
-        public GetAllOffers_RPC(ulong start, ulong end, bool? exclude_my_offers = null, bool? exclude_taken_offers = null, bool? include_completed = null, string? sort_key = null, bool? reverse = null, bool? file_contents = null)
+        public GetAllOffers_RPC(ulong start, ulong end, bool? exclude_my_offers = null, bool? exclude_taken_offers = null, bool? include_completed = null, GetAllOffersSortKey? sort_key = null, bool? reverse = null, bool? file_contents = null)
         {
             this.start = start;
             this.end = end;
@@ -74,7 +81,7 @@ namespace CHIA_RPC.General_NS
         /// <summary>
         /// Specify the key for sorting. Default: None
         /// </summary>
-        public string? sort_key { get; set; }
+        public GetAllOffersSortKey? sort_key { get; set; }
 
         /// <summary>
         /// Set to true to sort the results in reverse order. Default: false
