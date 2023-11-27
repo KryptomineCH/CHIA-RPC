@@ -18,7 +18,9 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.1.1.7
+    <PackageReleaseNotes>- update offer sort key
+
+2.1.1.7
 - added workaround for amount in cat
 - added information to OfferSummary if the offer will generate a separate fee transaction for the person accepting the offer
 - added information to TradeRecord if this offer generates a separate fee transaction for you
