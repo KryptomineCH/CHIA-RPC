@@ -2,6 +2,8 @@
 using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
+using CHIA_RPC.HelperFunctions_NS.JsonConverters_NS;
 
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
@@ -99,6 +101,20 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         public ulong? wallet_id { get; set; }
     }
     /// <summary>
+    /// this is being used to sort the transactions from the GetTransactions endpoint
+    /// </summary>
+    public enum GetTransactionSortKey
+    {
+        /// <summary>
+        /// "ORDER BY confirmed_at_height {ASC}"
+        /// </summary>
+        CONFIRMED_AT_HEIGHT,
+        /// <summary>
+        /// "ORDER BY confirmed {ASC}, confirmed_at_height {DESC}, created_at_time {DESC}"
+        /// </summary>
+        RELEVANCE
+    }
+    /// <summary>
     /// Represents a JSON RPC request for getting all transactions for a given wallet.
     /// </summary>
     /// <remarks>
@@ -153,7 +169,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="sort_key">The key for sorting. Default: None.</param>
         /// <param name="reverse">Set to true to list newest results first. Default: false (oldest first (better for history building due to pagination).</param>
         /// <param name="to_address">Only include transactions with this to_address. Default: None.</param>
-        public GetTransactions_RPC(ulong wallet_id, ulong? start = null, ulong? end = null, ulong? sort_key = null, bool? reverse = null, string? to_address = null)
+        public GetTransactions_RPC(ulong wallet_id, ulong? start = null, ulong? end = null, GetTransactionSortKey? sort_key = null, bool? reverse = null, string? to_address = null)
         {
             this.wallet_id = wallet_id;
             this.start = start;
@@ -185,7 +201,8 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The key for sorting. Default: None.
         /// </summary>
         /// <remarks>Optional</remarks>
-        public ulong? sort_key { get; set; }
+        [JsonConverter(typeof(StringToEnumConverter<GetTransactionSortKey>))]
+        public GetTransactionSortKey? sort_key { get; set; }
 
         /// <summary>
         /// Set to true to sort the results in reverse order. Default: false.
