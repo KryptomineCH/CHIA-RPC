@@ -23,6 +23,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The maximum Block height to be included in this chunk file
         /// </summary>
+        [JsonIgnore]
         public ulong EndBlock 
         { 
             get
