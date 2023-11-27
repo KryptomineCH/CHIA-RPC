@@ -97,7 +97,17 @@ namespace CHIA_RPC.Objects_NS
             // add if block already exists
             if (TransactionsByBlock.TryGetValue(height, out ConcurrentBag<Transaction_DictMemos> blockList))
             {
-                blockList.Add(transaction);
+                bool isContained = false;
+                foreach (Transaction_DictMemos transactionToCompare in blockList)
+                {
+                    if (transaction == transactionToCompare)
+                    {
+                        isContained = true;
+                        break;
+                    }
+                }
+                if(!isContained)
+                    blockList.Add(transaction);
             }
             // create block if not exists
             else
