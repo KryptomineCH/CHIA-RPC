@@ -76,9 +76,9 @@ namespace CHIA_RPC.Objects_NS
         /// <remarks>
         /// verifies the offer is Confirmed and the height was found
         /// </remarks>
-        /// <param name="offer">the transaction to add</param>
+        /// <param name="offer">the offer to add</param>
         /// <exception cref="InvalidOperationException">transaction is not confirmed or height unclear</exception>
-        public void AddTransaction(OfferFile offer, bool checkIfConfirmed)
+        public void AddOffer(OfferFile offer, bool checkIfConfirmed)
         {
             // pre-add checks
             if (checkIfConfirmed && offer.trade_record.accepted_at_time != null && offer.trade_record.accepted_at_time != 0)
