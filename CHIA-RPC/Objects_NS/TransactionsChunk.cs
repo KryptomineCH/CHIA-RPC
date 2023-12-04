@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using System.Collections.Concurrent;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Objects_NS
@@ -22,6 +23,7 @@ namespace CHIA_RPC.Objects_NS
         /// <summary>
         /// The maximum Block height to be included in this chunk file
         /// </summary>
+        [JsonIgnore]
         public ulong EndBlock 
         { 
             get
@@ -36,7 +38,26 @@ namespace CHIA_RPC.Objects_NS
         public ulong ChunkSize { get; set; } = 1000;
 
         /// <summary>
-        /// specifies if the chunk file has been edited. This is useful to save changes to disk when removed from a cache
+        /// calculates the height of the latest transaction in this Blockfile
+        /// </summary>
+        [JsonIgnore]
+        public ulong LastTransactionBlock
+        {
+            get
+            {
+                ulong height = 0;
+                foreach (ulong blockHeight in TransactionsByBlock.Keys)
+                {
+                    if (blockHeight > height)
+                        height = blockHeight;
+                }
+                return height;
+            }
+        }
+
+        /// <summary>
+        /// specifies if the chunk file has been edited.
+        /// This is useful to save changes to disk when removed from a cache
         /// </summary>
         [JsonIgnore]
         public bool Edited { get; set; } = false;
@@ -47,13 +68,13 @@ namespace CHIA_RPC.Objects_NS
         /// <remarks>
         /// Please add with <see cref="AddTransaction"/>, except you want unsafe handling for added performance
         /// </remarks>
-        public ConcurrentDictionary<ulong, ConcurrentBag<Transaction_DictMemos>> TransactionsByBlock { get; set; } = new ConcurrentDictionary<ulong, ConcurrentBag<Transaction_DictMemos>> ();
+        public ConcurrentDictionary<ulong, ConcurrentBag<Transaction_DictMemos>> TransactionsByBlock { get; set; } = new ();
         
         /// <summary>
         /// Adds a transaction to the Chunkfile
         /// </summary>
         /// <remarks>
-        /// verifies the transaction is Confirmed and the height was wound
+        /// verifies the transaction is Confirmed and the height was found
         /// </remarks>
         /// <param name="transaction">the transaction to add</param>
         /// <exception cref="InvalidOperationException">transaction is not confirmed or height unclear</exception>
@@ -77,7 +98,17 @@ namespace CHIA_RPC.Objects_NS
             // add if block already exists
             if (TransactionsByBlock.TryGetValue(height, out ConcurrentBag<Transaction_DictMemos> blockList))
             {
-                blockList.Add(transaction);
+                bool isContained = false;
+                foreach (Transaction_DictMemos transactionToCompare in blockList)
+                {
+                    if (transaction == transactionToCompare)
+                    {
+                        isContained = true;
+                        break;
+                    }
+                }
+                if(!isContained)
+                    blockList.Add(transaction);
             }
             // create block if not exists
             else

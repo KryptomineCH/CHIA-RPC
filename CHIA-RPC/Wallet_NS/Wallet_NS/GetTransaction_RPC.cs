@@ -169,6 +169,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// <param name="sort_key">The key for sorting. Default: None.</param>
         /// <param name="reverse">Set to true to list newest results first. Default: false (oldest first (better for history building due to pagination).</param>
         /// <param name="to_address">Only include transactions with this to_address. Default: None.</param>
+        [JsonConstructor]
         public GetTransactions_RPC(ulong wallet_id, ulong? start = null, ulong? end = null, GetTransactionSortKey? sort_key = null, bool? reverse = null, string? to_address = null)
         {
             this.wallet_id = wallet_id;
@@ -183,7 +184,7 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// The Wallet ID of the wallet from which to obtain transactions.
         /// </summary>
         /// <remarks>Mandatory</remarks>
-        public ulong? wallet_id { get; set; }
+        public ulong wallet_id { get; set; }
 
         /// <summary>
         /// The sequence number of the first transaction to show. Default: 0.
@@ -215,6 +216,24 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// </summary>
         /// <remarks>Optional</remarks>
         public string? to_address { get; set; }
+
+        /// <summary>
+        /// clones this transaction into a new instance
+        /// </summary>
+        /// <returns></returns>
+        public GetTransactions_RPC Clone()
+        {
+            var clone = new GetTransactions_RPC(
+                wallet_id: this.wallet_id,
+                start: this.start,
+                end: this.end,
+                sort_key: this.sort_key,
+                reverse: this.reverse,
+                to_address: this.to_address);
+     
+            return clone;
+        }
+
         /// <summary>
         /// implicit operator for converting a wallet id rpc or ulong wallet id into a Gettransactions_RPC with default values
         /// </summary>
