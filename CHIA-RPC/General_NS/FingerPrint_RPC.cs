@@ -92,6 +92,14 @@ namespace CHIA_RPC.General_NS
         {
             return new FingerPrint_RPC(fingerprint);
         }
+        /// <summary>
+        /// converts fingerprint rpc to ulong
+        /// </summary>
+        /// <param name="fingerprint"></param>
+        public static implicit operator ulong(FingerPrint_RPC fingerprint)
+        {
+            return fingerprint.fingerprint;
+        }
     }
     /// <summary>
     /// used for a variety of wallet management and wallet selection tasks
