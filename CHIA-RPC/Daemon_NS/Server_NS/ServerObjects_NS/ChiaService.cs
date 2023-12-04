@@ -5,6 +5,8 @@
     /// </summary>
     public enum ChiaService
     {
+        daemon,
+
         /// <summary>Chia data layer</summary>
         chia_data_layer,
 
@@ -42,6 +44,11 @@
         chia_crawler,
 
         /// <summary>Wallet UI</summary>
-        wallet_ui
+        wallet_ui,
+
+        /// <summary>
+        /// untested
+        /// </summary>
+        metrics
     }
 }
