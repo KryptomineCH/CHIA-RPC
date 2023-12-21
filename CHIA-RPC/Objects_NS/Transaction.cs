@@ -151,34 +151,7 @@ namespace CHIA_RPC.Objects_NS
         /// The puzzlehash is likely something like 0x0101010101010101010101010101010101010101010101010101010101010101 <br/>
         /// </remarks>
         public ulong? amount {
-#warning This value is calculated incorrectly when accepting an offer with an additional fee as of chia 2.1.1 - use amount_correct_custom
             get; set; 
-        }
-        /// <summary>
-        /// this is the corrected amount which fixes various issues with amount.<br/>
-        /// It will likely be removed in the future, when issues are fixed.
-        /// </summary>
-        /// <remarks>
-        /// see <see href="https://github.com/Chia-Network/chia-blockchain/issues/16842"/> for more details.
-        /// </remarks>
-        [JsonIgnore]
-        public ulong? amount_correct_custom { 
-            get 
-            {
-                if (this.type == TransactionType.OUTGOING_TRADE)
-                {
-                    return amount - fee_amount;
-                }
-                else return amount;
-            } 
-            set
-            {
-                if (this.type == TransactionType.OUTGOING_TRADE)
-                {
-                    amount = value + fee_amount;
-                }
-                else amount = value;
-            }
         }
         /// <summary>
         /// the transaction amount in full chia<br/>
@@ -187,8 +160,8 @@ namespace CHIA_RPC.Objects_NS
         [JsonIgnore]
         public decimal? amount_in_xch
         {
-            get { return amount_correct_custom / GlobalVar.OneChiaInMojos; }
-            set { amount_correct_custom = (ulong?)(value * GlobalVar.OneChiaInMojos); }
+            get { return amount / GlobalVar.OneChiaInMojos; }
+            set { amount = (ulong?)(value * GlobalVar.OneChiaInMojos); }
         }
         /// <summary>
         /// the transaction amount in cat token amount.<br/><br/>
@@ -197,8 +170,8 @@ namespace CHIA_RPC.Objects_NS
         [JsonIgnore]
         public decimal? amount_in_cat
         {
-            get { return amount_correct_custom / GlobalVar.OneCatInMojos; }
-            set { amount_correct_custom = (ulong?)(value * GlobalVar.OneCatInMojos); }
+            get { return amount / GlobalVar.OneCatInMojos; }
+            set { amount = (ulong?)(value * GlobalVar.OneCatInMojos); }
         }
         /// <summary>
         /// Indicates that a Transaction has been submitted and Processed by a Full Node
