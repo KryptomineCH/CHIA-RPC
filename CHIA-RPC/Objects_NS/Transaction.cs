@@ -549,7 +549,7 @@ namespace CHIA_RPC.Objects_NS
                 Coin? primaryCoin = null;
                 foreach (Coin coin in additions)
                 {
-                    if (coin.amount == this.amount_correct_custom)
+                    if (coin.amount == this.amount)
                     {
                         primaryCoin = coin;
                         break;
