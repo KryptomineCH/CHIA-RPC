@@ -23,6 +23,8 @@
 - implement Datalayer verify_proof
 - implement get_aggsig_additional_data
 
+- removed parameter from nft_nft_get_nfts according to documentation update
+
 2.1.3
 - removed ammount_correct_custom as it was a workaround for a bug in outgoing trades in previous chia versions
 - Compatible with chia 2.1.2
