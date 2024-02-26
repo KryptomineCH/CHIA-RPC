@@ -2,6 +2,8 @@
 using CHIA_RPC.HelperFunctions_NS;
 using System.Text.Json.Serialization;
 using CHIA_RPC.General_NS;
+using System.Runtime.CompilerServices;
+using CHIA_RPC.Wallet_NS.WalletManagement_NS;
 
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
@@ -206,5 +208,14 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// </summary>
         /// <remarks>optional</remarks>
         public string[]? excluded_coin_ids { get; set; }
+
+        public static implicit operator GetSpendableCoins_RPC(WalletID_RPC rpc)
+        {
+            return new GetSpendableCoins_RPC(rpc, null);
+        }
+        public static implicit operator GetSpendableCoins_RPC(Wallets_info rpc)
+        {
+            return new GetSpendableCoins_RPC(rpc.id, null);
+        }
     }
 }

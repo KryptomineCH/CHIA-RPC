@@ -22,6 +22,7 @@
 - Implement Datalayer get_proof
 - implement Datalayer verify_proof
 - implement get_aggsig_additional_data
+- add implicit conversion to GetSpendableCoins_RPC
 
 - removed parameter from nft_nft_get_nfts according to documentation update
 

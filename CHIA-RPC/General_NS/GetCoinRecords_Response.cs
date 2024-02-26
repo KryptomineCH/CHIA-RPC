@@ -5,7 +5,7 @@ using CHIA_RPC.Objects_NS;
 namespace CHIA_RPC.General_NS
 {
     /// <summary>
-    /// This response contains Conrecords. it is uset by several EndPoints in WalletNode and FullNode
+    /// This response contains Conrecords. it is used by several EndPoints in WalletNode and FullNode
     /// </summary>
     /// <remarks>
     /// used by:<br/>

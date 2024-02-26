@@ -1,5 +1,6 @@
 ﻿using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Wallet_NS.Wallet_NS;
+using CHIA_RPC.Wallet_NS.WalletManagement_NS;
 using NFT.Storage.Net.ClientResponse;
 
 namespace CHIA_RPC.General_NS
