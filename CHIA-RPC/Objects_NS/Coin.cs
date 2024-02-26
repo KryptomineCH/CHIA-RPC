@@ -145,7 +145,7 @@ namespace CHIA_RPC.Objects_NS
             if (obj is not Coin otherCoin)
                 return false;
 
-            // Use your existing AreCoinsEqual method for comparison
+            // Use existing AreCoinsEqual method for comparison
             return AreCoinsEqual(this, otherCoin);
         }
         /// <summary>

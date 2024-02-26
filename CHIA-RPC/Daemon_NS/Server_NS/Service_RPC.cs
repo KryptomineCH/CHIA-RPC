@@ -21,6 +21,23 @@ namespace CHIA_RPC.Daemon_NS.Server_NS
     public class Service_RPC : RPCTemplate<Service_RPC>
     {
         /// <summary>
+        /// parameterless constructor for serialisation
+        /// </summary>
+        public Service_RPC()
+        {
+            // parameterless constructor for serialisation
+        }
+
+        /// <summary>
+        /// initializes the rpc with the service to add
+        /// </summary>
+        /// <param name="service"></param>
+        public Service_RPC(ChiaService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
         /// The name of the service to register.
         /// <br/>
         /// This is a mandatory field.
