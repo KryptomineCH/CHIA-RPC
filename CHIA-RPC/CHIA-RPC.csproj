@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+	<LangVersion>12.0</LangVersion>
     <RootNamespace>CHIA_RPC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -23,6 +24,7 @@
 - implement Datalayer verify_proof
 - implement get_aggsig_additional_data
 - add implicit conversion to GetSpendableCoins_RPC
+- added GetSortedCoins to GetSpendableCoins_Response
 
 - removed parameter from nft_nft_get_nfts according to documentation update
 

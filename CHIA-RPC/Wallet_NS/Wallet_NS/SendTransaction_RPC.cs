@@ -1,22 +1,26 @@
 ﻿using CHIA_RPC.General_NS;
 using CHIA_RPC.HelperFunctions_NS;
+using CHIA_RPC.Wallet_NS.CATsAndTrading_NS;
 using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.Wallet_NS.Wallet_NS
 {
     /// <summary>
-    /// used to send chia (XCH) to a specific target address
+    /// used to send chia (XCH) to a specific target address<br/>
+    /// use <see cref="CatSpend_RPC"/> for a Token (CAT) transaction
     /// </summary>
     /// <remarks><see href="https://docs.chia.net/wallet-rpc#send_transaction"/></remarks>
     /// <returns><see cref="General_NS.TransactionID_Response"/></returns>
     public class SendTransaction_RPC : RPCTemplate<SendTransaction_RPC>
     {
         /// <summary>
-        /// parameterless constructor, for serializer
+        /// parameterless constructor, for serializer<br/>
+        /// use <see cref="CatSpend_RPC"/> for a Token (CAT) transaction
         /// </summary>
         public SendTransaction_RPC() { /* for serialisation*/ }
         /// <summary>
-        /// used to send chia (XCH) to a specific target address
+        /// used to send chia (XCH) to a specific target address<br/>
+        /// use <see cref="CatSpend_RPC"/> for a Token (CAT) transaction
         /// </summary>
         /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
@@ -46,9 +50,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
             this.reuse_puzhash = reuse_puzhash;
         }
         /// <summary>
-        /// used to send chia (XCH) to a specific target address
+        /// used to send chia (XCH) to a specific target address<br/>
+        /// use <see cref="CatSpend_RPC"/> for a Token (CAT) transaction
         /// </summary>
-        /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
+        /// <param name="walletID_RPC">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
         /// <param name="amount_mojos">the amount of mojos to send</param>
         /// <param name="fee_mojos">the amount of mojos to set as fee</param>
@@ -77,7 +82,8 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         }
 
         /// <summary>
-        /// used to send chia (XCH) to a specific target address
+        /// used to send chia (XCH) to a specific target address<br/>
+        /// use <see cref="CatSpend_RPC"/> for a Token (CAT) transaction
         /// </summary>
         /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
@@ -108,9 +114,10 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         }
 
         /// <summary>
-        /// used to send chia (XCH) to a specific target address
+        /// used to send chia (XCH) to a specific target address<br/>
+        /// use <see cref="CatSpend_RPC"/> for a Token (CAT) transaction
         /// </summary>
-        /// <param name="wallet_id">the wallet ID from which you want to send the transaction</param>
+        /// <param name="walletID_RPC">the wallet ID from which you want to send the transaction</param>
         /// <param name="address">the receiving address to send the mojos to</param>
         /// <param name="amount_xch">the amount of mojos to send</param>
         /// <param name="fee_xch">the amount of mojos to set as fee</param>
