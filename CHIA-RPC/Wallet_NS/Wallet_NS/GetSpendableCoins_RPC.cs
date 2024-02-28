@@ -42,6 +42,24 @@ namespace CHIA_RPC.Wallet_NS.Wallet_NS
         /// Each CoinRecord includes details such as the coin's parent coin info, puzzle hash, amount, and more.
         /// </summary>
         public CoinRecord[]? unconfirmed_removals { get; set; }
+
+        /// <summary>
+        /// This Function extracts the Coins from confirmed_records and lets you choose to sort them in ascending or descending order by amount
+        /// </summary>
+        /// <param name="ascending"></param>
+        /// <returns></returns>
+        public Coin[] GetSortedCoins(bool ascending = true)
+        {
+            if (confirmed_records == null)
+                return Array.Empty<Coin>();
+
+            var sortedCoins = confirmed_records
+                .Select(record => record.coin);
+
+            return ascending ?
+                sortedCoins.OrderBy(coin => coin.amount).ToArray() :
+                sortedCoins.OrderByDescending(coin => coin.amount).ToArray();
+        }
     }
 
     /// <summary>
