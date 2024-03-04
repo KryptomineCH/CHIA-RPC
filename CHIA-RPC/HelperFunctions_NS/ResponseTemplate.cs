@@ -115,7 +115,7 @@ namespace CHIA_RPC.HelperFunctions_NS
         /// </summary>
         /// <param name="inputString">The json payload to load the response from.</param>
         /// <returns>The loaded response.</returns>
-        public static ActionResult<T> LoadResponseFromString(string inputString)
+        public static ActionResult<T> LoadResponseFromString(string inputString, bool includeRawResponse = true)
         {
             ActionResult<T> result = new ActionResult<T>(inputString);
             result.RawJson = inputString;
@@ -129,11 +129,14 @@ namespace CHIA_RPC.HelperFunctions_NS
             try
             {
                 result.Data = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
-                try
+                if (includeRawResponse)
                 {
-                    result.Data.RawContent = result.RawJson;
+                    try
+                    {
+                        result.Data.RawContent = result.RawJson;
+                    }
+                    catch (Exception ex) { }
                 }
-                catch (Exception ex) { }
                 if (result.Data == null)
                 {
                     result.Success = false;
