@@ -8,6 +8,10 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
     public class NpcConditions : ObjectTemplate<NpcConditions>
     {
         /// <summary>
+        /// the amount that gets added with the condition (mojos)_
+        /// </summary>
+        public ulong? addition_amount { get; set; }
+        /// <summary>
         /// Represents the unsafe aggregated signature for the transaction. This is generally the aggregation of all the individual signatures from multiple signers.
         /// </summary>
         public object[]? agg_sig_unsafe { get; set; }
@@ -31,6 +35,11 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// Represents the absolute block height when this transaction becomes valid. This is typically used to delay the validity of a transaction until a certain block height is reached.
         /// </summary>
         public ulong? height_absolute { get; set; }
+
+        /// <summary>
+        /// the amount that gets removed with the condition (mojos)_
+        /// </summary>
+        public ulong? removal_amount { get; set; }
 
         /// <summary>
         /// Represents the reserve fee for the transaction. This is the fee that is held in reserve for future transactions.

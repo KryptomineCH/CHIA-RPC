@@ -14,12 +14,24 @@ namespace CHIA_RPC_Tests.FullNode_NS
         public void Test_ResponseSerialisation()
         {
             Test_ResponseClasses<GetAllMempoolItems_Response> helper = new Test_ResponseClasses<GetAllMempoolItems_Response>();
+            List<string> testFiles = new List<string>();
+            foreach (string filepath in Directory.GetFiles(Path.Combine("TestAssets", "GetAllMempoolItems")))
+            {
+                testFiles.Add(File.ReadAllText(filepath));
+            }
+            helper.Test_Serialisation(testFiles.ToArray());
             helper.Test_Serialisation(ExpectedResults);
         }
         [Fact]
         public void Test_ResponseDiskIO()
         {
             Test_ResponseClasses<GetAllMempoolItems_Response> helper = new Test_ResponseClasses<GetAllMempoolItems_Response>();
+            List<string> testFiles = new List<string>();
+            foreach (string filepath in Directory.GetFiles(Path.Combine("TestAssets", "GetAllMempoolItems")))
+            {
+                testFiles.Add(File.ReadAllText(filepath));
+            }
+            helper.Test_DiskIO(testFiles.ToArray());
             helper.Test_DiskIO(ExpectedResults);
         }
     }

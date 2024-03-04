@@ -16,13 +16,36 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
     public class NpcSpend : ObjectTemplate<NpcSpend>
     {
         /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public ulong[]? agg_sig_amount { get; set; }
+        /// <summary>
         /// The aggregated signature associated with the spend operation.
         /// </summary>
         /// <remarks>
         /// The aggregated signature provides proof of authority for the spend operation. It is an array of byte arrays.
         /// </remarks>
         public string[][]? agg_sig_me { get; set; }
-
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public string[][]? agg_sig_parent { get; set; }
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public ulong[]? agg_sig_parent_amount { get; set; }
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public string[][]? agg_sig_parent_puzzle { get; set; }
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public string[][]? agg_sig_puzzle { get; set; }
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public ulong[]? agg_sig_puzzle_amount { get; set; }
         /// <summary>
         /// The height, relative to the block, before which the operation should occur.
         /// </summary>
@@ -38,6 +61,14 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// This property provides a temporal boundary for the operation in terms of seconds from the block.
         /// </remarks>
         public ulong? before_seconds_relative { get; set; }
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public ulong? birth_height { get; set; }
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public ulong? birth_seconds { get; set; }
 
         /// <summary>
         /// The unique identifier of the coin being spent.
@@ -46,7 +77,10 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// Each coin in the Chia network has a unique identifier. This property represents the coin involved in the operation.
         /// </remarks>
         public string? coin_id { get; set; }
-
+        /// <summary>
+        /// TODO: not documented
+        /// </summary>
+        public ulong? coin_amount { get; set; }
         /// <summary>
         /// The array of coins created as a result of the operation. 
         /// </summary>
@@ -54,7 +88,7 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// This property represents all coins created during the spend operation. It's an array of <see cref="Coin"/> objects.
         /// </remarks>
         [JsonConverter(typeof(MempoolCoinArrayJsonConverter))]
-        public Coin[]? create_coin { get; set; }
+        public MempoolCoin[]? create_coin { get; set; }
 
         /// <summary>
         /// The flags associated with the spend operation.
@@ -72,6 +106,10 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// </remarks>
         public ulong? height_relative { get; set; }
 
+        /// <summary>
+        /// TODO: Not Documented
+        /// </summary>
+        public string? parent_id { get; set; }
         /// <summary>
         /// The puzzle hash associated with the operation.
         /// </summary>

@@ -1,5 +1,7 @@
-﻿using CHIA_RPC.HelperFunctions_NS;
+﻿using CHIA_RPC.General_NS;
+using CHIA_RPC.HelperFunctions_NS;
 using CHIA_RPC.Objects_NS;
+using System.Text.Json.Serialization;
 
 namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
 {
@@ -25,12 +27,44 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <remarks>
         /// This cost includes any transaction fees and represents the amount deducted from the sender's wallet.
         /// </remarks>
-        public ulong? cost { get; set; }
+        public ulong cost { get; set; }
 
         /// <summary>
         /// The transaction fee that is awarded to the miner who includes the transaction in a block.
         /// </summary>
         public ulong? fee { get; set; }
+        /// <summary>
+        /// the transaction fee in full chia
+        /// </summary>
+        /// <remarks>This value is derived from the mojos fee_amount</remarks>
+        [JsonIgnore]
+        public decimal? fee_in_xch
+        {
+            get { return fee / GlobalVar.OneChiaInMojos; }
+            set { fee = (ulong?)(value * GlobalVar.OneChiaInMojos); }
+        }
+
+        /// <summary>
+        /// Calculates the ratio of the transaction fee to the total cost of the transaction.
+        /// </summary>
+        /// <remarks>
+        /// This property provides a decimal representation of the fee per cost, offering insight into the proportion of the total transaction cost that is made up of the transaction fee. If the cost is 0 or the fee is null, the value of this property will be 0, indicating no fee or that the fee does not apply.
+        /// </remarks>
+        public decimal FeePerCost
+        {
+            get
+            {
+                // Check if cost is 0 or fee is null to avoid division by zero or null reference exceptions.
+                if (cost == 0 || fee == null)
+                {
+                    return 0m;
+                }
+
+                // Ensure fee is converted to decimal for accurate division and calculation.
+                return (decimal)fee / cost;
+            }
+        }
+
 
         /// <summary>
         /// The result of executing the transaction in the Chia virtual machine.

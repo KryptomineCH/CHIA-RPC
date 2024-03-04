@@ -30,7 +30,7 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
         {
             if (reader.TokenType != JsonTokenType.StartArray)
             {
-                throw new JsonException();
+                throw new JsonException("Expected start of array in the JSON payload.");
             }
 
             var coins = new List<MempoolCoin>();
@@ -39,16 +39,36 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
             {
                 if (reader.TokenType == JsonTokenType.StartArray)
                 {
-                    coins.Add(_createCoinConverter.Read(ref reader, typeof(MempoolCoin), options));
+                    reader.Read(); // Move to the first element of the sub-array
+                    var puzzleHash = reader.TokenType != JsonTokenType.Null ? reader.GetString() : null; // Adjusted to handle null
+                    reader.Read(); // Move to the second element
+                    var amount = reader.GetUInt64();
+                    reader.Read(); // Move to the third element (null or memo)
+                    string? memo = reader.TokenType != JsonTokenType.Null ? reader.GetString() : null;
+
+                    coins.Add(new MempoolCoin
+                    {
+                        puzzle_hash = puzzleHash,
+                        amount = amount,
+                        memos = memo
+                    });
+
+                    // Ensure the reader moves past the current sub-array
+                    while (reader.TokenType != JsonTokenType.EndArray)
+                    {
+                        reader.Read();
+                    }
                 }
                 else
                 {
-                    throw new JsonException();
+                    throw new JsonException($"Unexpected token {reader.TokenType} at {reader.TokenStartIndex}. Expected JsonTokenType.StartArray.");
                 }
             }
 
             return coins.ToArray();
         }
+
+
         /// <summary>
         /// Writes a MempoolCoin array to JSON.
         /// </summary>
@@ -61,10 +81,37 @@ namespace CHIA_RPC.HelperFunctions_NS.JsonConverters_NS
 
             foreach (var coin in value)
             {
-                _createCoinConverter.Write(writer, coin, options);
+                writer.WriteStartArray();
+
+                // Write puzzle_hash. If it's null, write a null value; otherwise, write the string value.
+                if (string.IsNullOrEmpty(coin.puzzle_hash))
+                {
+                    writer.WriteNullValue();
+                }
+                else
+                {
+                    writer.WriteStringValue(coin.puzzle_hash);
+                }
+
+                // Write amount
+                writer.WriteNumberValue(coin.amount);
+
+                // Write memos. Similar to puzzle_hash, if it's null, write a null value.
+                if (string.IsNullOrEmpty(coin.memos))
+                {
+                    writer.WriteNullValue();
+                }
+                else
+                {
+                    writer.WriteStringValue(coin.memos);
+                }
+
+                writer.WriteEndArray();
             }
 
             writer.WriteEndArray();
         }
+
+
     }
 }

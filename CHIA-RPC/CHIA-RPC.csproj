@@ -8,7 +8,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>2.2.0</Version>
+    <Version>2.2.0.7</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -19,7 +19,15 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.2.0
+    <PackageReleaseNotes>2.2.0.X
+- Fix Mempool related objects for get_all_mempool_items
+- Add Custom Property FeePerCost to Mempool Item
+- Update Block RPC
+- Add implicit conversions from block record to header hash
+- Fix response raw content
+- Add fee_xch to Mempool item
+
+2.2.0
 - Implement Datalayer get_proof
 - implement Datalayer verify_proof
 - implement get_aggsig_additional_data

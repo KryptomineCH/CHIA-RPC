@@ -20,12 +20,12 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The challenge_chain_sp_proof for the block
         /// </summary>
-        public object? challenge_chain_sp_proof { get; set; }
+        public Proof? challenge_chain_sp_proof { get; set; }
 
         /// <summary>
         /// The finished_sub_slots for the block
         /// </summary>
-        public object[]? finished_sub_slots { get; set; }
+        public Eos[]? finished_sub_slots { get; set; }
 
         /// <summary>
         /// The foliage data for the block
@@ -35,12 +35,12 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The foliage_transaction_block for the block
         /// </summary>
-        public object? foliage_transaction_block { get; set; }
+        public FoliageTransactionBlock? foliage_transaction_block { get; set; }
 
         /// <summary>
         /// The infused_challenge_chain_ip_proof for the block
         /// </summary>
-        public object? infused_challenge_chain_ip_proof { get; set; }
+        public Proof? infused_challenge_chain_ip_proof { get; set; }
 
         /// <summary>
         /// The reward_chain_block for the block
@@ -55,21 +55,21 @@ namespace CHIA_RPC.FullNode_NS.FullNodeObjects_NS
         /// <summary>
         /// The reward_chain_sp_proof for the block
         /// </summary>
-        public object? reward_chain_sp_proof { get; set; }
+        public Proof? reward_chain_sp_proof { get; set; }
 
         /// <summary>
         /// The transactions_generator for the block
         /// </summary>
-        public object? transactions_generator { get; set; }
+        public string? transactions_generator { get; set; }
 
         /// <summary>
         /// The transactions_generator_ref_list for the block
         /// </summary>
-        public object[]? transactions_generator_ref_list { get; set; }
+        public ulong[]? transactions_generator_ref_list { get; set; }
 
         /// <summary>
         /// The transactions_info for the block
         /// </summary>
-        public object? transactions_info { get; set; }
+        public BlockTransactionInfo? transactions_info { get; set; }
     }
 }

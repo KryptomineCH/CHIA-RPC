@@ -35,7 +35,9 @@ namespace CHIA_RPC_Tests.Testhelpers
                     originalRPC.Data.SaveResponseToFile(fileName);
                     T? newRPC = ResponseTemplate<T>.LoadResponseFromFile(fileName);
                     if (newRPC == null) throw new InvalidOperationException($"failed to load newRPC!");
-                    Assert.Equal(originalRPC.ToString(), newRPC.ToString());
+                    string originalString = originalRPC.Data.ToString();
+                    string rebuiltString = newRPC.ToString();
+                    Assert.Equal(originalString, rebuiltString);
                 }
                 catch (Exception ex)
                 {

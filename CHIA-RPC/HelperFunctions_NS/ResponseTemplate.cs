@@ -129,6 +129,11 @@ namespace CHIA_RPC.HelperFunctions_NS
             try
             {
                 result.Data = JsonSerializer.Deserialize<T?>(inputString, new JsonSerializerOptions { AllowTrailingCommas = true });
+                try
+                {
+                    result.Data.RawContent = result.RawJson;
+                }
+                catch (Exception ex) { }
                 if (result.Data == null)
                 {
                     result.Success = false;
