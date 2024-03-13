@@ -8,7 +8,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <Title>CHIA-RPC library</Title>
-    <Version>2.2.0.10</Version>
+    <Version>2.2.0.17</Version>
     <Authors>KryptoMine.ch, Julian Bechtold</Authors>
     <Company>KryptoMine.ch</Company>
     <Description>CHIA-RPC is a C# Nuget package that simplifies communication with the Chia client using RPC-JSON files. The package offers a wrapper for creating RPC objects and accessing RPC JSON via .ToString() or file I/O. It can be used with the HTTP-API, WebSocket API, or CLI of the Chia client.</Description>
@@ -19,7 +19,10 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.2.0.10
+    <PackageReleaseNotes>2.2.0.17
+- hotfix for GetOfferSummary_Response (please report if there is an issue. Its not documented on chia docs)
+
+2.2.0.10
 - Fix Mempool related objects for get_all_mempool_items
 - Add Custom Property FeePerCost to Mempool Item
 - Update Block RPC

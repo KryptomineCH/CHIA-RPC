@@ -29,6 +29,8 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
         /// </summary>
         public class Summary
         {
+            string[]? additions { get; set; }
+            string[]? removals { get; set; }
             /// <summary>
             /// Fees associated with the offer.
             /// </summary>
@@ -37,7 +39,9 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
             /// <summary>
             /// Array of Info objects representing detailed information about the offer.
             /// </summary>
-            public Info[]? infos { get; set; }
+            // TODO: Clean this up
+            //public Info[]? infos { get; set; }
+            public Dictionary<string, CryptocurrencyInfo>? infos { get; set; }
 
             /// <summary>
             /// Represents what is offered.
@@ -53,7 +57,22 @@ namespace CHIA_RPC.Wallet_NS.Offer_NS
             /// the time constraints under which the offer is Valid
             /// </summary>
             public ValidTimes? valid_times { get; set; }
+            /// <summary>
+            /// Represents the details of a cryptocurrency asset, specifically focusing on types like Chia Asset Tokens (CAT).
+            /// </summary>
+            public class CryptocurrencyInfo : ObjectTemplate<CryptocurrencyInfo>
+            {
+                /// <summary>
+                /// The unique identifier for the cryptocurrency asset, typically represented as a hash string.
+                /// </summary>
+                public string tail { get; set; }
 
+                /// <summary>
+                /// The type of the cryptocurrency asset. This property indicates the specific category or form of the asset,
+                /// such as "CAT" for Chia Asset Tokens, providing insights into the asset's nature and functionality.
+                /// </summary>
+                public string type { get; set; }
+            }
             /// <summary>
             /// info about the nft
             /// </summary>
