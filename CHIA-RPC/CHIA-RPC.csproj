@@ -19,7 +19,7 @@
     <RepositoryUrl>https://github.com/KryptomineCH/CHIA-RPC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Chia;RPC;JSON;C#;.NET;NuGet;Cryptocurrency;Client;Wrapper;Transactions;HTTP;Serialization;Communication;Library;Endpoint;XCH</PackageTags>
-    <PackageReleaseNotes>2.2.0.X
+    <PackageReleaseNotes>2.2.0.10
 - Fix Mempool related objects for get_all_mempool_items
 - Add Custom Property FeePerCost to Mempool Item
 - Update Block RPC
