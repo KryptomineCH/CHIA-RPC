@@ -166,7 +166,7 @@ see https://github.com/Chia-Network/chia-blockchain/issues/16842 for more detail
   <ItemGroup>
 	<PackageReference Include="Chia-Metadata" Version="1.8.2" />
     <PackageReference Include="NFT.Storage.Net" Version="1.0.1.2" />
-    <PackageReference Include="SSH.NET" Version="2023.0.0" />
+    <PackageReference Include="SSH.NET" Version="2024.0.0" />
   </ItemGroup>
 
 
