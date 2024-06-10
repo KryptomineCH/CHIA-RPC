@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
 	<LangVersion>12.0</LangVersion>
     <RootNamespace>CHIA_RPC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -124,6 +123,7 @@ see https://github.com/Chia-Network/chia-blockchain/issues/16842 for more detail
     <PackageLicenseExpression>MIT-Modern-Variant</PackageLicenseExpression>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageOutputPath>Y:\Projects\Programmbibliotheken\LocalNugetPackages</PackageOutputPath>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
