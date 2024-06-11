@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="General\" />
-    <Folder Include="TestAssets\Transaction_NoMemo\Sorted_Transactions\XCH\offer_cancellation\" />
   </ItemGroup>
 
   <ItemGroup>
